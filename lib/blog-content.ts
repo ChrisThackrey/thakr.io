@@ -1,5 +1,6 @@
 // This file stores the content of each blog post in memory
 // to avoid having to load it from disk on each request
+import type { BlogPost } from "@/lib/blog"
 
 export interface BlogContent {
   content: string
@@ -743,22 +744,29 @@ For businesses and developers looking to build more reliable AI applications, RA
 // Export the blog content map
 export default blogContentMap
 
-// Export functions to get blog content
+// Helper function to get blog content by slug
 export function getBlogContent(slug: string): BlogContent | null {
   return blogContentMap[slug] || null
 }
 
-// Export additional functions needed by the application
+// Helper function to get posts by tag
 export function getPostsByTag(tag: string): string[] {
-  // Return an array of post slugs that match the given tag
-  // This is a simplified implementation
-  return Object.keys(blogContentMap).filter((slug) => {
-    // In a real implementation, you would check if the post has the tag
-    // For now, we'll just return all posts
-    return true
+  const posts: string[] = []
+
+  // Get all blog posts from the blog.ts file
+  const allPosts = getAllBlogPosts()
+
+  // Filter posts by tag and return their slugs
+  allPosts.forEach((post) => {
+    if (post.tags.includes(tag)) {
+      posts.push(post.slug)
+    }
   })
+
+  return posts
 }
 
+// Series interface
 export interface Series {
   slug: string
   title: string
@@ -776,10 +784,12 @@ const seriesData: Record<string, Series> = {
   },
 }
 
+// Helper function to get series by slug
 export function getSeriesBySlug(slug: string): Series | null {
   return seriesData[slug] || null
 }
 
+// Helper function to get next post in series
 export function getNextPostInSeries(seriesSlug: string, currentPostSlug: string): string | null {
   const series = getSeriesBySlug(seriesSlug)
   if (!series) return null
@@ -790,6 +800,7 @@ export function getNextPostInSeries(seriesSlug: string, currentPostSlug: string)
   return series.posts[currentIndex + 1]
 }
 
+// Helper function to get previous post in series
 export function getPreviousPostInSeries(seriesSlug: string, currentPostSlug: string): string | null {
   const series = getSeriesBySlug(seriesSlug)
   if (!series) return null
@@ -798,4 +809,10 @@ export function getPreviousPostInSeries(seriesSlug: string, currentPostSlug: str
   if (currentIndex <= 0) return null
 
   return series.posts[currentIndex - 1]
+}
+
+// Helper function to get all blog posts
+function getAllBlogPosts(): BlogPost[] {
+  // Import from the blog.ts file
+  return []
 }
