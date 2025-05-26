@@ -18,13 +18,14 @@ import { Footer } from "@/components/footer"
 import { PageBackground } from "@/components/page-background"
 import { SectionBackground } from "@/components/section-background"
 import { TransitionLayout } from "@/components/transition-layout"
+import { RoutePrefetcher } from "@/components/route-prefetcher"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Chris Thackrey - Software Engineer & Designer",
   description:
     "Personal website of Chris Thackrey, a software engineer and designer specializing in AI, web development, and architecture.",
-    generator: 'v0.dev'
+  generator: "v0.dev",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </main>
             <Footer />
           </div>
+          <RoutePrefetcher />
         </ThemeProvider>
       </body>
     </html>
