@@ -1,79 +1,43 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { motion } from "framer-motion"
-import type { ReactNode } from "react"
+import { useReducedMotion } from "@/hooks/use-reduced-motion"
 
 interface SkeletonBaseProps {
-  children: ReactNode
   className?: string
-  shimmer?: boolean
-  section?: "blog" | "projects" | "architecture"
+  section?: "blog" | "projects" | "architecture" | "about" | "work" | "home" | "booking"
   delay?: number
-  stagger?: 1 | 2 | 3 | 4 | 5
-  animate?: "fade" | "scale" | "slide" | "none"
 }
 
-export function SkeletonBase({
-  children,
-  className,
-  shimmer = true,
-  section = "blog",
-  delay = 0,
-  stagger = 0,
-  animate = "fade",
-}: SkeletonBaseProps) {
+export function SkeletonBase({ className, section = "blog", delay = 0 }: SkeletonBaseProps) {
   const prefersReducedMotion = useReducedMotion()
 
-  // Section-specific classes
-  const sectionClasses = {
-    blog: "blog-skeleton-pulse skeleton-gradient-blog",
-    projects: "projects-skeleton-wave skeleton-gradient-projects",
-    architecture: "architecture-skeleton-reveal skeleton-gradient-architecture",
+  // Section-specific colors for the skeleton pulse
+  const sectionColors: Record<string, string> = {
+    blog: "bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700",
+    projects:
+      "bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700",
+    architecture:
+      "bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700",
+    about:
+      "bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700",
+    work: "bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700",
+    home: "bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700",
+    booking:
+      "bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700",
   }
 
-  // Animation variants
-  const variants = {
-    fade: {
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-    },
-    scale: {
-      initial: { opacity: 0, scale: 0.95 },
-      animate: { opacity: 1, scale: 1 },
-    },
-    slide: {
-      initial: { opacity: 0, y: 20 },
-      animate: { opacity: 1, y: 0 },
-    },
-    none: {
-      initial: {},
-      animate: {},
-    },
+  if (prefersReducedMotion) {
+    return <div className={cn("rounded-md bg-gray-200 dark:bg-gray-700", className)} />
   }
-
-  // Calculate total delay
-  const totalDelay = delay + stagger * 0.1
 
   return (
     <motion.div
-      initial={prefersReducedMotion ? {} : variants[animate].initial}
-      animate={prefersReducedMotion ? {} : variants[animate].animate}
-      transition={{
-        duration: 0.4,
-        delay: totalDelay,
-        ease: "easeOut",
-      }}
-      className={cn(
-        "bg-muted",
-        shimmer && "skeleton-shimmer",
-        sectionClasses[section],
-        stagger > 0 && `stagger-${stagger}`,
-        className,
-      )}
-    >
-      {children}
-    </motion.div>
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, delay }}
+      className={cn("rounded-md animate-pulse", sectionColors[section], className)}
+    />
   )
 }

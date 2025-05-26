@@ -1,13 +1,20 @@
 "use client"
 
-import type React from "react"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { getTransitionVariant } from "@/utils/transition-variants"
 import { ScrollRestoration } from "@/components/scroll-restoration"
+import { BlogPageSkeleton } from "@/components/skeletons/blog-page-skeleton"
+import { ProjectsPageSkeleton } from "@/components/skeletons/projects-page-skeleton"
+import { ArchitecturePageSkeleton } from "@/components/skeletons/architecture-page-skeleton"
+import { WorkPageSkeleton } from "@/components/skeletons/work-page-skeleton"
+import { AboutPageSkeleton } from "@/components/skeletons/about-page-skeleton"
+import { HomePageSkeleton } from "@/components/skeletons/home-page-skeleton"
+import { BookingPageSkeleton } from "@/components/skeletons/booking-page-skeleton"
+import type { ReactNode } from "react"
 
-export function TransitionLayout({ children }: { children: React.ReactNode }) {
+export function TransitionLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
   const [isLoading, setIsLoading] = useState(false)
   const [prevPathname, setPrevPathname] = useState<string | null>(null)
@@ -35,6 +42,20 @@ export function TransitionLayout({ children }: { children: React.ReactNode }) {
   // Get the appropriate transition variant based on the current path
   const transitionVariant = getTransitionVariant(pathname)
 
+  // Determine which skeleton to show based on the current path
+  const getSkeletonForPath = () => {
+    if (pathname === "/") return <HomePageSkeleton />
+    if (pathname.startsWith("/blog")) return <BlogPageSkeleton />
+    if (pathname.startsWith("/projects")) return <ProjectsPageSkeleton />
+    if (pathname.startsWith("/architecture")) return <ArchitecturePageSkeleton />
+    if (pathname.startsWith("/work")) return <WorkPageSkeleton />
+    if (pathname.startsWith("/about")) return <AboutPageSkeleton />
+    if (pathname.startsWith("/booking")) return <BookingPageSkeleton />
+
+    // Default skeleton for other pages
+    return <HomePageSkeleton />
+  }
+
   return (
     <>
       <AnimatePresence mode="wait">
@@ -46,13 +67,7 @@ export function TransitionLayout({ children }: { children: React.ReactNode }) {
           transition={transitionVariant.transition}
           className="min-h-screen w-full"
         >
-          {isLoading ? (
-            <div className="flex min-h-[50vh] w-full items-center justify-center">
-              <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-t-2 border-primary"></div>
-            </div>
-          ) : (
-            displayChildren
-          )}
+          {isLoading ? getSkeletonForPath() : displayChildren}
         </motion.div>
       </AnimatePresence>
       <ScrollRestoration />
