@@ -15,6 +15,7 @@ import { AnnotationPanel } from "./annotation-panel"
 import { Badge } from "@/components/ui/badge"
 import { ExportAnnotationsDialog } from "./export-annotations-dialog"
 import { exportAnnotatedImage } from "@/utils/export-annotations"
+import { useImagePriority } from "@/utils/image-priority-manager"
 
 export interface Annotation {
   id: string
@@ -29,6 +30,7 @@ interface ImageWithAnnotations {
   alt: string
   caption?: string
   annotations?: Annotation[]
+  blurDataURL?: string
 }
 
 interface ImageGalleryProps {
@@ -64,14 +66,54 @@ export function ImageGallery({
       annotations: image.annotations || [],
     }))
   })
-
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0])) // Preload first image
   const [showExportDialog, setShowExportDialog] = useState(false)
   const annotatedImageRef = useRef<HTMLDivElement>(null)
-
   const containerRef = useRef<HTMLDivElement>(null)
+  const imagePriority = useImagePriority()
 
   const currentImage = imagesWithAnnotations[currentIndex]
   const hasAnnotations = currentImage.annotations && currentImage.annotations.length > 0
+
+  // Preload adjacent images
+  useEffect(() => {
+    const imagesToPreload = [
+      currentIndex,
+      (currentIndex + 1) % imagesWithAnnotations.length,
+      (currentIndex - 1 + imagesWithAnnotations.length) % imagesWithAnnotations.length,
+    ]
+
+    // Mark current image as loaded
+    setLoadedImages((prev) => {
+      const newSet = new Set(prev)
+      newSet.add(currentIndex)
+      return newSet
+    })
+
+    // Preload adjacent images
+    imagesToPreload.forEach((index) => {
+      if (!loadedImages.has(index)) {
+        const img = new Image()
+        img.src = imagesWithAnnotations[index].url
+        img.onload = () => {
+          setLoadedImages((prev) => {
+            const newSet = new Set(prev)
+            newSet.add(index)
+            return newSet
+          })
+        }
+
+        // Register with priority manager
+        if (imagePriority) {
+          const priority = index === currentIndex ? "high" : "medium"
+          const id = `gallery-${index}-${imagesWithAnnotations[index].url}`
+          imagePriority.queueImage(id, imagesWithAnnotations[index].url, priority, () => {
+            // This is just to register with the queue system
+          })
+        }
+      }
+    })
+  }, [currentIndex, imagesWithAnnotations, loadedImages])
 
   const goToNext = () => {
     if (!isZoomed && !isAnnotating) {
@@ -205,6 +247,8 @@ export function ImageGallery({
                     onZoomChange={handleZoomChange}
                     annotations={showAnnotations ? currentImage.annotations || [] : []}
                     isAnnotatable={!isZoomed}
+                    priority={currentIndex === 0} // First image gets priority
+                    blurDataURL={currentImage.blurDataURL}
                   />
                 )}
               </motion.div>
@@ -340,6 +384,15 @@ export function ImageGallery({
                   currentIndex === index ? "border-primary" : "border-transparent hover:border-primary/50",
                 )}
                 aria-label={`View image ${index + 1}`}
+                onMouseEnter={() => {
+                  // Preload on hover
+                  if (imagePriority && !loadedImages.has(index)) {
+                    const id = `gallery-thumb-${index}-${image.url}`
+                    imagePriority.queueImage(id, image.url, "medium", () => {
+                      // Just registering with the queue
+                    })
+                  }
+                }}
               >
                 <Image
                   src={image.url || "/placeholder.svg"}
@@ -347,6 +400,10 @@ export function ImageGallery({
                   fill
                   className="object-cover"
                   sizes="96px"
+                  loading="lazy"
+                  priority={false}
+                  placeholder={image.blurDataURL ? "blur" : "empty"}
+                  blurDataURL={image.blurDataURL}
                 />
                 {image.annotations && image.annotations.length > 0 && (
                   <div className="absolute top-1 right-1 bg-primary text-primary-foreground rounded-full w-5 h-5 flex items-center justify-center text-xs">

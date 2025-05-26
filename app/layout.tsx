@@ -19,7 +19,15 @@ import { PageBackground } from "@/components/page-background"
 import { SectionBackground } from "@/components/section-background"
 import { TransitionLayout } from "@/components/transition-layout"
 import { RoutePrefetcher } from "@/components/route-prefetcher"
+import { CriticalImagesPreloader } from "@/components/critical-images-preloader"
 import type { Metadata } from "next"
+
+// Critical images that should be preloaded on all pages
+const criticalImages = [
+  "/images/light-background.png",
+  "/images/light-background-01.jpg",
+  // Add other critical images here
+]
 
 export const metadata: Metadata = {
   title: "Chris Thackrey - Software Engineer & Designer",
@@ -48,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
           </div>
           <RoutePrefetcher />
+          <CriticalImagesPreloader images={criticalImages} />
         </ThemeProvider>
       </body>
     </html>

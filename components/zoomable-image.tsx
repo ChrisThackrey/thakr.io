@@ -9,6 +9,8 @@ import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { ZoomIn, ZoomOut, Move } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useInView } from "react-intersection-observer"
+import { useImagePriority } from "@/utils/image-priority-manager"
 
 interface ZoomableImageProps {
   src: string
@@ -19,6 +21,9 @@ interface ZoomableImageProps {
   onZoomChange?: (isZoomed: boolean) => void
   annotations?: Annotation[]
   isAnnotatable?: boolean
+  priority?: boolean
+  quality?: number
+  blurDataURL?: string
 }
 
 export function ZoomableImage({
@@ -30,13 +35,28 @@ export function ZoomableImage({
   onZoomChange,
   annotations = [],
   isAnnotatable = true,
+  priority = false,
+  quality,
+  blurDataURL,
 }: ZoomableImageProps) {
   const [isZoomed, setIsZoomed] = useState(false)
   const [zoomLevel, setZoomLevel] = useState(1)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
+  const [isLoaded, setIsLoaded] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: "200px 0px",
+  })
+
+  const imagePriority = useImagePriority()
+  const optimizedQuality = quality || imagePriority?.getOptimalQuality() || 85
+  const shouldUsePlaceholder = imagePriority?.shouldUseBlurPlaceholder() || false
+
+  // Determine if this image should have priority
+  const shouldPrioritize = priority || src.includes("hero") || src.includes("banner")
 
   // Map aspect ratio to className
   const aspectRatioClasses = {
@@ -174,6 +194,25 @@ export function ZoomableImage({
     }
   }, [isZoomed, isDragging, dragStart])
 
+  // Register with priority manager
+  useEffect(() => {
+    if (inView && imagePriority && !isLoaded) {
+      const priority = shouldPrioritize ? "high" : "medium"
+      const id = `image-${src}`
+
+      imagePriority.queueImage(id, src, priority, () => {
+        // This is just to register with the queue system
+        // The actual loading happens via the Image component
+      })
+
+      return () => {
+        if (isLoaded) {
+          imagePriority.imageLoaded(id)
+        }
+      }
+    }
+  }, [inView, src, shouldPrioritize, isLoaded])
+
   return (
     <div
       className={cn(
@@ -183,10 +222,17 @@ export function ZoomableImage({
         className,
       )}
       style={aspectRatio === "auto" ? { height } : {}}
-      ref={containerRef}
+      ref={(el) => {
+        // Combine refs
+        if (containerRef) containerRef.current = el
+        if (ref) ref(el)
+      }}
     >
       <div
-        className="relative w-full h-full transition-transform duration-200"
+        className={cn(
+          "relative w-full h-full transition-transform duration-200",
+          !isLoaded && "bg-gray-100 dark:bg-gray-800 animate-pulse",
+        )}
         style={{
           transform: `scale(${zoomLevel}) translate(${position.x / zoomLevel}px, ${position.y / zoomLevel}px)`,
         }}
@@ -194,14 +240,22 @@ export function ZoomableImage({
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
       >
-        <Image
-          src={src || "/placeholder.svg"}
-          alt={alt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          priority
-        />
+        {(inView || shouldPrioritize) && (
+          <Image
+            src={src || "/placeholder.svg"}
+            alt={alt}
+            fill
+            className={cn("object-cover transition-opacity duration-300", isLoaded ? "opacity-100" : "opacity-0")}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={shouldPrioritize}
+            quality={optimizedQuality}
+            onLoad={() => setIsLoaded(true)}
+            placeholder={shouldUsePlaceholder && blurDataURL ? "blur" : "empty"}
+            blurDataURL={blurDataURL}
+            fetchPriority={shouldPrioritize ? "high" : "auto"}
+            loading={shouldPrioritize ? "eager" : "lazy"}
+          />
+        )}
       </div>
 
       {/* Display annotations */}
@@ -244,6 +298,13 @@ export function ZoomableImage({
         <div className="absolute top-4 right-4 bg-background/80 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-medium shadow-md flex items-center space-x-1">
           <Move className="h-3 w-3" />
           <span>{Math.round(zoomLevel * 100)}%</span>
+        </div>
+      )}
+
+      {/* Loading indicator */}
+      {!isLoaded && (inView || shouldPrioritize) && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-8 h-8 border-4 border-gray-300 border-t-primary rounded-full animate-spin"></div>
         </div>
       )}
     </div>
