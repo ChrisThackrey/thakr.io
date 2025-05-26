@@ -343,3 +343,9 @@ export function createMarkdownComponents(options?: {
     ),
   }
 }
+
+// Re-export for backward compatibility
+export default {
+  defaultMarkdownOptions,
+  createMarkdownComponents,
+}
