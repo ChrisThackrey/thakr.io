@@ -1,5 +1,5 @@
-import { WorkPageSkeleton } from "@/components/skeletons/work-page-skeleton"
+import { AdaptiveSkeleton } from "@/components/skeletons/adaptive-skeleton"
 
 export default function WorkLoading() {
-  return <WorkPageSkeleton />
+  return <AdaptiveSkeleton section="work" />
 }

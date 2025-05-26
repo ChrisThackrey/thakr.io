@@ -1,10 +1,5 @@
-import { BookingPageSkeleton } from "@/components/skeletons/booking-page-skeleton"
-import { PageTransition } from "@/components/page-transition"
+import { AdaptiveSkeleton } from "@/components/skeletons/adaptive-skeleton"
 
 export default function BookingLoading() {
-  return (
-    <PageTransition>
-      <BookingPageSkeleton />
-    </PageTransition>
-  )
+  return <AdaptiveSkeleton section="booking" />
 }

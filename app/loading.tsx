@@ -1,5 +1,5 @@
-import { HomePageSkeleton } from "@/components/skeletons/home-page-skeleton"
+import { AdaptiveSkeleton } from "@/components/skeletons/adaptive-skeleton"
 
 export default function HomeLoading() {
-  return <HomePageSkeleton />
+  return <AdaptiveSkeleton section="home" />
 }

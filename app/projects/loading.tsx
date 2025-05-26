@@ -1,5 +1,5 @@
-import { ProjectsPageSkeleton } from "@/components/skeletons/projects-page-skeleton"
+import { AdaptiveSkeleton } from "@/components/skeletons/adaptive-skeleton"
 
 export default function ProjectsLoading() {
-  return <ProjectsPageSkeleton />
+  return <AdaptiveSkeleton section="projects" />
 }

@@ -1,5 +1,5 @@
-import { AboutPageSkeleton } from "@/components/skeletons/about-page-skeleton"
+import { AdaptiveSkeleton } from "@/components/skeletons/adaptive-skeleton"
 
 export default function AboutLoading() {
-  return <AboutPageSkeleton />
+  return <AdaptiveSkeleton section="about" />
 }

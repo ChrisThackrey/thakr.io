@@ -1,5 +1,5 @@
-import { ArchitecturePageSkeleton } from "@/components/skeletons/architecture-page-skeleton"
+import { AdaptiveSkeleton } from "@/components/skeletons/adaptive-skeleton"
 
 export default function ArchitectureLoading() {
-  return <ArchitecturePageSkeleton />
+  return <AdaptiveSkeleton section="architecture" />
 }
