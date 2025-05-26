@@ -1,0 +1,85 @@
+/* Annotation markers */
+.annotation-marker {
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.annotation-marker:hover {
+  z-index: 11;
+}
+
+/* Annotation tool cursor */
+.annotation-tool {
+  cursor: crosshair;
+}
+
+/* Annotation panel */
+.annotation-panel {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Export dialog */
+.export-preview {
+  position: relative;
+  max-width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+}
+
+/* Annotation colors */
+.annotation-color-red {
+  background-color: #ef4444;
+}
+.annotation-color-orange {
+  background-color: #f59e0b;
+}
+.annotation-color-green {
+  background-color: #10b981;
+}
+.annotation-color-blue {
+  background-color: #3b82f6;
+}
+.annotation-color-purple {
+  background-color: #8b5cf6;
+}
+.annotation-color-pink {
+  background-color: #ec4899;
+}
+
+/* Print styles for PDF export */
+@media print {
+  .annotation-marker {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Annotation list styles */
+.annotation-list-item {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.annotation-summary {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+/* Export loading state */
+.export-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 50;
+}

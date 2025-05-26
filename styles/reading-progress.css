@@ -1,0 +1,95 @@
+/* Reading progress animations */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(var(--primary-rgb), 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(var(--primary-rgb), 0.3);
+  }
+}
+
+.progress-pulse {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Floating bubble transitions */
+.floating-bubble-enter {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.floating-bubble-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.floating-bubble-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.floating-bubble-exit-active {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Mobile indicator fade animations */
+.mobile-indicator-fade-in {
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.mobile-indicator-fade-out {
+  animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* Progress bar animations */
+.progress-bar-slide-in {
+  animation: slideIn 0.3s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Circular progress animation */
+@keyframes circleGrow {
+  from {
+    stroke-dasharray: 0 283;
+  }
+}
+
+.circle-animation {
+  animation: circleGrow 0.8s ease-out;
+}

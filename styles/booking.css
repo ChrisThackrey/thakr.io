@@ -1,0 +1,121 @@
+.booking-calendar {
+  --fc-border-color: hsl(var(--border));
+  --fc-button-text-color: hsl(var(--foreground));
+  --fc-button-bg-color: hsl(var(--primary));
+  --fc-button-border-color: hsl(var(--primary));
+  --fc-button-hover-bg-color: hsl(var(--primary) / 0.9);
+  --fc-button-hover-border-color: hsl(var(--primary) / 0.9);
+  --fc-button-active-bg-color: hsl(var(--primary) / 0.8);
+  --fc-button-active-border-color: hsl(var(--primary) / 0.8);
+  --fc-event-bg-color: hsl(var(--primary));
+  --fc-event-border-color: hsl(var(--primary));
+  --fc-today-bg-color: hsl(var(--muted) / 0.5);
+  --fc-neutral-bg-color: hsl(var(--background));
+  --fc-neutral-text-color: hsl(var(--foreground));
+  --fc-list-event-hover-bg-color: hsl(var(--muted));
+  --fc-highlight-color: hsl(var(--accent) / 0.2);
+}
+
+.booking-calendar .fc-theme-standard td,
+.booking-calendar .fc-theme-standard th {
+  border-color: hsl(var(--border));
+}
+
+.booking-calendar .fc-day-today {
+  background-color: hsl(var(--muted) / 0.5) !important;
+}
+
+.booking-calendar .fc-timegrid-slot {
+  height: 3rem !important;
+}
+
+.booking-calendar .fc-timegrid-slot-lane {
+  cursor: pointer;
+}
+
+.booking-calendar .fc-timegrid-slot-lane:hover {
+  background-color: hsl(var(--accent) / 0.1);
+}
+
+.booking-calendar .fc-col-header-cell {
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+.booking-calendar .fc-timegrid-axis {
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+.booking-calendar .fc-timegrid-now-indicator-line {
+  border-color: hsl(var(--destructive));
+}
+
+.booking-calendar .fc-timegrid-now-indicator-arrow {
+  border-color: hsl(var(--destructive));
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.booking-calendar .fc-event {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.booking-calendar .fc-event:hover {
+  transform: scale(1.02);
+}
+
+.booking-step-transition {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.booking-step-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.booking-step-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.booking-step-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.booking-step-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.time-slot {
+  transition: all 0.2s ease;
+}
+
+.time-slot:hover {
+  background-color: hsl(var(--accent) / 0.2);
+}
+
+.time-slot.selected {
+  background-color: hsl(var(--primary));
+  color: white;
+}
+
+.booking-confirmation-icon {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

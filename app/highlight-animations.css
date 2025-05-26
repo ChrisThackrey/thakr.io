@@ -1,0 +1,68 @@
+/* Highlight animations for speed reading */
+.highlight-animate {
+  animation: highlightFadeIn 0.3s ease-in-out;
+  background-color: rgba(255, 235, 59, 0.3);
+  border-radius: 2px;
+  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+@keyframes highlightFadeIn {
+  0% {
+    background-color: rgba(255, 235, 59, 0);
+    opacity: 0.5;
+  }
+  50% {
+    background-color: rgba(255, 235, 59, 0.5);
+    opacity: 1;
+  }
+  100% {
+    background-color: rgba(255, 235, 59, 0.3);
+    opacity: 1;
+  }
+}
+
+/* Pulsing animation for the current word */
+@keyframes highlightPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 5px rgba(255, 215, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+  }
+}
+
+/* Container for absolute positioned highlights */
+.speed-reading-highlight-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .highlight-animate {
+    background-color: rgba(255, 235, 59, 0.2);
+  }
+
+  @keyframes highlightFadeIn {
+    0% {
+      background-color: rgba(255, 235, 59, 0);
+      opacity: 0.5;
+    }
+    50% {
+      background-color: rgba(255, 235, 59, 0.4);
+      opacity: 1;
+    }
+    100% {
+      background-color: rgba(255, 235, 59, 0.2);
+      opacity: 1;
+    }
+  }
+}
