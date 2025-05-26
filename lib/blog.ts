@@ -73,6 +73,23 @@ export const blogPosts: BlogPost[] = [
       part: 2,
     },
   },
+  {
+    id: "retrieval-augmented-generation",
+    title: "From Hallucination to Precision: How Retrieval Augmented Generation (RAG) Enhances AI Applications",
+    slug: "retrieval-augmented-generation",
+    date: "2025-05-15",
+    author: "Tech Insights Team",
+    tags: ["AI", "RAG", "LLM", "vector databases", "embeddings"],
+    excerpt:
+      "An exploration of Retrieval Augmented Generation (RAG), the technique that enhances AI systems by grounding them in factual information, reducing hallucinations and improving accuracy for practical applications.",
+    estimatedReadingTime: 14,
+    coverImage: "/images/blog/rag-concept.png",
+    series: {
+      name: "AI Technologies Series",
+      slug: "ai-technologies",
+      part: 3,
+    },
+  },
 ]
 
 // Sample series data
@@ -161,14 +178,8 @@ export const getTagCount = (): Record<string, number> => {
   return tagCount
 }
 
-export const getAllSeries = (): string[] => {
-  const allSeries = new Set<string>()
-  blogPosts.forEach((post) => {
-    if (post.series) {
-      allSeries.add(post.series.slug)
-    }
-  })
-  return Array.from(allSeries).sort()
+export const getAllSeries = (): Series[] => {
+  return seriesData
 }
 
 // Add the missing export
