@@ -101,3 +101,6 @@ export function BlogPostToc({ className }: BlogPostTocProps) {
     </nav>
   )
 }
+
+// Export with alternative casing for compatibility
+export { BlogPostToc as BlogPostTOC }
