@@ -18,8 +18,7 @@ import { Footer } from "@/components/footer"
 import { PageBackground } from "@/components/page-background"
 import { SectionBackground } from "@/components/section-background"
 import { TransitionLayout } from "@/components/transition-layout"
-import { RoutePrefetcher } from "@/components/route-prefetcher"
-import { CriticalImagesPreloader } from "@/components/critical-images-preloader"
+import { PageWrapper } from "@/components/page-wrapper"
 import type { Metadata } from "next"
 
 // Critical images that should be preloaded on all pages
@@ -51,12 +50,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="relative flex min-h-screen flex-col">
             <Navigation />
             <main className="flex-1">
-              <TransitionLayout>{children}</TransitionLayout>
+              <TransitionLayout>
+                <PageWrapper>{children}</PageWrapper>
+              </TransitionLayout>
             </main>
             <Footer />
           </div>
-          <RoutePrefetcher />
-          <CriticalImagesPreloader images={criticalImages} />
         </ThemeProvider>
       </body>
     </html>

@@ -1,5 +1,6 @@
-import { AdaptiveSkeleton } from "@/components/skeletons/adaptive-skeleton"
+import { BlogPageSkeleton } from "@/components/skeletons/blog-page-skeleton"
 
 export default function BlogLoading() {
-  return <AdaptiveSkeleton section="blog" />
+  // Add a key to ensure React treats this as a new component
+  return <BlogPageSkeleton key="blog-skeleton" />
 }

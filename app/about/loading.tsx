@@ -1,5 +1,6 @@
-import { AdaptiveSkeleton } from "@/components/skeletons/adaptive-skeleton"
+import { AboutPageSkeleton } from "@/components/skeletons/about-page-skeleton"
 
 export default function AboutLoading() {
-  return <AdaptiveSkeleton section="about" />
+  // Add a key to ensure React treats this as a new component
+  return <AboutPageSkeleton key="about-skeleton" />
 }

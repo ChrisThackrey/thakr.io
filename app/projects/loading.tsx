@@ -1,5 +1,6 @@
-import { AdaptiveSkeleton } from "@/components/skeletons/adaptive-skeleton"
+import { ProjectsPageSkeleton } from "@/components/skeletons/projects-page-skeleton"
 
 export default function ProjectsLoading() {
-  return <AdaptiveSkeleton section="projects" />
+  // Add a key to ensure React treats this as a new component
+  return <ProjectsPageSkeleton key="projects-skeleton" />
 }
