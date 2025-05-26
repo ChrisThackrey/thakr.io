@@ -18,7 +18,27 @@
 @import "../styles/about-page.css";
 @import "../styles/work-page.css";
 @import "../styles/projects-page.css";
-@import "../styles/architecture-page.css";
+/* Architecture page styles */
+.architecture-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.architecture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.architecture-card {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* More architecture styles as needed */
 @import "../styles/image-gallery.css";
 @import "../styles/zoom-image.css";
 @import "../styles/fullscreen-gallery.css";
