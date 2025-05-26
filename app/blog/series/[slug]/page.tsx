@@ -8,9 +8,13 @@ import { notFound } from "next/navigation"
 import { SeriesProgress } from "@/components/series-progress"
 import { SeriesToc } from "@/components/series-toc"
 
+// Fix the generateStaticParams function to correctly extract slugs from series data
 export function generateStaticParams() {
-  const series = getAllSeries()
-  return series.map((s) => ({ slug: s.slug }))
+  const seriesArray = getAllSeries()
+  // Make sure we're returning an array of objects with slug properties
+  return seriesArray.map((series) => ({
+    slug: series.slug,
+  }))
 }
 
 export default function SeriesPage({ params }: { params: { slug: string } }) {

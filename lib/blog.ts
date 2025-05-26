@@ -178,7 +178,16 @@ export const getTagCount = (): Record<string, number> => {
   return tagCount
 }
 
+// Make sure getAllSeries returns the correct data type
 export const getAllSeries = (): Series[] => {
+  // Ensure seriesData is properly initialized
+  seriesData.forEach((series) => {
+    series.posts = blogPosts
+      .filter((post) => post.series?.slug === series.slug)
+      .sort((a, b) => (a.series?.part || 0) - (b.series?.part || 0))
+  })
+
+  // Return the array of series objects
   return seriesData
 }
 
