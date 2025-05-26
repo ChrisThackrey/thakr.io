@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
 import rehypeSlug from "rehype-slug"
-import { defaultMarkdownOptions, createMarkdownComponents } from "@/lib/markdown-config"
+import { defaultMarkdownOptions, createMarkdownComponents } from "@/lib/markdown-config.config"
 import { cn } from "@/lib/utils"
 
 interface MarkdownRendererProps {
