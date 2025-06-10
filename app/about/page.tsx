@@ -119,33 +119,13 @@ export default function AboutPage() {
     },
   }
 
-  const bottomCard1Variant = {
-    // For Skills Card
+  const bottomSectionVariant = {
+    // Generic variant for bottom sections
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.5,
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-    exit: {
-      opacity: 0,
-      y: -10,
-      transition: { duration: 0.3, ease: "easeIn" },
-    },
-  }
-
-  const bottomCard2Variant = {
-    // For EducationTimeline section
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.6,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -158,8 +138,10 @@ export default function AboutPage() {
   }
 
   const bookingCtaVariant = {
+    // Specific for BookingCTA if needed, or use bottomSectionVariant
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.5, delay: 0.8 } },
+    visible: { opacity: 1, transition: { duration: 0.5, delay: 0.2 } }, // Adjusted delay
+    exit: { opacity: 0, transition: { duration: 0.3 } },
   }
 
   const ProfileSection = () => (
@@ -266,11 +248,17 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+
+          {/* Skills and Education Section */}
           <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 order-3">
             <SkillsCard />
             <EducationTimeline items={education} />
           </div>
-          <div className="mt-20">
+
+          {/* Booking CTA Section - Moved here */}
+          <div className="mt-16 md:mt-20 order-4">
+            {" "}
+            {/* Adjusted margin-top */}
             <BookingCTA />
           </div>
         </motion.div>
@@ -278,10 +266,12 @@ export default function AboutPage() {
     )
   }
 
+  // With animations
   return (
     <>
       <PageBackground />
       <div className="container py-12 md:py-16">
+        {/* Top Section: About Me & Profile/Buttons */}
         <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
           <div className="md:w-2/3 order-2 md:order-1 space-y-6">
             <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
@@ -346,15 +336,37 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
+
+        {/* Skills and Education Section */}
         <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 order-3">
-          <motion.div variants={bottomCard1Variant} initial="hidden" animate="visible" exit="exit">
+          <motion.div
+            variants={bottomSectionVariant} // Using generic variant
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            custom={0} // Stagger delay if needed, or remove custom
+          >
             <SkillsCard />
           </motion.div>
-          <motion.div variants={bottomCard2Variant} initial="hidden" animate="visible" exit="exit">
+          <motion.div
+            variants={bottomSectionVariant} // Using generic variant
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            custom={1} // Stagger delay if needed, or remove custom
+          >
             <EducationTimeline items={education} />
           </motion.div>
         </div>
-        <motion.div className="mt-20" variants={bookingCtaVariant} initial="hidden" animate="visible" exit="exit">
+
+        {/* Booking CTA Section - Moved here */}
+        <motion.div
+          className="mt-16 md:mt-20 order-4" // Adjusted margin-top
+          variants={bookingCtaVariant}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
           <BookingCTA />
         </motion.div>
       </div>
