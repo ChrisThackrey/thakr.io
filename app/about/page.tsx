@@ -19,22 +19,22 @@ export default function AboutPage() {
     {
       name: "GitHub",
       href: "https://github.com/ChrisThackrey",
-      icon: <Github className="h-7 w-7" />,
+      icon: <Github className="h-8 w-8" />, // Increased icon size
     },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/chris-thackrey-015/",
-      icon: <Linkedin className="h-7 w-7" />,
+      icon: <Linkedin className="h-8 w-8" />, // Increased icon size
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/chris_thackrey/",
-      icon: <Instagram className="h-7 w-7" />,
+      icon: <Instagram className="h-8 w-8" />, // Increased icon size
     },
     {
       name: "Email",
       href: "mailto:c.r.thackrey@gmail.com",
-      icon: <Mail className="h-7 w-7" />,
+      icon: <Mail className="h-8 w-8" />, // Increased icon size
     },
   ]
 
@@ -138,7 +138,9 @@ export default function AboutPage() {
 
   const ProfileSection = () => (
     <div className="flex flex-col items-center">
-      <Avatar className="w-40 h-40 md:w-48 md:h-48 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
+      <Avatar className="w-48 h-48 md:w-56 md:h-56 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
+        {" "}
+        {/* Increased Avatar size */}
         <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
@@ -260,8 +262,6 @@ export default function AboutPage() {
             <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-6">
               {/* Profile + Skills Group */}
               <div className="flex flex-col space-y-6 md:space-y-8">
-                {" "}
-                {/* Adjusted spacing here */}
                 <ProfileSection />
                 <SkillsCard />
               </div>
@@ -320,8 +320,6 @@ export default function AboutPage() {
           <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-6">
             {/* Profile + Skills Group */}
             <div className="flex flex-col space-y-6 md:space-y-8">
-              {" "}
-              {/* Adjusted spacing here */}
               <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
                 <ProfileSection />
               </motion.div>
