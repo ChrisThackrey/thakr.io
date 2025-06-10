@@ -1,0 +1,127 @@
+.timeline-container {
+  position: relative;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 2.5rem;
+  padding-bottom: 2.5rem;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: hsl(var(--border));
+  transform: translateX(7px);
+}
+
+.timeline-item:last-child::before {
+  height: 1.5rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: hsl(var(--primary));
+  z-index: 1;
+}
+
+.timeline-date {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.timeline-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+
+.timeline-company {
+  font-size: 1rem;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.timeline-description {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.timeline-description p {
+  margin-bottom: 0.75rem;
+}
+
+.timeline-description p:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.timeline-skill {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: hsl(var(--secondary) / 0.2);
+  color: hsl(var(--secondary-foreground));
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-date {
+  background-color: hsl(var(--muted) / 0.8);
+}
+
+.timeline-item:hover .timeline-skill {
+  background-color: hsl(var(--secondary) / 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item,
+  .timeline-date,
+  .timeline-skill {
+    transition: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .timeline-item {
+    padding-left: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .timeline-title {
+    font-size: 1.5rem;
+  }
+
+  .timeline-company {
+    font-size: 1.125rem;
+  }
+}

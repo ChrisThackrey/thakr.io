@@ -1,0 +1,198 @@
+/* Advanced Typography for Blog Posts */
+
+.blog-content {
+  /* Font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  /* Base typography */
+  --content-line-height: 1.8;
+  --heading-line-height: 1.3;
+  --content-spacing: 1.75rem;
+  --heading-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --content-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  font-family: var(--content-font);
+  line-height: var(--content-line-height);
+  letter-spacing: -0.011em;
+}
+
+/* Headings */
+.blog-content h1 {
+  font-size: 2.5rem;
+  line-height: var(--heading-line-height);
+  font-weight: 800;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+  font-family: var(--heading-font);
+}
+
+.blog-content h2 {
+  font-size: 1.875rem;
+  line-height: var(--heading-line-height);
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+  font-family: var(--heading-font);
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+  line-height: var(--heading-line-height);
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.015em;
+  font-family: var(--heading-font);
+}
+
+.blog-content h4 {
+  font-size: 1.25rem;
+  line-height: var(--heading-line-height);
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+  font-family: var(--heading-font);
+}
+
+/* Paragraphs */
+.blog-content p {
+  margin-bottom: var(--content-spacing);
+  font-size: 1.125rem;
+}
+
+/* Drop cap styling */
+.blog-content.with-drop-cap > p:first-of-type:first-letter {
+  float: left;
+  font-weight: 700;
+  font-size: 3.5em;
+  line-height: 0.8;
+  padding-right: 0.1em;
+  margin-top: 0.1em;
+}
+
+/* Lists */
+.blog-content ul,
+.blog-content ol {
+  margin: 1.5rem 0 2rem 1.5rem;
+  padding-left: 1rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+/* Blockquotes */
+.blog-content blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  border-left: 4px solid;
+  border-left-color: hsl(var(--primary));
+  font-style: italic;
+  background: hsl(var(--muted) / 0.5);
+  border-radius: 0.375rem;
+}
+
+.blog-content blockquote p {
+  margin-bottom: 0.75rem;
+}
+
+.blog-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Code blocks */
+.blog-content pre {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  background: hsl(var(--muted));
+}
+
+.blog-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.875em;
+  border-radius: 0.25rem;
+  padding: 0.2em 0.4em;
+  background: hsl(var(--muted) / 0.7);
+}
+
+.blog-content pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Tables */
+.blog-content table {
+  margin: 2rem 0;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+
+.blog-content th,
+.blog-content td {
+  padding: 0.75rem;
+  border: 1px solid hsl(var(--border));
+}
+
+.blog-content th {
+  background: hsl(var(--muted) / 0.5);
+  font-weight: 600;
+}
+
+/* Images */
+.blog-content img,
+.blog-content figure {
+  margin: 2rem auto;
+  max-width: 100%;
+  border-radius: 0.5rem;
+  display: block;
+}
+
+.blog-content figure figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  text-align: center;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+}
+
+/* Dark mode refinements */
+.dark .blog-content {
+  --content-spacing: 1.75rem;
+}
+
+.dark .blog-content blockquote {
+  background: hsl(var(--muted) / 0.2);
+}
+
+/* Horizontal rule */
+.blog-content hr {
+  margin: 3rem auto;
+  height: 1px;
+  background-color: hsl(var(--border));
+  border: none;
+  width: 80%;
+}
+
+/* Links */
+.blog-content a {
+  color: hsl(var(--primary));
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease-in-out;
+}
+
+.blog-content a:hover {
+  color: hsl(var(--primary) / 0.8);
+}

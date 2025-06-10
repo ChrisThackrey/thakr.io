@@ -1,0 +1,93 @@
+/* Highlight animations for speed reading */
+
+/* Base highlight style */
+.speed-reading-highlight {
+  background-color: rgba(var(--primary-rgb), 0.2);
+  color: var(--primary-foreground);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  margin: -0.125rem -0.25rem;
+  animation: highlight-pulse 1s ease-in-out infinite;
+  display: inline-block;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Pulse animation for the highlight */
+@keyframes highlight-pulse {
+  0% {
+    background-color: rgba(var(--primary-rgb), 0.2);
+    box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.1);
+  }
+  50% {
+    background-color: rgba(var(--primary-rgb), 0.3);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.2);
+  }
+  100% {
+    background-color: rgba(var(--primary-rgb), 0.2);
+    box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.1);
+  }
+}
+
+/* Dark mode adjustments */
+.dark .speed-reading-highlight {
+  background-color: rgba(var(--primary-rgb), 0.3);
+  box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2);
+}
+
+/* Dark mode pulse animation */
+@media (prefers-color-scheme: dark) {
+  @keyframes highlight-pulse {
+    0% {
+      background-color: rgba(var(--primary-rgb), 0.3);
+      box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2);
+    }
+    50% {
+      background-color: rgba(var(--primary-rgb), 0.4);
+      box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.3);
+    }
+    100% {
+      background-color: rgba(var(--primary-rgb), 0.3);
+      box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2);
+    }
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion) {
+  .speed-reading-highlight {
+    animation: none;
+  }
+}
+
+/* Special styling for the speed reading content */
+.speed-reading-content {
+  position: relative;
+}
+
+.speed-reading-content p,
+.speed-reading-content li,
+.speed-reading-content h1,
+.speed-reading-content h2,
+.speed-reading-content h3,
+.speed-reading-content h4,
+.speed-reading-content h5,
+.speed-reading-content h6 {
+  transition: color 0.2s ease-in-out;
+}
+
+/* Ensure proper spacing for highlighted words */
+.speed-reading-content p .speed-reading-highlight,
+.speed-reading-content li .speed-reading-highlight,
+.speed-reading-content h1 .speed-reading-highlight,
+.speed-reading-content h2 .speed-reading-highlight,
+.speed-reading-content h3 .speed-reading-highlight,
+.speed-reading-content h4 .speed-reading-highlight,
+.speed-reading-content h5 .speed-reading-highlight,
+.speed-reading-content h6 .speed-reading-highlight {
+  display: inline-block;
+  vertical-align: baseline;
+  line-height: inherit;
+}

@@ -1,0 +1,174 @@
+/* Base micro-interactions */
+.micro-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.micro-btn::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.5s;
+}
+
+.micro-btn:active::after {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
+}
+
+/* Button hover effects */
+.micro-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.micro-btn:active {
+  transform: translateY(0);
+}
+
+/* Link hover effects */
+.micro-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.micro-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.micro-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Card hover effects */
+.micro-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.micro-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Input focus effects */
+.micro-input {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.micro-input:focus {
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* Toggle switch animation */
+.micro-toggle {
+  transition: background-color 0.2s ease;
+}
+
+.micro-toggle-thumb {
+  transition: transform 0.2s ease;
+}
+
+/* Icon animations */
+.micro-icon {
+  transition: transform 0.2s ease;
+}
+
+.micro-icon:hover {
+  transform: scale(1.1);
+}
+
+.micro-icon-rotate:hover {
+  transform: rotate(15deg);
+}
+
+/* Dropdown animation */
+.micro-dropdown {
+  transform-origin: top;
+  animation: dropdownEnter 0.2s ease forwards;
+}
+
+@keyframes dropdownEnter {
+  from {
+    opacity: 0;
+    transform: scaleY(0.9) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+}
+
+/* Tooltip animation */
+.micro-tooltip {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Badge animation */
+.micro-badge {
+  transition: transform 0.2s ease;
+}
+
+.micro-badge:hover {
+  transform: scale(1.1);
+}
+
+/* Checkbox and radio animations */
+.micro-checkbox,
+.micro-radio {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Accordion animation */
+.micro-accordion {
+  transition: height 0.3s ease;
+}
+
+/* Tab highlight animation */
+.micro-tab-highlight {
+  transition: transform 0.2s ease, width 0.2s ease;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .micro-btn,
+  .micro-btn::after,
+  .micro-link,
+  .micro-link::after,
+  .micro-card,
+  .micro-input,
+  .micro-toggle,
+  .micro-toggle-thumb,
+  .micro-icon,
+  .micro-dropdown,
+  .micro-tooltip,
+  .micro-badge,
+  .micro-checkbox,
+  .micro-radio,
+  .micro-accordion,
+  .micro-tab-highlight {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}

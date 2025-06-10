@@ -1,0 +1,86 @@
+/* Add custom Tailwind CSS classes for MDX content */
+.prose {
+  @apply max-w-none;
+}
+
+.prose a {
+  @apply text-primary hover:text-primary/80 transition-colors no-underline border-b border-primary/30 hover:border-primary/80;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-primary/30 pl-4 italic text-muted-foreground;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply font-bold scroll-m-20;
+}
+
+.prose h1 {
+  @apply text-4xl mt-8 mb-4;
+}
+
+.prose h2 {
+  @apply text-3xl mt-8 mb-4;
+}
+
+.prose h3 {
+  @apply text-2xl mt-6 mb-3;
+}
+
+.prose h4 {
+  @apply text-xl mt-6 mb-3;
+}
+
+.prose p {
+  @apply leading-7 mb-4;
+}
+
+.prose ul {
+  @apply my-6 ml-6 list-disc;
+}
+
+.prose ol {
+  @apply my-6 ml-6 list-decimal;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose hr {
+  @apply my-8 border-muted;
+}
+
+.prose img {
+  @apply rounded-md shadow-md my-8;
+}
+
+.prose code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-muted p-4 rounded-md overflow-x-auto my-6;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-sm text-current;
+}
+
+.prose table {
+  @apply w-full my-6 border-collapse;
+}
+
+.prose thead {
+  @apply bg-muted;
+}
+
+.prose th,
+.prose td {
+  @apply border border-border p-2 text-left;
+}

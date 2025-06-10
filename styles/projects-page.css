@@ -1,0 +1,38 @@
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.micro-badge {
+  transition: all 0.2s ease;
+}
+
+.micro-badge:hover {
+  transform: scale(1.05);
+}
+
+.category-badge {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.category-badge:hover {
+  transform: translateY(-2px);
+}
+
+.category-badge.active {
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .micro-badge,
+  .category-badge {
+    transition: none;
+    transform: none !important;
+  }
+}

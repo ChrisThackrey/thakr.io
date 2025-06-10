@@ -1,0 +1,236 @@
+@import "../styles/animations.css";
+@import "../styles/section-transitions.css";
+@import "../styles/section-animations.css";
+@import "../styles/loading-animations.css";
+@import "../styles/micro-interactions.css";
+@import "../styles/background-effects.css";
+@import "../styles/skeleton-animations.css";
+@import "../styles/blog-typography.css";
+@import "../styles/toc-highlight.css";
+@import "../styles/reading-progress.css";
+@import "../styles/speed-reading.css";
+@import "../styles/selection-popup.css";
+@import "../styles/highlight-animations.css";
+@import "../styles/glass-morphism.css";
+@import "../styles/theme-transition.css";
+@import "../styles/mini-player.css";
+@import "../styles/work-page.css";
+@import "../styles/projects-page.css";
+@import "../styles/image-gallery.css";
+@import "../styles/zoom-image.css";
+@import "../styles/fullscreen-gallery.css";
+@import "../styles/image-share.css";
+@import "../styles/annotations.css";
+
+/* About page styles */
+.skills-card,
+.education-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-card:hover,
+.education-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Skill category styling */
+.skill-category {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.skill-category::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.25rem;
+  height: 1rem;
+  background: linear-gradient(to bottom, hsl(var(--primary)), hsl(var(--secondary))); /* Use HSL for consistency */
+  border-radius: 1rem;
+}
+
+/* Education item styling */
+.education-item {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.education-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.25rem;
+  height: 0.25rem;
+  background-color: hsl(var(--primary)); /* Use HSL for consistency */
+  border-radius: 50%;
+}
+
+/* Architecture page styles */
+.architecture-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.architecture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.architecture-card {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border) / 0.5);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.architecture-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -10px hsl(var(--foreground) / 0.1);
+  border-color: hsl(var(--primary) / 0.3);
+}
+
+.dark .architecture-card {
+  background-color: hsl(var(--muted) / 0.2);
+  border-color: hsl(var(--border) / 0.2);
+}
+
+.dark .architecture-card:hover {
+  background-color: hsl(var(--muted) / 0.4);
+  border-color: hsl(var(--primary) / 0.4);
+  box-shadow: 0 12px 20px -10px hsl(var(--background) / 0.2);
+}
+
+.architecture-image-container {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.architecture-details {
+  padding: 1.5rem;
+}
+
+.architecture-title {
+  font-size: 1.25rem; /* Updated: 20px */
+  font-weight: 700; /* Updated: bold */
+  color: hsl(var(--foreground));
+  margin-bottom: 0.5rem;
+}
+
+.dark .architecture-title {
+  color: hsl(var(--primary-foreground)); /* Ensure dark mode title color is distinct if needed */
+}
+
+.architecture-description {
+  font-size: 0.875rem; /* 14px, standard for descriptions */
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 1rem;
+  line-height: 1.6; /* Added for better readability */
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  Theme Variables:
+  These CSS variables define the color palette for light and dark themes.
+  They are used by Tailwind CSS utility classes (e.g., bg-background, text-primary)
+  and can be used directly in custom CSS (e.g., color: hsl(var(--foreground));).
+  Ensure all custom styles use these variables to be theme-aware.
+*/
+@layer base {
+  :root {
+    /* Light Theme Variables (Default) */
+    --background: 0 0% 100%; /* Page background */
+    --foreground: 222.2 84% 4.9%; /* Default text color */
+
+    --card: 0 0% 100%; /* Card background */
+    --card-foreground: 222.2 84% 4.9%; /* Text color on cards */
+
+    --popover: 0 0% 100%; /* Popover background */
+    --popover-foreground: 222.2 84% 4.9%; /* Text color on popovers */
+
+    --primary: 222.2 47.4% 11.2%; /* Primary interactive color */
+    --primary-foreground: 210 40% 98%; /* Text color on primary elements */
+
+    --secondary: 210 40% 96.1%; /* Secondary interactive color */
+    --secondary-foreground: 222.2 47.4% 11.2%; /* Text color on secondary elements */
+
+    --muted: 210 40% 96.1%; /* Muted backgrounds */
+    --muted-foreground: 215.4 16.3% 46.9%; /* Muted text color */
+
+    --accent: 210 40% 96.1%; /* Accent color for highlights */
+    --accent-foreground: 222.2 47.4% 11.2%; /* Text color on accent elements */
+
+    --destructive: 0 84.2% 60.2%; /* Destructive action color (e.g., errors) */
+    --destructive-foreground: 210 40% 98%; /* Text color on destructive elements */
+
+    --border: 214.3 31.8% 91.4%; /* Default border color */
+    --input: 214.3 31.8% 91.4%; /* Input field border/background */
+    --ring: 222.2 84% 4.9%; /* Focus ring color */
+
+    --radius: 0.5rem; /* Default border radius */
+
+    /* Chart Colors (example) */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    /* Dark Theme Variables */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    /* Chart Colors (Dark Theme - example) */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border; /* Ensures all elements use theme-aware border color by default */
+  }
+  body {
+    @apply bg-background text-foreground; /* Applies base background and text colors */
+    font-feature-settings: "rlig" 1, "calt" 1; /* Common font feature settings for better typography */
+  }
+}
