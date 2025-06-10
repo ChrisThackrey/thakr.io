@@ -16,7 +16,7 @@ export default function HomePage() {
     <PageTransition>
       <PageBackground />
       {/* Profile Section */}
-      <div className="container mx-auto max-w-4xl pt-16 md:pt-24 pb-4 px-4">
+      <div className="container mx-auto max-w-4xl pt-16 md:pt-24 pb-0 px-4">
         <ProfileSection />
       </div>
       {/* End Profile Section */}
