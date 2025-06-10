@@ -28,24 +28,37 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
 
   useEffect(() => {
     const calculateConstraints = () => {
-      if (containerRef.current && draggableRef.current) {
+      if (containerRef.current && draggableRef.current && containerRef.current.clientWidth > 0) {
         const containerWidth = containerRef.current.clientWidth
         const draggableWidth = draggableRef.current.scrollWidth
+
+        // newLeftConstraint is the minimum x value (most negative) the draggable content can reach.
+        // It ensures that the right edge of the draggable content aligns with the right edge of the container.
         const newLeftConstraint = Math.min(0, containerWidth - draggableWidth)
         setDragConstraints({ left: newLeftConstraint, right: 0 })
+      } else {
+        // Default to no dragging if container width is 0 or refs are not available
+        setDragConstraints({ left: 0, right: 0 })
       }
     }
 
-    calculateConstraints()
+    calculateConstraints() // Initial calculation
+
+    // Recalculate on items change or window resize
     window.addEventListener("resize", calculateConstraints)
     return () => window.removeEventListener("resize", calculateConstraints)
-  }, [items])
+  }, [items]) // Rerun when items array changes, which affects draggableWidth
 
   useEffect(() => {
     const unsubscribeX = x.onChange((latestX) => {
       let currentCardWidth = CARD_WIDTH_SM
-      if (window.innerWidth >= 768) {
-        currentCardWidth = CARD_WIDTH_MD
+      // Determine card width based on viewport for activeIndex calculation
+      // This part is for the step indicator, not drag physics.
+      if (typeof window !== "undefined") {
+        if (window.innerWidth >= 768) {
+          // md breakpoint
+          currentCardWidth = CARD_WIDTH_MD
+        }
       }
       const cardWidthWithGap = currentCardWidth + CARD_GAP
       const newActiveIndex = Math.min(items.length - 1, Math.max(0, Math.round(Math.abs(latestX) / cardWidthWithGap)))
@@ -58,11 +71,16 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
     if (!draggableRef.current || !containerRef.current) return
 
     let currentCardWidth = CARD_WIDTH_SM
-    if (window.innerWidth >= 768) {
-      currentCardWidth = CARD_WIDTH_MD
+    if (typeof window !== "undefined") {
+      if (window.innerWidth >= 768) {
+        // md breakpoint
+        currentCardWidth = CARD_WIDTH_MD
+      }
     }
     const cardWidthWithGap = currentCardWidth + CARD_GAP
     const newX = -index * cardWidthWithGap
+
+    // Ensure newX is within calculated drag constraints
     const clampedX = Math.max(dragConstraints.left, Math.min(dragConstraints.right, newX))
 
     animate(x, clampedX, {
@@ -115,8 +133,8 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
           drag="x"
           dragConstraints={dragConstraints}
           dragElasticity={0}
-          dragMomentum={false} // Added this line
-          className="flex space-x-4 pb-4"
+          dragMomentum={false}
+          className="flex space-x-4 pb-4" // pb-4 for shadow visibility
           style={{ x }}
         >
           {items.map((item, index) => (
