@@ -8,6 +8,7 @@ import Link from "next/link"
 import { ContactSection } from "@/components/contact-section"
 import { PageTransition } from "@/components/page-transition"
 import { ProfileSection } from "@/components/profile-section"
+import { FeaturedProjects } from "@/components/featured-projects" // Added import
 
 export default function HomePage() {
   const featuredExperience = professionalExperience.slice(0, 3)
@@ -32,6 +33,7 @@ export default function HomePage() {
           </Button>
         </div>
       </div>
+      <FeaturedProjects /> {/* Added new section */}
       <ContactSection />
     </PageTransition>
   )
