@@ -19,22 +19,22 @@ export default function AboutPage() {
     {
       name: "GitHub",
       href: "https://github.com/ChrisThackrey",
-      icon: <Github className="h-9 w-9" />,
+      icon: <Github className="h-8 w-8" />, // Reduced icon size
     },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/chris-thackrey-015/",
-      icon: <Linkedin className="h-9 w-9" />,
+      icon: <Linkedin className="h-8 w-8" />, // Reduced icon size
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/chris_thackrey/",
-      icon: <Instagram className="h-9 w-9" />,
+      icon: <Instagram className="h-8 w-8" />, // Reduced icon size
     },
     {
       name: "Email",
       href: "mailto:c.r.thackrey@gmail.com",
-      icon: <Mail className="h-9 w-9" />,
+      icon: <Mail className="h-8 w-8" />, // Reduced icon size
     },
   ]
 
@@ -50,7 +50,7 @@ export default function AboutPage() {
     },
   }
 
-  const profileVariant = {
+  const avatarSocialVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: {
       opacity: 1,
@@ -82,14 +82,13 @@ export default function AboutPage() {
     },
   }
 
-  const button1Variant = {
-    // For Download Resume
+  const resumeButtonRightVariant = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        delay: 0.2, // After profile
+        delay: 0.2,
         duration: 0.4,
         ease: "easeOut",
       },
@@ -101,14 +100,13 @@ export default function AboutPage() {
     },
   }
 
-  const button2Variant = {
-    // For View Projects
+  const projectsButtonRightVariant = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        delay: 0.3, // After button1
+        delay: 0.3,
         duration: 0.4,
         ease: "easeOut",
       },
@@ -120,14 +118,13 @@ export default function AboutPage() {
     },
   }
 
-  const leftCardInPairVariant = {
-    // For Skills Card (now on the right, left of pair)
+  const educationCardVariant = {
     hidden: { opacity: 0, x: -10 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.4, // After buttons
+        delay: 0.4,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -139,28 +136,29 @@ export default function AboutPage() {
     },
   }
 
-  const rightCardInPairVariant = {
-    // For Education Card (now on the right, right of pair)
-    hidden: { opacity: 0, x: -10 },
+  const skillsCardLeftVariant = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: {
-        delay: 0.5, // After left card in pair
+        delay: 0.5,
         duration: 0.5,
         ease: "easeOut",
       },
     },
     exit: {
       opacity: 0,
-      x: -5,
+      y: -10,
       transition: { duration: 0.3, ease: "easeIn" },
     },
   }
 
   const ProfileSection = () => (
     <div className="flex flex-col items-center">
-      <Avatar className="w-56 h-56 md:w-64 md:h-64 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
+      <Avatar className="w-48 h-48 md:w-56 md:h-56 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
+        {" "}
+        {/* Reduced Avatar size */}
         <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
@@ -169,7 +167,7 @@ export default function AboutPage() {
           <Button
             key={link.name}
             variant="outline"
-            size="lg"
+            size="icon" // Reduced button size
             asChild
             className="rounded-full hover:bg-primary/10 transition-colors"
           >
@@ -188,9 +186,7 @@ export default function AboutPage() {
   )
 
   const SkillsCard = () => (
-    <Card className="h-full border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
-      {" "}
-      {/* Added h-full */}
+    <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
       <CardContent className="pt-6">
         <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Skills</h2>
         <div className="space-y-6">
@@ -210,9 +206,7 @@ export default function AboutPage() {
   )
 
   const EducationCard = () => (
-    <Card className="h-full border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
-      {" "}
-      {/* Added h-full */}
+    <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
       <CardContent className="pt-6">
         <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Education</h2>
         <div className="space-y-5">
@@ -251,9 +245,10 @@ export default function AboutPage() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-            {/* Left Column (About Me text) */}
-            <div className="md:col-span-2 space-y-6 order-2 md:order-1">
+          {/* Changed to flex layout for md+ screens */}
+          <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
+            {/* Left Column (About Me text, Skills) */}
+            <div className="md:w-2/3 order-2 md:order-1 flex flex-col space-y-6">
               <SectionTitle as="h1" className="mb-12">
                 About Me
               </SectionTitle>
@@ -272,10 +267,15 @@ export default function AboutPage() {
                 make developers' lives easier. When I'm not coding, I enjoy researching emerging technologies and
                 sharing knowledge through podcasts and articles.
               </p>
+              <div className="pt-12 mt-auto">
+                {" "}
+                {/* mt-auto for bottom alignment */}
+                <SkillsCard />
+              </div>
             </div>
 
-            {/* Right Column Wrapper (Profile, Buttons, Skills & Education Row) */}
-            <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-8 items-center md:items-stretch">
+            {/* Right Column Wrapper (Profile, Buttons, Education) */}
+            <div className="md:w-1/3 order-1 md:order-2 flex flex-col space-y-8 items-center md:items-stretch">
               <ProfileSection />
               <div className="flex flex-col space-y-4 w-full items-center md:items-stretch">
                 <Button asChild size="lg" className="font-medium text-base w-full sm:w-auto md:w-full">
@@ -296,14 +296,10 @@ export default function AboutPage() {
                   </Link>
                 </Button>
               </div>
-              {/* Skills and Education Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="h-full">
-                  <SkillsCard />
-                </div>
-                <div className="h-full">
-                  <EducationCard />
-                </div>
+              <div className="mt-auto">
+                {" "}
+                {/* mt-auto for bottom alignment */}
+                <EducationCard />
               </div>
             </div>
           </div>
@@ -320,9 +316,10 @@ export default function AboutPage() {
     <>
       <PageBackground />
       <div className="container py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-          {/* Left Column (About Me text) */}
-          <div className="md:col-span-2 space-y-6 order-2 md:order-1">
+        {/* Changed to flex layout for md+ screens */}
+        <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
+          {/* Left Column (About Me text, Skills) */}
+          <div className="md:w-2/3 order-2 md:order-1 flex flex-col space-y-6">
             <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
               <SectionTitle as="h1">About Me</SectionTitle>
             </motion.div>
@@ -343,16 +340,31 @@ export default function AboutPage() {
                 {paragraph}
               </motion.p>
             ))}
+            <motion.div
+              className="pt-12 mt-auto" /* mt-auto for bottom alignment */
+              variants={skillsCardLeftVariant}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <SkillsCard />
+            </motion.div>
           </div>
 
-          {/* Right Column Wrapper (Profile, Buttons, Skills & Education Row) */}
-          <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-8 items-center md:items-stretch">
-            <motion.div variants={profileVariant} initial="hidden" animate="visible" exit="exit">
+          {/* Right Column Wrapper (Profile, Buttons, Education) */}
+          <div className="md:w-1/3 order-1 md:order-2 flex flex-col space-y-8 items-center md:items-stretch">
+            <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
               <ProfileSection />
             </motion.div>
 
             <div className="flex flex-col space-y-4 w-full items-center md:items-stretch">
-              <motion.div variants={button1Variant} initial="hidden" animate="visible" exit="exit" className="w-full">
+              <motion.div
+                variants={resumeButtonRightVariant}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="w-full"
+              >
                 <Button asChild size="lg" className="font-medium text-base w-full sm:w-auto md:w-full">
                   <Link href="/resume.pdf" download>
                     <Download className="mr-2 h-5 w-5" />
@@ -360,7 +372,13 @@ export default function AboutPage() {
                   </Link>
                 </Button>
               </motion.div>
-              <motion.div variants={button2Variant} initial="hidden" animate="visible" exit="exit" className="w-full">
+              <motion.div
+                variants={projectsButtonRightVariant}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="w-full"
+              >
                 <Button
                   asChild
                   variant="outline"
@@ -375,27 +393,15 @@ export default function AboutPage() {
               </motion.div>
             </div>
 
-            {/* Skills and Education Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <motion.div
-                className="h-full"
-                variants={leftCardInPairVariant}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                <SkillsCard />
-              </motion.div>
-              <motion.div
-                className="h-full"
-                variants={rightCardInPairVariant}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                <EducationCard />
-              </motion.div>
-            </div>
+            <motion.div
+              className="mt-auto" /* mt-auto for bottom alignment */
+              variants={educationCardVariant}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <EducationCard />
+            </motion.div>
           </div>
         </div>
 
@@ -403,7 +409,7 @@ export default function AboutPage() {
           className="mt-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.7 }} // Adjusted delay for BookingCTA
+          transition={{ duration: 0.5, delay: 0.8 }}
         >
           <BookingCTA />
         </motion.div>
