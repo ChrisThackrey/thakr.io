@@ -253,7 +253,7 @@ export default function AboutPage() {
             <SkillsCard />
 
             {/* Right Column: Education & Booking CTA */}
-            <div className="flex flex-col space-y-8 lg:space-y-12">
+            <div className="flex flex-col space-y-8 md:space-y-6">
               <EducationTimeline items={education} />
               <BookingCTA />
             </div>
@@ -348,7 +348,7 @@ export default function AboutPage() {
           </motion.div>
 
           {/* Right Column: Education & Booking CTA */}
-          <div className="flex flex-col space-y-8 lg:space-y-12">
+          <div className="flex flex-col space-y-8 md:space-y-6">
             <motion.div
               custom={1} // For stagger: delay = 1 * 0.1 + 0.5 = 0.6s
               variants={bottomSectionVariant}
