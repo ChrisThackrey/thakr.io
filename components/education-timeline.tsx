@@ -17,7 +17,6 @@ interface EducationTimelineProps {
 const CARD_WIDTH_SM = 320
 const CARD_WIDTH_MD = 350
 const CARD_GAP = 16 // Corresponds to space-x-4
-// const CORRECTION_OFFSET = 2; // Example: Adjust by 2 pixels if needed
 
 export function EducationTimeline({ items }: EducationTimelineProps) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -32,13 +31,7 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
       if (containerRef.current && draggableRef.current) {
         const containerWidth = containerRef.current.clientWidth
         const draggableWidth = draggableRef.current.scrollWidth
-
         const newLeftConstraint = Math.min(0, containerWidth - draggableWidth)
-
-        // Optional: Apply a small correction if scrollWidth seems slightly off
-        // newLeftConstraint += CORRECTION_OFFSET;
-        // newLeftConstraint = Math.min(0, newLeftConstraint); // Ensure it doesn't become positive
-
         setDragConstraints({ left: newLeftConstraint, right: 0 })
       }
     }
