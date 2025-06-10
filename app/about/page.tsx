@@ -140,7 +140,7 @@ export default function AboutPage() {
   }
 
   const ProfileSection = () => (
-    <div className="flex flex-col items-center mb-8">
+    <div className="flex flex-col items-start mb-8">
       <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-primary/20 shadow-lg mb-6">
         <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
         <AvatarFallback>CT</AvatarFallback>
@@ -173,7 +173,7 @@ export default function AboutPage() {
       <>
         <PageBackground />
         <motion.div
-          className="container py-20 md:py-28"
+          className="container py-12 md:py-16" // Reduced top/bottom padding
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -275,7 +275,9 @@ export default function AboutPage() {
   return (
     <>
       <PageBackground />
-      <div className="container py-20 md:py-28">
+      <div className="container py-12 md:py-16">
+        {" "}
+        {/* Reduced top/bottom padding */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {/* Left Column */}
           <div className="md:col-span-2 space-y-6">
@@ -363,7 +365,6 @@ export default function AboutPage() {
             </motion.div>
           </div>
         </div>
-
         <motion.div
           className="mt-20"
           initial={{ opacity: 0 }}
