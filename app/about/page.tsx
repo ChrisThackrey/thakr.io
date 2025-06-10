@@ -10,7 +10,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { BookingCTA } from "@/components/booking-cta"
 import { ColoredTag } from "@/components/colored-tag"
-import { technicalSkills } from "@/lib/experience-data"
+import { technicalSkills, education } from "@/lib/experience-data" // Import education data
+import { EducationTimeline } from "@/components/education-timeline" // Import new component
 
 export default function AboutPage() {
   const prefersReducedMotion = useReducedMotion()
@@ -19,22 +20,22 @@ export default function AboutPage() {
     {
       name: "GitHub",
       href: "https://github.com/ChrisThackrey",
-      icon: <Github className="h-9 w-9" />, // Slightly larger icon
+      icon: <Github className="h-9 w-9" />,
     },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/chris-thackrey-015/",
-      icon: <Linkedin className="h-9 w-9" />, // Slightly larger icon
+      icon: <Linkedin className="h-9 w-9" />,
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/chris_thackrey/",
-      icon: <Instagram className="h-9 w-9" />, // Slightly larger icon
+      icon: <Instagram className="h-9 w-9" />,
     },
     {
       name: "Email",
       href: "mailto:c.r.thackrey@gmail.com",
-      icon: <Mail className="h-9 w-9" />, // Slightly larger icon
+      icon: <Mail className="h-9 w-9" />,
     },
   ]
 
@@ -119,13 +120,12 @@ export default function AboutPage() {
   }
 
   const bottomCard1Variant = {
-    // For Skills Card
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.5, // After top content
+        delay: 0.5,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -138,13 +138,12 @@ export default function AboutPage() {
   }
 
   const bottomCard2Variant = {
-    // For Education Card
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.6, // Staggered after Skills Card
+        delay: 0.6,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -164,8 +163,6 @@ export default function AboutPage() {
   const ProfileSection = () => (
     <div className="flex flex-col items-center">
       <Avatar className="w-52 h-52 md:w-60 md:h-60 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
-        {" "}
-        {/* Slightly larger Avatar */}
         <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
@@ -174,7 +171,7 @@ export default function AboutPage() {
           <Button
             key={link.name}
             variant="outline"
-            size="lg" // Changed to lg for better padding with h-9 icons
+            size="lg"
             asChild
             className="rounded-full hover:bg-primary/10 transition-colors"
           >
@@ -212,34 +209,7 @@ export default function AboutPage() {
     </Card>
   )
 
-  const EducationCard = () => (
-    <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
-      <CardContent className="pt-6">
-        <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Education</h2>
-        <div className="space-y-5">
-          {[
-            { school: "The Rust Developer Bootcamp", details: "Certificate of Completion, 2022" },
-            { school: "AlgoExpert.io", details: "Certificate of Completion, 2022" },
-            { school: "Hack Reactor", details: "Austin, Texas — graduated March 2021" },
-            { school: "Gnomon School of Visual Effects", details: "Los Angeles, California — 2017-2018" },
-            {
-              school: "Southern California Institute of Architecture",
-              details: "Los Angeles, California — 2016-2017",
-            },
-            {
-              school: "Texas A&M University",
-              details: "Bachelor of Science - Environmental Design, Cum Laude — 2015",
-            },
-          ].map((education, i) => (
-            <div key={i}>
-              <h3 className="font-semibold text-lg">{education.school}</h3>
-              <p className="text-base text-muted-foreground mt-1">{education.details}</p>
-            </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  )
+  // EducationCard component is no longer needed here
 
   if (prefersReducedMotion) {
     return (
@@ -252,9 +222,7 @@ export default function AboutPage() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Top Section: About Me & Profile/Buttons */}
           <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
-            {/* Left Column (About Me text) */}
             <div className="md:w-2/3 order-2 md:order-1 space-y-6">
               <SectionTitle as="h1" className="mb-12">
                 About Me
@@ -275,8 +243,6 @@ export default function AboutPage() {
                 sharing knowledge through podcasts and articles.
               </p>
             </div>
-
-            {/* Right Column (Profile, Buttons) */}
             <div className="md:w-1/3 order-1 md:order-2 flex flex-col space-y-8 items-center md:items-stretch">
               <ProfileSection />
               <div className="flex flex-col space-y-4 w-full items-center md:items-stretch">
@@ -300,13 +266,10 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-
-          {/* Bottom Section: Skills & Education Cards */}
           <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 order-3">
             <SkillsCard />
-            <EducationCard />
+            <EducationTimeline items={education} />
           </div>
-
           <div className="mt-20">
             <BookingCTA />
           </div>
@@ -319,9 +282,7 @@ export default function AboutPage() {
     <>
       <PageBackground />
       <div className="container py-12 md:py-16">
-        {/* Top Section: About Me & Profile/Buttons */}
         <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
-          {/* Left Column (About Me text) */}
           <div className="md:w-2/3 order-2 md:order-1 space-y-6">
             <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
               <SectionTitle as="h1">About Me</SectionTitle>
@@ -344,8 +305,6 @@ export default function AboutPage() {
               </motion.p>
             ))}
           </div>
-
-          {/* Right Column (Profile, Buttons) */}
           <div className="md:w-1/3 order-1 md:order-2 flex flex-col space-y-8 items-center md:items-stretch">
             <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
               <ProfileSection />
@@ -387,25 +346,15 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-
-        {/* Bottom Section: Skills & Education Cards */}
-        {/* Added order-3 for mobile stacking after the two columns */}
         <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 order-3">
           <motion.div variants={bottomCard1Variant} initial="hidden" animate="visible" exit="exit">
             <SkillsCard />
           </motion.div>
           <motion.div variants={bottomCard2Variant} initial="hidden" animate="visible" exit="exit">
-            <EducationCard />
+            <EducationTimeline items={education} />
           </motion.div>
         </div>
-
-        <motion.div
-          className="mt-20" // order-4 implicitly on mobile
-          variants={bookingCtaVariant}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
+        <motion.div className="mt-20" variants={bookingCtaVariant} initial="hidden" animate="visible" exit="exit">
           <BookingCTA />
         </motion.div>
       </div>

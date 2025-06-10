@@ -118,7 +118,7 @@ export const professionalExperience: TimelineItemData[] = [
   },
 ]
 
-export const education = [
+export const education: TimelineItemData[] = [
   {
     title: "The Rust Developer Bootcamp",
     date: "2022",
