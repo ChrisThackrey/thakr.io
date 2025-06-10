@@ -1,0 +1,131 @@
+/* Speed reading styles */
+
+/* Container for speed reading content */
+.speed-reading-content {
+  position: relative;
+  line-height: 1.8;
+}
+
+/* Ensure proper spacing between paragraphs */
+.speed-reading-content p {
+  margin-bottom: 1.5em;
+}
+
+/* Ensure proper spacing for lists */
+.speed-reading-content ul,
+.speed-reading-content ol {
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
+
+.speed-reading-content li {
+  margin-bottom: 0.5em;
+}
+
+/* Style blockquotes for better readability */
+.speed-reading-content blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+}
+
+/* Style code blocks for better readability */
+.speed-reading-content pre {
+  background-color: var(--muted);
+  padding: 1em;
+  border-radius: 0.5em;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
+.speed-reading-content code {
+  font-family: monospace;
+  background-color: var(--muted);
+  padding: 0.2em 0.4em;
+  border-radius: 0.2em;
+}
+
+/* Ensure proper spacing for headings */
+.speed-reading-content h1,
+.speed-reading-content h2,
+.speed-reading-content h3,
+.speed-reading-content h4,
+.speed-reading-content h5,
+.speed-reading-content h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  line-height: 1.3;
+}
+
+/* Ensure proper spacing for images */
+.speed-reading-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5em 0;
+  border-radius: 0.5em;
+}
+
+/* Ensure proper spacing for tables */
+.speed-reading-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+}
+
+.speed-reading-content th,
+.speed-reading-content td {
+  padding: 0.5em;
+  border: 1px solid var(--border);
+}
+
+.speed-reading-content th {
+  background-color: var(--muted);
+  font-weight: bold;
+}
+
+/* Ensure proper spacing for horizontal rules */
+.speed-reading-content hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+/* Ensure proper spacing for definition lists */
+.speed-reading-content dl {
+  margin: 1.5em 0;
+}
+
+.speed-reading-content dt {
+  font-weight: bold;
+}
+
+.speed-reading-content dd {
+  margin-left: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Ensure proper spacing for abbreviations */
+.speed-reading-content abbr {
+  cursor: help;
+  border-bottom: 1px dotted var(--border);
+}
+
+/* Ensure proper spacing for addresses */
+.speed-reading-content address {
+  font-style: italic;
+  margin: 1.5em 0;
+}
+
+/* Ensure proper spacing for figures */
+.speed-reading-content figure {
+  margin: 1.5em 0;
+}
+
+.speed-reading-content figcaption {
+  font-size: 0.9em;
+  text-align: center;
+  margin-top: 0.5em;
+  color: var(--muted-foreground);
+}

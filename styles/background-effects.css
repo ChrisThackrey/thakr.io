@@ -1,0 +1,77 @@
+/* Subtle animation for the background */
+@keyframes subtle-shift {
+  0% {
+    transform: scale(1) translate(0px, 0px);
+  }
+  50% {
+    transform: scale(1.005) translate(-3px, -3px);
+  }
+  100% {
+    transform: scale(1) translate(0px, 0px);
+  }
+}
+
+@keyframes subtle-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1deg);
+  }
+}
+
+@keyframes subtle-breathe {
+  0% {
+    opacity: var(--min-opacity, 0.65);
+  }
+  50% {
+    opacity: var(--max-opacity, 0.75);
+  }
+  100% {
+    opacity: var(--min-opacity, 0.65);
+  }
+}
+
+@keyframes subtle-hue-shift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(1deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+.animate-subtle-shift {
+  animation: subtle-shift 30s ease-in-out infinite;
+}
+
+.animate-subtle-rotate {
+  animation: subtle-rotate 40s ease-in-out alternate infinite;
+}
+
+.animate-subtle-breathe {
+  animation: subtle-breathe 15s ease-in-out infinite;
+}
+
+.animate-subtle-hue-shift {
+  animation: subtle-hue-shift 20s ease-in-out infinite;
+}
+
+/* Improved backdrop blur support */
+@supports not (backdrop-filter: blur(1px)) {
+  .fallback-blur {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .dark .fallback-blur {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* Improved background transitions */
+.bg-transition {
+  transition: background-color 0.7s ease, opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
+}

@@ -1,0 +1,45 @@
+/* Mini-player animations and transitions */
+.mini-player-expanded {
+  transition: height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mini-player-minimized {
+  transition: height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0.8;
+}
+
+.mini-player-minimized:hover {
+  opacity: 1;
+}
+
+/* Enhance the draggable handle */
+[data-drag-handle] {
+  touch-action: none;
+  cursor: move;
+}
+
+/* Add a subtle glow effect when active */
+.mini-player-active {
+  box-shadow: 0 0 0 2px rgba(var(--primary), 0.3);
+}
+
+/* Add responsive sizing for smaller screens */
+@media (max-width: 640px) {
+  .mini-player-position-bottom-right {
+    bottom: 80px !important;
+    right: 16px !important;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  .mini-player-compact {
+    width: 280px !important;
+    height: 180px !important;
+  }
+
+  .mini-player-minimized.mini-player-compact {
+    height: 40px !important;
+  }
+}

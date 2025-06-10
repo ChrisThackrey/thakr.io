@@ -1,0 +1,53 @@
+/* Section-specific background transitions */
+.section-home {
+  --section-bg-hue: 210;
+  --section-bg-saturation: 20%;
+  --section-bg-lightness: 98%;
+}
+
+.section-blog {
+  --section-bg-hue: 230;
+  --section-bg-saturation: 15%;
+  --section-bg-lightness: 98%;
+}
+
+.section-projects {
+  --section-bg-hue: 180;
+  --section-bg-saturation: 10%;
+  --section-bg-lightness: 98%;
+}
+
+.section-architecture {
+  --section-bg-hue: 40;
+  --section-bg-saturation: 15%;
+  --section-bg-lightness: 98%;
+}
+
+.section-about {
+  --section-bg-hue: 280;
+  --section-bg-saturation: 10%;
+  --section-bg-lightness: 98%;
+}
+
+.section-work {
+  --section-bg-hue: 150;
+  --section-bg-saturation: 10%;
+  --section-bg-lightness: 98%;
+}
+
+/* Apply the background color with a transition */
+.section-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: hsl(var(--section-bg-hue), var(--section-bg-saturation), var(--section-bg-lightness));
+  transition: background-color 0.8s ease;
+}
+
+/* Dark mode adjustments */
+.dark .section-background {
+  --section-bg-lightness: 5%;
+}

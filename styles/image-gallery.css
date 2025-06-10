@@ -1,0 +1,76 @@
+.gallery-thumbnail {
+  transition: all 0.2s ease-in-out;
+}
+
+.gallery-thumbnail:hover {
+  transform: translateY(-2px);
+}
+
+.gallery-thumbnail.active {
+  border-color: hsl(var(--primary));
+}
+
+.gallery-navigation-button {
+  opacity: 0.7;
+  transition: all 0.2s ease-in-out;
+}
+
+.gallery-navigation-button:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.gallery-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-image {
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-image-container:hover .gallery-image {
+  transform: scale(1.02);
+}
+
+.gallery-counter {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 4rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}

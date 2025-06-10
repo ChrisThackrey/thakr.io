@@ -1,0 +1,47 @@
+/* About page specific styles */
+.skills-card,
+.education-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-card:hover,
+.education-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Skill category styling */
+.skill-category {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.skill-category::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.25rem;
+  height: 1rem;
+  background: linear-gradient(to bottom, var(--gradient-blue), var(--gradient-purple));
+  border-radius: 1rem;
+}
+
+/* Education item styling */
+.education-item {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.education-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.25rem;
+  height: 0.25rem;
+  background-color: var(--primary);
+  border-radius: 50%;
+}
+
+/* Add to globals.css */
+@import "styles/about-page.css";
