@@ -120,28 +120,22 @@ export default function AboutPage() {
   }
 
   const bottomSectionVariant = {
-    // Generic variant for bottom sections
     hidden: { opacity: 0, y: 20 },
-    visible: {
+    visible: (i: number) => ({
+      // i will be the custom prop for staggering
       opacity: 1,
       y: 0,
       transition: {
+        delay: i * 0.1 + 0.5, // Base delay of 0.5s, stagger by 0.1s
         duration: 0.5,
         ease: "easeOut",
       },
-    },
+    }),
     exit: {
       opacity: 0,
       y: -10,
       transition: { duration: 0.3, ease: "easeIn" },
     },
-  }
-
-  const bookingCtaVariant = {
-    // Specific for BookingCTA if needed, or use bottomSectionVariant
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.5, delay: 0.2 } }, // Adjusted delay
-    exit: { opacity: 0, transition: { duration: 0.3 } },
   }
 
   const ProfileSection = () => (
@@ -197,14 +191,16 @@ export default function AboutPage() {
     return (
       <>
         <PageBackground />
-        <motion.div
+        <motion.div // Main page wrapper with simple fade for reduced motion
           className="container py-12 md:py-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
+          {/* Top Section: About Me & Profile/Buttons */}
           <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
+            {/* Left Column (About Me text) */}
             <div className="md:w-2/3 order-2 md:order-1 space-y-6">
               <SectionTitle as="h1" className="mb-12">
                 About Me
@@ -225,6 +221,8 @@ export default function AboutPage() {
                 sharing knowledge through podcasts and articles.
               </p>
             </div>
+
+            {/* Right Column (Profile, Buttons) */}
             <div className="md:w-1/3 order-1 md:order-2 flex flex-col space-y-8 items-center md:items-stretch">
               <ProfileSection />
               <div className="flex flex-col space-y-4 w-full items-center md:items-stretch">
@@ -249,17 +247,16 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Skills and Education Section */}
+          {/* Bottom Sections: Skills, Education, and CTA */}
           <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 order-3">
+            {/* Left Column: Skills */}
             <SkillsCard />
-            <EducationTimeline items={education} />
-          </div>
 
-          {/* Booking CTA Section - Moved here */}
-          <div className="mt-16 md:mt-20 order-4">
-            {" "}
-            {/* Adjusted margin-top */}
-            <BookingCTA />
+            {/* Right Column: Education & Booking CTA */}
+            <div className="flex flex-col space-y-8 lg:space-y-12">
+              <EducationTimeline items={education} />
+              <BookingCTA />
+            </div>
           </div>
         </motion.div>
       </>
@@ -337,38 +334,41 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Skills and Education Section */}
+        {/* Bottom Sections: Skills, Education, and CTA */}
         <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 order-3">
+          {/* Left Column: Skills */}
           <motion.div
-            variants={bottomSectionVariant} // Using generic variant
+            custom={0} // For stagger: delay = 0 * 0.1 + 0.5 = 0.5s
+            variants={bottomSectionVariant}
             initial="hidden"
             animate="visible"
             exit="exit"
-            custom={0} // Stagger delay if needed, or remove custom
           >
             <SkillsCard />
           </motion.div>
-          <motion.div
-            variants={bottomSectionVariant} // Using generic variant
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            custom={1} // Stagger delay if needed, or remove custom
-          >
-            <EducationTimeline items={education} />
-          </motion.div>
-        </div>
 
-        {/* Booking CTA Section - Moved here */}
-        <motion.div
-          className="mt-16 md:mt-20 order-4" // Adjusted margin-top
-          variants={bookingCtaVariant}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
-          <BookingCTA />
-        </motion.div>
+          {/* Right Column: Education & Booking CTA */}
+          <div className="flex flex-col space-y-8 lg:space-y-12">
+            <motion.div
+              custom={1} // For stagger: delay = 1 * 0.1 + 0.5 = 0.6s
+              variants={bottomSectionVariant}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <EducationTimeline items={education} />
+            </motion.div>
+            <motion.div
+              custom={2} // For stagger: delay = 2 * 0.1 + 0.5 = 0.7s
+              variants={bottomSectionVariant} // Re-using the same variant for consistency
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <BookingCTA />
+            </motion.div>
+          </div>
+        </div>
       </div>
     </>
   )
