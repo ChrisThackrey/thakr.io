@@ -1,20 +1,43 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Download, Briefcase } from "lucide-react"
+import { Download, Github, Linkedin, Instagram, Mail, Briefcase } from "lucide-react"
 import { PageBackground } from "@/components/page-background"
 import { motion } from "framer-motion"
 import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { SectionTitle } from "@/components/section-title"
 import { Card, CardContent } from "@/components/ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { BookingCTA } from "@/components/booking-cta"
 import { ColoredTag } from "@/components/colored-tag"
 import { technicalSkills, education } from "@/lib/experience-data"
 import { EducationTimeline } from "@/components/education-timeline"
-import { ProfileSection } from "@/components/profile-section"
 
 export default function AboutPage() {
   const prefersReducedMotion = useReducedMotion()
+
+  const socialLinks = [
+    {
+      name: "GitHub",
+      href: "https://github.com/ChrisThackrey",
+      icon: <Github className="h-9 w-9" />,
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/chris-thackrey-015/",
+      icon: <Linkedin className="h-9 w-9" />,
+    },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/chris_thackrey/",
+      icon: <Instagram className="h-9 w-9" />,
+    },
+    {
+      name: "Email",
+      href: "mailto:c.r.thackrey@gmail.com",
+      icon: <Mail className="h-9 w-9" />,
+    },
+  ]
 
   const titleFadeIn = {
     hidden: { opacity: 0 },
@@ -114,6 +137,35 @@ export default function AboutPage() {
       transition: { duration: 0.3, ease: "easeIn" },
     },
   }
+
+  const ProfileSection = () => (
+    <div className="flex flex-col items-center">
+      <Avatar className="w-52 h-52 md:w-60 md:h-60 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
+        <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
+        <AvatarFallback>CT</AvatarFallback>
+      </Avatar>
+      <div className="flex space-x-6">
+        {socialLinks.map((link) => (
+          <Button
+            key={link.name}
+            variant="outline"
+            size="lg"
+            asChild
+            className="rounded-full hover:bg-primary/10 transition-colors"
+          >
+            <Link
+              href={link.href}
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              aria-label={link.name}
+            >
+              {link.icon}
+            </Link>
+          </Button>
+        ))}
+      </div>
+    </div>
+  )
 
   const SkillsCard = () => (
     <Card className="bg-background/80 backdrop-blur-sm border border-border/30 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
