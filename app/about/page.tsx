@@ -220,7 +220,7 @@ export default function AboutPage() {
             </div>
 
             {/* Skills and Education Cards - Order 3 on mobile, Order 3 on md+ (right column bottom) */}
-            <div className="space-y-12 order-3 md:order-3 md:col-start-3">
+            <div className="space-y-12 order-3 md:order-3 md:col-start-3 md:-mt-12 lg:-mt-16">
               <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
                 <CardContent className="pt-6">
                   <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Skills</h2>
@@ -331,7 +331,7 @@ export default function AboutPage() {
           </div>
 
           {/* Skills and Education Cards - Order 3 on mobile, Order 3 on md+ (right column bottom) */}
-          <div className="space-y-12 order-3 md:order-3 md:col-start-3">
+          <div className="space-y-12 order-3 md:order-3 md:col-start-3 md:-mt-12 lg:-mt-16">
             <motion.div variants={skillsCardVariants} initial="hidden" animate="visible" exit="exit">
               <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
                 <CardContent className="pt-6">
