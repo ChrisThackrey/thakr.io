@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ContactSection } from "@/components/contact-section"
 import { PageTransition } from "@/components/page-transition"
+import { ProfileSection } from "@/components/profile-section"
 
 export default function HomePage() {
   const featuredExperience = professionalExperience.slice(0, 3)
@@ -15,17 +16,23 @@ export default function HomePage() {
     <PageTransition>
       <PageBackground />
       <Hero />
-      <div className="container mx-auto max-w-4xl py-16 md:py-24 px-4">
-        <SectionTitle as="h2" className="mb-12">
-          Recent Work & Experience
-        </SectionTitle>
-        <Timeline items={featuredExperience} />
-        <div className="mt-12 text-center">
-          <Button asChild size="lg">
-            <Link href="/work">View Full Resume</Link>
-          </Button>
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-4xl px-4">
+          <div className="mb-16 flex justify-center md:mb-24">
+            <ProfileSection />
+          </div>
+
+          <SectionTitle as="h2" className="mb-12">
+            Recent Work & Experience
+          </SectionTitle>
+          <Timeline items={featuredExperience} />
+          <div className="mt-12 text-center">
+            <Button asChild size="lg">
+              <Link href="/work">View Full Resume</Link>
+            </Button>
+          </div>
         </div>
-      </div>
+      </section>
       <ContactSection />
     </PageTransition>
   )
