@@ -88,7 +88,7 @@ export default function AboutPage() {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.2,
+        delay: 0.2, // Adjusted delay to follow avatarSocial or text
         duration: 0.5,
         ease: "easeOut",
       },
@@ -106,7 +106,7 @@ export default function AboutPage() {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.4,
+        delay: 0.4, // Adjusted delay
         duration: 0.5,
         ease: "easeOut",
       },
@@ -137,10 +137,10 @@ export default function AboutPage() {
   }
 
   const ProfileSection = () => (
-    <div className="flex flex-col items-center mb-6 md:mb-2">
+    <div className="flex flex-col items-center">
       {" "}
-      {/* Adjusted margin for md+ screens */}
-      <Avatar className="w-40 h-40 md:w-48 md:h-48 border-4 border-primary/20 shadow-lg mb-8">
+      {/* Removed bottom margin here */}
+      <Avatar className="w-40 h-40 md:w-48 md:h-48 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
         <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
@@ -167,6 +167,55 @@ export default function AboutPage() {
     </div>
   )
 
+  const SkillsCard = () => (
+    <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
+      <CardContent className="pt-6">
+        <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Skills</h2>
+        <div className="space-y-6">
+          {Object.entries(technicalSkills).map(([category, skillList]) => (
+            <div key={category}>
+              <h3 className="font-semibold text-lg mb-3">{category}</h3>
+              <div className="flex flex-wrap gap-2">
+                {skillList.map((skill) => (
+                  <ColoredTag key={`${category}-${skill}`} tag={skill} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  )
+
+  const EducationCard = () => (
+    <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
+      <CardContent className="pt-6">
+        <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Education</h2>
+        <div className="space-y-5">
+          {[
+            { school: "The Rust Developer Bootcamp", details: "Certificate of Completion, 2022" },
+            { school: "AlgoExpert.io", details: "Certificate of Completion, 2022" },
+            { school: "Hack Reactor", details: "Austin, Texas — graduated March 2021" },
+            { school: "Gnomon School of Visual Effects", details: "Los Angeles, California — 2017-2018" },
+            {
+              school: "Southern California Institute of Architecture",
+              details: "Los Angeles, California — 2016-2017",
+            },
+            {
+              school: "Texas A&M University",
+              details: "Bachelor of Science - Environmental Design, Cum Laude — 2015",
+            },
+          ].map((education, i) => (
+            <div key={i}>
+              <h3 className="font-semibold text-lg">{education.school}</h3>
+              <p className="text-base text-muted-foreground mt-1">{education.details}</p>
+            </div>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  )
+
   if (prefersReducedMotion) {
     return (
       <>
@@ -179,10 +228,7 @@ export default function AboutPage() {
           transition={{ duration: 0.5 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-            <div className="order-1 md:order-2 md:col-start-3">
-              <ProfileSection />
-            </div>
-
+            {/* Left Column (About Me text) */}
             <div className="md:col-span-2 space-y-6 order-2 md:order-1">
               <SectionTitle as="h1" className="mb-12">
                 About Me
@@ -212,57 +258,11 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="space-y-12 order-3 md:order-3 md:col-start-3 md:-mt-12 lg:-mt-16">
-              <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
-                <CardContent className="pt-6">
-                  <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Skills</h2>
-                  <div className="space-y-6">
-                    {Object.entries(technicalSkills).map(([category, skillList]) => (
-                      <div key={category}>
-                        <h3 className="font-semibold text-lg mb-3">{category}</h3>
-                        <div className="flex flex-wrap gap-2">
-                          {skillList.map((skill) => (
-                            <ColoredTag key={`${category}-${skill}`} tag={skill} />
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
-                <CardContent className="pt-6">
-                  <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Education</h2>
-                  <div className="space-y-5">
-                    <div>
-                      <h3 className="font-semibold text-lg">The Rust Developer Bootcamp</h3>
-                      <p className="text-base text-muted-foreground mt-1">Certificate of Completion, 2022</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">AlgoExpert.io</h3>
-                      <p className="text-base text-muted-foreground mt-1">Certificate of Completion, 2022</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">Hack Reactor</h3>
-                      <p className="text-base text-muted-foreground mt-1">Austin, Texas — graduated March 2021</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">Gnomon School of Visual Effects</h3>
-                      <p className="text-base text-muted-foreground mt-1">Los Angeles, California — 2017-2018</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">Southern California Institute of Architecture</h3>
-                      <p className="text-base text-muted-foreground mt-1">Los Angeles, California — 2016-2017</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">Texas A&M University</h3>
-                      <p className="text-base text-muted-foreground mt-1">
-                        Bachelor of Science - Environmental Design, Cum Laude — 2015
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+            {/* Right Column Wrapper (Profile, Skills, Education) */}
+            <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-4">
+              <ProfileSection />
+              <SkillsCard />
+              <EducationCard />
             </div>
           </div>
 
@@ -279,16 +279,7 @@ export default function AboutPage() {
       <PageBackground />
       <div className="container py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-          <motion.div
-            className="order-1 md:order-2 md:col-start-3"
-            variants={avatarSocialVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <ProfileSection />
-          </motion.div>
-
+          {/* Left Column (About Me text) */}
           <div className="md:col-span-2 space-y-6 order-2 md:order-1">
             <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
               <SectionTitle as="h1">About Me</SectionTitle>
@@ -320,53 +311,16 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
-          <div className="space-y-12 order-3 md:order-3 md:col-start-3 md:-mt-12 lg:-mt-16">
+          {/* Right Column Wrapper (Profile, Skills, Education) */}
+          <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-4">
+            <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
+              <ProfileSection />
+            </motion.div>
             <motion.div variants={skillsCardVariants} initial="hidden" animate="visible" exit="exit">
-              <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
-                <CardContent className="pt-6">
-                  <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Skills</h2>
-                  <div className="space-y-6">
-                    {Object.entries(technicalSkills).map(([category, skillList]) => (
-                      <div key={category}>
-                        <h3 className="font-semibold text-lg mb-3">{category}</h3>
-                        <div className="flex flex-wrap gap-2">
-                          {skillList.map((skill) => (
-                            <ColoredTag key={`${category}-${skill}`} tag={skill} />
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              <SkillsCard />
             </motion.div>
             <motion.div variants={educationCardVariants} initial="hidden" animate="visible" exit="exit">
-              <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
-                <CardContent className="pt-6">
-                  <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Education</h2>
-                  <div className="space-y-5">
-                    {[
-                      { school: "The Rust Developer Bootcamp", details: "Certificate of Completion, 2022" },
-                      { school: "AlgoExpert.io", details: "Certificate of Completion, 2022" },
-                      { school: "Hack Reactor", details: "Austin, Texas — graduated March 2021" },
-                      { school: "Gnomon School of Visual Effects", details: "Los Angeles, California — 2017-2018" },
-                      {
-                        school: "Southern California Institute of Architecture",
-                        details: "Los Angeles, California — 2016-2017",
-                      },
-                      {
-                        school: "Texas A&M University",
-                        details: "Bachelor of Science - Environmental Design, Cum Laude — 2015",
-                      },
-                    ].map((education, i) => (
-                      <div key={i}>
-                        <h3 className="font-semibold text-lg">{education.school}</h3>
-                        <p className="text-base text-muted-foreground mt-1">{education.details}</p>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              <EducationCard />
             </motion.div>
           </div>
         </div>
