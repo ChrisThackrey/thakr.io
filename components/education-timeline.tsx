@@ -117,12 +117,12 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
           ref={draggableRef}
           drag="x"
           dragConstraints={dragConstraints}
-          className="flex space-x-4 pb-4"
+          className="flex space-x-4 pb-4" // Added pb-4 for shadow visibility
           style={{ x }}
         >
           {items.map((item, index) => (
             <motion.div key={index} className="flex-shrink-0 w-[calc(100vw-5rem)] sm:w-[320px] md:w-[350px]">
-              <Card className="h-full shadow-lg border border-border/80 hover:shadow-xl transition-shadow duration-300 flex flex-col">
+              <Card className="bg-background/80 backdrop-blur-sm h-full shadow-lg border border-border/30 hover:shadow-xl transition-shadow duration-300 flex flex-col">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-xl font-semibold">{item.title}</CardTitle>
                   <p className="text-sm text-muted-foreground pt-1">{item.company}</p>

@@ -192,9 +192,9 @@ export default function AboutPage() {
   )
 
   const SkillsCard = () => (
-    <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
+    <Card className="bg-background/80 backdrop-blur-sm border border-border/30 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
       <CardContent className="pt-6">
-        <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Skills</h2>
+        <h2 className="text-2xl font-bold mb-6 pb-2 border-b border-border/50">Skills</h2>
         <div className="space-y-6">
           {Object.entries(technicalSkills).map(([category, skillList]) => (
             <div key={category}>
@@ -350,8 +350,6 @@ export default function AboutPage() {
           <motion.div variants={bottomCard1Variant} initial="hidden" animate="visible" exit="exit">
             <SkillsCard />
           </motion.div>
-          {/* The EducationTimeline is now a section, not a card, so it doesn't need h-full. 
-              The motion.div wrapper handles its animation. */}
           <motion.div variants={bottomCard2Variant} initial="hidden" animate="visible" exit="exit">
             <EducationTimeline items={education} />
           </motion.div>
