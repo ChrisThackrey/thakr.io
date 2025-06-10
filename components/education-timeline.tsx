@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { motion, useMotionValue } from "framer-motion"
+import { motion, useMotionValue, animate } from "framer-motion"
 import type { TimelineItemData } from "@/lib/experience-data"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
@@ -23,7 +23,6 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
   const draggableRef = useRef<HTMLDivElement>(null)
   const [dragConstraints, setDragConstraints] = useState({ left: 0, right: 0 })
 
-  // For timeline step indicator
   const x = useMotionValue(0)
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -32,7 +31,7 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
       if (containerRef.current && draggableRef.current) {
         const containerWidth = containerRef.current.offsetWidth
         const draggableWidth = draggableRef.current.scrollWidth
-        const newLeftConstraint = Math.min(0, containerWidth - draggableWidth - CARD_GAP) // CARD_GAP for potential end padding
+        const newLeftConstraint = -Math.max(0, draggableWidth - containerWidth)
         setDragConstraints({ left: newLeftConstraint, right: 0 })
       }
     }
@@ -43,21 +42,36 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
   }, [items])
 
   useEffect(() => {
-    // Update activeIndex based on scroll position (x value of draggable container)
     const unsubscribeX = x.onChange((latestX) => {
-      // Determine card width based on screen size for accurate index calculation
-      let currentCardWidth = CARD_WIDTH_SM // Default to small
+      let currentCardWidth = CARD_WIDTH_SM
       if (window.innerWidth >= 768) {
-        // md breakpoint
         currentCardWidth = CARD_WIDTH_MD
       }
-
       const cardWidthWithGap = currentCardWidth + CARD_GAP
       const newActiveIndex = Math.min(items.length - 1, Math.max(0, Math.round(Math.abs(latestX) / cardWidthWithGap)))
       setActiveIndex(newActiveIndex)
     })
     return () => unsubscribeX()
   }, [x, items.length])
+
+  const handleStepClick = (index: number) => {
+    if (!draggableRef.current) return
+
+    let currentCardWidth = CARD_WIDTH_SM
+    if (window.innerWidth >= 768) {
+      currentCardWidth = CARD_WIDTH_MD
+    }
+    const cardWidthWithGap = currentCardWidth + CARD_GAP
+    const newX = -index * cardWidthWithGap
+
+    const clampedX = Math.max(dragConstraints.left, Math.min(dragConstraints.right, newX))
+
+    animate(x, clampedX, {
+      type: "spring",
+      stiffness: 400,
+      damping: 40,
+    })
+  }
 
   return (
     <div className="relative py-4">
@@ -71,17 +85,18 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
         </Button>
       </div>
 
-      {/* Timeline Steps UI */}
       <div className="mb-8 flex items-center justify-center px-2">
         <div className="flex items-center">
           {items.map((_, i) => (
             <React.Fragment key={`step-${i}`}>
-              <div
+              <button
+                onClick={() => handleStepClick(i)}
+                aria-label={`Go to item ${i + 1}`}
                 className={cn(
-                  "w-3 h-3 rounded-full border-2 transition-all duration-300",
+                  "w-3 h-3 rounded-full border-2 transition-all duration-300 flex-shrink-0",
                   i === activeIndex
                     ? "bg-primary border-primary scale-125"
-                    : "border-muted-foreground/50 bg-background",
+                    : "border-muted-foreground/50 bg-background hover:border-primary",
                 )}
               />
               {i < items.length - 1 && (
@@ -97,19 +112,16 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
         </div>
       </div>
 
-      <div ref={containerRef} className="overflow-hidden cursor-grab active:cursor-grabbing">
+      <div ref={containerRef} className="overflow-hidden cursor-grab active:cursor-grabbing px-1">
         <motion.div
           ref={draggableRef}
           drag="x"
           dragConstraints={dragConstraints}
-          className="flex space-x-4 pb-4 px-1" // pb-4 for shadow visibility, px-1 for start/end card visibility
-          style={{ x }} // Bind motion value
+          className="flex space-x-4 pb-4"
+          style={{ x }}
         >
           {items.map((item, index) => (
-            <motion.div
-              key={index}
-              className="flex-shrink-0 w-[calc(100vw-5rem)] sm:w-[320px] md:w-[350px]" // Responsive card width
-            >
+            <motion.div key={index} className="flex-shrink-0 w-[calc(100vw-5rem)] sm:w-[320px] md:w-[350px]">
               <Card className="h-full shadow-lg border border-border/80 hover:shadow-xl transition-shadow duration-300 flex flex-col">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-xl font-semibold">{item.title}</CardTitle>
