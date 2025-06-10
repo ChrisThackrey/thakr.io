@@ -19,26 +19,25 @@ export default function AboutPage() {
     {
       name: "GitHub",
       href: "https://github.com/ChrisThackrey",
-      icon: <Github className="h-7 w-7" />, // Updated size
+      icon: <Github className="h-7 w-7" />,
     },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/chris-thackrey-015/",
-      icon: <Linkedin className="h-7 w-7" />, // Updated size
+      icon: <Linkedin className="h-7 w-7" />,
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/chris_thackrey/",
-      icon: <Instagram className="h-7 w-7" />, // Updated size
+      icon: <Instagram className="h-7 w-7" />,
     },
     {
       name: "Email",
       href: "mailto:c.r.thackrey@gmail.com",
-      icon: <Mail className="h-7 w-7" />, // Updated size
+      icon: <Mail className="h-7 w-7" />,
     },
   ]
 
-  // Base animation variants - simple fade for the title
   const titleFadeIn = {
     hidden: { opacity: 0 },
     visible: {
@@ -51,7 +50,6 @@ export default function AboutPage() {
     },
   }
 
-  // Avatar and social links animation
   const avatarSocialVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: {
@@ -66,7 +64,6 @@ export default function AboutPage() {
     },
   }
 
-  // Text animation variants - simple fade with slight y movement
   const textVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: (i: number) => ({
@@ -140,16 +137,14 @@ export default function AboutPage() {
   }
 
   const ProfileSection = () => (
-    <div className="flex flex-col items-center mb-6">
+    <div className="flex flex-col items-center mb-6 md:mb-2">
+      {" "}
+      {/* Adjusted margin for md+ screens */}
       <Avatar className="w-40 h-40 md:w-48 md:h-48 border-4 border-primary/20 shadow-lg mb-8">
-        {" "}
-        {/* Increased size & mb */}
         <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
       <div className="flex space-x-6">
-        {" "}
-        {/* Increased space-x */}
         {socialLinks.map((link) => (
           <Button
             key={link.name}
@@ -184,12 +179,10 @@ export default function AboutPage() {
           transition={{ duration: 0.5 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-            {/* Profile Section - Order 1 on mobile, Order 2 on md+ (right column top) */}
             <div className="order-1 md:order-2 md:col-start-3">
               <ProfileSection />
             </div>
 
-            {/* Left Column (About Me text) - Order 2 on mobile, Order 1 on md+ (left column) */}
             <div className="md:col-span-2 space-y-6 order-2 md:order-1">
               <SectionTitle as="h1" className="mb-12">
                 About Me
@@ -219,7 +212,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Skills and Education Cards - Order 3 on mobile, Order 3 on md+ (right column bottom) */}
             <div className="space-y-12 order-3 md:order-3 md:col-start-3 md:-mt-12 lg:-mt-16">
               <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
                 <CardContent className="pt-6">
@@ -287,7 +279,6 @@ export default function AboutPage() {
       <PageBackground />
       <div className="container py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-          {/* Profile Section - Order 1 on mobile, Order 2 on md+ (right column top) */}
           <motion.div
             className="order-1 md:order-2 md:col-start-3"
             variants={avatarSocialVariants}
@@ -298,7 +289,6 @@ export default function AboutPage() {
             <ProfileSection />
           </motion.div>
 
-          {/* Left Column (About Me text) - Order 2 on mobile, Order 1 on md+ (left column) */}
           <div className="md:col-span-2 space-y-6 order-2 md:order-1">
             <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
               <SectionTitle as="h1">About Me</SectionTitle>
@@ -330,7 +320,6 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
-          {/* Skills and Education Cards - Order 3 on mobile, Order 3 on md+ (right column bottom) */}
           <div className="space-y-12 order-3 md:order-3 md:col-start-3 md:-mt-12 lg:-mt-16">
             <motion.div variants={skillsCardVariants} initial="hidden" animate="visible" exit="exit">
               <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
