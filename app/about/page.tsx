@@ -19,22 +19,22 @@ export default function AboutPage() {
     {
       name: "GitHub",
       href: "https://github.com/ChrisThackrey",
-      icon: <Github className="h-6 w-6" />,
+      icon: <Github className="h-7 w-7" />, // Updated size
     },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/chris-thackrey-015/",
-      icon: <Linkedin className="h-6 w-6" />,
+      icon: <Linkedin className="h-7 w-7" />, // Updated size
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/chris_thackrey/",
-      icon: <Instagram className="h-6 w-6" />,
+      icon: <Instagram className="h-7 w-7" />, // Updated size
     },
     {
       name: "Email",
       href: "mailto:c.r.thackrey@gmail.com",
-      icon: <Mail className="h-6 w-6" />,
+      icon: <Mail className="h-7 w-7" />, // Updated size
     },
   ]
 
@@ -43,7 +43,7 @@ export default function AboutPage() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { duration: 0.6, delay: 0.1 }, // Slight delay for title
+      transition: { duration: 0.6, delay: 0.1 },
     },
     exit: {
       opacity: 0,
@@ -57,7 +57,7 @@ export default function AboutPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: "easeOut", delay: 0 }, // Starts first in right col
+      transition: { duration: 0.5, ease: "easeOut", delay: 0 },
     },
     exit: {
       opacity: 0,
@@ -73,7 +73,7 @@ export default function AboutPage() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1 + 0.3, // Delay after title
+        delay: i * 0.1 + 0.3,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -91,7 +91,7 @@ export default function AboutPage() {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.2, // After avatarSocial
+        delay: 0.2,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -109,7 +109,7 @@ export default function AboutPage() {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.4, // After skillsCard
+        delay: 0.4,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -127,7 +127,7 @@ export default function AboutPage() {
       opacity: 1,
       scale: 1,
       transition: {
-        delay: 0.6, // After last paragraph
+        delay: 0.6,
         duration: 0.4,
         ease: "easeOut",
       },
@@ -140,12 +140,16 @@ export default function AboutPage() {
   }
 
   const ProfileSection = () => (
-    <div className="flex flex-col items-start mb-8">
-      <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-primary/20 shadow-lg mb-6">
+    <div className="flex flex-col items-center mb-8">
+      <Avatar className="w-40 h-40 md:w-48 md:h-48 border-4 border-primary/20 shadow-lg mb-8">
+        {" "}
+        {/* Increased size & mb */}
         <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
-      <div className="flex space-x-4">
+      <div className="flex space-x-6">
+        {" "}
+        {/* Increased space-x */}
         {socialLinks.map((link) => (
           <Button
             key={link.name}
@@ -173,14 +177,20 @@ export default function AboutPage() {
       <>
         <PageBackground />
         <motion.div
-          className="container py-12 md:py-16" // Reduced top/bottom padding
+          className="container py-12 md:py-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-            <div className="md:col-span-2 space-y-6">
+            {/* Profile Section - Order 1 on mobile, Order 2 on md+ (right column top) */}
+            <div className="order-1 md:order-2 md:col-start-3">
+              <ProfileSection />
+            </div>
+
+            {/* Left Column (About Me text) - Order 2 on mobile, Order 1 on md+ (left column) */}
+            <div className="md:col-span-2 space-y-6 order-2 md:order-1">
               <SectionTitle as="h1" className="mb-12">
                 About Me
               </SectionTitle>
@@ -209,8 +219,8 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="space-y-12">
-              <ProfileSection />
+            {/* Skills and Education Cards - Order 3 on mobile, Order 3 on md+ (right column bottom) */}
+            <div className="space-y-12 order-3 md:order-3 md:col-start-3">
               <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
                 <CardContent className="pt-6">
                   <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Skills</h2>
@@ -276,11 +286,20 @@ export default function AboutPage() {
     <>
       <PageBackground />
       <div className="container py-12 md:py-16">
-        {" "}
-        {/* Reduced top/bottom padding */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-          {/* Left Column */}
-          <div className="md:col-span-2 space-y-6">
+          {/* Profile Section - Order 1 on mobile, Order 2 on md+ (right column top) */}
+          <motion.div
+            className="order-1 md:order-2 md:col-start-3"
+            variants={avatarSocialVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <ProfileSection />
+          </motion.div>
+
+          {/* Left Column (About Me text) - Order 2 on mobile, Order 1 on md+ (left column) */}
+          <div className="md:col-span-2 space-y-6 order-2 md:order-1">
             <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
               <SectionTitle as="h1">About Me</SectionTitle>
             </motion.div>
@@ -311,11 +330,8 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
-          {/* Right Column */}
-          <div className="space-y-12">
-            <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
-              <ProfileSection />
-            </motion.div>
+          {/* Skills and Education Cards - Order 3 on mobile, Order 3 on md+ (right column bottom) */}
+          <div className="space-y-12 order-3 md:order-3 md:col-start-3">
             <motion.div variants={skillsCardVariants} initial="hidden" animate="visible" exit="exit">
               <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
                 <CardContent className="pt-6">
@@ -365,6 +381,7 @@ export default function AboutPage() {
             </motion.div>
           </div>
         </div>
+
         <motion.div
           className="mt-20"
           initial={{ opacity: 0 }}
