@@ -19,22 +19,22 @@ export default function AboutPage() {
     {
       name: "GitHub",
       href: "https://github.com/ChrisThackrey",
-      icon: <Github className="h-8 w-8" />, // Increased icon size
+      icon: <Github className="h-9 w-9" />, // Increased icon size
     },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/chris-thackrey-015/",
-      icon: <Linkedin className="h-8 w-8" />, // Increased icon size
+      icon: <Linkedin className="h-9 w-9" />, // Increased icon size
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/chris_thackrey/",
-      icon: <Instagram className="h-8 w-8" />, // Increased icon size
+      icon: <Instagram className="h-9 w-9" />, // Increased icon size
     },
     {
       name: "Email",
       href: "mailto:c.r.thackrey@gmail.com",
-      icon: <Mail className="h-8 w-8" />, // Increased icon size
+      icon: <Mail className="h-9 w-9" />, // Increased icon size
     },
   ]
 
@@ -138,7 +138,7 @@ export default function AboutPage() {
 
   const ProfileSection = () => (
     <div className="flex flex-col items-center">
-      <Avatar className="w-48 h-48 md:w-56 md:h-56 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
+      <Avatar className="w-56 h-56 md:w-64 md:h-64 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
         {" "}
         {/* Increased Avatar size */}
         <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
@@ -149,7 +149,7 @@ export default function AboutPage() {
           <Button
             key={link.name}
             variant="outline"
-            size="icon"
+            size="lg" // Increased button size
             asChild
             className="rounded-full hover:bg-primary/10 transition-colors"
           >
