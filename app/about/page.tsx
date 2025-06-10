@@ -19,22 +19,22 @@ export default function AboutPage() {
     {
       name: "GitHub",
       href: "https://github.com/ChrisThackrey",
-      icon: <Github className="h-8 w-8" />, // Reduced icon size
+      icon: <Github className="h-9 w-9" />, // Slightly larger icon
     },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/chris-thackrey-015/",
-      icon: <Linkedin className="h-8 w-8" />, // Reduced icon size
+      icon: <Linkedin className="h-9 w-9" />, // Slightly larger icon
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/chris_thackrey/",
-      icon: <Instagram className="h-8 w-8" />, // Reduced icon size
+      icon: <Instagram className="h-9 w-9" />, // Slightly larger icon
     },
     {
       name: "Email",
       href: "mailto:c.r.thackrey@gmail.com",
-      icon: <Mail className="h-8 w-8" />, // Reduced icon size
+      icon: <Mail className="h-9 w-9" />, // Slightly larger icon
     },
   ]
 
@@ -118,31 +118,14 @@ export default function AboutPage() {
     },
   }
 
-  const educationCardVariant = {
-    hidden: { opacity: 0, x: -10 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: 0.4,
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-    exit: {
-      opacity: 0,
-      x: -5,
-      transition: { duration: 0.3, ease: "easeIn" },
-    },
-  }
-
-  const skillsCardLeftVariant = {
+  const bottomCard1Variant = {
+    // For Skills Card
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.5,
+        delay: 0.5, // After top content
         duration: 0.5,
         ease: "easeOut",
       },
@@ -154,11 +137,35 @@ export default function AboutPage() {
     },
   }
 
+  const bottomCard2Variant = {
+    // For Education Card
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.6, // Staggered after Skills Card
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -10,
+      transition: { duration: 0.3, ease: "easeIn" },
+    },
+  }
+
+  const bookingCtaVariant = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5, delay: 0.8 } },
+  }
+
   const ProfileSection = () => (
     <div className="flex flex-col items-center">
-      <Avatar className="w-48 h-48 md:w-56 md:h-56 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
+      <Avatar className="w-52 h-52 md:w-60 md:h-60 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
         {" "}
-        {/* Reduced Avatar size */}
+        {/* Slightly larger Avatar */}
         <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
@@ -167,7 +174,7 @@ export default function AboutPage() {
           <Button
             key={link.name}
             variant="outline"
-            size="icon" // Reduced button size
+            size="lg" // Changed to lg for better padding with h-9 icons
             asChild
             className="rounded-full hover:bg-primary/10 transition-colors"
           >
@@ -186,7 +193,7 @@ export default function AboutPage() {
   )
 
   const SkillsCard = () => (
-    <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
+    <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
       <CardContent className="pt-6">
         <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Skills</h2>
         <div className="space-y-6">
@@ -206,7 +213,7 @@ export default function AboutPage() {
   )
 
   const EducationCard = () => (
-    <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
+    <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
       <CardContent className="pt-6">
         <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Education</h2>
         <div className="space-y-5">
@@ -245,10 +252,10 @@ export default function AboutPage() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Changed to flex layout for md+ screens */}
+          {/* Top Section: About Me & Profile/Buttons */}
           <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
-            {/* Left Column (About Me text, Skills) */}
-            <div className="md:w-2/3 order-2 md:order-1 flex flex-col space-y-6">
+            {/* Left Column (About Me text) */}
+            <div className="md:w-2/3 order-2 md:order-1 space-y-6">
               <SectionTitle as="h1" className="mb-12">
                 About Me
               </SectionTitle>
@@ -267,14 +274,9 @@ export default function AboutPage() {
                 make developers' lives easier. When I'm not coding, I enjoy researching emerging technologies and
                 sharing knowledge through podcasts and articles.
               </p>
-              <div className="pt-12 mt-auto">
-                {" "}
-                {/* mt-auto for bottom alignment */}
-                <SkillsCard />
-              </div>
             </div>
 
-            {/* Right Column Wrapper (Profile, Buttons, Education) */}
+            {/* Right Column (Profile, Buttons) */}
             <div className="md:w-1/3 order-1 md:order-2 flex flex-col space-y-8 items-center md:items-stretch">
               <ProfileSection />
               <div className="flex flex-col space-y-4 w-full items-center md:items-stretch">
@@ -296,12 +298,13 @@ export default function AboutPage() {
                   </Link>
                 </Button>
               </div>
-              <div className="mt-auto">
-                {" "}
-                {/* mt-auto for bottom alignment */}
-                <EducationCard />
-              </div>
             </div>
+          </div>
+
+          {/* Bottom Section: Skills & Education Cards */}
+          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 order-3">
+            <SkillsCard />
+            <EducationCard />
           </div>
 
           <div className="mt-20">
@@ -316,10 +319,10 @@ export default function AboutPage() {
     <>
       <PageBackground />
       <div className="container py-12 md:py-16">
-        {/* Changed to flex layout for md+ screens */}
+        {/* Top Section: About Me & Profile/Buttons */}
         <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
-          {/* Left Column (About Me text, Skills) */}
-          <div className="md:w-2/3 order-2 md:order-1 flex flex-col space-y-6">
+          {/* Left Column (About Me text) */}
+          <div className="md:w-2/3 order-2 md:order-1 space-y-6">
             <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
               <SectionTitle as="h1">About Me</SectionTitle>
             </motion.div>
@@ -340,23 +343,13 @@ export default function AboutPage() {
                 {paragraph}
               </motion.p>
             ))}
-            <motion.div
-              className="pt-12 mt-auto" /* mt-auto for bottom alignment */
-              variants={skillsCardLeftVariant}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              <SkillsCard />
-            </motion.div>
           </div>
 
-          {/* Right Column Wrapper (Profile, Buttons, Education) */}
+          {/* Right Column (Profile, Buttons) */}
           <div className="md:w-1/3 order-1 md:order-2 flex flex-col space-y-8 items-center md:items-stretch">
             <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
               <ProfileSection />
             </motion.div>
-
             <div className="flex flex-col space-y-4 w-full items-center md:items-stretch">
               <motion.div
                 variants={resumeButtonRightVariant}
@@ -392,24 +385,26 @@ export default function AboutPage() {
                 </Button>
               </motion.div>
             </div>
-
-            <motion.div
-              className="mt-auto" /* mt-auto for bottom alignment */
-              variants={educationCardVariant}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              <EducationCard />
-            </motion.div>
           </div>
         </div>
 
+        {/* Bottom Section: Skills & Education Cards */}
+        {/* Added order-3 for mobile stacking after the two columns */}
+        <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 order-3">
+          <motion.div variants={bottomCard1Variant} initial="hidden" animate="visible" exit="exit">
+            <SkillsCard />
+          </motion.div>
+          <motion.div variants={bottomCard2Variant} initial="hidden" animate="visible" exit="exit">
+            <EducationCard />
+          </motion.div>
+        </div>
+
         <motion.div
-          className="mt-20"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          className="mt-20" // order-4 implicitly on mobile
+          variants={bookingCtaVariant}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
         >
           <BookingCTA />
         </motion.div>
