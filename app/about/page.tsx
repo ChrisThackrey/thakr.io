@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Download, Github, Linkedin, Instagram, Mail, Briefcase } from "lucide-react" // Added Briefcase
+import { Download, Github, Linkedin, Instagram, Mail, Briefcase } from "lucide-react"
 import { PageBackground } from "@/components/page-background"
 import { motion } from "framer-motion"
 import { useReducedMotion } from "@/hooks/use-reduced-motion"
@@ -50,7 +50,7 @@ export default function AboutPage() {
     },
   }
 
-  const avatarSocialVariants = {
+  const profileVariant = {
     hidden: { opacity: 0, y: -20 },
     visible: {
       opacity: 1,
@@ -70,7 +70,7 @@ export default function AboutPage() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1 + 0.3, // Start after title
+        delay: i * 0.1 + 0.3,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -82,7 +82,8 @@ export default function AboutPage() {
     },
   }
 
-  const resumeButtonRightVariant = {
+  const button1Variant = {
+    // For Download Resume
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -100,13 +101,14 @@ export default function AboutPage() {
     },
   }
 
-  const projectsButtonRightVariant = {
+  const button2Variant = {
+    // For View Projects
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        delay: 0.3, // After resume button
+        delay: 0.3, // After button1
         duration: 0.4,
         ease: "easeOut",
       },
@@ -118,7 +120,8 @@ export default function AboutPage() {
     },
   }
 
-  const educationCardVariant = {
+  const leftCardInPairVariant = {
+    // For Skills Card (now on the right, left of pair)
     hidden: { opacity: 0, x: -10 },
     visible: {
       opacity: 1,
@@ -136,20 +139,21 @@ export default function AboutPage() {
     },
   }
 
-  const skillsCardLeftVariant = {
-    hidden: { opacity: 0, y: 20 },
+  const rightCardInPairVariant = {
+    // For Education Card (now on the right, right of pair)
+    hidden: { opacity: 0, x: -10 },
     visible: {
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: {
-        delay: 0.5, // After paragraphs in left column
+        delay: 0.5, // After left card in pair
         duration: 0.5,
         ease: "easeOut",
       },
     },
     exit: {
       opacity: 0,
-      y: -10,
+      x: -5,
       transition: { duration: 0.3, ease: "easeIn" },
     },
   }
@@ -184,7 +188,9 @@ export default function AboutPage() {
   )
 
   const SkillsCard = () => (
-    <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
+    <Card className="h-full border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
+      {" "}
+      {/* Added h-full */}
       <CardContent className="pt-6">
         <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Skills</h2>
         <div className="space-y-6">
@@ -204,7 +210,9 @@ export default function AboutPage() {
   )
 
   const EducationCard = () => (
-    <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
+    <Card className="h-full border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
+      {" "}
+      {/* Added h-full */}
       <CardContent className="pt-6">
         <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Education</h2>
         <div className="space-y-5">
@@ -244,7 +252,7 @@ export default function AboutPage() {
           transition={{ duration: 0.5 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-            {/* Left Column (About Me text, Skills) */}
+            {/* Left Column (About Me text) */}
             <div className="md:col-span-2 space-y-6 order-2 md:order-1">
               <SectionTitle as="h1" className="mb-12">
                 About Me
@@ -264,14 +272,9 @@ export default function AboutPage() {
                 make developers' lives easier. When I'm not coding, I enjoy researching emerging technologies and
                 sharing knowledge through podcasts and articles.
               </p>
-              <div className="pt-12">
-                {" "}
-                {/* Spacing for Skills Card */}
-                <SkillsCard />
-              </div>
             </div>
 
-            {/* Right Column Wrapper (Profile, Buttons, Education) */}
+            {/* Right Column Wrapper (Profile, Buttons, Skills & Education Row) */}
             <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-8 items-center md:items-stretch">
               <ProfileSection />
               <div className="flex flex-col space-y-4 w-full items-center md:items-stretch">
@@ -293,7 +296,15 @@ export default function AboutPage() {
                   </Link>
                 </Button>
               </div>
-              <EducationCard />
+              {/* Skills and Education Row */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="h-full">
+                  <SkillsCard />
+                </div>
+                <div className="h-full">
+                  <EducationCard />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -310,7 +321,7 @@ export default function AboutPage() {
       <PageBackground />
       <div className="container py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-          {/* Left Column (About Me text, Skills) */}
+          {/* Left Column (About Me text) */}
           <div className="md:col-span-2 space-y-6 order-2 md:order-1">
             <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
               <SectionTitle as="h1">About Me</SectionTitle>
@@ -332,31 +343,16 @@ export default function AboutPage() {
                 {paragraph}
               </motion.p>
             ))}
-            <motion.div
-              className="pt-12" // Spacing for Skills Card
-              variants={skillsCardLeftVariant}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              <SkillsCard />
-            </motion.div>
           </div>
 
-          {/* Right Column Wrapper (Profile, Buttons, Education) */}
+          {/* Right Column Wrapper (Profile, Buttons, Skills & Education Row) */}
           <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-8 items-center md:items-stretch">
-            <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
+            <motion.div variants={profileVariant} initial="hidden" animate="visible" exit="exit">
               <ProfileSection />
             </motion.div>
 
             <div className="flex flex-col space-y-4 w-full items-center md:items-stretch">
-              <motion.div
-                variants={resumeButtonRightVariant}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="w-full"
-              >
+              <motion.div variants={button1Variant} initial="hidden" animate="visible" exit="exit" className="w-full">
                 <Button asChild size="lg" className="font-medium text-base w-full sm:w-auto md:w-full">
                   <Link href="/resume.pdf" download>
                     <Download className="mr-2 h-5 w-5" />
@@ -364,13 +360,7 @@ export default function AboutPage() {
                   </Link>
                 </Button>
               </motion.div>
-              <motion.div
-                variants={projectsButtonRightVariant}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="w-full"
-              >
+              <motion.div variants={button2Variant} initial="hidden" animate="visible" exit="exit" className="w-full">
                 <Button
                   asChild
                   variant="outline"
@@ -385,9 +375,27 @@ export default function AboutPage() {
               </motion.div>
             </div>
 
-            <motion.div variants={educationCardVariant} initial="hidden" animate="visible" exit="exit">
-              <EducationCard />
-            </motion.div>
+            {/* Skills and Education Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <motion.div
+                className="h-full"
+                variants={leftCardInPairVariant}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <SkillsCard />
+              </motion.div>
+              <motion.div
+                className="h-full"
+                variants={rightCardInPairVariant}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <EducationCard />
+              </motion.div>
+            </div>
           </div>
         </div>
 
@@ -395,7 +403,7 @@ export default function AboutPage() {
           className="mt-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }} // Delay for BookingCTA
+          transition={{ duration: 0.5, delay: 0.7 }} // Adjusted delay for BookingCTA
         >
           <BookingCTA />
         </motion.div>
