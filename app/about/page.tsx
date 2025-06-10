@@ -259,7 +259,7 @@ export default function AboutPage() {
             {/* Right Column Wrapper */}
             <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-6">
               {/* Profile + Skills Group */}
-              <div className="flex flex-col space-y-6 md:space-y-4">
+              <div className="flex flex-col space-y-6 md:space-y-6">
                 {" "}
                 {/* Adjusted spacing here */}
                 <ProfileSection />
@@ -319,7 +319,7 @@ export default function AboutPage() {
           {/* Right Column Wrapper */}
           <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-6">
             {/* Profile + Skills Group */}
-            <div className="flex flex-col space-y-6 md:space-y-4">
+            <div className="flex flex-col space-y-6 md:space-y-6">
               {" "}
               {/* Adjusted spacing here */}
               <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
