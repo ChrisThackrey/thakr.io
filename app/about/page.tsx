@@ -145,7 +145,7 @@ export default function AboutPage() {
   }
 
   const ProfileSection = () => (
-    <div className="flex flex-col items-center mb-8">
+    <div className="flex flex-col items-start mb-8">
       {" "}
       {/* Adjusted bottom margin */}
       <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-primary/20 shadow-lg mb-6">
