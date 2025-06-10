@@ -140,7 +140,7 @@ export default function AboutPage() {
   }
 
   const ProfileSection = () => (
-    <div className="flex flex-col items-center mb-8">
+    <div className="flex flex-col items-center mb-6">
       <Avatar className="w-40 h-40 md:w-48 md:h-48 border-4 border-primary/20 shadow-lg mb-8">
         {" "}
         {/* Increased size & mb */}
