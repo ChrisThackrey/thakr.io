@@ -16,7 +16,7 @@ interface EducationTimelineProps {
 
 const CARD_WIDTH_SM = 320
 const CARD_WIDTH_MD = 350
-const CARD_GAP = 16 // space-x-4
+const CARD_GAP = 16 // Corresponds to space-x-4
 
 export function EducationTimeline({ items }: EducationTimelineProps) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -29,9 +29,13 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
   useEffect(() => {
     const calculateConstraints = () => {
       if (containerRef.current && draggableRef.current) {
-        const containerWidth = containerRef.current.offsetWidth
+        const containerWidth = containerRef.current.clientWidth // Use clientWidth
         const draggableWidth = draggableRef.current.scrollWidth
-        const newLeftConstraint = -Math.max(0, draggableWidth - containerWidth)
+
+        // Calculate left constraint: Math.min(0, containerWidth - draggableWidth)
+        // This ensures that you can't drag beyond the start (x=0)
+        // and you can't drag beyond the end (content fully visible)
+        const newLeftConstraint = Math.min(0, containerWidth - draggableWidth)
         setDragConstraints({ left: newLeftConstraint, right: 0 })
       }
     }
@@ -45,6 +49,7 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
     const unsubscribeX = x.onChange((latestX) => {
       let currentCardWidth = CARD_WIDTH_SM
       if (window.innerWidth >= 768) {
+        // md breakpoint
         currentCardWidth = CARD_WIDTH_MD
       }
       const cardWidthWithGap = currentCardWidth + CARD_GAP
@@ -55,15 +60,17 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
   }, [x, items.length])
 
   const handleStepClick = (index: number) => {
-    if (!draggableRef.current) return
+    if (!draggableRef.current || !containerRef.current) return
 
     let currentCardWidth = CARD_WIDTH_SM
     if (window.innerWidth >= 768) {
+      // md breakpoint
       currentCardWidth = CARD_WIDTH_MD
     }
     const cardWidthWithGap = currentCardWidth + CARD_GAP
     const newX = -index * cardWidthWithGap
 
+    // Ensure newX is within calculated drag constraints
     const clampedX = Math.max(dragConstraints.left, Math.min(dragConstraints.right, newX))
 
     animate(x, clampedX, {
@@ -75,6 +82,8 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
 
   return (
     <div className="relative py-4">
+      {" "}
+      {/* This outer div still takes full grid cell width */}
       <div className="flex justify-between items-center mb-6 px-1">
         <h2 className="text-3xl font-bold tracking-tight">Education</h2>
         <Button asChild variant="outline" size="sm">
@@ -84,7 +93,6 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
           </Link>
         </Button>
       </div>
-
       <div className="mb-8 flex items-center justify-center px-2">
         <div className="flex items-center">
           {items.map((_, i) => (
@@ -111,13 +119,16 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
           ))}
         </div>
       </div>
-
-      <div ref={containerRef} className="overflow-hidden cursor-grab active:cursor-grabbing px-1">
+      {/* This div is now narrower and centered within the grid cell */}
+      <div
+        ref={containerRef}
+        className="overflow-hidden cursor-grab active:cursor-grabbing mx-auto max-w-xl px-1" // Reduced width and centered
+      >
         <motion.div
           ref={draggableRef}
           drag="x"
           dragConstraints={dragConstraints}
-          className="flex space-x-4 pb-4" // Added pb-4 for shadow visibility
+          className="flex space-x-4 pb-4"
           style={{ x }}
         >
           {items.map((item, index) => (
