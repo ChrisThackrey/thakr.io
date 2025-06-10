@@ -16,9 +16,11 @@ export default function HomePage() {
     <PageTransition>
       <PageBackground />
       <Hero />
-      <div className="container mx-auto max-w-4xl px-4 py-16 md:py-24">
+      {/* Profile Section */}
+      <div className="container mx-auto max-w-4xl py-16 md:py-24 px-4">
         <ProfileSection />
       </div>
+      {/* End Profile Section */}
       <div className="container mx-auto max-w-4xl py-16 md:py-24 px-4">
         <SectionTitle as="h2" className="mb-12">
           Recent Work & Experience
