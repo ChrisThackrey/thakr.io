@@ -10,8 +10,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { BookingCTA } from "@/components/booking-cta"
 import { ColoredTag } from "@/components/colored-tag"
-import { technicalSkills, education } from "@/lib/experience-data" // Import education data
-import { EducationTimeline } from "@/components/education-timeline" // Import new component
+import { technicalSkills, education } from "@/lib/experience-data"
+import { EducationTimeline } from "@/components/education-timeline"
 
 export default function AboutPage() {
   const prefersReducedMotion = useReducedMotion()
@@ -120,6 +120,7 @@ export default function AboutPage() {
   }
 
   const bottomCard1Variant = {
+    // For Skills Card
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -138,6 +139,7 @@ export default function AboutPage() {
   }
 
   const bottomCard2Variant = {
+    // For EducationTimeline section
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -208,8 +210,6 @@ export default function AboutPage() {
       </CardContent>
     </Card>
   )
-
-  // EducationCard component is no longer needed here
 
   if (prefersReducedMotion) {
     return (
@@ -350,6 +350,8 @@ export default function AboutPage() {
           <motion.div variants={bottomCard1Variant} initial="hidden" animate="visible" exit="exit">
             <SkillsCard />
           </motion.div>
+          {/* The EducationTimeline is now a section, not a card, so it doesn't need h-full. 
+              The motion.div wrapper handles its animation. */}
           <motion.div variants={bottomCard2Variant} initial="hidden" animate="visible" exit="exit">
             <EducationTimeline items={education} />
           </motion.div>
