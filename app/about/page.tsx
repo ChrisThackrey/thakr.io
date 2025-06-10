@@ -38,12 +38,12 @@ export default function AboutPage() {
     },
   ]
 
-  // Base animation variants - simple fade
-  const fadeIn = {
+  // Base animation variants - simple fade for the title
+  const titleFadeIn = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { duration: 0.6 },
+      transition: { duration: 0.6, delay: 0.1 }, // Slight delay for title
     },
     exit: {
       opacity: 0,
@@ -57,7 +57,7 @@ export default function AboutPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
+      transition: { duration: 0.5, ease: "easeOut", delay: 0 }, // Starts first in right col
     },
     exit: {
       opacity: 0,
@@ -73,7 +73,7 @@ export default function AboutPage() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1 + 0.2, // Adjusted delay slightly
+        delay: i * 0.1 + 0.3, // Delay after title
         duration: 0.5,
         ease: "easeOut",
       },
@@ -85,15 +85,13 @@ export default function AboutPage() {
     },
   }
 
-  // Skills animation variants - simple fade with slight x movement
   const skillsCardVariants = {
-    // Renamed for clarity
     hidden: { opacity: 0, x: -10 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.2, // Delay after ProfileSection
+        delay: 0.2, // After avatarSocial
         duration: 0.5,
         ease: "easeOut",
       },
@@ -105,15 +103,13 @@ export default function AboutPage() {
     },
   }
 
-  // Education animation variants - simple fade only
   const educationCardVariants = {
-    // Renamed for clarity
-    hidden: { opacity: 0, x: -10 }, // Added x for consistency
+    hidden: { opacity: 0, x: -10 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.4, // Delay after Skills Card
+        delay: 0.4, // After skillsCard
         duration: 0.5,
         ease: "easeOut",
       },
@@ -125,14 +121,13 @@ export default function AboutPage() {
     },
   }
 
-  // Button animation variants - simple fade with slight scale
-  const buttonVariants = {
+  const resumeButtonVariants = {
     hidden: { opacity: 0, scale: 0.98 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        delay: 0.5, // Adjusted delay
+        delay: 0.6, // After last paragraph
         duration: 0.4,
         ease: "easeOut",
       },
@@ -145,9 +140,7 @@ export default function AboutPage() {
   }
 
   const ProfileSection = () => (
-    <div className="flex flex-col items-start mb-8">
-      {" "}
-      {/* Adjusted bottom margin */}
+    <div className="flex flex-col items-center mb-8">
       <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-primary/20 shadow-lg mb-6">
         <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
         <AvatarFallback>CT</AvatarFallback>
@@ -175,7 +168,6 @@ export default function AboutPage() {
     </div>
   )
 
-  // If reduced motion is preferred, use simple fade animations
   if (prefersReducedMotion) {
     return (
       <>
@@ -187,12 +179,11 @@ export default function AboutPage() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <SectionTitle as="h1" className="mb-12">
-            About Me
-          </SectionTitle>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
             <div className="md:col-span-2 space-y-6">
+              <SectionTitle as="h1" className="mb-12">
+                About Me
+              </SectionTitle>
               <p className="text-lg leading-relaxed">
                 I'm Chris Thackrey, a Full-Stack Software Engineer with expertise in modern web technologies. I
                 specialize in building performant, accessible, and beautiful web applications using Next.js, React,
@@ -219,9 +210,7 @@ export default function AboutPage() {
             </div>
 
             <div className="space-y-12">
-              {" "}
-              {/* Right column */}
-              <ProfileSection /> {/* Moved ProfileSection here */}
+              <ProfileSection />
               <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
                 <CardContent className="pt-6">
                   <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Skills</h2>
@@ -287,14 +276,12 @@ export default function AboutPage() {
     <>
       <PageBackground />
       <div className="container py-20 md:py-28">
-        <motion.div className="mb-12" variants={fadeIn} initial="hidden" animate="visible" exit="exit">
-          <SectionTitle as="h1">About Me</SectionTitle>
-        </motion.div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+          {/* Left Column */}
           <div className="md:col-span-2 space-y-6">
-            {" "}
-            {/* Left column */}
+            <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
+              <SectionTitle as="h1">About Me</SectionTitle>
+            </motion.div>
             {[
               "I'm Chris Thackrey, a Full-Stack Software Engineer with expertise in modern web technologies. I specialize in building performant, accessible, and beautiful web applications using Next.js, React, TypeScript, and other cutting-edge tools.",
               "With a background in both software engineering and design, I bring a unique perspective to development projects. My experience spans from leading software architecture to designing complex systems, allowing me to approach problems holistically.",
@@ -312,7 +299,7 @@ export default function AboutPage() {
                 {paragraph}
               </motion.p>
             ))}
-            <motion.div className="pt-6" variants={buttonVariants} initial="hidden" animate="visible" exit="exit">
+            <motion.div className="pt-6" variants={resumeButtonVariants} initial="hidden" animate="visible" exit="exit">
               <Button asChild size="lg" className="font-medium text-base">
                 <Link href="/resume.pdf" download>
                   <Download className="mr-2 h-5 w-5" />
@@ -322,19 +309,17 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
+          {/* Right Column */}
           <div className="space-y-12">
-            {" "}
-            {/* Right column */}
             <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
-              <ProfileSection /> {/* Moved ProfileSection here */}
+              <ProfileSection />
             </motion.div>
             <motion.div variants={skillsCardVariants} initial="hidden" animate="visible" exit="exit">
               <Card className="border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
                 <CardContent className="pt-6">
                   <h2 className="text-2xl font-bold mb-6 pb-2 border-b">Skills</h2>
                   <div className="space-y-6">
-                    {Object.entries(technicalSkills).map(([category, skillList], i) => (
-                      // Removed individual motion.div from skill category for simplicity with card animation
+                    {Object.entries(technicalSkills).map(([category, skillList]) => (
                       <div key={category}>
                         <h3 className="font-semibold text-lg mb-3">{category}</h3>
                         <div className="flex flex-wrap gap-2">
@@ -367,7 +352,6 @@ export default function AboutPage() {
                         details: "Bachelor of Science - Environmental Design, Cum Laude — 2015",
                       },
                     ].map((education, i) => (
-                      // Removed individual motion.div from education item for simplicity with card animation
                       <div key={i}>
                         <h3 className="font-semibold text-lg">{education.school}</h3>
                         <p className="text-base text-muted-foreground mt-1">{education.details}</p>
@@ -384,7 +368,7 @@ export default function AboutPage() {
           className="mt-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }} // Adjusted delay
+          transition={{ duration: 0.5, delay: 0.8 }}
         >
           <BookingCTA />
         </motion.div>
