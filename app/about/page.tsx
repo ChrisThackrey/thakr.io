@@ -88,7 +88,7 @@ export default function AboutPage() {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.2, // Adjusted delay to follow avatarSocial or text
+        delay: 0.1, // Adjusted delay to follow avatarSocial closely
         duration: 0.5,
         ease: "easeOut",
       },
@@ -106,7 +106,7 @@ export default function AboutPage() {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.4, // Adjusted delay
+        delay: 0.3, // Adjusted delay to follow skills card
         duration: 0.5,
         ease: "easeOut",
       },
@@ -138,8 +138,6 @@ export default function AboutPage() {
 
   const ProfileSection = () => (
     <div className="flex flex-col items-center">
-      {" "}
-      {/* Removed bottom margin here */}
       <Avatar className="w-40 h-40 md:w-48 md:h-48 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
         <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
         <AvatarFallback>CT</AvatarFallback>
@@ -258,10 +256,17 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right Column Wrapper (Profile, Skills, Education) */}
-            <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-4">
-              <ProfileSection />
-              <SkillsCard />
+            {/* Right Column Wrapper */}
+            <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-6">
+              {/* Profile + Skills Group */}
+              <div className="flex flex-col space-y-6 md:space-y-2">
+                {" "}
+                {/* Tighter spacing for this group on md+ */}
+                <ProfileSection />
+                <SkillsCard />
+              </div>
+
+              {/* Education Card */}
               <EducationCard />
             </div>
           </div>
@@ -311,14 +316,22 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
-          {/* Right Column Wrapper (Profile, Skills, Education) */}
-          <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-4">
-            <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
-              <ProfileSection />
-            </motion.div>
-            <motion.div variants={skillsCardVariants} initial="hidden" animate="visible" exit="exit">
-              <SkillsCard />
-            </motion.div>
+          {/* Right Column Wrapper */}
+          <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-6">
+            {" "}
+            {/* Overall spacing for items in this column */}
+            {/* Profile + Skills Group */}
+            <div className="flex flex-col space-y-6 md:space-y-2">
+              {" "}
+              {/* Tighter spacing for this group on md+ */}
+              <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
+                <ProfileSection />
+              </motion.div>
+              <motion.div variants={skillsCardVariants} initial="hidden" animate="visible" exit="exit">
+                <SkillsCard />
+              </motion.div>
+            </div>
+            {/* Education Card */}
             <motion.div variants={educationCardVariants} initial="hidden" animate="visible" exit="exit">
               <EducationCard />
             </motion.div>
