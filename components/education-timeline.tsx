@@ -29,12 +29,8 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
   useEffect(() => {
     const calculateConstraints = () => {
       if (containerRef.current && draggableRef.current) {
-        const containerWidth = containerRef.current.clientWidth // Use clientWidth
+        const containerWidth = containerRef.current.clientWidth
         const draggableWidth = draggableRef.current.scrollWidth
-
-        // Calculate left constraint: Math.min(0, containerWidth - draggableWidth)
-        // This ensures that you can't drag beyond the start (x=0)
-        // and you can't drag beyond the end (content fully visible)
         const newLeftConstraint = Math.min(0, containerWidth - draggableWidth)
         setDragConstraints({ left: newLeftConstraint, right: 0 })
       }
@@ -49,7 +45,6 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
     const unsubscribeX = x.onChange((latestX) => {
       let currentCardWidth = CARD_WIDTH_SM
       if (window.innerWidth >= 768) {
-        // md breakpoint
         currentCardWidth = CARD_WIDTH_MD
       }
       const cardWidthWithGap = currentCardWidth + CARD_GAP
@@ -64,13 +59,10 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
 
     let currentCardWidth = CARD_WIDTH_SM
     if (window.innerWidth >= 768) {
-      // md breakpoint
       currentCardWidth = CARD_WIDTH_MD
     }
     const cardWidthWithGap = currentCardWidth + CARD_GAP
     const newX = -index * cardWidthWithGap
-
-    // Ensure newX is within calculated drag constraints
     const clampedX = Math.max(dragConstraints.left, Math.min(dragConstraints.right, newX))
 
     animate(x, clampedX, {
@@ -82,8 +74,6 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
 
   return (
     <div className="relative py-4">
-      {" "}
-      {/* This outer div still takes full grid cell width */}
       <div className="flex justify-between items-center mb-6 px-1">
         <h2 className="text-3xl font-bold tracking-tight">Education</h2>
         <Button asChild variant="outline" size="sm">
@@ -119,15 +109,12 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
           ))}
         </div>
       </div>
-      {/* This div is now narrower and centered within the grid cell */}
-      <div
-        ref={containerRef}
-        className="overflow-hidden cursor-grab active:cursor-grabbing mx-auto max-w-xl px-1" // Reduced width and centered
-      >
+      <div ref={containerRef} className="overflow-hidden cursor-grab active:cursor-grabbing mx-auto max-w-xl px-1">
         <motion.div
           ref={draggableRef}
           drag="x"
           dragConstraints={dragConstraints}
+          dragElasticity={0} // Added this line
           className="flex space-x-4 pb-4"
           style={{ x }}
         >
