@@ -51,7 +51,6 @@ export default function AboutPage() {
   }
 
   const avatarSocialVariants = {
-    // For ProfileSection
     hidden: { opacity: 0, y: -20 },
     visible: {
       opacity: 1,
@@ -83,33 +82,13 @@ export default function AboutPage() {
     },
   }
 
-  // This will now be used for EducationCard (first card after profile)
-  const firstCardVariants = {
+  const rightCardVariant = {
     hidden: { opacity: 0, x: -10 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.1, // Earlier delay for the first card
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-    exit: {
-      opacity: 0,
-      x: -5,
-      transition: { duration: 0.3, ease: "easeIn" },
-    },
-  }
-
-  // This will now be used for SkillsCard (second card after profile)
-  const secondCardVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: 0.3, // Later delay for the second card
+        delay: 0.2,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -135,6 +114,24 @@ export default function AboutPage() {
     exit: {
       opacity: 0,
       scale: 0.98,
+      transition: { duration: 0.3, ease: "easeIn" },
+    },
+  }
+
+  const skillsCardLeftVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.7, // After the resume button
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -10,
       transition: { duration: 0.3, ease: "easeIn" },
     },
   }
@@ -228,10 +225,9 @@ export default function AboutPage() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Changed to md:grid-cols-5 */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-12 lg:gap-16">
-            {/* Left Column (About Me text) - Changed to md:col-span-3 */}
-            <div className="md:col-span-3 space-y-6 order-2 md:order-1">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+            {/* Left Column (About Me text, Resume Button, Skills) */}
+            <div className="md:col-span-2 space-y-6 order-2 md:order-1">
               <SectionTitle as="h1" className="mb-12">
                 About Me
               </SectionTitle>
@@ -258,17 +254,15 @@ export default function AboutPage() {
                   </Link>
                 </Button>
               </div>
+              <div className="pt-12">
+                <SkillsCard />
+              </div>
             </div>
 
-            {/* Right Column Wrapper - Changed to md:col-span-2 md:col-start-4 */}
-            <div className="order-1 md:order-2 md:col-span-2 md:col-start-4 flex flex-col space-y-12 md:space-y-6">
-              {/* Profile + First Card Group (Education) */}
-              <div className="flex flex-col space-y-6 md:space-y-8">
-                <ProfileSection />
-                <EducationCard /> {/* EducationCard is now first */}
-              </div>
-              {/* Second Card (Skills) */}
-              <SkillsCard /> {/* SkillsCard is now second */}
+            {/* Right Column Wrapper (Profile, Education) */}
+            <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-8">
+              <ProfileSection />
+              <EducationCard />
             </div>
           </div>
 
@@ -284,10 +278,9 @@ export default function AboutPage() {
     <>
       <PageBackground />
       <div className="container py-12 md:py-16">
-        {/* Changed to md:grid-cols-5 */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 lg:gap-16">
-          {/* Left Column (About Me text) - Changed to md:col-span-3 */}
-          <div className="md:col-span-3 space-y-6 order-2 md:order-1">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+          {/* Left Column (About Me text, Resume Button, Skills) */}
+          <div className="md:col-span-2 space-y-6 order-2 md:order-1">
             <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
               <SectionTitle as="h1">About Me</SectionTitle>
             </motion.div>
@@ -316,26 +309,24 @@ export default function AboutPage() {
                 </Link>
               </Button>
             </motion.div>
+            <motion.div
+              className="pt-12"
+              variants={skillsCardLeftVariant}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <SkillsCard />
+            </motion.div>
           </div>
 
-          {/* Right Column Wrapper - Changed to md:col-span-2 md:col-start-4 */}
-          <div className="order-1 md:order-2 md:col-span-2 md:col-start-4 flex flex-col space-y-12 md:space-y-6">
-            {/* Profile + First Card Group (Education) */}
-            <div className="flex flex-col space-y-6 md:space-y-8">
-              <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
-                <ProfileSection />
-              </motion.div>
-              <motion.div variants={firstCardVariants} initial="hidden" animate="visible" exit="exit">
-                {" "}
-                {/* EducationCard uses firstCardVariants */}
-                <EducationCard />
-              </motion.div>
-            </div>
-            {/* Second Card (Skills) */}
-            <motion.div variants={secondCardVariants} initial="hidden" animate="visible" exit="exit">
-              {" "}
-              {/* SkillsCard uses secondCardVariants */}
-              <SkillsCard />
+          {/* Right Column Wrapper (Profile, Education) */}
+          <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-8">
+            <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
+              <ProfileSection />
+            </motion.div>
+            <motion.div variants={rightCardVariant} initial="hidden" animate="visible" exit="exit">
+              <EducationCard />
             </motion.div>
           </div>
         </div>
