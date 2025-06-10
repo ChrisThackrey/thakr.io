@@ -19,22 +19,22 @@ export default function AboutPage() {
     {
       name: "GitHub",
       href: "https://github.com/ChrisThackrey",
-      icon: <Github className="h-9 w-9" />, // Increased icon size
+      icon: <Github className="h-9 w-9" />,
     },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/chris-thackrey-015/",
-      icon: <Linkedin className="h-9 w-9" />, // Increased icon size
+      icon: <Linkedin className="h-9 w-9" />,
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/chris_thackrey/",
-      icon: <Instagram className="h-9 w-9" />, // Increased icon size
+      icon: <Instagram className="h-9 w-9" />,
     },
     {
       name: "Email",
       href: "mailto:c.r.thackrey@gmail.com",
-      icon: <Mail className="h-9 w-9" />, // Increased icon size
+      icon: <Mail className="h-9 w-9" />,
     },
   ]
 
@@ -51,6 +51,7 @@ export default function AboutPage() {
   }
 
   const avatarSocialVariants = {
+    // For ProfileSection
     hidden: { opacity: 0, y: -20 },
     visible: {
       opacity: 1,
@@ -82,13 +83,14 @@ export default function AboutPage() {
     },
   }
 
-  const skillsCardVariants = {
+  // This will now be used for EducationCard (first card after profile)
+  const firstCardVariants = {
     hidden: { opacity: 0, x: -10 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.1,
+        delay: 0.1, // Earlier delay for the first card
         duration: 0.5,
         ease: "easeOut",
       },
@@ -100,13 +102,14 @@ export default function AboutPage() {
     },
   }
 
-  const educationCardVariants = {
+  // This will now be used for SkillsCard (second card after profile)
+  const secondCardVariants = {
     hidden: { opacity: 0, x: -10 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.3,
+        delay: 0.3, // Later delay for the second card
         duration: 0.5,
         ease: "easeOut",
       },
@@ -139,8 +142,6 @@ export default function AboutPage() {
   const ProfileSection = () => (
     <div className="flex flex-col items-center">
       <Avatar className="w-56 h-56 md:w-64 md:h-64 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
-        {" "}
-        {/* Increased Avatar size */}
         <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
@@ -149,7 +150,7 @@ export default function AboutPage() {
           <Button
             key={link.name}
             variant="outline"
-            size="lg" // Increased button size
+            size="lg"
             asChild
             className="rounded-full hover:bg-primary/10 transition-colors"
           >
@@ -227,9 +228,10 @@ export default function AboutPage() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-            {/* Left Column (About Me text) */}
-            <div className="md:col-span-2 space-y-6 order-2 md:order-1">
+          {/* Changed to md:grid-cols-5 */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-12 lg:gap-16">
+            {/* Left Column (About Me text) - Changed to md:col-span-3 */}
+            <div className="md:col-span-3 space-y-6 order-2 md:order-1">
               <SectionTitle as="h1" className="mb-12">
                 About Me
               </SectionTitle>
@@ -258,16 +260,15 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right Column Wrapper */}
-            <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-6">
-              {/* Profile + Skills Group */}
+            {/* Right Column Wrapper - Changed to md:col-span-2 md:col-start-4 */}
+            <div className="order-1 md:order-2 md:col-span-2 md:col-start-4 flex flex-col space-y-12 md:space-y-6">
+              {/* Profile + First Card Group (Education) */}
               <div className="flex flex-col space-y-6 md:space-y-8">
                 <ProfileSection />
-                <SkillsCard />
+                <EducationCard /> {/* EducationCard is now first */}
               </div>
-
-              {/* Education Card */}
-              <EducationCard />
+              {/* Second Card (Skills) */}
+              <SkillsCard /> {/* SkillsCard is now second */}
             </div>
           </div>
 
@@ -283,9 +284,10 @@ export default function AboutPage() {
     <>
       <PageBackground />
       <div className="container py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-          {/* Left Column (About Me text) */}
-          <div className="md:col-span-2 space-y-6 order-2 md:order-1">
+        {/* Changed to md:grid-cols-5 */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 lg:gap-16">
+          {/* Left Column (About Me text) - Changed to md:col-span-3 */}
+          <div className="md:col-span-3 space-y-6 order-2 md:order-1">
             <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
               <SectionTitle as="h1">About Me</SectionTitle>
             </motion.div>
@@ -316,20 +318,24 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
-          {/* Right Column Wrapper */}
-          <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-6">
-            {/* Profile + Skills Group */}
+          {/* Right Column Wrapper - Changed to md:col-span-2 md:col-start-4 */}
+          <div className="order-1 md:order-2 md:col-span-2 md:col-start-4 flex flex-col space-y-12 md:space-y-6">
+            {/* Profile + First Card Group (Education) */}
             <div className="flex flex-col space-y-6 md:space-y-8">
               <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
                 <ProfileSection />
               </motion.div>
-              <motion.div variants={skillsCardVariants} initial="hidden" animate="visible" exit="exit">
-                <SkillsCard />
+              <motion.div variants={firstCardVariants} initial="hidden" animate="visible" exit="exit">
+                {" "}
+                {/* EducationCard uses firstCardVariants */}
+                <EducationCard />
               </motion.div>
             </div>
-            {/* Education Card */}
-            <motion.div variants={educationCardVariants} initial="hidden" animate="visible" exit="exit">
-              <EducationCard />
+            {/* Second Card (Skills) */}
+            <motion.div variants={secondCardVariants} initial="hidden" animate="visible" exit="exit">
+              {" "}
+              {/* SkillsCard uses secondCardVariants */}
+              <SkillsCard />
             </motion.div>
           </div>
         </div>
