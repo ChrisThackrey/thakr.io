@@ -88,7 +88,7 @@ export default function AboutPage() {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.1, // Adjusted delay to follow avatarSocial closely
+        delay: 0.1,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -106,7 +106,7 @@ export default function AboutPage() {
       opacity: 1,
       x: 0,
       transition: {
-        delay: 0.3, // Adjusted delay to follow skills card
+        delay: 0.3,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -259,9 +259,9 @@ export default function AboutPage() {
             {/* Right Column Wrapper */}
             <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-6">
               {/* Profile + Skills Group */}
-              <div className="flex flex-col space-y-6 md:space-y-2">
+              <div className="flex flex-col space-y-6 md:space-y-4">
                 {" "}
-                {/* Tighter spacing for this group on md+ */}
+                {/* Adjusted spacing here */}
                 <ProfileSection />
                 <SkillsCard />
               </div>
@@ -318,12 +318,10 @@ export default function AboutPage() {
 
           {/* Right Column Wrapper */}
           <div className="order-1 md:order-2 md:col-start-3 flex flex-col space-y-12 md:space-y-6">
-            {" "}
-            {/* Overall spacing for items in this column */}
             {/* Profile + Skills Group */}
-            <div className="flex flex-col space-y-6 md:space-y-2">
+            <div className="flex flex-col space-y-6 md:space-y-4">
               {" "}
-              {/* Tighter spacing for this group on md+ */}
+              {/* Adjusted spacing here */}
               <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
                 <ProfileSection />
               </motion.div>
