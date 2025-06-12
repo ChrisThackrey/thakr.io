@@ -112,6 +112,16 @@ export function Timeline({ items }: TimelineProps) {
           const lineExtensionValuePx = DOT_TOP_OFFSET // Now 2px
           const lineExtensionRem = `${lineExtensionValuePx / 16}rem` // 0.125rem
 
+          const currentIconCenterY = DOT_TOP_OFFSET + currentIconHeight / 2
+          const marginBottomPx = 24 // Corresponds to Tailwind's mb-6 (1.5rem * 16px/rem)
+          let nextIconCenterYOffsetPx = 0
+
+          if (displayIndex < displayList.length - 1) {
+            const nextDispItem = displayList[displayIndex + 1]
+            const nextIconHeight = nextDispItem.type === "work" ? WORK_ICON_HEIGHT : PROJECT_ICON_HEIGHT
+            nextIconCenterYOffsetPx = DOT_TOP_OFFSET + nextIconHeight / 2
+          }
+
           return (
             <motion.div
               key={dispItem.id}
@@ -122,7 +132,7 @@ export function Timeline({ items }: TimelineProps) {
                 <motion.div
                   layout
                   className={`absolute left-[calc(theme(spacing.12)/2)] transform -translate-x-1/2 z-10 flex flex-shrink-0 items-center justify-center rounded-full border-2 bg-background
-                  ${isWorkItem ? "border-primary h-6 w-6" : "border-slate-400 dark:border-slate-600 h-5 w-5"}`}
+                ${isWorkItem ? "border-primary h-6 w-6" : "border-slate-400 dark:border-slate-600 h-5 w-5"}`}
                   style={{ top: `${DOT_TOP_OFFSET}px` }} // Icon positioned 2px from top
                 >
                   {isWorkItem ? (
@@ -137,8 +147,8 @@ export function Timeline({ items }: TimelineProps) {
                     className={`absolute left-[calc(theme(spacing.12)/2-1px)] ${isWorkItem ? "w-0.5 bg-primary/50" : "w-0.5 bg-slate-300 dark:bg-slate-700"}`}
                     style={{
                       transformOrigin: "top",
-                      top: `${lineStartY}px`, // Line starts at the bottom of the current icon
-                      height: `calc(100% - ${lineStartY}px + ${lineExtensionRem})`, // Extends to top of next icon
+                      top: `${currentIconCenterY}px`,
+                      height: `calc(100% - ${currentIconCenterY}px + ${marginBottomPx}px + ${nextIconCenterYOffsetPx}px)`,
                     }}
                     initial={{ scaleY: 0 }}
                     animate={{ scaleY: 1 }}
