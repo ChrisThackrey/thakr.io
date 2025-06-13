@@ -176,7 +176,7 @@ export default function AboutPage() {
               <ProfileSection />
               <div className="flex flex-col space-y-4 w-full items-center md:items-stretch">
                 <Button asChild size="lg" className="font-medium text-base w-full sm:w-auto md:w-full">
-                  <Link href="/resume.pdf" download>
+                  <Link href="/api/download-resume" download="Chris_Thackrey_Resume.pdf">
                     <Download className="mr-2 h-5 w-5" />
                     Download Resume
                   </Link>
@@ -257,7 +257,7 @@ export default function AboutPage() {
                 className="w-full"
               >
                 <Button asChild size="lg" className="font-medium text-base w-full sm:w-auto md:w-full">
-                  <Link href="/resume.pdf" download>
+                  <Link href="/api/download-resume" download="Chris_Thackrey_Resume.pdf">
                     <Download className="mr-2 h-5 w-5" />
                     Download Resume
                   </Link>
