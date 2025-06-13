@@ -16,24 +16,22 @@ interface DisplayListItem {
   id: string
   type: "work" | "project"
   data: TimelineItemData | Project
-  originalIndex?: number
-  projectIndex?: number
-  isFirstInGroup?: boolean
-  isLastInGroup?: boolean
+  originalIndex?: number // Index in the original `items` array, for work items
+  projectIndex?: number // Index within a work item's projects array
+  isFirstInGroup?: boolean // Is this the first project in its group?
+  isLastInGroup?: boolean // Is this the last project in its group?
 }
 
-const DOT_TOP_OFFSET = 2 // Icons positioned 2px from the top
+const DOT_TOP_OFFSET = 2 // Icons positioned 2px from the top of their card alignment area
 const PROJECT_ICON_HEIGHT = 20 // Corresponds to h-5 (20px)
 const WORK_ICON_HEIGHT = 24 // Corresponds to h-6 (24px)
-
-const SPACE_BELOW_ICON = 0 // Line starts exactly at the bottom of the icon
 
 export function Timeline({ items }: TimelineProps) {
   const [expandedWorkItems, setExpandedWorkItems] = useState<Record<number, boolean>>(() => {
     const initialState: Record<number, boolean> = {}
     items.forEach((item, index) => {
       if (item.projects && item.projects.length > 0) {
-        initialState[index] = true
+        initialState[index] = true // Default to expanded if projects exist
       }
     })
     return initialState
@@ -74,14 +72,10 @@ export function Timeline({ items }: TimelineProps) {
       <AnimatePresence initial={false} mode="popLayout">
         {displayList.map((dispItem, displayIndex) => {
           const isWorkItem = dispItem.type === "work"
-          const itemData = dispItem.data as TimelineItemData
-          const projectData = dispItem.data as Project
-          const isParentWorkItemExpanded =
-            dispItem.originalIndex !== undefined ? expandedWorkItems[dispItem.originalIndex] : false
+          const itemData = dispItem.data as TimelineItemData // Cast for work items
+          const projectData = dispItem.data as Project // Cast for project items
 
           const currentIconHeight = isWorkItem ? WORK_ICON_HEIGHT : PROJECT_ICON_HEIGHT
-          // lineStartY is now the exact vertical position of the bottom of the current icon
-          const lineStartY = DOT_TOP_OFFSET + currentIconHeight + SPACE_BELOW_ICON
 
           const projectItemAnimation = {
             layout: "position" as const,
@@ -99,28 +93,49 @@ export function Timeline({ items }: TimelineProps) {
               transition: { opacity: { duration: 0.15 }, height: { duration: 0.2 }, y: { duration: 0.2 } },
             },
           }
-
           const workItemAnimation = { layout: "position" as const }
           const itemWrapperClass = isWorkItem ? "pl-12" : "pl-12 ml-6 md:ml-10 overflow-hidden"
 
-          const shouldDrawLine =
-            displayIndex < displayList.length - 1 &&
-            ((isWorkItem && !isParentWorkItemExpanded) || (!isWorkItem && !dispItem.isLastInGroup))
+          let shouldDrawLine = false
+          let lineClass = "" // Will be set if shouldDrawLine is true
 
-          // Line extends to reach the TOP of the next icon.
-          // The extension needed is exactly DOT_TOP_OFFSET.
-          const lineExtensionValuePx = DOT_TOP_OFFSET // Now 2px
-          const lineExtensionRem = `${lineExtensionValuePx / 16}rem` // 0.125rem
+          const nextItem = displayIndex < displayList.length - 1 ? displayList[displayIndex + 1] : null
 
-          const currentIconCenterY = DOT_TOP_OFFSET + currentIconHeight / 2
-          const marginBottomPx = 24 // Corresponds to Tailwind's mb-6 (1.5rem * 16px/rem)
-          let nextIconCenterYOffsetPx = 0
+          if (nextItem) {
+            // A line can only be drawn if there's a subsequent item
+            if (isWorkItem) {
+              const workData = itemData // Already TimelineItemData
+              const isExpanded = expandedWorkItems[dispItem.originalIndex!]
+              const hasProjects = workData.projects && workData.projects.length > 0
 
-          if (displayIndex < displayList.length - 1) {
-            const nextDispItem = displayList[displayIndex + 1]
-            const nextIconHeight = nextDispItem.type === "work" ? WORK_ICON_HEIGHT : PROJECT_ICON_HEIGHT
-            nextIconCenterYOffsetPx = DOT_TOP_OFFSET + nextIconHeight / 2
+              if (isExpanded && hasProjects) {
+                // Per the rule, if a work item is expanded to show its projects,
+                // it should not draw a connecting line downwards itself.
+                shouldDrawLine = false
+              } else {
+                // Work item is collapsed OR has no projects: line connects to the *next work item* if it exists
+                if (nextItem.type === "work") {
+                  shouldDrawLine = true
+                  lineClass = "w-0.5 bg-primary/50"
+                }
+              }
+            } else {
+              // Current item is a Project
+              // A project item only draws a line if it's NOT the last in its group
+              // AND the next item is another project in the same group.
+              if (!dispItem.isLastInGroup && nextItem.type === "project") {
+                // Ensure originalIndex matches, meaning they belong to the same parent work item
+                if (dispItem.originalIndex === nextItem.originalIndex) {
+                  shouldDrawLine = true
+                  lineClass = "w-0.5 bg-slate-300 dark:bg-slate-700"
+                }
+              }
+              // If dispItem.isLastInGroup is true, shouldDrawLine remains false for projects,
+              // fulfilling the rule that the last project in a group does not draw a line.
+            }
           }
+
+          const marginBottomPx = 24 // Corresponds to Tailwind's mb-6 (1.5rem * 16px/rem)
 
           return (
             <motion.div
@@ -132,8 +147,8 @@ export function Timeline({ items }: TimelineProps) {
                 <motion.div
                   layout
                   className={`absolute left-[calc(theme(spacing.12)/2)] transform -translate-x-1/2 z-10 flex flex-shrink-0 items-center justify-center rounded-full border-2 bg-background
-                ${isWorkItem ? "border-primary h-6 w-6" : "border-slate-400 dark:border-slate-600 h-5 w-5"}`}
-                  style={{ top: `${DOT_TOP_OFFSET}px` }} // Icon positioned 2px from top
+          ${isWorkItem ? "border-primary h-6 w-6" : "border-slate-400 dark:border-slate-600 h-5 w-5"}`}
+                  style={{ top: `${DOT_TOP_OFFSET}px` }}
                 >
                   {isWorkItem ? (
                     <BriefcaseIcon className="h-3 w-3 text-primary" />
@@ -141,23 +156,28 @@ export function Timeline({ items }: TimelineProps) {
                     <FolderKanbanIcon className="h-2.5 w-2.5 text-slate-500 dark:text-slate-400" />
                   )}
                 </motion.div>
+
+                {/* Line rendering logic */}
                 {shouldDrawLine && (
                   <motion.div
+                    key={`line-for-${dispItem.id}`}
                     layout
-                    className={`absolute left-[calc(theme(spacing.12)/2-1px)] ${isWorkItem ? "w-0.5 bg-primary/50" : "w-0.5 bg-slate-300 dark:bg-slate-700"}`}
+                    className={`absolute left-[calc(theme(spacing.12)/2-1px)] ${lineClass}`}
                     style={{
                       transformOrigin: "top",
-                      top: `${currentIconCenterY}px`,
-                      height: `calc(100% - ${currentIconCenterY}px + ${marginBottomPx}px + ${nextIconCenterYOffsetPx}px)`,
+                      top: `${DOT_TOP_OFFSET + currentIconHeight}px`,
+                      height: `calc(100% - ${currentIconHeight}px + ${marginBottomPx}px)`,
                     }}
                     initial={{ scaleY: 0 }}
-                    animate={{ scaleY: 1 }}
-                    exit={{ scaleY: 0 }}
+                    animate={{ scaleY: 1, transition: { duration: 0.2 } }}
+                    exit={{ scaleY: 0, transition: { duration: 0.15 } }}
                   />
                 )}
               </div>
 
-              <Card className={`mb-6 w-full shadow-sm ...`}>
+              <Card
+                className={`mb-6 w-full shadow-sm hover:shadow-md transition-shadow duration-300 ${isWorkItem ? "bg-card" : "bg-card/80 dark:bg-card/60"}`}
+              >
                 {isWorkItem ? (
                   <>
                     <CardHeader className="pb-3">
