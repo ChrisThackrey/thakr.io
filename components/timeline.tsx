@@ -146,8 +146,8 @@ export function Timeline({ items }: TimelineProps) {
               <div className="absolute left-0 top-0 flex h-full w-12 flex-col items-center">
                 <motion.div
                   layout
-                  className={`absolute left-[calc(theme(spacing.12)/2)] transform -translate-x-1/2 z-10 flex flex-shrink-0 items-center justify-center rounded-full border-2 bg-background
-          ${isWorkItem ? "border-primary h-6 w-6" : "border-slate-400 dark:border-slate-600 h-5 w-5"}`}
+                  className={`absolute left-1/2 transform -translate-x-1/2 z-10 flex flex-shrink-0 items-center justify-center rounded-full border-2 bg-background
+        ${isWorkItem ? "border-primary h-6 w-6" : "border-slate-400 dark:border-slate-600 h-5 w-5"}`}
                   style={{ top: `${DOT_TOP_OFFSET}px` }}
                 >
                   {isWorkItem ? (
@@ -162,7 +162,7 @@ export function Timeline({ items }: TimelineProps) {
                   <motion.div
                     key={`line-for-${dispItem.id}`}
                     layout
-                    className={`absolute left-[calc(theme(spacing.12)/2-1px)] ${lineClass}`}
+                    className={`absolute left-1/2 transform -translate-x-1/2 ${lineClass}`}
                     style={{
                       transformOrigin: "top",
                       top: `${DOT_TOP_OFFSET + currentIconHeight}px`,
