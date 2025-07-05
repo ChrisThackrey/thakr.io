@@ -1,12 +1,10 @@
-import { ContactForm } from "@/components/contact-form"
 import { Mail, MapPin, Phone } from "lucide-react"
 import { PageWrapper } from "@/components/page-wrapper"
 import { SectionTitle } from "@/components/section-title"
+import ContactFormWrapper from "./contact-form-wrapper"
 
 export default function ContactPage() {
-  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
-
-  if (!siteKey) {
+  if (!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) {
     return (
       <PageWrapper>
         <div className="container mx-auto px-4 py-16 sm:py-24 text-center">
@@ -30,7 +28,7 @@ export default function ContactPage() {
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="md:col-span-2">
-            <ContactForm siteKey={siteKey} />
+            <ContactFormWrapper />
           </div>
           <div className="space-y-8">
             <h3 className="text-2xl font-semibold text-foreground">Contact Information</h3>
