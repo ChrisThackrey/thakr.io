@@ -46,7 +46,7 @@ async function postContactForm(data: ContactFormInputs) {
   }
 }
 
-export function ContactForm() {
+export function ContactForm({ siteKey }: { siteKey: string }) {
   const { toast } = useToast()
   const [isPending, startTransition] = useTransition()
   const [formError, setFormError] = useState<string | null>(null)
@@ -172,7 +172,7 @@ export function ContactForm() {
         control={control}
         render={({ field }) => (
           <Turnstile
-            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+            siteKey={siteKey}
             onSuccess={(token) => {
               setValue("turnstileToken", token, { shouldValidate: true })
             }}
