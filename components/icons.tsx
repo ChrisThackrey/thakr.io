@@ -104,6 +104,14 @@ export const Icons: Record<string, LucideIcon> = {
   moveUp: MoveUp,
   moveDown: MoveDown,
 
+  /* ui (aliases for legacy components) */
+  Edit: Edit,
+  Trash: Trash2,
+  MoveUp: MoveUp,
+  MoveDown: MoveDown,
+  Plus: Plus,
+  Spinner: Loader2,
+
   // navigation & content
   home: Home,
   user: User,
