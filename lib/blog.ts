@@ -146,12 +146,13 @@ export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
 }
 
 export const getBlogPostsByTag = (tag: string): BlogPost[] => {
-  return blogPosts.filter((post) => post.tags && post.tags.includes(tag))
+  // The `BlogPost` type requires `tags`, so we can safely access it.
+  return blogPosts.filter((post) => post.tags.includes(tag))
 }
 
 // Add the missing export
 export const getPostsByTag = (tag: string): BlogPost[] => {
-  return blogPosts.filter((post) => post.tags && post.tags.includes(tag))
+  return blogPosts.filter((post) => post.tags.includes(tag))
 }
 
 export const getBlogPostsBySeries = (series: string): BlogPost[] => {
@@ -163,9 +164,8 @@ export const getBlogPostsBySeries = (series: string): BlogPost[] => {
 export const getAllTags = (): string[] => {
   const allTags = new Set<string>()
   blogPosts.forEach((post) => {
-    if (post.tags) {
-      post.tags.forEach((tag) => allTags.add(tag))
-    }
+    // The `BlogPost` type requires `tags`, so we can safely access it.
+    post.tags.forEach((tag) => allTags.add(tag))
   })
   return Array.from(allTags).sort()
 }
@@ -173,11 +173,10 @@ export const getAllTags = (): string[] => {
 export const getTagCount = (): Record<string, number> => {
   const tagCount: Record<string, number> = {}
   blogPosts.forEach((post) => {
-    if (post.tags) {
-      post.tags.forEach((tag) => {
-        tagCount[tag] = (tagCount[tag] || 0) + 1
-      })
-    }
+    // The `BlogPost` type requires `tags`, so we can safely access it.
+    post.tags.forEach((tag) => {
+      tagCount[tag] = (tagCount[tag] || 0) + 1
+    })
   })
   return tagCount
 }
@@ -202,7 +201,8 @@ export const getSeriesBySlug = (slug: string): Series | undefined => {
 
 export const getRelatedPosts = (currentSlug: string, maxPosts = 3): BlogPost[] => {
   const currentPost = getBlogPostBySlug(currentSlug)
-  if (!currentPost || !currentPost.tags) return []
+  // If there's no current post, there are no related posts.
+  if (!currentPost) return []
 
   const postSimilarityScore = new Map<string, number>()
 
@@ -210,13 +210,13 @@ export const getRelatedPosts = (currentSlug: string, maxPosts = 3): BlogPost[] =
 
   otherPosts.forEach((post) => {
     let score = 0
-    if (post.tags) {
-      post.tags.forEach((tag) => {
-        if (currentPost.tags.includes(tag)) {
-          score += 1
-        }
-      })
-    }
+    // The `BlogPost` type requires `tags`, so we can safely access it.
+    post.tags.forEach((tag) => {
+      if (currentPost.tags.includes(tag)) {
+        score += 1
+      }
+    })
+
     if (currentPost.series && post.series && currentPost.series.slug === post.series.slug) {
       score += 2
     }

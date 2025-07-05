@@ -1,4 +1,13 @@
-export const projectsData = [
+export interface Project {
+  title: string
+  description: string
+  tags: string[]
+  demoUrl: string
+  githubUrl: string
+  imageUrl: string
+}
+
+export const projectsData: Project[] = [
   {
     title: "Killer Sudoku",
     description: "A Game Variant Spin on the Classic Sudoku Puzzles.",

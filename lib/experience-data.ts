@@ -1,17 +1,17 @@
-// Define a type for nested projects
+// Define a type for nested projects, making skills required
 export interface Project {
   title: string
   description: string[]
-  skills?: string[]
+  skills: string[]
 }
 
-// Update TimelineItem to include projects
+// Update TimelineItem to include projects and require skills
 export interface TimelineItemData {
   title: string
   date: string
   company: string
   description: string[]
-  skills?: string[]
+  skills: string[]
   projects?: Project[]
 }
 
