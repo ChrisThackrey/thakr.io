@@ -63,6 +63,7 @@ import {
   Layers,
   MoveUp,
   MoveDown,
+  Phone,
 } from "lucide-react"
 
 export type Icon = LucideIcon
@@ -103,19 +104,13 @@ export const Icons: Record<string, LucideIcon> = {
   construction: Construction,
   moveUp: MoveUp,
   moveDown: MoveDown,
-
-  /* ui (aliases for legacy components) */
-  Edit: Edit,
-  Trash: Trash2,
-  MoveUp: MoveUp,
-  MoveDown: MoveDown,
-  Plus: Plus,
-  Spinner: Loader2,
+  phone: Phone,
 
   // navigation & content
   home: Home,
   user: User,
-  contact: MessageSquare,
+  contact: MessageSquare, // Used for the main nav link
+  messageSquare: MessageSquare, // Used for the contact form icon
   briefcase: Briefcase,
   palette: Palette,
   architecture: Building2,
