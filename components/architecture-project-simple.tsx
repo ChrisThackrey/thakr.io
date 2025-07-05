@@ -75,7 +75,7 @@ export function ArchitectureProjectSimple({
           </div>
         </CardContent>
         <CardFooter className="pt-0">
-          <Button asChild className="w-full bg-transparent" variant="outline">
+          <Button asChild className="w-full" variant="outline">
             <Link href={`/architecture/${slug}`} className="flex items-center justify-center">
               View Project
               <motion.div

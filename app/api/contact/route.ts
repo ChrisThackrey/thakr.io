@@ -17,7 +17,6 @@ const contactSchema = z.object({
     .max(1000, { message: "Message must be less than 1000 characters." }),
   inquiryType: z.enum(["Job Opportunity", "Project Proposal", "Collaboration", "General Question"]).optional(),
   website: z.string().max(0, { message: "This field must be empty." }).optional(), // Honeypot field
-  turnstileToken: z.string().min(1),
 })
 
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -34,28 +33,6 @@ const FROM_EMAIL =
     ? process.env.RESEND_FROM_EMAIL
     : "onboarding@resend.dev"
 
-async function verifyTurnstile(token: string, ip: string | undefined) {
-  const secret = process.env.TURNSTILE_SECRET_KEY
-  if (!secret) {
-    throw new Error("TURNSTILE_SECRET_KEY is not set.")
-  }
-
-  const formData = new FormData()
-  formData.append("secret", secret)
-  formData.append("response", token)
-  if (ip) {
-    formData.append("remoteip", ip)
-  }
-
-  const response = await fetch("https://challenges.cloudflare.com/turnstile/v2/siteverify", {
-    method: "POST",
-    body: formData,
-  })
-
-  const data = await response.json()
-  return data.success
-}
-
 export async function POST(request: NextRequest) {
   const ip = request.ip ?? "127.0.0.1"
 
@@ -70,7 +47,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 2. Check for required environment variables
-    if (!process.env.RESEND_API_KEY || !process.env.TURNSTILE_SECRET_KEY) {
+    if (!process.env.RESEND_API_KEY) {
       console.error("Required environment variables are not set.")
       return NextResponse.json(
         { success: false, error: "Server configuration error: Service not available." },
@@ -95,15 +72,9 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const { turnstileToken, name, senderEmail, subject, message, inquiryType } = parsedData.data
+    const { name, senderEmail, subject, message, inquiryType } = parsedData.data
 
-    // 5. Verify CAPTCHA
-    const isTurnstileVerified = await verifyTurnstile(turnstileToken, ip)
-    if (!isTurnstileVerified) {
-      return NextResponse.json({ success: false, error: "CAPTCHA verification failed." }, { status: 403 })
-    }
-
-    // 6. Send email
+    // 5. Send email
     const emailHtml = `
       <h1>New Contact Form Submission</h1>
       <p><strong>From:</strong> ${name} (${senderEmail})</p>
@@ -132,7 +103,7 @@ export async function POST(request: NextRequest) {
     console.log("Email sent successfully:", data)
     return NextResponse.json({ success: true, message: "Email sent successfully!" }, { status: 200 })
   } catch (error) {
-    const errorMsg = error instanceof Error ? error.message : "An unknown server error occurred."
+    const errorMsg = error instanceof Error ? error.message : "An unknown error occurred."
     console.error("Generic Error in /api/contact:", error)
     return NextResponse.json({ success: false, error: errorMsg }, { status: 500 })
   }

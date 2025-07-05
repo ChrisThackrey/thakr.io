@@ -1,5 +1,6 @@
 import type React from "react"
-import type { Metadata } from "next"
+import { Mona_Sans as FontSans } from "next/font/google"
+import localFont from "next/font/local"
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Navigation } from "@/components/navigation"
@@ -10,15 +11,24 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { CustomActionsProvider } from "@/contexts/custom-actions-context"
 import { ChunkErrorHandler } from "@/components/chunk-error-handler"
 import { PageBackground } from "@/components/page-background"
-import { fontSans, fontMono } from "@/lib/fonts"
-import "@/app/globals.css"
+import "@/styles/globals.css"
 import "@/styles/section-animations.css"
 import "@/styles/highlight-animations.css"
 import "@/styles/print.css"
 import "@/styles/background-effects.css"
 import { Suspense } from "react"
 
-export const metadata: Metadata = {
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
+
+const fontHeading = localFont({
+  src: "../assets/fonts/CalSans-SemiBold.woff2",
+  variable: "--font-heading",
+})
+
+export const metadata = {
   title: "Chris Thackrey | Full-Stack Software Engineer",
   description:
     "Personal portfolio and blog of Chris Thackrey, a full-stack software engineer specializing in AI, Next.js, and modern web technologies.",
@@ -40,7 +50,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable, fontMono.variable)}>
+      <head />
+      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable, fontHeading.variable)}>
         <ChunkErrorHandler />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <PageBackground />
