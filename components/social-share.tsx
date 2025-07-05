@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Twitter, Linkedin, Facebook, LinkIcon, Mail, Share2, Check } from "lucide-react"
+import { Icons } from "@/components/icons"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { toast } from "@/hooks/use-toast"
 import { cn } from "@/lib/utils"
@@ -88,11 +88,11 @@ export function SocialShare({
   const buttonVariant = compact ? "ghost" : "outline"
 
   const platformIcons = {
-    twitter: <Twitter size={iconSize} />,
-    linkedin: <Linkedin size={iconSize} />,
-    facebook: <Facebook size={iconSize} />,
-    email: <Mail size={iconSize} />,
-    copy: copied ? <Check size={iconSize} /> : <LinkIcon size={iconSize} />,
+    twitter: <Icons.twitter size={iconSize} />,
+    linkedin: <Icons.linkedin size={iconSize} />,
+    facebook: <Icons.facebook size={iconSize} />,
+    email: <Icons.mail size={iconSize} />,
+    copy: copied ? <Icons.check size={iconSize} /> : <Icons.link size={iconSize} />,
   }
 
   const platformLabels = {
@@ -115,7 +115,7 @@ export function SocialShare({
           aria-label="Share"
         >
           <EnhancedIcon>
-            <Share2 size={iconSize} />
+            <Icons.share size={iconSize} />
           </EnhancedIcon>
           {showLabel && <span className="ml-2">Share</span>}
         </EnhancedButton>

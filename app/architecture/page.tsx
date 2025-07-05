@@ -4,7 +4,6 @@ import dynamic from "next/dynamic"
 import { AnimatedArchitectureSkeleton } from "@/components/skeletons/animated-architecture-skeleton"
 import { BookingCTA } from "@/components/booking-cta"
 import { ErrorBoundary } from "@/components/error-boundary"
-import { Footer } from "@/components/footer"
 import { PageBackground } from "@/components/page-background" // Added import
 
 // Dynamically import the ArchitectureContent component
@@ -40,7 +39,6 @@ export default function ArchitecturePage() {
         </Suspense>
         <BookingCTA />
       </div>
-      <Footer />
     </div>
   )
 }

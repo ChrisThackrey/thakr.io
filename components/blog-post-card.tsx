@@ -2,7 +2,6 @@
 
 import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { ReadingTime } from "@/components/reading-time"
-import { ArrowRight, Layers, Calendar } from "lucide-react"
 import type { BlogPost } from "@/lib/blog"
 import { cn } from "@/lib/utils"
 import { ColoredTag } from "@/components/colored-tag"
@@ -10,6 +9,7 @@ import { EnhancedCard } from "@/components/micro-interactions/enhanced-card"
 import { EnhancedLink } from "@/components/micro-interactions/enhanced-link"
 import { EnhancedIcon } from "@/components/micro-interactions/enhanced-icon"
 import Image from "next/image"
+import { Icons } from "./icons"
 
 interface BlogPostCardProps {
   post: BlogPost
@@ -36,7 +36,7 @@ export function BlogPostCard({ post, highlightTag }: BlogPostCardProps) {
           <div className="space-y-1.5">
             <div className="flex items-center gap-1">
               <EnhancedIcon pulse>
-                <Layers className="h-4 w-4 text-primary" />
+                <Icons.layers className="h-4 w-4 text-primary" />
               </EnhancedIcon>
               <EnhancedLink
                 href={`/blog/series/${post.series.slug}`}
@@ -88,15 +88,15 @@ export function BlogPostCard({ post, highlightTag }: BlogPostCardProps) {
       <CardFooter className="flex justify-between items-center pt-2">
         <div className="flex items-center gap-3">
           <div className="flex items-center text-sm text-muted-foreground">
-            <Calendar className="h-3 w-3 mr-1" />
+            <Icons.calendar className="h-3 w-3 mr-1" />
             <span>{post.date}</span>
           </div>
           {post.estimatedReadingTime && <ReadingTime minutes={post.estimatedReadingTime} showSpeedIndicator={false} />}
         </div>
-        <EnhancedLink href={`/blog/${post.slug}`} className="text-sm font-medium flex items-center group">
+        <EnhancedLink href="/blog" className="text-sm font-medium flex items-center group">
           Read More
           <EnhancedIcon className="ml-1 inline-block">
-            <ArrowRight className="h-4 w-4" />
+            <Icons.arrowRight className="h-4 w-4" />
           </EnhancedIcon>
         </EnhancedLink>
       </CardFooter>

@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Rocket } from "lucide-react"
+import { Icons } from "@/components/icons"
 import { SimpleSpeedReadingModal } from "./simple-speed-reading-modal"
 
 export function SimpleSpeedReadButton() {
@@ -16,7 +16,7 @@ export function SimpleSpeedReadButton() {
         onClick={() => setIsOpen(true)}
         className="bg-primary/10 hover:bg-primary/20 border-primary/20"
       >
-        <Rocket className="h-4 w-4 mr-2" />
+        <Icons.rocket className="h-4 w-4 mr-2" />
         Speed Read
       </Button>
 

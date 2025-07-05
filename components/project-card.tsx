@@ -1,12 +1,10 @@
 "use client"
 
-import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 import Link from "next/link"
-import { ExternalLink, Github } from "lucide-react"
-import { EnhancedCard } from "@/components/micro-interactions/enhanced-card"
-import { EnhancedButton } from "@/components/micro-interactions/enhanced-button"
-import { EnhancedIcon } from "@/components/micro-interactions/enhanced-icon"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Github, ExternalLink } from "lucide-react"
 import { motion } from "framer-motion"
 
 interface ProjectCardProps {
@@ -15,53 +13,64 @@ interface ProjectCardProps {
   tags: string[]
   demoUrl?: string
   githubUrl?: string
+  imageUrl?: string
 }
 
-export function ProjectCard({ title, description, tags, demoUrl, githubUrl }: ProjectCardProps) {
+export function ProjectCard({ title, description, tags, demoUrl, githubUrl, imageUrl }: ProjectCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true, margin: "-50px" }}
+      whileHover={{ y: -5, scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className="h-full group"
     >
-      <EnhancedCard className="flex flex-col h-full overflow-hidden border-border shadow-sm hover:shadow-md transition-all duration-300">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-xl font-bold tracking-tight">{title}</CardTitle>
-          <CardDescription className="text-base mt-2 leading-relaxed">{description}</CardDescription>
-        </CardHeader>
-        <CardContent className="flex-grow pt-2">
-          <div className="flex flex-wrap gap-2 mt-2">
+      <Card className="h-full flex flex-col bg-background/80 backdrop-blur-sm border border-border/30 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+        {imageUrl && (
+          <div className="relative h-48 w-full overflow-hidden">
+            <Image
+              src={imageUrl || "/placeholder.svg"}
+              alt={`Preview image for ${title}`}
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          </div>
+        )}
+        <CardContent className="p-6 flex flex-col flex-grow">
+          <h3 className="text-xl font-bold mb-2">{title}</h3>
+          <p className="text-muted-foreground text-sm mb-4 flex-grow">{description}</p>
+          <div className="flex flex-wrap gap-2 mb-4">
             {tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="micro-badge font-medium text-xs">
+              <Badge key={tag} variant="secondary" className="text-xs">
                 {tag}
               </Badge>
             ))}
           </div>
-        </CardContent>
-        <CardFooter className="flex gap-3 pt-4 border-t border-border/50">
-          {demoUrl && (
-            <EnhancedButton variant="outline" size="sm" asChild className="flex-1">
-              <Link href={demoUrl} target="_blank" rel="noopener noreferrer" className="font-medium">
-                <EnhancedIcon className="mr-2">
-                  <ExternalLink className="h-4 w-4" />
-                </EnhancedIcon>
+          <div className="mt-auto flex items-center gap-4 pt-4 border-t border-border/50">
+            {demoUrl && (
+              <Link
+                href={demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ExternalLink className="mr-2 h-4 w-4" />
                 Demo
               </Link>
-            </EnhancedButton>
-          )}
-          {githubUrl && (
-            <EnhancedButton variant="outline" size="sm" asChild className="flex-1">
-              <Link href={githubUrl} target="_blank" rel="noopener noreferrer" className="font-medium">
-                <EnhancedIcon className="mr-2" rotate>
-                  <Github className="h-4 w-4" />
-                </EnhancedIcon>
+            )}
+            {githubUrl && (
+              <Link
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Github className="mr-2 h-4 w-4" />
                 Code
               </Link>
-            </EnhancedButton>
-          )}
-        </CardFooter>
-      </EnhancedCard>
+            )}
+          </div>
+        </CardContent>
+      </Card>
     </motion.div>
   )
 }

@@ -17,88 +17,78 @@ export interface TimelineItemData {
 
 export const professionalExperience: TimelineItemData[] = [
   {
-    title: "Freelance / Contract Software Engineering",
-    date: "Various Engagements", // Or a suitable date range
-    company: "Self-Employed / Various Clients",
-    description: [
-      "Provided full-stack development services for various clients, focusing on AI integration, web application development, and data solutions.",
-    ],
-    skills: ["Full-Stack Development", "AI Integration", "Project Management", "Client Communication"],
-    projects: [
-      {
-        title: "AI Teaching Application (NCEE)",
-        description: [
-          "Implemented a multiplayer AI chat that responds to all participants with Stream Chat API, OpenAI SDK, and Langgraph.",
-          "Developed a multi-tenant architecture deployed to multiple school districts with a custom automated AWS and Docker admin tool.",
-          "Implemented a templating system to provide custom user prompts and room variables for better AI context and responses.",
-        ],
-        skills: [
-          "AI",
-          "Multiplayer Chat",
-          "Stream Chat API",
-          "OpenAI SDK",
-          "Langgraph",
-          "Multi-tenancy",
-          "AWS",
-          "Docker",
-        ],
-      },
-      {
-        title: "Technosylva Wildfire Risk Analyst",
-        description: [
-          "Implemented a hexagon geo-spatial system with Uber H3 and a custom H3-to-D3 transition layer algorithm for UI interactivity.",
-          "Self-hosted OpenAI models on a secure Azure backend to make safe API calls to private data.",
-          "Created a forecast funnel feature that generated AI-driven risk assessment reports responding to a timeline of mapped events.",
-        ],
-        skills: ["Geo-spatial", "Uber H3", "D3.js", "OpenAI", "Azure", "SaaS"],
-      },
-      {
-        title: "Lineage Final Expense Insurance CRM",
-        description: [
-          "Integrated Google Maps to view leads by geo-spatial clusters and an advanced analytics screen with reactive Nivo Charts.",
-          "Completed an Extract, Transform, Load (ETL) process from a legacy SQL backend into new Supabase DB connections.",
-        ],
-        skills: ["CRM", "Google Maps API", "Nivo Charts", "ETL", "Supabase", "SQL"],
-      },
-    ],
-  },
-  {
     title: "Principal Software Architect",
     date: "2025",
     company: "Silver Bow Technology Group",
     description: [
-      'Led software engineering team and built the core AI functionality for a "version control for reasoning" dev tool - providing AI-driven code-generation, prompt enhancement, architecture strategy, as well as project planning and security features.',
+      'Lead software engineering team and built the core AI functionality for a "version control for reasoning" dev tool providing AI-driven code-generation, prompt enhancement, architecture strategy, as well as project planning and security features.',
     ],
-    skills: ["AI", "Code Generation", "Architecture Strategy", "Project Planning", "Security", "Team Leadership"],
+    skills: ["AI", "Code Generation", "Architecture Strategy", "Team Leadership", "Project Planning", "Security"],
+    projects: [
+      {
+        title: "Rivendell - AI Development and Research Tool",
+        description: [
+          "Implemented a monte-carlo algorithm to run large batches of prompt calls in parallel to various large-language AI models (llms), providing more deterministic outcomes by improving reliable code metrics such as compute and readability.",
+          "Configured OpenAI API and Anthropic API models to match relevant files and open a branch with a deployment in Vercel.",
+          "Built a monte carlo visualizer with ThreeJS to visualise similar response clusters in 3d space.",
+        ],
+        skills: [
+          "Monte Carlo Algorithm",
+          "LLMs",
+          "OpenAI API",
+          "Anthropic API",
+          "Vercel",
+          "ThreeJS",
+          "Data Visualization",
+        ],
+      },
+    ],
   },
   {
     title: "Software Engineer",
     date: "2024-2025",
     company: "Black Flag Design",
     description: [
-      "Contributed full feature code across all five projects in development.",
-      "Researched, scripted, and hosted a podcast series on AI coding trends, Vercel’s development ecosystem and tech trends.",
+      "Contributed code across five projects in simultaneous development, including Lead Developer of an AI codegen application and internal dev tool, subject to a signed NDA.",
+      "Led, scripted, and hosted the ‘AI DIY’ podcast series on AI coding trends, Vercel’s ecosystem and events in the tech industry.",
     ],
-    skills: ["Full-Stack Development", "AI", "Vercel", "Podcasting"],
+    skills: ["Full-Stack Development", "AI", "Vercel", "Podcasting", "NDA Projects"],
+  },
+  {
+    title: "Freelance / Contract Software Engineering",
+    date: "Various Engagements",
+    company: "Various Clients (NDA)",
+    description: [
+      "Delivered full-stack software solutions for multiple clients, focusing on AI-powered applications, data analysis tools, and CRM systems.",
+      "Projects are subject to Non-Disclosure Agreements; details are generalized.",
+    ],
+    skills: ["Full-Stack Development", "AI Integration", "SaaS", "CRM", "ETL", "Client Management"],
     projects: [
       {
-        title: "Unbound - AI Repository Code Generation Application",
+        title: "AI Applications for National Not-for-Profit Education Research Organization*",
         description: [
-          "Led the development of Unbound, a meeting-to-feature codegen application and internal dev tool that wrote AI-generated feature Pull Requests.",
-          "Connects to repositories using Octokit API and vectorizes the codebase to a Supabase DB for performing similarity searches on the embedded file contents.",
-          "Ingests meeting transcripts into a prompt call to OpenAI or Anthropic APIs to find relevant files and implement code changes on a new PR branch.",
-          "Implemented a client-side diff view and a custom node graph of the repository history using React Flow.",
+          "Implemented interactive AI communication tools.",
+          "Deployed a bespoke multi-tenant architecture implementation.",
+          "Designed and implemented interactive interface templates to facilitate AI context and responses.",
         ],
-        skills: [
-          "AI",
-          "Code Generation",
-          "Vector DB",
-          "Supabase",
-          "OpenAI API",
-          "Anthropic API",
-          "Octokit API",
-          "React Flow",
+        skills: ["AI", "Multi-tenancy", "Interactive UI"],
+      },
+      {
+        title: "AI Analysis Tools For International Wildfire Science and Technology Company*",
+        description: [
+          "Implemented unique systems to improve UI interactivity.",
+          "Utilized secured backends to make safe API calls to private data from public sources.",
+          "Created AI-driven assessment tools and forecast features to improve event response times for 20,000+ incidents per year.",
         ],
+        skills: ["SaaS", "AI", "Data Security", "Forecasting"],
+      },
+      {
+        title: "CRM Management App to Handle Insurance Clients and Potential Leads*",
+        description: [
+          "Integrated applications to identify potential market opportunities.",
+          "Completed Extract, Transform, Load (ETL) process from legacy backend into new database connections.",
+        ],
+        skills: ["CRM", "ETL", "Data Integration"],
       },
     ],
   },
@@ -170,16 +160,15 @@ export const technicalSkills = {
     "TypeScript",
     "NextJS",
     "Astro",
-    "SvelteKit",
+    "Svelte",
     "React Hooks + Context API",
     "Redux",
     "JavaScript",
     "D3",
     "Shadcn/ui",
     "TailwindCSS",
-    "Radix UI",
     "ChakraUI",
-    "Vercel v0",
+    "v0",
   ],
   "Back End": [
     "Vercel Serverless Functions",

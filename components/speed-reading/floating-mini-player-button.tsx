@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Rocket } from "lucide-react"
+import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useScrollPosition } from "@/hooks/use-scroll-position"
@@ -47,7 +47,7 @@ export function FloatingMiniPlayerButton({
         onClick={handleOpenReader}
         aria-label="Speed Read"
       >
-        <Rocket className="h-5 w-5" />
+        <Icons.rocket className="h-5 w-5" />
       </Button>
 
       {isOpen && (

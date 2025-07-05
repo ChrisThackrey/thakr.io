@@ -1,52 +1,55 @@
 "use client"
+
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { useTheme } from "next-themes"
 import { useReducedMotion } from "@/hooks/use-reduced-motion"
+import { cn } from "@/lib/utils"
 
+/**
+ * Renders the softly-blurred, gently-moving gradient background that
+ * appears on every page.
+ */
 export function PageBackground() {
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
   const prefersReducedMotion = useReducedMotion()
 
+  // Avoid hydration mismatch
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  // Render a basic background without any dynamic elements initially
   if (!mounted) {
-    return (
-      <div className="fixed inset-0 -z-10 h-full w-full">
-        <div className="absolute inset-0 bg-gray-100 dark:bg-gray-900" />
-      </div>
-    )
+    return <div className="fixed inset-0 -z-50 bg-background" />
   }
 
   const isDark = resolvedTheme === "dark"
+  const imageSrc = "/images/light-background-01.jpg" // served from /public
 
-  // Once mounted, render the appropriate background
   return (
-    <div className="fixed inset-0 -z-10 h-full w-full overflow-hidden">
-      {/* Base layer */}
-      <div className="absolute inset-0 bg-white dark:bg-black opacity-90 transition-opacity duration-700" />
-
-      {/* Background image layer with subtle animation */}
-      <div
-        className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ${
-          prefersReducedMotion ? "" : "animate-subtle-shift"
-        }`}
-        style={{
-          backgroundImage: `url('/images/light-background-01.jpg')`,
-          opacity: isDark ? 0.6 : 0.75,
-        }}
+    <div className="fixed inset-0 -z-50 overflow-hidden">
+      <Image
+        src={imageSrc || "/placeholder.svg"}
+        alt={"Soft abstract gradient background with pastel blues, yellows and pinks"}
+        fill
+        priority
+        sizes="100vw"
+        quality={80}
+        placeholder="blur"
+        className={cn(
+          "object-cover transition-opacity duration-1000",
+          !prefersReducedMotion && "animate-subtle-shift",
+          // slightly dim in dark mode for contrast
+          isDark ? "opacity-30" : "opacity-60",
+        )}
       />
-
-      {/* Backdrop blur layer */}
+      {/* extra overlay tint & blur for readability */}
       <div
-        className="absolute inset-0 transition-all duration-700"
-        style={{
-          backdropFilter: `blur(${isDark ? 50 : 60}px)`,
-          WebkitBackdropFilter: `blur(${isDark ? 50 : 60}px)`,
-        }}
+        className={cn(
+          "absolute inset-0 backdrop-blur-3xl transition-colors duration-1000",
+          isDark ? "bg-black/60" : "bg-white/40",
+        )}
       />
     </div>
   )

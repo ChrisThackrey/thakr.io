@@ -4,7 +4,6 @@ import dynamic from "next/dynamic"
 import { AnimatedProjectSkeleton } from "@/components/skeletons/animated-project-skeleton"
 import { SectionTitle } from "@/components/section-title"
 import { BookingCTA } from "@/components/booking-cta"
-import { Footer } from "@/components/footer"
 import { PageBackground } from "@/components/page-background" // Added import
 
 // Dynamically import the ProjectsContent component
@@ -41,7 +40,6 @@ export default function ProjectsPage() {
         </Suspense>
       </div>
       <BookingCTA />
-      <Footer />
     </div>
   )
 }

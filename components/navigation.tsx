@@ -1,118 +1,85 @@
-"use client"
+"use client" // This is crucial if using client-side hooks like usePathname
 
-import * as React from "react"
+import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet" // Added SheetClose
+import { Icons } from "@/components/icons"
 import { cn } from "@/lib/utils"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { ReadingHistory } from "@/components/reading-history"
-import { ReadingSpeedSettings } from "@/components/reading-speed-settings"
-import { motion } from "framer-motion"
-import { EnhancedButton } from "@/components/micro-interactions/enhanced-button"
-import { EnhancedIcon } from "@/components/micro-interactions/enhanced-icon"
-import { PrefetchLink } from "@/components/prefetch-link"
+import { ThemeToggle } from "./theme-toggle"
 
-const routes = [
-  {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "About",
-    path: "/about",
-  },
-  {
-    name: "Work",
-    path: "/work",
-  },
-  {
-    name: "Projects",
-    path: "/projects",
-  },
-  {
-    name: "Architecture",
-    path: "/architecture",
-  },
-  {
-    name: "Blog",
-    path: "/blog",
-  },
-  {
-    name: "Book a Meeting",
-    path: "/booking",
-  },
+const mainNavItems = [
+  { name: "Home", href: "/", icon: Icons.home },
+  { name: "About", href: "/about", icon: Icons.user },
+  { name: "Work", href: "/work", icon: Icons.briefcase },
+  { name: "Projects", href: "/projects", icon: Icons.palette },
+  { name: "Architecture", href: "/architecture", icon: Icons.architecture },
+  { name: "Blog", href: "/blog", icon: Icons.blog },
+  { name: "Contact Me", href: "/contact", icon: Icons.contact },
 ]
 
 export function Navigation() {
-  const [open, setOpen] = React.useState(false)
   const pathname = usePathname()
 
-  // Determine if we should show reading-related controls
-  const showReadingControls = pathname?.includes("/blog/") || false
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <PrefetchLink href="/" className="font-bold text-xl" priority>
-          Chris Thackrey
-        </PrefetchLink>
-        <div className="flex items-center gap-6">
-          <nav className="hidden md:flex gap-6">
-            {routes.map((route) => (
-              <PrefetchLink
-                key={route.path}
-                href={route.path}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary relative",
-                  pathname === route.path ? "text-foreground" : "text-muted-foreground",
-                )}
-                priority={route.path === "/blog" || route.path === "/projects"}
-              >
-                {route.name}
-                {pathname === route.path && (
-                  <motion.div
-                    className="absolute -bottom-[21px] left-0 right-0 h-[2px] bg-primary"
-                    layoutId="navigation-underline"
-                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                  />
-                )}
-              </PrefetchLink>
-            ))}
-          </nav>
-          <div className="flex items-center gap-2">
-            <ReadingHistory />
-            {showReadingControls && <ReadingSpeedSettings />}
-            <ThemeToggle />
-          </div>
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <EnhancedButton variant="outline" size="icon">
-                <EnhancedIcon>
-                  <Menu className="h-5 w-5" />
-                </EnhancedIcon>
-                <span className="sr-only">Toggle menu</span>
-              </EnhancedButton>
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-14 max-w-screen-2xl items-center">
+        <Link href="/" className="mr-6 flex items-center space-x-2">
+          <span className="font-bold sm:inline-block text-lg">Chris Thackrey</span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex flex-1 items-center space-x-1">
+          {mainNavItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={cn(
+                "flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                pathname === item.href
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
+              )}
+              aria-current={pathname === item.href ? "page" : undefined}
+            >
+              <item.icon className={cn("mr-3 h-4 w-4")} />
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex flex-1 items-center justify-end space-x-2">
+          <ThemeToggle />
+          {/* Mobile Navigation */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Icons.menu className="h-6 w-6" />
+                <span className="sr-only">Toggle Menu</span>
+              </Button>
             </SheetTrigger>
-            <SheetContent side="right">
-              <nav className="flex flex-col gap-4 mt-8">
-                {routes.map((route) => (
-                  <PrefetchLink
-                    key={route.path}
-                    href={route.path}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      "text-sm font-medium transition-colors hover:text-primary",
-                      pathname === route.path ? "text-foreground" : "text-muted-foreground",
-                    )}
-                  >
-                    {route.name}
-                  </PrefetchLink>
+            <SheetContent side="right" className="w-full max-w-xs p-6">
+              <Link href="/" className="mb-6 flex items-center space-x-2">
+                <span className="font-bold text-lg">Chris Thackrey</span>
+              </Link>
+              <nav className="flex flex-col space-y-2">
+                {mainNavItems.map((item) => (
+                  <SheetClose asChild key={item.name}>
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        "flex items-center px-3 py-3 rounded-md text-base font-medium transition-colors",
+                        pathname === item.href
+                          ? "bg-primary text-primary-foreground"
+                          : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
+                      )}
+                      aria-current={pathname === item.href ? "page" : undefined}
+                    >
+                      <item.icon className={"mr-3 h-5 w-5"} />
+                      {item.name}
+                    </Link>
+                  </SheetClose>
                 ))}
-                <div className="flex items-center gap-2 pt-4">
-                  <span className="text-sm font-medium">Theme:</span>
-                  <ThemeToggle />
-                </div>
               </nav>
             </SheetContent>
           </Sheet>

@@ -253,3 +253,7 @@ export const getPreviousPostInSeries = (currentSlug: string): BlogPost | undefin
   if (currentIndex <= 0) return undefined
   return seriesPosts[currentIndex - 1]
 }
+
+// --- helper aliases for legacy imports -------------------
+export const getPost = getBlogPostBySlug
+export const getPosts = getAllBlogPosts

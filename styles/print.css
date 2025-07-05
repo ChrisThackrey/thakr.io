@@ -1,0 +1,30 @@
+@media print {
+  body {
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Hide any element with the .no-print class */
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+
+  /* Reset padding for the main content area */
+  main {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Remove card styling from the resume container for a flat look */
+  .resume-container {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  /* Remove the underline/arrow from links in the prose section */
+  .prose a::after {
+    content: "" !important;
+  }
+}

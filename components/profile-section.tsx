@@ -3,28 +3,28 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Github, Linkedin, Instagram, Mail } from "lucide-react"
+import { Icons } from "@/components/icons"
 
 const socialLinks = [
   {
     name: "GitHub",
     href: "https://github.com/ChrisThackrey",
-    icon: <Github className="h-9 w-9" />,
+    icon: Icons.gitHub,
   },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/chris-thackrey-015/",
-    icon: <Linkedin className="h-9 w-9" />,
+    icon: Icons.linkedin,
   },
   {
     name: "Instagram",
     href: "https://www.instagram.com/chris_thackrey/",
-    icon: <Instagram className="h-9 w-9" />,
+    icon: Icons.instagram,
   },
   {
     name: "Email",
-    href: "mailto:c.r.thackrey@gmail.com",
-    icon: <Mail className="h-9 w-9" />,
+    href: "/contact",
+    icon: Icons.mail,
   },
 ]
 
@@ -42,7 +42,7 @@ export function ProfileSection() {
             variant="outline"
             size="lg"
             asChild
-            className="rounded-full hover:bg-primary/10 transition-colors"
+            className="rounded-full hover:bg-primary/10 transition-colors bg-transparent"
           >
             <Link
               href={link.href}
@@ -50,7 +50,7 @@ export function ProfileSection() {
               rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
               aria-label={link.name}
             >
-              {link.icon}
+              <link.icon className="h-9 w-9" />
             </Link>
           </Button>
         ))}

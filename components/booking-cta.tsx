@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { ArrowRight, CalendarCheck } from "lucide-react"
+import { Icons } from "@/components/icons"
 
 export function BookingCTA() {
   return (
@@ -13,10 +13,10 @@ export function BookingCTA() {
         and collaborations.
       </p>
       <Button variant="default" size="lg" asChild className="text-lg font-semibold group">
-        <Link href="/booking">
-          <CalendarCheck className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+        <Link href="/booking" className="flex items-center justify-center">
+          <Icons.calendarCheck className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
           Book a Consultation
-          <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+          <Icons.arrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
       </Button>
     </div>

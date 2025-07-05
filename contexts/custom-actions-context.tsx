@@ -244,3 +244,6 @@ export const useCustomActions = () => {
   }
   return context
 }
+
+// Alias so both singular and plural names work
+export { CustomActionProvider as CustomActionsProvider }

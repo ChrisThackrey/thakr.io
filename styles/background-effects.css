@@ -1,13 +1,13 @@
 /* Subtle animation for the background */
 @keyframes subtle-shift {
   0% {
-    transform: scale(1) translate(0px, 0px);
+    transform: scale(1) translate(0, 0);
   }
   50% {
-    transform: scale(1.005) translate(-3px, -3px);
+    transform: scale(1.1) translate(-5%, -5%);
   }
   100% {
-    transform: scale(1) translate(0px, 0px);
+    transform: scale(1) translate(0, 0);
   }
 }
 
@@ -45,7 +45,7 @@
 }
 
 .animate-subtle-shift {
-  animation: subtle-shift 30s ease-in-out infinite;
+  animation: subtle-shift 20s ease-in-out infinite alternate;
 }
 
 .animate-subtle-rotate {

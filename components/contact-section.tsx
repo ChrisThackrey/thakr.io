@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Download, Mail } from "lucide-react"
+import { Icons } from "@/components/icons"
 import { SectionTitle } from "@/components/section-title"
 import { motion } from "framer-motion"
 
@@ -26,15 +26,15 @@ export function ContactSection() {
           </p>
           <div className="mt-10 flex flex-col sm:flex-row justify-center gap-5">
             <Button asChild size="lg" className="font-medium text-base">
-              <Link href="mailto:c.r.thackrey@gmail.com">
-                <Mail className="mr-2 h-5 w-5" />
+              <Link href="/contact">
+                <Icons.mail className="mr-2 h-5 w-5" />
                 Contact Me
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild className="font-medium text-base">
-              <Link href="/resume.pdf" download>
-                <Download className="mr-2 h-5 w-5" />
-                Download Resume
+            <Button variant="outline" size="lg" asChild className="font-medium text-base bg-transparent">
+              <Link href="/resume">
+                <Icons.fileText className="mr-2 h-5 w-5" />
+                View Resume
               </Link>
             </Button>
           </div>

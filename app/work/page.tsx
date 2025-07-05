@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import WorkPageClient from "./WorkPageClient"
-import { Footer } from "@/components/footer" // Added Footer import
 
 export const metadata: Metadata = {
   title: "Work Experience",
@@ -17,7 +16,6 @@ export default function WorkPage() {
         {/* Main content area that expands */}
         <WorkPageClient />
       </div>
-      <Footer /> {/* Added Footer */}
     </div>
   )
 }

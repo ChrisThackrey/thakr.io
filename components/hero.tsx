@@ -2,8 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { ArrowRight, Download } from "lucide-react"
 import { motion } from "framer-motion"
+import { Icons } from "@/components/icons"
 
 export function Hero() {
   return (
@@ -35,10 +35,10 @@ export function Hero() {
           </div>
 
           <motion.div
-            className="pt-20 md:pt-24 text-center" // Added some top padding
+            className="pt-20 md:pt-24 text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.6 }} // Adjusted delay
+            transition={{ duration: 0.7, delay: 0.6 }}
           >
             <h2 className="text-3xl font-bold tracking-tight">Let's Connect</h2>
             <div className="w-20 h-1 bg-primary mx-auto mt-3 mb-4 rounded-full" />
@@ -49,21 +49,21 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            className="flex flex-col sm:flex-row items-center gap-5 pt-8 md:pt-10" // Added top padding
+            className="flex flex-col sm:flex-row items-center gap-5 pt-8 md:pt-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.8 }} // Adjusted delay
+            transition={{ duration: 0.7, delay: 0.8 }}
           >
             <Button asChild size="lg" className="font-medium text-base">
-              <Link href="/#contact" className="group">
+              <Link href="/contact" className="group">
                 Contact Me
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <Icons.arrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild className="font-medium text-base">
-              <Link href="/resume.pdf">
-                Download Resume
-                <Download className="ml-2 h-4 w-4" />
+            <Button variant="outline" size="lg" asChild className="font-medium text-base bg-transparent">
+              <Link href="/resume" className="group">
+                View Resume
+                <Icons.arrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </motion.div>

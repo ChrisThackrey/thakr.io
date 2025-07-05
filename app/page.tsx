@@ -10,7 +10,6 @@ import { PageTransition } from "@/components/page-transition"
 import { ProfileSection } from "@/components/profile-section"
 import { FeaturedProjectsSection } from "@/components/featured-projects-section"
 import { ArrowRight } from "lucide-react"
-import { Footer } from "@/components/footer"
 import { BlogPreviewSection } from "@/components/blog-preview-section"
 
 export default function HomePage() {
@@ -57,7 +56,6 @@ export default function HomePage() {
         {/* Let's Connect Section */}
         <ContactSection />
       </div>
-      <Footer />
     </PageTransition>
   )
 }

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Github, Linkedin, Mail } from "lucide-react"
+import { Icons } from "@/components/icons"
 
 export function Footer() {
   return (
@@ -15,24 +15,21 @@ export function Footer() {
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
-            <Github className="h-5 w-5" />
+            <Icons.gitHub className="h-5 w-5" />
             <span className="sr-only">GitHub</span>
           </Link>
           <Link
-            href="https://linkedin.com/in/chris-thackrey"
+            href="https://www.linkedin.com/in/chris-thackrey-015"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
-            <Linkedin className="h-5 w-5" />
+            <Icons.linkedin className="h-5 w-5" />
             <span className="sr-only">LinkedIn</span>
           </Link>
-          <Link
-            href="mailto:c.r.thackrey@gmail.com"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Mail className="h-5 w-5" />
-            <span className="sr-only">Email</span>
+          <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Icons.mail className="h-5 w-5" />
+            <span className="sr-only">Contact</span>
           </Link>
         </div>
       </div>

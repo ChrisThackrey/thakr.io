@@ -8,7 +8,7 @@ import { motion, useMotionValue, animate } from "framer-motion"
 import type { TimelineItemData } from "@/lib/experience-data"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
-import { Briefcase } from "lucide-react"
+import { Icons } from "@/components/icons"
 
 interface EducationTimelineProps {
   items: TimelineItemData[]
@@ -33,7 +33,6 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
       }
     }
 
-    // Initial update. Timeout to ensure DOM is ready for offsetWidth.
     const timer = setTimeout(updateCurrentCardWidth, 0)
 
     window.addEventListener("resize", updateCurrentCardWidth)
@@ -41,18 +40,16 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
       clearTimeout(timer)
       window.removeEventListener("resize", updateCurrentCardWidth)
     }
-  }, [items]) // Rerun if items change
+  }, [items])
 
   useEffect(() => {
     const calculateConstraints = () => {
       if (containerRef.current && draggableRef.current && currentCardWidth > 0) {
         const containerWidth = containerRef.current.clientWidth
-        // Use scrollWidth for total draggable content width, it's more reliable
         const draggableWidth = draggableRef.current.scrollWidth
         const newLeftConstraint = Math.min(0, containerWidth - draggableWidth)
         setDragConstraints({ left: newLeftConstraint, right: 0 })
       } else if (containerRef.current && draggableRef.current) {
-        // Fallback if currentCardWidth is not set yet
         const containerWidth = containerRef.current.clientWidth
         const draggableWidth = draggableRef.current.scrollWidth
         const newLeftConstraint = Math.min(0, containerWidth - draggableWidth)
@@ -99,7 +96,7 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
 
     const cardWidthWithGap = currentCardWidth + CARD_GAP
     const offset = x.get()
-    const cardIndex = Math.round(offset / cardWidthWithGap) // Negative or zero index
+    const cardIndex = Math.round(offset / cardWidthWithGap)
     let targetX = cardIndex * cardWidthWithGap
 
     targetX = Math.max(dragConstraints.left, Math.min(dragConstraints.right, targetX))
@@ -118,7 +115,7 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
           <h2 className="text-3xl font-bold tracking-tight text-center sm:text-left">Education</h2>
           <Button asChild variant="outline" size="sm">
             <Link href="/work">
-              <Briefcase className="mr-2 h-4 w-4 flex-shrink-0" />
+              <Icons.briefcase className="mr-2 h-4 w-4 flex-shrink-0" />
               <span className="whitespace-nowrap">View Work Experience</span>
             </Link>
           </Button>
@@ -134,7 +131,7 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
         <h2 className="text-3xl font-bold tracking-tight">Education</h2>
         <Button asChild variant="outline" size="sm">
           <Link href="/work" className="flex items-center">
-            <Briefcase className="mr-2 h-4 w-4 flex-shrink-0" />
+            <Icons.briefcase className="mr-2 h-4 w-4 flex-shrink-0" />
             <span className="whitespace-nowrap">View Work Experience</span>
           </Link>
         </Button>
@@ -172,15 +169,15 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
           ref={draggableRef}
           drag="x"
           dragConstraints={dragConstraints}
-          dragElasticity={0.05} // Slight give can feel better
-          dragMomentum={false} // Snap will handle momentum
+          dragElasticity={0.05}
+          dragMomentum={false}
           onDragEnd={handleDragEnd}
           className="flex space-x-4 pb-4"
           style={{ x }}
         >
-          {items.map((item) => (
+          {items.map((item, index) => (
             <motion.div
-              key={item.id || item.title}
+              key={item.title + index}
               className="flex-shrink-0 w-[calc(100vw-5rem)] sm:w-[320px] md:w-[350px]"
             >
               <Card className="bg-background/80 backdrop-blur-sm h-full shadow-lg border border-border/30 hover:shadow-xl transition-shadow duration-300 flex flex-col">

@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Rocket } from "lucide-react"
+import { Icons } from "@/components/icons"
 import { SpeedReadingMode } from "./speed-reading-mode"
 
 interface SpeedReadingButtonProps {
@@ -25,8 +25,13 @@ export function SpeedReadingButton({ contentId, selector, className, slug }: Spe
 
   return (
     <>
-      <Button onClick={handleOpenSpeedReader} className="flex items-center gap-2" variant="outline" size="sm">
-        <Rocket className="h-4 w-4" />
+      <Button
+        onClick={handleOpenSpeedReader}
+        className="flex items-center gap-2 bg-transparent"
+        variant="outline"
+        size="sm"
+      >
+        <Icons.rocket className="h-4 w-4" />
         <span>Speed Read</span>
       </Button>
 

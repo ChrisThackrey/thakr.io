@@ -3,7 +3,6 @@ import { Suspense } from "react"
 import dynamic from "next/dynamic"
 import { AnimatedBlogSkeleton } from "@/components/skeletons/animated-blog-skeleton"
 import { getAllBlogPosts } from "@/lib/blog"
-import { Footer } from "@/components/footer"
 import { PageBackground } from "@/components/page-background" // Added import
 
 // Dynamically import the client component
@@ -39,7 +38,6 @@ export default function BlogPage() {
           <BlogPageClient posts={posts} />
         </Suspense>
       </div>
-      <Footer />
     </div>
   )
 }

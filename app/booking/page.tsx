@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { BookingPageClient } from "./booking-client"
 import { PageTransition } from "@/components/page-transition"
 import { SectionTitle } from "@/components/section-title"
-import { Footer } from "@/components/footer"
-import { PageBackground } from "@/components/page-background" // Added import
+import { PageBackground } from "@/components/page-background"
+import { ComingSoonBanner } from "@/components/coming-soon-banner"
 
 export const metadata: Metadata = {
   title: "Book a Meeting - Chris Thackrey",
@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 export default function BookingPage() {
   return (
     <PageTransition className="flex flex-col flex-grow">
-      <PageBackground /> {/* Added PageBackground component */}
+      <ComingSoonBanner />
+      <PageBackground />
       <div className="flex-grow">
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="max-w-4xl mx-auto">
@@ -27,7 +28,6 @@ export default function BookingPage() {
           </div>
         </div>
       </div>
-      <Footer />
     </PageTransition>
   )
 }
