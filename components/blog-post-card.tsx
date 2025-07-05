@@ -62,7 +62,7 @@ export function BlogPostCard({ post, highlightTag }: BlogPostCardProps) {
             </div>
           </div>
         )}
-        <CardTitle className="line-clamp-2 font-cal">{post.title}</CardTitle>
+        <CardTitle className="line-clamp-2 font-semibold">{post.title}</CardTitle>
       </CardHeader>
       <CardContent className="flex-grow pb-2">
         <div className="flex flex-wrap gap-2 mb-4">

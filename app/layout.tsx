@@ -10,7 +10,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { CustomActionsProvider } from "@/contexts/custom-actions-context"
 import { ChunkErrorHandler } from "@/components/chunk-error-handler"
 import { PageBackground } from "@/components/page-background"
-import { fontSans, fontCalSans } from "@/lib/fonts"
+import { fontSans, fontMono } from "@/lib/fonts"
 import "@/app/globals.css"
 import "@/styles/section-animations.css"
 import "@/styles/highlight-animations.css"
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable, fontCalSans.variable)}>
+      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable, fontMono.variable)}>
         <ChunkErrorHandler />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <PageBackground />

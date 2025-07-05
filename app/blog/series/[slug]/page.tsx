@@ -37,7 +37,7 @@ export default function SeriesPage({ params }: { params: { slug: string } }) {
           </Button>
           <div className="flex items-center gap-2 mb-2">
             <Layers className="h-6 w-6 text-primary" />
-            <h1 className="text-4xl font-bold tracking-tight">{series.name}</h1>
+            <h1 className="text-4xl font-bold tracking-tight font-cal">{series.name}</h1>
           </div>
           <p className="text-lg text-muted-foreground mb-6">
             {series.description} This series contains {series.posts.length} posts.

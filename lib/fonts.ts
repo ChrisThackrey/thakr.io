@@ -1,15 +1,12 @@
-import { Inter } from "next/font/google"
 import localFont from "next/font/local"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
 
 /**
  * Google Inter – body / UI font
  * Creates CSS custom property --font-sans
  */
-export const fontSans = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-})
+export const fontSans = GeistSans
 
 /**
  * Cal Sans SemiBold – heading font
@@ -26,3 +23,9 @@ export const fontCalSans = localFont({
   variable: "--font-cal",
   display: "swap",
 })
+
+/**
+ * Geist Mono – monospace font
+ * Creates CSS custom property --font-mono
+ */
+export const fontMono = GeistMono

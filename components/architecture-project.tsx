@@ -57,7 +57,7 @@ export function ArchitectureProject({
             </Link>
           </Button>
           {externalUrl && (
-            <Button variant="outline" asChild className="group">
+            <Button variant="outline" asChild className="group bg-transparent">
               <a href={externalUrl} target="_blank" rel="noopener noreferrer" className="flex items-center">
                 Visit Project
                 <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

@@ -39,7 +39,7 @@ export default function TagPage({ params }: { params: { tag: string } }) {
               </Link>
             </Button>
           </div>
-          <h1 className="text-4xl font-bold tracking-tight mb-2">Posts tagged with "{tag}"</h1>
+          <h1 className="text-4xl font-bold tracking-tight mb-2 font-cal">Posts tagged with "{tag}"</h1>
           <p className="text-lg text-muted-foreground">
             Found {posts.length} {posts.length === 1 ? "post" : "posts"} with this tag.
           </p>

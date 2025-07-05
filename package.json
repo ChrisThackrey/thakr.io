@@ -46,6 +46,7 @@
     "expo-gl": "latest",
     "framer-motion": "latest",
     "fs": "latest",
+    "geist": "latest",
     "html2canvas": "latest",
     "jspdf": "latest",
     "lodash": "latest",
