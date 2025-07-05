@@ -18,6 +18,10 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)"],
+        cal: ["var(--font-cal)"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

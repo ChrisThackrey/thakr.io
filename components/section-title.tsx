@@ -13,7 +13,7 @@ export function SectionTitle({ children, className, as = "h2" }: SectionTitlePro
   return (
     <Component
       className={cn(
-        "text-3xl md:text-4xl font-bold tracking-tight relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-20 after:h-1 after:bg-primary after:rounded-full",
+        "text-3xl md:text-4xl font-bold tracking-tight relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-20 after:h-1 after:bg-primary after:rounded-full font-cal",
         className,
       )}
     >
