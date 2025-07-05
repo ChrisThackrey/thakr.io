@@ -61,6 +61,8 @@ import {
   Send,
   Construction,
   Layers,
+  MoveUp,
+  MoveDown,
 } from "lucide-react"
 
 export type Icon = LucideIcon
@@ -99,6 +101,8 @@ export const Icons: Record<string, LucideIcon> = {
   spinner: Loader2,
   send: Send,
   construction: Construction,
+  moveUp: MoveUp,
+  moveDown: MoveDown,
 
   // navigation & content
   home: Home,
@@ -106,7 +110,7 @@ export const Icons: Record<string, LucideIcon> = {
   contact: MessageSquare,
   briefcase: Briefcase,
   palette: Palette,
-  architecture: Building2, // fixed
+  architecture: Building2,
   blog: BookOpen,
   fileText: FileText,
   calendar: Calendar,

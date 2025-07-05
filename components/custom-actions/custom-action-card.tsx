@@ -59,21 +59,21 @@ export function CustomActionCard({
       <CardFooter className="flex justify-between pt-2">
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={() => onEdit(action)}>
-            <Icons.Edit className="h-4 w-4" />
+            <Icons.edit className="h-4 w-4" />
             <span className="sr-only">Edit</span>
           </Button>
           <Button variant="outline" size="sm" onClick={() => onRemove(action.id)}>
-            <Icons.Trash2 className="h-4 w-4" />
+            <Icons.trash className="h-4 w-4" />
             <span className="sr-only">Delete</span>
           </Button>
         </div>
         <div className="flex gap-2">
           <Button variant="ghost" size="sm" onClick={() => onMove(action.id, "up")} disabled={isFirst}>
-            <Icons.MoveUp className="h-4 w-4" />
+            <Icons.moveUp className="h-4 w-4" />
             <span className="sr-only">Move Up</span>
           </Button>
           <Button variant="ghost" size="sm" onClick={() => onMove(action.id, "down")} disabled={isLast}>
-            <Icons.MoveDown className="h-4 w-4" />
+            <Icons.moveDown className="h-4 w-4" />
             <span className="sr-only">Move Down</span>
           </Button>
         </div>
