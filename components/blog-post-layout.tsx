@@ -1,48 +1,73 @@
 import type React from "react"
-import { MDXRemote } from "next-mdx-remote"
-import type { BlogPost } from "../types"
-import Layout from "./layout"
-import Head from "next/head"
-import { parseISO, format } from "date-fns"
+import type { BlogPost } from "@/lib/blog"
 import { RelatedTags } from "./related-tags"
-import Link from "next/link"
+import { BlogContentWrapper } from "./blog-content-wrapper"
+import { BlogShareSection } from "./blog-share-section"
+import { ReadingProgressIndicator } from "./reading-progress-indicator"
+import { BlogPostTOC } from "./blog-post-toc"
+import { DynamicReadingTime } from "./dynamic-reading-time"
+import { BlogPostTracker } from "./blog-post-tracker"
+import { SeriesBanner } from "./series-banner"
+import type { Tag } from "@/lib/blog"
+import { ColoredTag } from "./colored-tag"
 
-type Props = {
+interface BlogPostLayoutProps {
   post: BlogPost
-  content: any
+  content: React.ReactNode
+  tags?: string[]
+  estimatedReadingTime?: number
 }
 
-const BlogPostLayout: React.FC<Props> = ({ post, content }) => {
-  const { title, date, tags, excerpt, slug } = post
-
+export function BlogPostLayout({ post, content, tags, estimatedReadingTime }: BlogPostLayoutProps) {
   return (
-    <Layout>
-      <Head>
-        <title>{title} - My Blog</title>
-        <meta name="description" content={excerpt} />
-      </Head>
-      <article className="mx-auto max-w-3xl py-8">
-        <h1 className="text-4xl font-bold mb-4">{title}</h1>
-        <div className="text-gray-600 mb-4">Published {format(parseISO(date), "MMMM dd, yyyy")}</div>
-        {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-8">
-            {tags.map((tag) => (
-              <Link
-                key={tag}
-                href={`/blog/categories/${tag.toLowerCase()}`}
-                className="bg-muted hover:bg-muted/80 px-3 py-1 rounded-full text-sm transition-colors"
-              >
-                {tag}
-              </Link>
-            ))}
+    <div className="relative">
+      <ReadingProgressIndicator />
+      <div className="container max-w-4xl mx-auto px-4 py-8">
+        <article className="prose dark:prose-invert lg:prose-lg mx-auto">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{post.title}</h1>
+
+          <div className="flex flex-wrap items-center text-sm text-gray-600 dark:text-gray-400 mb-6">
+            <span className="mr-4">{post.date}</span>
+            {estimatedReadingTime && <DynamicReadingTime initialTime={estimatedReadingTime} className="mr-4" />}
+            {post.author && <span>By {post.author}</span>}
           </div>
-        )}
-        <MDXRemote {...content} />
-        <hr className="my-8" />
-        {post.tags && post.tags.length > 0 && <RelatedTags post={post} />}
-      </article>
-    </Layout>
+
+          {post.series && <SeriesBanner series={post.series} currentPost={post} />}
+
+          {tags && tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-8">
+              {tags.map((tag: string) => (
+                <ColoredTag key={tag} tag={tag as Tag} />
+              ))}
+            </div>
+          )}
+
+          <div className="relative">
+            <div className="lg:flex lg:gap-8">
+              <div className="lg:w-3/4">
+                <BlogContentWrapper>
+                  <BlogPostTracker postId={post.slug}>{content}</BlogPostTracker>
+                </BlogContentWrapper>
+
+                {tags && tags.length > 0 && (
+                  <div className="mt-12">
+                    <h3 className="text-xl font-semibold mb-4">Related Topics</h3>
+                    <RelatedTags post={post} />
+                  </div>
+                )}
+
+                <BlogShareSection post={post} />
+              </div>
+
+              <div className="hidden lg:block lg:w-1/4">
+                <div className="sticky top-24">
+                  <BlogPostTOC />
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
   )
 }
-
-export default BlogPostLayout

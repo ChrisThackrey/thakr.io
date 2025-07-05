@@ -88,3 +88,6 @@ export function Navigation() {
     </header>
   )
 }
+
+// Add the lowercase export that's being referenced elsewhere
+export const navigation = Navigation
