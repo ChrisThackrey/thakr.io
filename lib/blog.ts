@@ -1,7 +1,7 @@
 /*  BLOG DATA + HELPERS
-  -------------------------------------------------------------
-  All tag-handling now uses optional-chaining so a post without
-  tags will no longer break builds or runtime pages.
+-------------------------------------------------------------
+All tag-handling now uses optional-chaining so a post without
+tags will no longer break builds or runtime pages.
 */
 
 export type BlogPost = {
@@ -31,7 +31,7 @@ export type Series = {
 }
 
 /* ----------------------------------------------------------------
- DATA  (add / edit posts here)
+DATA  (add / edit posts here)
 ------------------------------------------------------------------*/
 export const blogPosts: BlogPost[] = [
   {
@@ -103,7 +103,7 @@ export const blogPosts: BlogPost[] = [
 ]
 
 /* ----------------------------------------------------------------
- SERIES INITIALISATION
+SERIES INITIALISATION
 ------------------------------------------------------------------*/
 export const seriesData: Series[] = [
   {
@@ -121,7 +121,7 @@ seriesData.forEach((series) => {
 })
 
 /* ----------------------------------------------------------------
- READING-TIME HELPERS
+READING-TIME HELPERS
 ------------------------------------------------------------------*/
 export const calculateReadingTime = (text: string): number => {
   const WPM = 225
@@ -135,7 +135,7 @@ export const calculateReadingTimeFromElement = (el: HTMLElement | null): number 
   calculateReadingTime(el?.textContent ?? "")
 
 /* ----------------------------------------------------------------
- BLOG QUERY HELPERS  (all now null-safe)
+BLOG QUERY HELPERS  (all now null-safe)
 ------------------------------------------------------------------*/
 export const getAllBlogPosts = (): BlogPost[] => blogPosts
 
@@ -177,7 +177,7 @@ export const getAllSeries = (): Series[] => {
 export const getSeriesBySlug = (slug: string) => seriesData.find((s) => s.slug === slug)
 
 /* ----------------------------------------------------------------
- RELATED / NAV HELPERS  (safe tags access)
+RELATED / NAV HELPERS  (safe tags access)
 ------------------------------------------------------------------*/
 export const getRelatedPosts = (currentSlug: string, max = 3): BlogPost[] => {
   const current = getBlogPostBySlug(currentSlug)
@@ -206,26 +206,28 @@ export const getRelatedPosts = (currentSlug: string, max = 3): BlogPost[] => {
     .slice(0, max)
 }
 
-export const getNextPostInSeries = (slug: string) => {
-  const current = getBlogPostBySlug(slug)
-  if (!current?.series) return undefined
+export const getNextPostInSeries = (currentPost: BlogPost): BlogPost | undefined => {
+  if (!currentPost.series) return undefined
 
-  const posts = getBlogPostsBySeries(current.series.slug)
-  const idx = posts.findIndex((p) => p.slug === slug)
-  return idx === -1 || idx === posts.length - 1 ? undefined : posts[idx + 1]
+  const seriesPosts = getBlogPostsBySeries(currentPost.series.slug)
+  const currentIndex = seriesPosts.findIndex((post) => post.slug === currentPost.slug)
+
+  if (currentIndex === -1 || currentIndex === seriesPosts.length - 1) return undefined
+  return seriesPosts[currentIndex + 1]
 }
 
-export const getPreviousPostInSeries = (slug: string) => {
-  const current = getBlogPostBySlug(slug)
-  if (!current?.series) return undefined
+export const getPreviousPostInSeries = (currentPost: BlogPost): BlogPost | undefined => {
+  if (!currentPost.series) return undefined
 
-  const posts = getBlogPostsBySeries(current.series.slug)
-  const idx = posts.findIndex((p) => p.slug === slug)
-  return idx <= 0 ? undefined : posts[idx - 1]
+  const seriesPosts = getBlogPostsBySeries(currentPost.series.slug)
+  const currentIndex = seriesPosts.findIndex((post) => post.slug === currentPost.slug)
+
+  if (currentIndex <= 0) return undefined
+  return seriesPosts[currentIndex - 1]
 }
 
 /* ----------------------------------------------------------------
- LEGACY ALIASES
+LEGACY ALIASES
 ------------------------------------------------------------------*/
 export const getPost = getBlogPostBySlug
 export const getPosts = getAllBlogPosts
