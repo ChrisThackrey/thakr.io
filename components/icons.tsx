@@ -18,6 +18,7 @@ import {
   BookOpen,
   Share2,
   Download,
+  RefreshCw,
   Printer,
   Settings,
   Plus,
@@ -68,7 +69,7 @@ import {
 
 export type Icon = LucideIcon
 
-export const Icons: Record<string, LucideIcon> = {
+const baseIcons: Record<string, LucideIcon> = {
   // social
   gitHub: Github,
   twitter: Twitter,
@@ -76,6 +77,7 @@ export const Icons: Record<string, LucideIcon> = {
   instagram: Instagram,
   facebook: Facebook,
   mail: MailIcon,
+  phone: Phone,
 
   // ui
   menu: Menu,
@@ -99,18 +101,18 @@ export const Icons: Record<string, LucideIcon> = {
   edit: Edit,
   gripVertical: GripVertical,
   search: Search,
+  refreshCw: RefreshCw,
   spinner: Loader2,
   send: Send,
   construction: Construction,
   moveUp: MoveUp,
   moveDown: MoveDown,
-  phone: Phone,
 
   // navigation & content
   home: Home,
   user: User,
-  contact: MessageSquare, // Used for the main nav link
-  messageSquare: MessageSquare, // Used for the contact form icon
+  contact: MessageSquare,
+  messageSquare: MessageSquare,
   briefcase: Briefcase,
   palette: Palette,
   architecture: Building2,
@@ -140,3 +142,13 @@ export const Icons: Record<string, LucideIcon> = {
   folderGit: FolderGit2,
   layers: Layers,
 }
+
+/** Pascal-case aliases (Plus, ExternalLink, …)  */
+const Icons: Record<string, LucideIcon> = { ...baseIcons }
+
+for (const key of Object.keys(baseIcons)) {
+  const pascal = key.charAt(0).toUpperCase() + key.slice(1)
+  if (!Icons[pascal]) Icons[pascal] = baseIcons[key]
+}
+
+export { Icons }
