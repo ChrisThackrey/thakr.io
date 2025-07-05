@@ -1,18 +1,14 @@
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
-import { getRelatedTags } from "@/lib/related-tags"
-import type { BlogPost } from "@/lib/blog"
+import { getRelatedTagsForCategory } from "@/lib/related-tags"
 
 type RelatedTagsProps = {
-  post: BlogPost
+  currentTag: string
   maxTags?: number
 }
 
-export function RelatedTags({ post, maxTags = 5 }: RelatedTagsProps) {
-  if (!post.tags) {
-    return null
-  }
-  const relatedTags = getRelatedTags(post.tags, maxTags)
+export function RelatedTags({ currentTag, maxTags = 5 }: RelatedTagsProps) {
+  const relatedTags = getRelatedTagsForCategory(currentTag, maxTags)
 
   if (!relatedTags || relatedTags.length === 0) {
     return null
@@ -23,7 +19,7 @@ export function RelatedTags({ post, maxTags = 5 }: RelatedTagsProps) {
       <h3 className="text-lg font-semibold mb-2">Related Topics</h3>
       <div className="flex flex-wrap gap-2">
         {relatedTags.map((tag) => (
-          <Link href={`/blog/categories/${tag.toLowerCase()}`} key={tag}>
+          <Link href={`/blog/categories/${encodeURIComponent(tag)}`} key={tag}>
             <Badge variant="secondary">{tag}</Badge>
           </Link>
         ))}

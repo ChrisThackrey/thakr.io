@@ -1,10 +1,17 @@
+/*  BLOG DATA + HELPERS
+  -------------------------------------------------------------
+  All tag-handling now uses optional-chaining so a post without
+  tags will no longer break builds or runtime pages.
+*/
+
 export type BlogPost = {
   id: string
   title: string
   slug: string
   date: string
   author: string
-  tags: string[]
+  /*  <-- made optional again  */
+  tags?: string[]
   excerpt: string
   estimatedReadingTime: number
   coverImage: string
@@ -23,6 +30,9 @@ export type Series = {
   posts: BlogPost[]
 }
 
+/* ----------------------------------------------------------------
+ DATA  (add / edit posts here)
+------------------------------------------------------------------*/
 export const blogPosts: BlogPost[] = [
   {
     id: "colorado-ai",
@@ -92,7 +102,9 @@ export const blogPosts: BlogPost[] = [
   },
 ]
 
-// Sample series data
+/* ----------------------------------------------------------------
+ SERIES INITIALISATION
+------------------------------------------------------------------*/
 export const seriesData: Series[] = [
   {
     name: "AI Technologies Series",
@@ -102,159 +114,118 @@ export const seriesData: Series[] = [
   },
 ]
 
-// Initialize series posts
 seriesData.forEach((series) => {
   series.posts = blogPosts
-    .filter((post) => post.series?.slug === series.slug)
-    .sort((a, b) => (a.series?.part || 0) - (b.series?.part || 0))
+    .filter((p) => p.series?.slug === series.slug)
+    .sort((a, b) => (a.series!.part || 0) - (b.series!.part || 0))
 })
 
-// Calculate reading time for text content
-export function calculateReadingTime(text: string): number {
-  const wordsPerMinute = 225 // Average reading speed
-  const wordCount = text.trim().split(/\s+/).length
-  const readingTime = Math.ceil(wordCount / wordsPerMinute)
-  return readingTime === 0 ? 1 : readingTime // Minimum 1 minute
+/* ----------------------------------------------------------------
+ READING-TIME HELPERS
+------------------------------------------------------------------*/
+export const calculateReadingTime = (text: string): number => {
+  const WPM = 225
+  const words = text.trim().split(/\s+/).length
+  return Math.max(1, Math.ceil(words / WPM))
 }
 
-// Format reading time with proper pluralization
-export function formatReadingTime(minutes: number): string {
-  return `${minutes} min${minutes === 1 ? "" : "s"} read`
-}
+export const formatReadingTime = (min: number) => `${min} min${min === 1 ? "" : "s"} read`
 
-// Add a new function to calculate reading time from HTML/JSX content
-export function calculateReadingTimeFromElement(element: HTMLElement | null): number {
-  if (!element) return 1
+export const calculateReadingTimeFromElement = (el: HTMLElement | null): number =>
+  calculateReadingTime(el?.textContent ?? "")
 
-  // Get the text content of the element
-  const text = element.textContent || ""
+/* ----------------------------------------------------------------
+ BLOG QUERY HELPERS  (all now null-safe)
+------------------------------------------------------------------*/
+export const getAllBlogPosts = (): BlogPost[] => blogPosts
 
-  // Calculate reading time
-  return calculateReadingTime(text)
-}
+export const getFeaturedBlogPosts = (): BlogPost[] => blogPosts.filter((p) => p.isFeatured)
 
-export const getAllBlogPosts = (): BlogPost[] => {
-  return blogPosts
-}
+export const getBlogPostBySlug = (slug: string) => blogPosts.find((p) => p.slug === slug)
 
-export const getFeaturedBlogPosts = (): BlogPost[] => {
-  return blogPosts.filter((post) => post.isFeatured)
-}
+export const getBlogPostsByTag = (tag: string): BlogPost[] => blogPosts.filter((p) => p.tags?.includes(tag))
 
-export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
-  return blogPosts.find((post) => post.slug === slug)
-}
+export const getPostsByTag = getBlogPostsByTag
 
-export const getBlogPostsByTag = (tag: string): BlogPost[] => {
-  // The `BlogPost` type requires `tags`, so we can safely access it.
-  return blogPosts.filter((post) => post.tags.includes(tag))
-}
-
-// Add the missing export
-export const getPostsByTag = (tag: string): BlogPost[] => {
-  return blogPosts.filter((post) => post.tags.includes(tag))
-}
-
-export const getBlogPostsBySeries = (series: string): BlogPost[] => {
-  return blogPosts
-    .filter((post) => post.series && post.series.slug === series)
-    .sort((a, b) => (a.series?.part || 0) - (b.series?.part || 0))
-}
+export const getBlogPostsBySeries = (slug: string): BlogPost[] =>
+  blogPosts.filter((p) => p.series?.slug === slug).sort((a, b) => (a.series!.part || 0) - (b.series!.part || 0))
 
 export const getAllTags = (): string[] => {
-  const allTags = new Set<string>()
-  blogPosts.forEach((post) => {
-    // The `BlogPost` type requires `tags`, so we can safely access it.
-    post.tags.forEach((tag) => allTags.add(tag))
-  })
-  return Array.from(allTags).sort()
+  const set = new Set<string>()
+  blogPosts.forEach((p) => p.tags?.forEach((t) => set.add(t)))
+  return [...set].sort()
 }
 
 export const getTagCount = (): Record<string, number> => {
-  const tagCount: Record<string, number> = {}
-  blogPosts.forEach((post) => {
-    // The `BlogPost` type requires `tags`, so we can safely access it.
-    post.tags.forEach((tag) => {
-      tagCount[tag] = (tagCount[tag] || 0) + 1
-    })
-  })
-  return tagCount
+  const out: Record<string, number> = {}
+  blogPosts.forEach((p) =>
+    p.tags?.forEach((t) => {
+      out[t] = (out[t] || 0) + 1
+    }),
+  )
+  return out
 }
 
-// Make sure getAllSeries returns the correct data type
 export const getAllSeries = (): Series[] => {
-  // Ensure seriesData is properly initialized
-  seriesData.forEach((series) => {
-    series.posts = blogPosts
-      .filter((post) => post.series?.slug === series.slug)
-      .sort((a, b) => (a.series?.part || 0) - (b.series?.part || 0))
+  // ensure posts array always up-to-date
+  seriesData.forEach((s) => {
+    s.posts = getBlogPostsBySeries(s.slug)
   })
-
-  // Return the array of series objects
   return seriesData
 }
 
-// Add the missing export
-export const getSeriesBySlug = (slug: string): Series | undefined => {
-  return seriesData.find((series) => series.slug === slug)
-}
+export const getSeriesBySlug = (slug: string) => seriesData.find((s) => s.slug === slug)
 
-export const getRelatedPosts = (currentSlug: string, maxPosts = 3): BlogPost[] => {
-  const currentPost = getBlogPostBySlug(currentSlug)
-  // If there's no current post, there are no related posts.
-  if (!currentPost) return []
+/* ----------------------------------------------------------------
+ RELATED / NAV HELPERS  (safe tags access)
+------------------------------------------------------------------*/
+export const getRelatedPosts = (currentSlug: string, max = 3): BlogPost[] => {
+  const current = getBlogPostBySlug(currentSlug)
+  if (!current) return []
 
-  const postSimilarityScore = new Map<string, number>()
+  const similarity = new Map<string, number>()
 
-  const otherPosts = blogPosts.filter((post) => post.slug !== currentSlug)
+  blogPosts
+    .filter((p) => p.slug !== currentSlug)
+    .forEach((p) => {
+      let score = 0
 
-  otherPosts.forEach((post) => {
-    let score = 0
-    // The `BlogPost` type requires `tags`, so we can safely access it.
-    post.tags.forEach((tag) => {
-      if (currentPost.tags.includes(tag)) {
-        score += 1
+      p.tags?.forEach((t) => {
+        if (current.tags?.includes(t)) score += 1
+      })
+
+      if (current.series && p.series && current.series.slug === p.series.slug) {
+        score += 2
       }
+      similarity.set(p.slug, score)
     })
 
-    if (currentPost.series && post.series && currentPost.series.slug === post.series.slug) {
-      score += 2
-    }
-    postSimilarityScore.set(post.slug, score)
-  })
-
-  return otherPosts
-    .sort((a, b) => {
-      const scoreA = postSimilarityScore.get(a.slug) || 0
-      const scoreB = postSimilarityScore.get(b.slug) || 0
-      return scoreB - scoreA
-    })
-    .slice(0, maxPosts)
+  return [...blogPosts]
+    .filter((p) => p.slug !== currentSlug)
+    .sort((a, b) => (similarity.get(b.slug) ?? 0) - (similarity.get(a.slug) ?? 0))
+    .slice(0, max)
 }
 
-// Add the missing exports for series navigation
-export const getNextPostInSeries = (currentSlug: string): BlogPost | undefined => {
-  const currentPost = getBlogPostBySlug(currentSlug)
-  if (!currentPost || !currentPost.series) return undefined
+export const getNextPostInSeries = (slug: string) => {
+  const current = getBlogPostBySlug(slug)
+  if (!current?.series) return undefined
 
-  const seriesPosts = getBlogPostsBySeries(currentPost.series.slug)
-  const currentIndex = seriesPosts.findIndex((post) => post.slug === currentSlug)
-
-  if (currentIndex === -1 || currentIndex === seriesPosts.length - 1) return undefined
-  return seriesPosts[currentIndex + 1]
+  const posts = getBlogPostsBySeries(current.series.slug)
+  const idx = posts.findIndex((p) => p.slug === slug)
+  return idx === -1 || idx === posts.length - 1 ? undefined : posts[idx + 1]
 }
 
-export const getPreviousPostInSeries = (currentSlug: string): BlogPost | undefined => {
-  const currentPost = getBlogPostBySlug(currentSlug)
-  if (!currentPost || !currentPost.series) return undefined
+export const getPreviousPostInSeries = (slug: string) => {
+  const current = getBlogPostBySlug(slug)
+  if (!current?.series) return undefined
 
-  const seriesPosts = getBlogPostsBySeries(currentPost.series.slug)
-  const currentIndex = seriesPosts.findIndex((post) => post.slug === currentSlug)
-
-  if (currentIndex <= 0) return undefined
-  return seriesPosts[currentIndex - 1]
+  const posts = getBlogPostsBySeries(current.series.slug)
+  const idx = posts.findIndex((p) => p.slug === slug)
+  return idx <= 0 ? undefined : posts[idx - 1]
 }
 
-// --- helper aliases for legacy imports -------------------
+/* ----------------------------------------------------------------
+ LEGACY ALIASES
+------------------------------------------------------------------*/
 export const getPost = getBlogPostBySlug
 export const getPosts = getAllBlogPosts
