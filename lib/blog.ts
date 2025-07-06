@@ -19,6 +19,19 @@ export interface BlogPost {
 /* ------------------------------ In-memory data ----------------------------- */
 export const blogPosts: BlogPost[] = [
   {
+    slug: "ai-version-control-for-reasoning",
+    title: "Building AI-Powered Developer Tools: A Version Control for Reasoning",
+    date: "2025-07-05",
+    excerpt:
+      "Discover how we built a revolutionary version control system that tracks not just code changes, but the reasoning behind them. Learn about AI-powered developer tools that preserve context and decision-making.",
+    content: "Full content of the blog post...",
+    author: "Chris Thackrey",
+    tags: ["AI", "Developer Tools", "Version Control", "Software Engineering", "Machine Learning"],
+    readingTime: 9,
+    image: "/images/ai-version-control-architecture.png",
+    featured: true,
+  },
+  {
     slug: "the-rise-of-deep-sea-ai",
     title: "The Rise of Deep Sea AI: Exploring Ocean Depths with Artificial Intelligence",
     date: "2025-06-01",
