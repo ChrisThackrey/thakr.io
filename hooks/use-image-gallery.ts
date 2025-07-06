@@ -3,12 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import type { Annotation, ImageWithAnnotations } from "@/components/image-gallery"
 import { useImagePriority } from "@/utils/image-priority-manager"
-import { exportAnnotatedImage } from "@/utils/export-annotations"
-
-export interface ExportOptions {
-  includeImage: boolean
-  includeSummary: boolean
-}
+import { exportAnnotatedImage, type ExportOptions } from "@/utils/export-annotations"
 
 export const useImageGallery = (initialImages: ImageWithAnnotations[]) => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -146,7 +141,7 @@ export const useImageGallery = (initialImages: ImageWithAnnotations[]) => {
 
   const handleExport = async (options: ExportOptions) => {
     if (annotatedImageRef.current) {
-      await exportAnnotatedImage(
+      return await exportAnnotatedImage(
         annotatedImageRef.current,
         currentImage.url,
         currentImage.alt,
@@ -154,6 +149,7 @@ export const useImageGallery = (initialImages: ImageWithAnnotations[]) => {
         options,
       )
     }
+    return { success: false, error: "No image element found" }
   }
 
   const handleAnnotationUpdateInFullscreen = (index: number, annotations: Annotation[]) => {

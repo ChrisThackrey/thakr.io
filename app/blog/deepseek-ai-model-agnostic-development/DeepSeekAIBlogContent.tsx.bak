@@ -29,8 +29,8 @@ export default function DeepSeekAIBlogContent() {
       <p>
         DeepSeek AI is a suite of large language models developed by DeepSeek, a Chinese AI startup founded in 2023.
         What began as DeepSeek Coder has rapidly evolved into a family of models, with their latest
-        release—DeepSeek-R1—emerging as a formidable competitor to established Western models like OpenAI&apos;s GPT-4 and
-        Anthropic&apos;s Claude.
+        release—DeepSeek-R1—emerging as a formidable competitor to established Western models like OpenAI's GPT-4 and
+        Anthropic's Claude.
       </p>
       <p>
         As one podcast participant noted: "I had used it a little bit in Cursor before I knew it was from China. And it
@@ -58,7 +58,7 @@ export default function DeepSeekAIBlogContent() {
 
       <h2>The Distillation Controversy</h2>
       <p>
-        Perhaps the most controversial aspect of DeepSeek&apos;s development is the allegation that it used GPT-4 in a
+        Perhaps the most controversial aspect of DeepSeek's development is the allegation that it used GPT-4 in a
         "distillation" training process.
       </p>
       <p>
@@ -72,7 +72,7 @@ export default function DeepSeekAIBlogContent() {
         property questions when proprietary models are involved.
       </p>
       <p>
-        If DeepSeek did use GPT-4&apos;s outputs without OpenAI&apos;s authorization to train a commercial model, this could
+        If DeepSeek did use GPT-4's outputs without OpenAI's authorization to train a commercial model, this could
         potentially constitute intellectual property infringement. The legal landscape around model distillation remains
         unclear, especially as it crosses international boundaries.
       </p>
@@ -87,13 +87,13 @@ export default function DeepSeekAIBlogContent() {
       />
 
       <p>
-        DeepSeek&apos;s emergence exemplifies the complex geopolitical dimensions of modern AI development. One podcast
+        DeepSeek's emergence exemplifies the complex geopolitical dimensions of modern AI development. One podcast
         speaker observed the timing: "There was no accident that the TikTok ban and the launch of DeepSeek that upends
-        the American market are happening synchronously. It&apos;s very much a part of the geopolitical landscape."
+        the American market are happening synchronously. It's very much a part of the geopolitical landscape."
       </p>
       <p>
-        At the center of this tension are US chip export controls targeting China&apos;s AI capabilities. In October 2022,
-        the US effectively banned the export of Nvidia&apos;s most advanced chips—the A100 and H100—to China. In response,
+        At the center of this tension are US chip export controls targeting China's AI capabilities. In October 2022,
+        the US effectively banned the export of Nvidia's most advanced chips—the A100 and H100—to China. In response,
         Nvidia designed downgraded versions, the A800 and H800, which technically complied with export restrictions by
         reducing performance just below prohibited thresholds.
       </p>
@@ -116,15 +116,15 @@ export default function DeepSeekAIBlogContent() {
         sending user data back to its developers.
       </p>
       <p>
-        "I&apos;ve seen also where it does track your data. It has telemetry. That&apos;s why I stopped using it," shared one
+        "I've seen also where it does track your data. It has telemetry. That's why I stopped using it," shared one
         podcast participant.
       </p>
       <p>
         These concerns are amplified when considering enterprise applications, where data sensitivity is paramount. As
-        another speaker wisely advised: "Play with DeepSeek. Don&apos;t build enterprise businesses with it."
+        another speaker wisely advised: "Play with DeepSeek. Don't build enterprise businesses with it."
       </p>
       <p>
-        The lack of transparency regarding DeepSeek&apos;s training data further complicates trust issues, with one
+        The lack of transparency regarding DeepSeek's training data further complicates trust issues, with one
         participant noting: "We have no indication of the data that was actually used to train on it."
       </p>
 
@@ -173,8 +173,8 @@ export default function DeepSeekAIBlogContent() {
         demonstrated by DeepSeek point toward a future where advanced AI becomes more accessible.
       </p>
       <p>
-        "I think it&apos;s going to go towards this lower-end market, people doing crazier and crazier things on cheaper and
-        cheaper hardware," predicted one podcast participant. "Until eventually there&apos;s a proliferation to where this
+        "I think it's going to go towards this lower-end market, people doing crazier and crazier things on cheaper and
+        cheaper hardware," predicted one podcast participant. "Until eventually there's a proliferation to where this
         costs basically pennies to run, which still makes everybody a ton of money at scale."
       </p>
       <p>
@@ -189,7 +189,7 @@ export default function DeepSeekAIBlogContent() {
         undeniable, yet concerns about data privacy, intellectual property, and geopolitics cannot be ignored.
       </p>
       <p>
-        For developers and businesses exploring AI integration, the most prudent approach aligns with the podcast&apos;s
+        For developers and businesses exploring AI integration, the most prudent approach aligns with the podcast's
         conclusion: experiment with new models like DeepSeek in controlled environments, but maintain caution when
         considering enterprise deployments where data sensitivity and long-term stability are critical.
       </p>
@@ -199,7 +199,7 @@ export default function DeepSeekAIBlogContent() {
         take advantage of innovations while minimizing disruption and risk.
       </p>
       <p>
-        The emergence of DeepSeek isn&apos;t just about a new model—it&apos;s about the changing dynamics of global AI development
+        The emergence of DeepSeek isn't just about a new model—it's about the changing dynamics of global AI development
         and the increasing need for thoughtful, flexible approaches in how we build AI-powered applications.
       </p>
 

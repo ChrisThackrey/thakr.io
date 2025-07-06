@@ -1,17 +1,20 @@
-"use client"
-import ReactMarkdown from "react-markdown"
-import { defaultMarkdownOptions, createMarkdownComponents } from "@/lib/markdown-config"
+"use client";
+import ReactMarkdown from "react-markdown";
+import {
+  createMarkdownComponents,
+  defaultMarkdownOptions,
+} from "@/lib/markdown-config";
 
 interface MarkdownRendererProps {
-  content: string
-  className?: string
-  headingClassName?: string
-  paragraphClassName?: string
-  linkClassName?: string
-  imageClassName?: string
-  codeClassName?: string
-  blockquoteClassName?: string
-  listClassName?: string
+  content: string;
+  className?: string;
+  headingClassName?: string;
+  paragraphClassName?: string;
+  linkClassName?: string;
+  imageClassName?: string;
+  codeClassName?: string;
+  blockquoteClassName?: string;
+  listClassName?: string;
 }
 
 export function MarkdownRenderer({
@@ -34,13 +37,15 @@ export function MarkdownRenderer({
     codeClassName,
     blockquoteClassName,
     listClassName,
-  })
+  });
 
   return (
-    <ReactMarkdown {...defaultMarkdownOptions} components={components} className={className}>
-      {content}
-    </ReactMarkdown>
-  )
+    <div className={className}>
+      <ReactMarkdown {...defaultMarkdownOptions} components={components}>
+        {content}
+      </ReactMarkdown>
+    </div>
+  );
 }
 
-export default MarkdownRenderer
+export default MarkdownRenderer;
