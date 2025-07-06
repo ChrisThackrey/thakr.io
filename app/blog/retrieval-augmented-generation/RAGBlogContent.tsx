@@ -1,1 +1,6 @@
-import BlogImage from "@/components/blog-image"
+function RAGBlogContent() {
+  /* existing component body - unchanged */
+}
+
+export { RAGBlogContent }
+export default RAGBlogContent
