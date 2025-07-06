@@ -20,10 +20,10 @@ export function Navigation() {
   }))
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur">
+    <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-white/[0.05] dark:bg-black/[0.05] backdrop-blur-lg">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Icons.logo className="h-6 w-6" />
+          <Icons.sparkles className="h-6 w-6 text-primary" />
           <span className="hidden font-bold sm:inline-block">{siteConfig.name}</span>
         </Link>
 

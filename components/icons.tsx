@@ -178,6 +178,7 @@ const ICON_MAP = {
   /* Additional icons */
   rocket: Rocket,
   link: Link,
+  sparkles: Sparkles,
 
   /* Tech / misc */
   laptop: Laptop,

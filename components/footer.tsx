@@ -10,7 +10,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-background border-t">
+    <footer className="border-t border-white/[0.08] bg-white/[0.05] dark:bg-black/[0.05] backdrop-blur-md">
       <div className="container py-8">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <div className="text-center sm:text-left">

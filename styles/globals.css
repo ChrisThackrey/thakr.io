@@ -103,4 +103,13 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Improve icon visibility in dark mode */
+  .dark svg {
+    @apply text-current;
+  }
+  
+  .dark .text-muted-foreground svg {
+    @apply opacity-80;
+  }
 }

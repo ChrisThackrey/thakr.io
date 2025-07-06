@@ -13,7 +13,7 @@ export async function BlogPreviewSection() {
   }
 
   return (
-    <section className="py-20 md:py-28 bg-muted/50">
+    <section className="py-20 md:py-28 bg-white/[0.02] dark:bg-black/[0.02] backdrop-blur-sm">
       <div className="container">
         <div className="flex justify-between items-center mb-12">
           <SectionTitle>From the Blog</SectionTitle>
