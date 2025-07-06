@@ -23,7 +23,7 @@ export default function SeriesPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <BlogErrorBoundary>
+    <BlogErrorBoundary postTitle={series.name}>
       <PageBackground />
       <div className="container py-16 md:py-24">
         <div className="mb-8">

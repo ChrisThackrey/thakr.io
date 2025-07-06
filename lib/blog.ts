@@ -14,6 +14,10 @@ export interface BlogPost {
   image?: string
   series?: { name: string; order: number }
   featured?: boolean
+  id?: string
+  coverImage?: string
+  description?: string
+  estimatedReadingTime?: number
 }
 
 /* ------------------------------ In-memory data ----------------------------- */

@@ -12,9 +12,10 @@ export const metadata: Metadata = {
 
 export default function BookingPage() {
   return (
-    <PageTransition className="flex flex-col flex-grow">
-      <ComingSoonBanner />
-      <PageBackground />
+    <PageTransition>
+      <div className="flex flex-col flex-grow">
+        <ComingSoonBanner pageName="Booking" />
+        <PageBackground />
       <div className="flex-grow flex items-center justify-center">
         <div className="container mx-auto px-4 py-16 md:py-24">
           <Card className="max-w-4xl mx-auto bg-card/80 backdrop-blur-sm border-border/50">
@@ -30,6 +31,7 @@ export default function BookingPage() {
             </CardContent>
           </Card>
         </div>
+      </div>
       </div>
     </PageTransition>
   )

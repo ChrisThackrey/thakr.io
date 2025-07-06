@@ -16,8 +16,9 @@ export default function HomePage() {
   const featuredExperience = professionalExperience.slice(0, 3)
 
   return (
-    <PageTransition className="flex flex-col flex-grow">
-      <div className="flex-grow">
+    <PageTransition>
+      <div className="flex flex-col flex-grow">
+        <div className="flex-grow">
         <PageBackground />
         {/* Profile Section */}
         <div className="container mx-auto max-w-4xl pt-16 md:pt-24 pb-0 px-4">
@@ -55,6 +56,7 @@ export default function HomePage() {
 
         {/* Let's Connect Section */}
         <ContactSection />
+        </div>
       </div>
     </PageTransition>
   )

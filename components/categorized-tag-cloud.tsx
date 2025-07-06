@@ -5,19 +5,20 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown, ChevronRight } from "lucide-react"
-import { getAllTags, getTagCount } from "@/lib/blog"
+import { getAllTags, getTagCounts } from "@/lib/blog"
 import { tagCategories, getUncategorizedTags } from "@/lib/tag-categories"
 import { getTagColors } from "@/lib/tag-colors"
 import { cn } from "@/lib/utils"
 
 interface CategorizedTagCloudProps {
   className?: string
+  onSelectTag?: (tag: string) => void
 }
 
-export function CategorizedTagCloud({ className }: CategorizedTagCloudProps) {
+export function CategorizedTagCloud({ className, onSelectTag }: CategorizedTagCloudProps) {
   const [expanded, setExpanded] = useState<Set<string>>(new Set(tagCategories.map((c) => c.id)))
   const allTags = getAllTags()
-  const counts = getTagCount()
+  const counts = getTagCounts()
   const uncategorized = getUncategorizedTags(allTags)
 
   const toggle = (id: string) =>

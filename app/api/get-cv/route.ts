@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { createAdminClient } from "@/lib/supabase/server"
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   console.log("API Route: /api/get-cv - Initiating resume download...")
 
   try {

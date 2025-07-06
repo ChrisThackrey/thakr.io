@@ -34,7 +34,7 @@ const FROM_EMAIL =
     : "onboarding@resend.dev"
 
 export async function POST(request: NextRequest) {
-  const ip = request.ip ?? "127.0.0.1"
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0] ?? "127.0.0.1"
 
   try {
     // 1. Rate Limiting
@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
       from: FROM_EMAIL,
       to: [TO_EMAIL],
       subject: `New Contact Form: ${subject}`,
-      reply_to: senderEmail,
+      replyTo: senderEmail,
       html: emailHtml,
     })
 

@@ -24,7 +24,7 @@ export default async function BlogPage() {
   const featuredPosts = await getFeaturedPosts()
 
   return (
-    <BlogErrorBoundary>
+    <BlogErrorBoundary postTitle="Blog">
       <div className="flex flex-col flex-grow">
         <PageBackground />
         <div className="container mx-auto px-4 py-8">

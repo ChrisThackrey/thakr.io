@@ -91,7 +91,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   contentId={contentId}
                   slug={params.slug}
                   className="w-full justify-start"
-                  startInMiniPlayer
+                  startInMiniPlayer={true}
                 />
               </DropdownMenuItem>
               <DropdownMenuSeparator />
@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {series && <SeriesBanner post={post} series={series} />}
 
         {/* two-column layout */}
-        <BlogPostLayout post={post}>
+        <BlogPostLayout post={post} content={post.content}>
           <main className="px-0 sm:px-4">
             <article
               id={contentId}

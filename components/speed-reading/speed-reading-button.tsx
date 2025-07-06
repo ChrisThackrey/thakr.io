@@ -10,9 +10,10 @@ interface SpeedReadingButtonProps {
   selector?: string
   className?: string
   slug?: string
+  startInMiniPlayer?: boolean
 }
 
-export function SpeedReadingButton({ contentId, selector, className, slug }: SpeedReadingButtonProps) {
+export function SpeedReadingButton({ contentId, selector, className, slug, startInMiniPlayer }: SpeedReadingButtonProps) {
   const [showSpeedReader, setShowSpeedReader] = useState(false)
 
   const handleOpenSpeedReader = () => {

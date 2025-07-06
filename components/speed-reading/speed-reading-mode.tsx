@@ -11,8 +11,14 @@ interface SpeedReadingModeProps {
   onClose: () => void
   slug?: string
   initialContent?: string
+  content?: string
   initialPosition?: number
   startInMiniPlayer?: boolean
+  darkMode?: boolean
+  contentType?: string
+  initialWpm?: number
+  blogSlug?: string
+  contentSelector?: string
 }
 
 export function SpeedReadingMode({
@@ -21,8 +27,14 @@ export function SpeedReadingMode({
   onClose,
   slug,
   initialContent,
+  content,
   initialPosition,
   startInMiniPlayer = false,
+  darkMode,
+  contentType,
+  initialWpm,
+  blogSlug,
+  contentSelector,
 }: SpeedReadingModeProps) {
   const { theme, resolvedTheme } = useTheme()
   const isDarkMode = theme === "dark" || resolvedTheme === "dark"

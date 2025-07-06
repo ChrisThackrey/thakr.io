@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Icons } from "@/components/icons"
 import { PageBackground } from "@/components/page-background"
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { SectionTitle } from "@/components/section-title"
 import { Card, CardContent } from "@/components/ui/card"
@@ -21,12 +21,12 @@ export default function AboutPage() {
     visible: { opacity: 1, transition: { duration: 0.6, delay: 0.1 } },
     exit: { opacity: 0, transition: { duration: 0.4 } },
   }
-  const avatarSocialVariants = {
+  const avatarSocialVariants: Variants = {
     hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut", delay: 0 } },
     exit: { opacity: 0, y: -10, transition: { duration: 0.3, ease: "easeIn" } },
   }
-  const textVariants = {
+  const textVariants: Variants = {
     hidden: { opacity: 0, y: 10 },
     visible: (i: number) => ({
       opacity: 1,
@@ -35,17 +35,17 @@ export default function AboutPage() {
     }),
     exit: { opacity: 0, y: -10, transition: { duration: 0.3, ease: "easeIn" } },
   }
-  const resumeButtonRightVariant = {
+  const resumeButtonRightVariant: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: { opacity: 1, scale: 1, transition: { delay: 0.2, duration: 0.4, ease: "easeOut" } },
     exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3, ease: "easeIn" } },
   }
-  const projectsButtonRightVariant = {
+  const projectsButtonRightVariant: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: { opacity: 1, scale: 1, transition: { delay: 0.3, duration: 0.4, ease: "easeOut" } },
     exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3, ease: "easeIn" } },
   }
-  const bottomSectionVariant = {
+  const bottomSectionVariant: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
       opacity: 1,

@@ -34,12 +34,6 @@ import { BlogPostLayout } from "@/components/blog-post-layout"
 import type { ReactNode } from "react"
 import { BlogLayout } from "@/components/blog-layout"
 
-interface BlogPostLayoutProps {
-  children: React.ReactNode
-  params: {
-    slug: string
-  }
-}
 
 interface LayoutProps {
   children: ReactNode
@@ -61,14 +55,14 @@ export default async function Layout({ children, params }: LayoutProps) {
     return notFound()
   }
 
-  const series = post.series ? getSeriesBySlug(post.series.slug) : null
+  const series = post.series ? getSeriesBySlug(post.series) : null
 
   // Create a consistent content ID for the blog post
   const contentId = `blog-post-${params.slug}`
 
   return (
     <>
-      <BlogPostLayout post={post}>
+      <BlogPostLayout post={post} content={post.content || ""}>
         <PageBackground />
         {/* Enhanced reading progress indicators */}
         <ReadingProgressBar
@@ -125,7 +119,7 @@ export default async function Layout({ children, params }: LayoutProps) {
             </div>
           </div>
 
-          {post.series && series && <SeriesBanner post={post} />}
+          {post.series && series && <SeriesBanner post={post} series={series} />}
 
           <main className="px-0 sm:px-4">
             <BlogLayout>{children}</BlogLayout>

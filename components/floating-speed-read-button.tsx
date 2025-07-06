@@ -10,9 +10,11 @@ import { useScrollPosition } from "@/hooks/use-scroll-position"
 interface FloatingSpeedReadButtonProps {
   slug?: string
   className?: string
+  contentSelector?: string
+  selector?: string
 }
 
-export function FloatingSpeedReadButton({ slug, className }: FloatingSpeedReadButtonProps) {
+export function FloatingSpeedReadButton({ slug, className, contentSelector, selector }: FloatingSpeedReadButtonProps) {
   const [showSpeedReader, setShowSpeedReader] = useState(false)
   const [content, setContent] = useState("")
   const scrollPosition = useScrollPosition()

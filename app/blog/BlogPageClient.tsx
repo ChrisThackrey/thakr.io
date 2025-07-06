@@ -13,12 +13,12 @@ import { SectionTitle } from "@/components/section-title"
 
 interface BlogPageClientProps {
   posts?: BlogPost[]
+  featuredPosts?: BlogPost[]
 }
 
-export default function BlogPageClient({ posts = [] }: BlogPageClientProps) {
+export default function BlogPageClient({ posts = [], featuredPosts = [] }: BlogPageClientProps) {
   // Use the provided posts or get all blog posts if none provided
   const allBlogPosts = posts.length > 0 ? posts : getAllBlogPosts()
-  const featuredPosts = getFeaturedBlogPosts()
 
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(allBlogPosts)
   const [selectedTags, setSelectedTags] = useState<string[]>([])
