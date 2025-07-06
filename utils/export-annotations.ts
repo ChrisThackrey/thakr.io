@@ -11,8 +11,8 @@ export interface ExportOptions {
 
 export async function exportAnnotatedImage(
   imageElement: HTMLElement,
-  imageUrl: string,
-  imageTitle: string,
+  _imageUrl: string,
+  imageAlt: string,
   annotations: Annotation[],
   options: ExportOptions,
 ) {
@@ -20,7 +20,7 @@ export async function exportAnnotatedImage(
     format,
     includeAnnotationList = true,
     quality = 0.95,
-    fileName = `${imageTitle.replace(/\s+/g, "-").toLowerCase()}-annotated`,
+    fileName = `${imageAlt.replace(/\s+/g, "-").toLowerCase()}-annotated`,
   } = options
 
   try {
@@ -151,10 +151,10 @@ export async function exportAnnotationSummary(imageTitle: string, annotations: A
 
       // Add annotation
       pdf.setFontSize(12)
-      pdf.setFont(undefined, "bold")
+      pdf.setFont("helvetica", "bold")
       pdf.text(`Annotation ${index + 1}`, 20, yPosition)
 
-      pdf.setFont(undefined, "normal")
+      pdf.setFont("helvetica", "normal")
       pdf.setFontSize(10)
 
       // Add position info

@@ -40,9 +40,9 @@ export function createAdminClient(): SupabaseClient {
 }
 
 // Keep your existing createClient for SSR if it's in this file
-export function createClient() {
+export async function createClient() {
   // This is your SSR client
-  const cookieStore = cookies()
+  const cookieStore = await cookies()
   return createSSRClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, {
     cookies: {
       get(name: string) {

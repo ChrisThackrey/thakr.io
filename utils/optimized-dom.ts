@@ -42,13 +42,13 @@ class DOMBatcher {
 
   private process(): void {
     // Process all reads
-    const reads = this.readQueue
+    // const reads = this.readQueue
     this.readQueue = []
     const writes = this.writeQueue
     this.writeQueue = []
 
     // Force style calculation by reading
-    const results = reads.map((read) => read())
+    // const results = reads.map((read) => read())
 
     // Then do all writes
     writes.forEach((write) => write())

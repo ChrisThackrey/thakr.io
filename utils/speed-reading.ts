@@ -180,7 +180,7 @@ export function extractTextFromElement(element: HTMLElement | null): {
   scripts.forEach((script) => script.remove())
 
   // Find all code blocks
-  const codeElements = clone.querySelectorAll("pre, code, .code-block, .hljs")
+  // const codeElements = clone.querySelectorAll("pre, code, .code-block, .hljs")
   const codeBlocks: { text: string; index: number }[] = []
   let fullText = ""
   let currentIndex = 0

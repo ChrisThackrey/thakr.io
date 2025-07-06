@@ -131,7 +131,7 @@ export function clearHighlights(): void {
 function findTextNodes(container: HTMLElement): Text[] {
   const textNodes: Text[] = []
   const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
-    acceptNode: (node) => {
+    acceptNode: (node: { parentElement: any; textContent: string }) => {
       // Skip nodes in script, style, and code elements
       const parent = node.parentElement
       if (

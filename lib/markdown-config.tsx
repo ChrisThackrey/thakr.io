@@ -1,11 +1,10 @@
-import type { ReactMarkdownOptions } from "react-markdown/lib/react-markdown"
-import type { Components } from "react-markdown"
-import { cn } from "@/lib/utils"
+import type { Components, Options } from "react-markdown";
+import { cn } from "@/lib/utils";
 
 /**
  * Default options for React Markdown
  */
-export const defaultMarkdownOptions: Partial<ReactMarkdownOptions> = {
+export const defaultMarkdownOptions = {
   // Enable GitHub Flavored Markdown
   gfm: true,
   // Enable HTML in markdown
@@ -51,20 +50,20 @@ export const defaultMarkdownOptions: Partial<ReactMarkdownOptions> = {
     "dt",
     "dd",
   ],
-}
+};
 
 /**
  * Custom components for React Markdown
  */
 export function createMarkdownComponents(options?: {
-  className?: string
-  headingClassName?: string
-  paragraphClassName?: string
-  linkClassName?: string
-  imageClassName?: string
-  codeClassName?: string
-  blockquoteClassName?: string
-  listClassName?: string
+  className?: string;
+  headingClassName?: string;
+  paragraphClassName?: string;
+  linkClassName?: string;
+  imageClassName?: string;
+  codeClassName?: string;
+  blockquoteClassName?: string;
+  listClassName?: string;
 }): Components {
   return {
     // Headings
@@ -75,7 +74,9 @@ export function createMarkdownComponents(options?: {
           options?.headingClassName,
           className,
         )}
-        id={typeof children === "string" ? children.toLowerCase().replace(/\s+/g, "-") : undefined}
+        id={typeof children === "string"
+          ? children.toLowerCase().replace(/\s+/g, "-")
+          : undefined}
         data-heading
         {...props}
       >
@@ -89,7 +90,9 @@ export function createMarkdownComponents(options?: {
           options?.headingClassName,
           className,
         )}
-        id={typeof children === "string" ? children.toLowerCase().replace(/\s+/g, "-") : undefined}
+        id={typeof children === "string"
+          ? children.toLowerCase().replace(/\s+/g, "-")
+          : undefined}
         data-heading
         {...props}
       >
@@ -103,7 +106,9 @@ export function createMarkdownComponents(options?: {
           options?.headingClassName,
           className,
         )}
-        id={typeof children === "string" ? children.toLowerCase().replace(/\s+/g, "-") : undefined}
+        id={typeof children === "string"
+          ? children.toLowerCase().replace(/\s+/g, "-")
+          : undefined}
         data-heading
         {...props}
       >
@@ -117,7 +122,9 @@ export function createMarkdownComponents(options?: {
           options?.headingClassName,
           className,
         )}
-        id={typeof children === "string" ? children.toLowerCase().replace(/\s+/g, "-") : undefined}
+        id={typeof children === "string"
+          ? children.toLowerCase().replace(/\s+/g, "-")
+          : undefined}
         data-heading
         {...props}
       >
@@ -159,34 +166,36 @@ export function createMarkdownComponents(options?: {
 
     // Code blocks
     code: ({ node, className, children, ...props }) => {
-      const match = /language-(\w+)/.exec(className || "")
-      return !match ? (
-        <code
-          className={cn(
-            "bg-muted px-1.5 py-0.5 rounded text-sm font-mono border border-border/30",
-            options?.codeClassName,
-            className,
-          )}
-          {...props}
-        >
-          {children}
-        </code>
-      ) : (
-        <div className="relative">
-          <pre
+      const match = /language-(\w+)/.exec(className || "");
+      return !match
+        ? (
+          <code
             className={cn(
-              "bg-muted/80 p-4 rounded-lg overflow-x-auto my-8 border border-border/30",
+              "bg-muted px-1.5 py-0.5 rounded text-sm font-mono border border-border/30",
               options?.codeClassName,
               className,
             )}
+            {...props}
           >
+            {children}
+          </code>
+        )
+        : (
+          <div className="relative">
+            <pre
+              className={cn(
+                "bg-muted/80 p-4 rounded-lg overflow-x-auto my-8 border border-border/30",
+                options?.codeClassName,
+                className,
+              )}
+            >
             <code className={cn("text-sm font-mono", `language-${match[1]}`)}>{children}</code>
-          </pre>
-          <div className="absolute top-2 right-2 text-xs text-muted-foreground px-2 py-1 rounded bg-muted">
-            {match[1]}
+            </pre>
+            <div className="absolute top-2 right-2 text-xs text-muted-foreground px-2 py-1 rounded bg-muted">
+              {match[1]}
+            </div>
           </div>
-        </div>
-      )
+        );
     },
 
     // Blockquotes
@@ -205,17 +214,34 @@ export function createMarkdownComponents(options?: {
 
     // Lists
     ul: ({ node, className, children, ...props }) => (
-      <ul className={cn("my-6 ml-6 space-y-2 text-base sm:text-lg", options?.listClassName, className)} {...props}>
+      <ul
+        className={cn(
+          "my-6 ml-6 space-y-2 text-base sm:text-lg",
+          options?.listClassName,
+          className,
+        )}
+        {...props}
+      >
         {children}
       </ul>
     ),
     ol: ({ node, className, children, ...props }) => (
-      <ol className={cn("my-6 ml-6 space-y-2 text-base sm:text-lg", options?.listClassName, className)} {...props}>
+      <ol
+        className={cn(
+          "my-6 ml-6 space-y-2 text-base sm:text-lg",
+          options?.listClassName,
+          className,
+        )}
+        {...props}
+      >
         {children}
       </ol>
     ),
     li: ({ node, className, children, ...props }) => (
-      <li className={cn("mb-2 pl-2 leading-7 sm:leading-8", className)} {...props}>
+      <li
+        className={cn("mb-2 pl-2 leading-7 sm:leading-8", className)}
+        {...props}
+      >
         {children}
       </li>
     ),
@@ -225,7 +251,11 @@ export function createMarkdownComponents(options?: {
       <img
         src={src || "/placeholder.svg"}
         alt={alt || ""}
-        className={cn("rounded-lg shadow-md my-10 mx-auto max-w-full", options?.imageClassName, className)}
+        className={cn(
+          "rounded-lg shadow-md my-10 mx-auto max-w-full",
+          options?.imageClassName,
+          className,
+        )}
         loading="lazy"
         {...props}
       />
@@ -238,7 +268,13 @@ export function createMarkdownComponents(options?: {
       </figure>
     ),
     figcaption: ({ node, className, children, ...props }) => (
-      <figcaption className={cn("text-sm text-center text-muted-foreground mt-2 italic", className)} {...props}>
+      <figcaption
+        className={cn(
+          "text-sm text-center text-muted-foreground mt-2 italic",
+          className,
+        )}
+        {...props}
+      >
         {children}
       </figcaption>
     ),
@@ -246,7 +282,13 @@ export function createMarkdownComponents(options?: {
     // Tables
     table: ({ node, className, children, ...props }) => (
       <div className="overflow-x-auto my-8">
-        <table className={cn("w-full border-collapse text-sm sm:text-base", className)} {...props}>
+        <table
+          className={cn(
+            "w-full border-collapse text-sm sm:text-base",
+            className,
+          )}
+          {...props}
+        >
           {children}
         </table>
       </div>
@@ -267,31 +309,55 @@ export function createMarkdownComponents(options?: {
       </tr>
     ),
     th: ({ node, className, children, ...props }) => (
-      <th className={cn("border border-border p-2 text-left font-semibold", className)} {...props}>
+      <th
+        className={cn(
+          "border border-border p-2 text-left font-semibold",
+          className,
+        )}
+        {...props}
+      >
         {children}
       </th>
     ),
     td: ({ node, className, children, ...props }) => (
-      <td className={cn("border border-border p-2 text-left", className)} {...props}>
+      <td
+        className={cn("border border-border p-2 text-left", className)}
+        {...props}
+      >
         {children}
       </td>
     ),
 
     // Horizontal rule
     hr: ({ node, className, ...props }) => (
-      <hr className={cn("my-12 border-t-2 border-border/50 max-w-md mx-auto", className)} {...props} />
+      <hr
+        className={cn(
+          "my-12 border-t-2 border-border/50 max-w-md mx-auto",
+          className,
+        )}
+        {...props}
+      />
     ),
 
     // Enhanced elements
     mark: ({ node, className, children, ...props }) => (
-      <mark className={cn("bg-yellow-200 dark:bg-yellow-800 px-1 rounded", className)} {...props}>
+      <mark
+        className={cn(
+          "bg-yellow-200 dark:bg-yellow-800 px-1 rounded",
+          className,
+        )}
+        {...props}
+      >
         {children}
       </mark>
     ),
 
     kbd: ({ node, className, children, ...props }) => (
       <kbd
-        className={cn("bg-muted px-2 py-1 text-xs font-mono rounded border border-border shadow-sm", className)}
+        className={cn(
+          "bg-muted px-2 py-1 text-xs font-mono rounded border border-border shadow-sm",
+          className,
+        )}
         {...props}
       >
         {children}
@@ -331,21 +397,30 @@ export function createMarkdownComponents(options?: {
 
     // Details and summary
     details: ({ node, className, children, ...props }) => (
-      <details className={cn("my-4 border border-border rounded-md overflow-hidden", className)} {...props}>
+      <details
+        className={cn(
+          "my-4 border border-border rounded-md overflow-hidden",
+          className,
+        )}
+        {...props}
+      >
         {children}
       </details>
     ),
 
     summary: ({ node, className, children, ...props }) => (
-      <summary className={cn("bg-muted/50 p-3 cursor-pointer font-medium", className)} {...props}>
+      <summary
+        className={cn("bg-muted/50 p-3 cursor-pointer font-medium", className)}
+        {...props}
+      >
         {children}
       </summary>
     ),
-  }
+  };
 }
 
 // Re-export for backward compatibility
 export default {
   defaultMarkdownOptions,
   createMarkdownComponents,
-}
+};

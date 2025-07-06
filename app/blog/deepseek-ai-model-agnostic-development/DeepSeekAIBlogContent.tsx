@@ -29,8 +29,8 @@ export default function DeepSeekAIBlogContent() {
       <p>
         DeepSeek AI is a suite of large language models developed by DeepSeek, a Chinese AI startup founded in 2023.
         What began as DeepSeek Coder has rapidly evolved into a family of models, with their latest
-        release—DeepSeek-R1—emerging as a formidable competitor to established Western models like OpenAI's GPT-4 and
-        Anthropic's Claude.
+        release—DeepSeek-R1—emerging as a formidable competitor to established Western models like OpenAI&apos;s GPT-4 and
+        Anthropic&apos;s Claude.
       </p>
       <p>
         As one podcast participant noted: "I had used it a little bit in Cursor before I knew it was from China. And it
@@ -58,7 +58,7 @@ export default function DeepSeekAIBlogContent() {
 
       <h2>The Distillation Controversy</h2>
       <p>
-        Perhaps the most controversial aspect of DeepSeek's development is the allegation that it used GPT-4 in a
+        Perhaps the most controversial aspect of DeepSeek&apos;s development is the allegation that it used GPT-4 in a
         "distillation" training process.
       </p>
       <p>
@@ -72,7 +72,7 @@ export default function DeepSeekAIBlogContent() {
         property questions when proprietary models are involved.
       </p>
       <p>
-        If DeepSeek did use GPT-4's outputs without OpenAI's authorization to train a commercial model, this could
+        If DeepSeek did use GPT-4&apos;s outputs without OpenAI&apos;s authorization to train a commercial model, this could
         potentially constitute intellectual property infringement. The legal landscape around model distillation remains
         unclear, especially as it crosses international boundaries.
       </p>
@@ -87,13 +87,13 @@ export default function DeepSeekAIBlogContent() {
       />
 
       <p>
-        DeepSeek's emergence exemplifies the complex geopolitical dimensions of modern AI development. One podcast
+        DeepSeek&apos;s emergence exemplifies the complex geopolitical dimensions of modern AI development. One podcast
         speaker observed the timing: "There was no accident that the TikTok ban and the launch of DeepSeek that upends
-        the American market are happening synchronously. It's very much a part of the geopolitical landscape."
+        the American market are happening synchronously. It&apos;s very much a part of the geopolitical landscape."
       </p>
       <p>
-        At the center of this tension are US chip export controls targeting China's AI capabilities. In October 2022,
-        the US effectively banned the export of Nvidia's most advanced chips—the A100 and H100—to China. In response,
+        At the center of this tension are US chip export controls targeting China&apos;s AI capabilities. In October 2022,
+        the US effectively banned the export of Nvidia&apos;s most advanced chips—the A100 and H100—to China. In response,
         Nvidia designed downgraded versions, the A800 and H800, which technically complied with export restrictions by
         reducing performance just below prohibited thresholds.
       </p>
@@ -116,7 +116,7 @@ export default function DeepSeekAIBlogContent() {
         sending user data back to its developers.
       </p>
       <p>
-        "I've seen also where it does track your data. It has telemetry. That's why I stopped using it," shared one
+        "I&apos;ve seen also where it does track your data. It has telemetry. That&apos;s why I stopped using it," shared one
         podcast participant.
       </p>
       <p>
