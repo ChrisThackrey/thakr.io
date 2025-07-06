@@ -19,7 +19,7 @@ export const siteConfig = {
     { href: "/work", label: "Work", icon: "briefcase" },
     { href: "/projects", label: "Projects", icon: "palette" },
     { href: "/architecture", label: "Architecture", icon: "architecture" },
-    { href: "/blog", label: "Blog", icon: "blog" },
+    { href: "/blog", label: "Blog", icon: "bookOpen" },
     { href: "/contact", label: "Contact", icon: "contact" },
   ],
   contact: {
