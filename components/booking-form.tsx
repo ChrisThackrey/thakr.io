@@ -1,13 +1,12 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Calendar, Clock, ArrowLeft, Check } from "lucide-react"
+import { Calendar, Clock, ArrowLeft, Check, Send } from "lucide-react"
 import { format } from "date-fns"
 
 interface BookingFormProps {
@@ -32,7 +31,6 @@ export function BookingForm({ selectedDate, initialData, onDataChange, onSubmit,
   const [lastSavedField, setLastSavedField] = useState<string | null>(null)
   const [isDirty, setIsDirty] = useState<Record<string, boolean>>({})
 
-  // Only sync with initialData on mount or when initialData changes significantly
   useEffect(() => {
     if (initialData) {
       setFormData({
@@ -43,43 +41,25 @@ export function BookingForm({ selectedDate, initialData, onDataChange, onSubmit,
     }
   }, [initialData])
 
-  // Sync with parent component when form data changes
   useEffect(() => {
-    // Only notify parent of changes for fields that are marked as dirty
     const changedFields: Partial<typeof formData> = {}
     let hasChanges = false
-
     Object.keys(isDirty).forEach((field) => {
-      if (isDirty[field]) {
+      if (isDirty[field as keyof typeof isDirty]) {
         changedFields[field as keyof typeof formData] = formData[field as keyof typeof formData]
         hasChanges = true
       }
     })
-
     if (hasChanges && onDataChange) {
       onDataChange(changedFields)
-
-      // Reset dirty flags after notifying parent
       setIsDirty({})
     }
   }, [formData, isDirty, onDataChange])
 
   const handleInputChange = useCallback((field: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }))
-
-    // Mark this field as dirty (changed)
-    setIsDirty((prev) => ({
-      ...prev,
-      [field]: true,
-    }))
-
-    // Show saved indicator
+    setFormData((prev) => ({ ...prev, [field]: value }))
+    setIsDirty((prev) => ({ ...prev, [field]: true }))
     setLastSavedField(field)
-
-    // Clear the field indicator after 2 seconds
     setTimeout(() => {
       setLastSavedField((current) => (current === field ? null : current))
     }, 2000)
@@ -98,23 +78,23 @@ export function BookingForm({ selectedDate, initialData, onDataChange, onSubmit,
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold mb-2">Enter Your Details</h2>
+      <div className="text-center">
+        <h2 className="text-2xl font-bold">Enter Your Details</h2>
         <p className="text-muted-foreground">Please provide your information for the meeting.</p>
       </div>
 
-      <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg">
+      <div className="flex items-center justify-center gap-4 p-3 bg-muted/50 rounded-lg text-sm">
         <div className="flex items-center gap-2">
           <Calendar className="h-4 w-4 text-muted-foreground" />
-          <span className="text-sm">{format(selectedDate, "MMMM d, yyyy")}</span>
+          <span>{format(selectedDate, "MMMM d, yyyy")}</span>
         </div>
         <div className="flex items-center gap-2">
           <Clock className="h-4 w-4 text-muted-foreground" />
-          <span className="text-sm">{format(selectedDate, "h:mm a")}</span>
+          <span>{format(selectedDate, "h:mm a")}</span>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 max-w-lg mx-auto">
         <div className="space-y-2">
           <Label htmlFor="name">
             Name *
@@ -172,13 +152,20 @@ export function BookingForm({ selectedDate, initialData, onDataChange, onSubmit,
           />
         </div>
 
-        <div className="flex gap-4 pt-4">
-          <Button type="button" variant="outline" onClick={onBack} disabled={isSubmitting}>
+        <div className="flex flex-col-reverse sm:flex-row gap-4 pt-4">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={onBack}
+            disabled={isSubmitting}
+            className="w-full sm:w-auto bg-transparent"
+          >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
           </Button>
           <Button type="submit" disabled={isSubmitting} className="flex-1">
             {isSubmitting ? "Booking..." : "Book Meeting"}
+            <Send className="ml-2 h-4 w-4" />
           </Button>
         </div>
       </form>

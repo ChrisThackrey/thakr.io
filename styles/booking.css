@@ -64,30 +64,6 @@
   transform: scale(1.02);
 }
 
-.booking-step-transition {
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.booking-step-enter {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.booking-step-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.booking-step-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.booking-step-exit-active {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
 .time-slot {
   transition: all 0.2s ease;
 }

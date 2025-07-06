@@ -1,36 +1,88 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Home, SearchX } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
+import { motion } from "framer-motion"
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-[calc(100vh-200px)] w-full flex-col items-center justify-center space-y-8 bg-background px-4 text-center">
-      <Image
-        src="/placeholder.svg?height=256&width=256"
-        alt="A sad robot lost in space"
-        width={256}
-        height={256}
-        className="rounded-full object-cover"
-      />
-      <div className="space-y-2">
-        <h1 className="flex items-center justify-center gap-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-          <SearchX className="h-10 w-10" />
-          Oops! Page Not Found
-        </h1>
-        <p className="max-w-md text-muted-foreground">
-          It seems you've ventured into uncharted territory. The page you're looking for doesn't exist or has been
-          moved.
+    <div className="flex min-h-[calc(100vh-200px)] flex-col items-center justify-center overflow-hidden bg-background px-4 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: -50, scale: 0.5 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 10,
+          delay: 0.2,
+        }}
+        className="relative flex h-48 w-48 items-center justify-center"
+      >
+        <motion.div
+          animate={{
+            y: [0, -10, 0],
+            rotate: [0, 5, -5, 0],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
+        >
+          <Icons.searchX className="h-32 w-32 text-primary/70" />
+        </motion.div>
+        <motion.div
+          className="absolute text-5xl font-bold text-muted-foreground/50"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          style={{ top: "10%", left: "15%" }}
+        >
+          ?
+        </motion.div>
+        <motion.div
+          className="absolute text-3xl font-bold text-muted-foreground/30"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+          style={{ bottom: "20%", right: "10%" }}
+        >
+          !
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        className="mt-8 max-w-md"
+      >
+        <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">Page Not Found</h1>
+        <p className="mt-4 text-lg text-muted-foreground">
+          Oops! It seems the page you're looking for has drifted off into the digital void.
         </p>
-      </div>
-      <Button asChild>
-        <Link href="/">
-          <Home className="mr-2 h-4 w-4" />
-          Return to Home Base
-        </Link>
-      </Button>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.5 }}
+        className="mt-8 flex gap-4"
+      >
+        <Button asChild>
+          <Link href="/">
+            <Icons.home className="mr-2 h-4 w-4" />
+            Return to Home Base
+          </Link>
+        </Button>
+        <Button asChild variant="outline">
+          <Link href="/blog">
+            <Icons.bookOpen className="mr-2 h-4 w-4" />
+            Explore the Blog
+          </Link>
+        </Button>
+      </motion.div>
     </div>
   )
 }
