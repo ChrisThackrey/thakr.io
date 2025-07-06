@@ -55,7 +55,7 @@ export default async function Layout({ children, params }: LayoutProps) {
     return notFound()
   }
 
-  const series = post.series ? getSeriesBySlug(post.series) : null
+  const series = post.series ? getSeriesBySlug(post.series.name) : null
 
   // Create a consistent content ID for the blog post
   const contentId = `blog-post-${params.slug}`

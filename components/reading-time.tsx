@@ -5,7 +5,6 @@ interface ReadingTimeProps {
   minutes: number
   wordCount?: number
   showWordCount?: boolean
-  actualMinutes?: number
   showSpeedIndicator?: boolean
   className?: string
 }

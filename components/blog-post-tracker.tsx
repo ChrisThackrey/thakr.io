@@ -17,7 +17,7 @@ interface BlogPostTrackerProps {
 export function BlogPostTracker({ slug, title, children, showReadingTime = true }: BlogPostTrackerProps) {
   const { savePosition, restorePosition } = useReadingPosition()
   const pathname = usePathname()
-  const { readingTime, wordCount } = useReadingTimeCalculator()
+  const { readingTime } = useReadingTimeCalculator()
   const [isReadingTimeVisible, setIsReadingTimeVisible] = useState(false)
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export function BlogPostTracker({ slug, title, children, showReadingTime = true 
     }
 
     // Throttle the scroll event to improve performance
-    let scrollTimeout: NodeJS.Timeout | null = null
+    let scrollTimeout: ReturnType<typeof setTimeout> | null = null
     const throttledScroll = () => {
       if (!scrollTimeout) {
         scrollTimeout = setTimeout(() => {

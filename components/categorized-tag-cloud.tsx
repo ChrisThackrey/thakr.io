@@ -15,7 +15,7 @@ interface CategorizedTagCloudProps {
   onSelectTag?: (tag: string) => void
 }
 
-export function CategorizedTagCloud({ className }: CategorizedTagCloudProps) {
+export function CategorizedTagCloud({ className, onSelectTag }: CategorizedTagCloudProps) {
   const [expanded, setExpanded] = useState<Set<string>>(new Set(tagCategories.map((c) => c.id)))
   const allTags = getAllTags()
   const counts = getTagCounts()
@@ -61,12 +61,13 @@ export function CategorizedTagCloud({ className }: CategorizedTagCloudProps) {
                     {tagsInCat
                       .sort((a, b) => (counts[b] || 0) - (counts[a] || 0))
                       .map((tag) => (
-                        <span
+                        <button
                           key={tag}
-                          className={`inline-block truncate rounded-full px-2 py-0.5 text-xs ${getTagColors(tag)}`}
+                          onClick={() => onSelectTag?.(tag)}
+                          className={`inline-block truncate rounded-full px-2 py-0.5 text-xs hover:opacity-80 transition-opacity ${getTagColors(tag)}`}
                         >
                           {tag} ({counts[tag] || 0})
-                        </span>
+                        </button>
                       ))}
                   </div>
                 </motion.div>
@@ -89,12 +90,13 @@ export function CategorizedTagCloud({ className }: CategorizedTagCloudProps) {
             {uncategorized
               .sort((a, b) => (counts[b] || 0) - (counts[a] || 0))
               .map((tag) => (
-                <span
+                <button
                   key={tag}
-                  className={`inline-block truncate rounded-full px-2 py-0.5 text-xs ${getTagColors(tag)}`}
+                  onClick={() => onSelectTag?.(tag)}
+                  className={`inline-block truncate rounded-full px-2 py-0.5 text-xs hover:opacity-80 transition-opacity ${getTagColors(tag)}`}
                 >
                   {tag} ({counts[tag] || 0})
-                </span>
+                </button>
               ))}
           </div>
         </div>

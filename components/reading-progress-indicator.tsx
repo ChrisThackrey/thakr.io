@@ -9,7 +9,6 @@ import { useTheme } from "next-themes"
 
 interface ReadingProgressIndicatorProps {
   slug: string
-  title: string
 }
 
 export function ReadingProgressIndicator({ slug }: ReadingProgressIndicatorProps) {

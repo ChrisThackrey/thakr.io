@@ -6,7 +6,7 @@ import { SpeedReadingMode } from "./speed-reading/speed-reading-mode"
 
 interface BlogSelectionSpeedReadProps {
   contentSelector: string
-  slug: string
+  slug?: string
 }
 
 export function BlogSelectionSpeedRead({ contentSelector }: BlogSelectionSpeedReadProps) {
