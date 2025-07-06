@@ -87,7 +87,7 @@ export function ResumeContent() {
               Rivendell - AI Development and Research Tool
             </h3>
             <p className="text-sm text-muted-foreground mb-2 print:text-xs print:text-black">
-              AI development tool that functions both internally for the company and externally for clients as "version control for reasoning".
+              AI development tool that functions both internally for the company and externally for clients as &quot;version control for reasoning&quot;.
             </p>
             <ul className="list-disc pl-5 space-y-1 text-sm print:text-xs">
               <li>Implemented a monte-carlo algorithm to run large batches of prompt calls in parallel to various large-language AI models (llms), providing more deterministic outcomes by improving reliable code metrics such as compute and readability.</li>
@@ -190,7 +190,7 @@ export function ResumeContent() {
               Principal Software Architect, Silver Bow Technology Group — 2025
             </h3>
             <ul className="list-disc pl-5 space-y-1 text-sm mt-2 print:text-xs print:mt-1">
-              <li>Lead software engineering team and built the core AI functionality for a "version control for reasoning" dev tool providing AI-driven code-generation, prompt enhancement, architecture strategy, as well as project planning and security features.</li>
+              <li>Lead software engineering team and built the core AI functionality for a &quot;version control for reasoning&quot; dev tool providing AI-driven code-generation, prompt enhancement, architecture strategy, as well as project planning and security features.</li>
             </ul>
           </div>
 
@@ -212,7 +212,7 @@ export function ResumeContent() {
             </h3>
             <ul className="list-disc pl-5 space-y-1 text-sm mt-2 print:text-xs print:mt-1">
               <li>Contributed code across five projects in simultaneous development, including Lead Developer of an AI codegen application and internal dev tool, subject to a signed NDA.</li>
-              <li>Led, scripted, and hosted the 'AI DIY' podcast series on AI coding trends, Vercel's ecosystem and events in the tech industry.</li>
+              <li>Led, scripted, and hosted the &apos;AI DIY&apos; podcast series on AI coding trends, Vercel&apos;s ecosystem and events in the tech industry.</li>
             </ul>
           </div>
 

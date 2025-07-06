@@ -208,7 +208,6 @@ const ICON_MAP = {
 
   /* Branding */
   logo: Logo,
-  sparkles: Sparkles,
 } as const
 
 /* ---------- 3.  Export Icons object directly ----------------------------- */

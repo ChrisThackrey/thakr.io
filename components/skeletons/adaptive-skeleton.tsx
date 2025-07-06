@@ -20,7 +20,7 @@ export function AdaptiveSkeleton({ structure, path, className, section }: Adapti
   // Determine the section from the path if not provided
   const pathSection = pathname?.split("/")[1] || "home"
   const validSections = ["blog", "projects", "architecture", "about", "work", "home", "booking"] as const
-  const derivedSection = section || (validSections.includes(pathSection as any) ? pathSection as typeof validSections[number] : "home")
+  const derivedSection = section || (validSections.includes(pathSection as typeof validSections[number]) ? pathSection as typeof validSections[number] : "home")
 
   useEffect(() => {
     if (!contentStructure) {
