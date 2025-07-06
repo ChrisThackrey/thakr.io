@@ -1,23 +1,30 @@
-```typescriptreact file="components/related-tags.tsx"
-[v0-no-op-code-block-prefix]import { getTagColors } from "@/lib/tag-colors"
-
-interface RelatedTagsProps {
+interface TagCategoryOverviewProps {
+  /** Title for this group of tags (e.g. “Frontend”, “Databases”) */
+  category: string
+  /** List of plain tag strings to display */
   tags: string[]
 }
 
-export function RelatedTags({ tags }: RelatedTagsProps) {
+/**
+ * Simple read-only tag list grouped under a heading.
+ * No links or color helpers are used.
+ */
+export function TagCategoryOverview({ category, tags }: TagCategoryOverviewProps) {
   if (!tags?.length) return null
 
   return (
-    <div className="mt-8">
-      <h3 className="mb-2 text-lg font-semibold">Related Topics</h3>
+    <section className="mb-8">
+      <h3 className="mb-2 text-lg font-semibold">{category}</h3>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <span key={tag} className={\`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${getTagColors(tag)}\`}>
+          <span
+            key={tag}
+            className="inline-block rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-foreground"
+          >
             {tag}
           </span>
         ))}
       </div>
-    </div>
+    </section>
   )
 }

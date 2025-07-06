@@ -1,25 +1,22 @@
-import { getTagColors } from "@/lib/tag-colors"
-import type React from "react"
-
 /**
- * Minimal replacement for the original `<ColoredTag>` that was removed.
- * - Renders a coloured <span>.
- * - Accepts any extra span props.
- *
- * NOTE: We no longer generate links to /blog/categories,
- * so the only required prop is the tag label itself.
+ * Minimal replacement so existing MDX/blog imports that expect
+ * `ColoredTag` continue to work.  Uses a neutral style – adjust as needed.
  */
-export interface ColoredTagProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface ColoredTagProps {
   tag: string
+  className?: string
 }
 
-export function ColoredTag({ tag, className = "", ...rest }: ColoredTagProps) {
+export function ColoredTag({ tag, className = "" }: ColoredTagProps) {
   return (
-    <span
-      {...rest}
-      className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${getTagColors(tag)} ${className}`}
-    >
+    <span className={`inline-block rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-foreground ${className}`}>
       {tag}
     </span>
   )
 }
+
+/* Support both:
+     import { ColoredTag } from "...";
+     import ColoredTag from "...";
+*/
+export default ColoredTag
