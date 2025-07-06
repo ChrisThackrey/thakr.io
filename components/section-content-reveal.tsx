@@ -56,14 +56,14 @@ export function SectionContentReveal({
       animate={isInView ? "visible" : "hidden"}
       variants={{
         hidden: variant.hidden,
-        visible: (i: number) => ({
-          ...variant.visible(i),
+        visible: {
+          ...variant.visible(customIndex),
           transition: {
-            delay: variant.visible(i).transition.delay,
-            duration: variant.visible(i).transition.duration,
-            ease: variant.visible(i).transition.ease,
+            delay: variant.visible(customIndex).transition.delay,
+            duration: variant.visible(customIndex).transition.duration,
+            ease: [0.22, 1, 0.36, 1],
           }
-        })
+        }
       }}
       custom={customIndex}
     >

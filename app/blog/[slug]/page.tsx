@@ -2,7 +2,6 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, Rocket } from "lucide-react"
 import { MDXContent } from "@/components/mdx-content"
-import { Suspense } from "react"
 
 import { getPost, getPosts, getSeries, getRelatedPosts, type Series } from "@/lib/blog"
 
@@ -114,9 +113,8 @@ export default async function BlogPostPage({ params }: PageProps) {
               data-blog-slug={slug}
               className="prose prose-lg dark:prose-invert mt-4 max-w-none"
             >
-              <Suspense fallback={<div>Loading content...</div>}>
-                <MDXContent source={post.content} />
-              </Suspense>
+              {/* @ts-expect-error - MDXContent is an async component which is valid in Next.js 15 */}
+              <MDXContent source={post.content} />
             </article>
             <BlogSelectionSpeedRead contentSelector={`#${contentId}`} slug={slug} />
           </main>

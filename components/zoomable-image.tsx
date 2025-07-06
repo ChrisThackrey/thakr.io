@@ -210,6 +210,7 @@ export function ZoomableImage({
         }
       }
     }
+    return undefined
   }, [inView, src, shouldPrioritize, isLoaded, imagePriority])
 
   return (

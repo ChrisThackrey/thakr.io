@@ -16,10 +16,12 @@ export function usePageTransition() {
         setIsTransitioning(false)
       }, 300) // Match this with your transition duration
 
+      setPrevPathname(pathname)
       return () => clearTimeout(timer)
     }
 
     setPrevPathname(pathname)
+    return undefined
   }, [pathname, prevPathname])
 
   return { isTransitioning, pathname }

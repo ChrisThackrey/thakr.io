@@ -16,7 +16,7 @@ export function ThemeTransition() {
   }, [resolvedTheme])
 
   useEffect(() => {
-    if (!mounted) return
+    if (!mounted) return undefined
 
     // Only trigger transition if resolvedTheme has actually changed from the last known state
     if (resolvedTheme !== themeBeforeChange) {
@@ -30,6 +30,7 @@ export function ThemeTransition() {
 
       return () => clearTimeout(timer)
     }
+    return undefined
   }, [resolvedTheme, mounted, themeBeforeChange])
 
   if (!mounted || !isTransitioning || !themeBeforeChange) {

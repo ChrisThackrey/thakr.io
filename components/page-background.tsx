@@ -25,7 +25,7 @@ export function PageBackground() {
   }
 
   const isDark = resolvedTheme === "dark"
-  const imageSrc = "/images/light-background-01.jpg" // served from /public
+  const imageSrc = "/images/light-background.png" // served from /public
 
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden">
