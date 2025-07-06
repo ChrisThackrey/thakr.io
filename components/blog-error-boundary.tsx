@@ -7,8 +7,8 @@ import { Terminal } from "lucide-react"
 /**
  * A very small, self-contained error boundary for all blog pages.
  *   – Does **not** import anything from `/app/layout` or other special files
- *   – Logs the error in development
- *   – Shows a friendly message to the reader in production
+ *   – Logs the error to the console
+ *   – Shows a friendly message to the reader
  */
 export class BlogErrorBoundary extends React.Component<
   { children: React.ReactNode },
@@ -24,10 +24,10 @@ export class BlogErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    if (process.env.NODE_ENV !== "production") {
-      // eslint-disable-next-line no-console
-      console.error("Blog page crashed:", error, errorInfo)
-    }
+    // Client-side errors are logged to the console.
+    // This will be visible in the browser's developer tools.
+    // eslint-disable-next-line no-console
+    console.error("Blog page crashed:", error, errorInfo)
   }
 
   render() {
