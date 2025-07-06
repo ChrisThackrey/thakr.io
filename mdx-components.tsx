@@ -1,6 +1,6 @@
 import type React from "react"
-import { Callout } from "@v0/components/callout"
-import { Steps } from "@v0/components/steps"
+import { Callout } from "@/components/ui/callout"
+import { Steps } from "@/components/ui/steps"
 import {
   Table,
   TableBody,
@@ -10,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@v0/components/table"
+} from "@/components/ui/table"
 
 const components = {
   Callout,
