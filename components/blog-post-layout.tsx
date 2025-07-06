@@ -42,7 +42,7 @@ export function BlogPostLayout({ post, content, children, withDropCap = true }: 
           </Button>
         </div>
 
-        {post.series && <SeriesBanner post={post} />}
+        {/* Series banner should be rendered by parent component that has access to series data */}
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           <div className="md:col-span-9 lg:col-span-8 xl:col-span-9">
@@ -72,7 +72,7 @@ export function BlogPostLayout({ post, content, children, withDropCap = true }: 
             </div>
 
             <BlogErrorBoundary postTitle={post.title}>
-              <MarkdownRenderer content={content} blogSlug={post.slug} className="mt-8" withDropCap={withDropCap} />
+              <MarkdownRenderer content={content} className="mt-8" />
             </BlogErrorBoundary>
 
             <ErrorBoundary componentName="Related Posts">

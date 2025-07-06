@@ -8,9 +8,10 @@ import { useReducedMotion } from "@/hooks/use-reduced-motion"
 
 interface PageTransitionProps {
   children: ReactNode
+  className?: string
 }
 
-export function PageTransition({ children }: PageTransitionProps) {
+export function PageTransition({ children, className }: PageTransitionProps) {
   const pathname = usePathname()
   const variant = getTransitionVariant(pathname)
   const prefersReducedMotion = useReducedMotion()
@@ -31,7 +32,7 @@ export function PageTransition({ children }: PageTransitionProps) {
         animate={prefersReducedMotion ? reducedMotionVariant.animate : variant.animate}
         exit={prefersReducedMotion ? reducedMotionVariant.exit : variant.exit}
         transition={prefersReducedMotion ? reducedMotionVariant.transition : variant.transition}
-        className="w-full"
+        className={className || "w-full"}
       >
         {children}
       </motion.div>

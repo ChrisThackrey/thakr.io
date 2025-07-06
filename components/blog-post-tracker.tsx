@@ -33,7 +33,7 @@ export function BlogPostTracker({ slug, title, children, showReadingTime = true 
     }
 
     // Throttle the scroll event to improve performance
-    let scrollTimeout: NodeJS.Timeout
+    let scrollTimeout: NodeJS.Timeout | null = null
     const throttledScroll = () => {
       if (!scrollTimeout) {
         scrollTimeout = setTimeout(() => {

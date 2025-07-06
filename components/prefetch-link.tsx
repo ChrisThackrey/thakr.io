@@ -51,7 +51,7 @@ export function PrefetchLink({
     <Link
       href={href}
       className={className}
-      onClick={(e) => {
+      onClick={() => {
         if (onClick) onClick()
       }}
       onMouseEnter={handlePrefetch}

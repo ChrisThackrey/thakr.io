@@ -169,7 +169,7 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
           ref={draggableRef}
           drag="x"
           dragConstraints={dragConstraints}
-          dragElasticity={0.05}
+          dragElastic={0.05}
           dragMomentum={false}
           onDragEnd={handleDragEnd}
           className="flex space-x-4 pb-4"

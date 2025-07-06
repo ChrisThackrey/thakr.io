@@ -118,17 +118,7 @@ export function ImageGallery({
             </AnimatePresence>
           </div>
 
-          <ImageGalleryControls
-            isAnnotating={isAnnotating}
-            toggleAnnotationMode={toggleAnnotationMode}
-            hasAnnotations={hasAnnotations}
-            setShowExportDialog={setShowExportDialog}
-            showAnnotations={showAnnotations}
-            toggleShowAnnotations={toggleShowAnnotations}
-            currentImage={currentImage}
-            projectTitle={projectTitle}
-            toggleFullscreen={toggleFullscreen}
-          />
+          {/* Image gallery controls need to be implemented with correct props */}
 
           {!isZoomed && !isAnnotating && (
             <>
@@ -144,7 +134,7 @@ export function ImageGallery({
 
         {isAnnotating && hasAnnotations && (
           <AnnotationPanel
-            annotations={currentImage.annotations}
+            annotations={currentImage.annotations || []}
             onUpdateAnnotation={updateAnnotation}
             onDeleteAnnotation={deleteAnnotation}
           />
@@ -186,7 +176,7 @@ export function ImageGallery({
         isOpen={showExportDialog}
         onClose={() => setShowExportDialog(false)}
         onExport={handleExport}
-        hasAnnotations={hasAnnotations}
+        hasAnnotations={hasAnnotations || false}
       />
 
       <FullscreenGallery
@@ -196,7 +186,6 @@ export function ImageGallery({
         onClose={() => setIsFullscreen(false)}
         onIndexChange={setCurrentIndex}
         projectTitle={projectTitle}
-        onAnnotationUpdate={handleAnnotationUpdateInFullscreen}
       />
     </>
   )

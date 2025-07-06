@@ -13,7 +13,7 @@ interface Props {
  * Displays a simple grid of “Related Posts”.
  * Safely handles `undefined` or empty post lists.
  */
-export function RelatedPosts({ posts = [], currentSlug, tags, maxPosts }: Props) {
+export function RelatedPosts({ posts = [] }: Props) {
   if (!posts.length) return null
 
   return (

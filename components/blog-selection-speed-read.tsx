@@ -9,7 +9,7 @@ interface BlogSelectionSpeedReadProps {
   slug: string
 }
 
-export function BlogSelectionSpeedRead({ contentSelector, slug }: BlogSelectionSpeedReadProps) {
+export function BlogSelectionSpeedRead({ contentSelector }: BlogSelectionSpeedReadProps) {
   const [selectedText, setSelectedText] = useState("")
   const [showSpeedReader, setShowSpeedReader] = useState(false)
   const { theme, resolvedTheme } = useTheme()

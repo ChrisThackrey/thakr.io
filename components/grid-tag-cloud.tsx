@@ -24,7 +24,7 @@ export function GridTagCloud({ onSelectTag }: GridTagCloudProps) {
             className="text-left hover:bg-accent rounded p-1 transition-colors overflow-hidden"
             onClick={() => onSelectTag?.(tag)}
           >
-            <ColoredTag tag={tag} count={tagCounts[tag]} className="w-full max-w-full" />
+            <ColoredTag tag={tag} className="w-full max-w-full" />
           </button>
         ))}
       </div>

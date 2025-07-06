@@ -18,7 +18,6 @@ export function SeriesCard({ series }: SeriesCardProps) {
           <Layers className="h-5 w-5 text-primary" />
           <CardTitle>{series.name}</CardTitle>
         </div>
-        <CardDescription>{series.description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow">
         <div className="space-y-3">

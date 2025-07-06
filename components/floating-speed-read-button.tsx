@@ -18,7 +18,7 @@ export function FloatingSpeedReadButton({ slug, className, contentSelector, sele
   const [showSpeedReader, setShowSpeedReader] = useState(false)
   const [content, setContent] = useState("")
   const scrollPosition = useScrollPosition()
-  const showButton = scrollPosition > 100
+  const showButton = scrollPosition.y > 100
 
   // Extract content from the blog post when the button is clicked
   const handleOpenSpeedReader = () => {

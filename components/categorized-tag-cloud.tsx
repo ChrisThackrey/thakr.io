@@ -15,7 +15,7 @@ interface CategorizedTagCloudProps {
   onSelectTag?: (tag: string) => void
 }
 
-export function CategorizedTagCloud({ className, onSelectTag }: CategorizedTagCloudProps) {
+export function CategorizedTagCloud({ className }: CategorizedTagCloudProps) {
   const [expanded, setExpanded] = useState<Set<string>>(new Set(tagCategories.map((c) => c.id)))
   const allTags = getAllTags()
   const counts = getTagCounts()

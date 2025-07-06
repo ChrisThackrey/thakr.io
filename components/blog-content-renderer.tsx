@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useEffect, useRef } from "react"
-import { BlogContentWrapper } from "@/components/blog-content-wrapper"
+import BlogContentWrapper from "@/components/blog-content-wrapper"
 import { cn } from "@/lib/utils"
 
 interface BlogContentRendererProps {

@@ -12,7 +12,7 @@ interface ReadingProgressIndicatorProps {
   title: string
 }
 
-export function ReadingProgressIndicator({ slug, title }: ReadingProgressIndicatorProps) {
+export function ReadingProgressIndicator({ slug }: ReadingProgressIndicatorProps) {
   const { getReadingHistory, restorePosition, clearArticleHistory } = useReadingPosition()
   const [savedPosition, setSavedPosition] = useState<any>(null)
   const [isDismissed, setIsDismissed] = useState(false)

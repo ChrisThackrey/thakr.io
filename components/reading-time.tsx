@@ -14,7 +14,6 @@ export function ReadingTime({
   minutes, 
   wordCount,
   showWordCount = false,
-  actualMinutes,
   showSpeedIndicator = true, 
   className 
 }: ReadingTimeProps) {

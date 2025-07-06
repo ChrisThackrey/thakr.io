@@ -15,13 +15,13 @@ export function ContactSection() {
           <div className="mt-8 space-y-4">
             <div className="flex items-center gap-3">
               <Icons.mail className="h-5 w-5 text-muted-foreground" />
-              <Link href={`mailto:${siteConfig.email}`} className="text-foreground hover:underline">
-                {siteConfig.email}
+              <Link href={`mailto:${siteConfig.contact.email}`} className="text-foreground hover:underline">
+                {siteConfig.contact.email}
               </Link>
             </div>
             <div className="flex items-center gap-3">
               <Icons.mapPin className="h-5 w-5 text-muted-foreground" />
-              <span className="text-foreground">{siteConfig.location}</span>
+              <span className="text-foreground">{siteConfig.contact.location}</span>
             </div>
           </div>
         </div>

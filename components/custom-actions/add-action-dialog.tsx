@@ -40,7 +40,7 @@ export function AddActionDialog() {
   }
 
   const handleSubmit = () => {
-    addAction(formData)
+    addAction({ ...formData, enabled: true })
     setFormData(initialFormData)
     setIsOpen(false)
   }

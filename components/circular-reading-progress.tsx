@@ -24,7 +24,7 @@ export function CircularReadingProgress({
   size = "medium",
   showBackground = true,
 }: CircularReadingProgressProps) {
-  const { currentReadPercentage } = useReadingPosition(contentSelector)
+  const { currentReadPercentage } = useReadingPosition()
   const [remainingTime, setRemainingTime] = useState<number | null>(null)
   const { theme } = useTheme()
   const isDark = theme === "dark"

@@ -172,7 +172,6 @@ const ICON_MAP = {
   linkedin: Linkedin,
   twitter: Twitter,
   instagram: Instagram,
-  x: Twitter, // alias
   facebook: Facebook,
 
   /* Tech / misc */

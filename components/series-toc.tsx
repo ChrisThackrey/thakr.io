@@ -29,7 +29,7 @@ export function SeriesToc({
   const { theme } = useTheme()
   const sortedPosts = [...posts].sort((a, b) => {
     if (!a.series || !b.series) return 0
-    return a.series.part - b.series.part
+    return a.series.order - b.series.order
   })
 
   const currentPostIndex = currentPostSlug ? sortedPosts.findIndex((post) => post.slug === currentPostSlug) : -1
@@ -123,7 +123,7 @@ export function SeriesToc({
                         </div>
                       ) : (
                         <span className="text-sm font-medium text-muted-foreground">
-                          {post.series?.part || index + 1}.
+                          {post.series?.order || index + 1}.
                         </span>
                       )}
 

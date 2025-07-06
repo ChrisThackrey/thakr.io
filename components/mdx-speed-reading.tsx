@@ -39,7 +39,7 @@ export function MDXSpeedReading({ contentId, className }: MDXSpeedReadingProps) 
   return (
     <>
       <SpeedReadingButton selector={mdxSelector} contentId={contentId} className={cn("relative", className)} />
-      <FloatingSpeedReadButton selector={mdxSelector} contentId={contentId} className="md:hidden" />
+      <FloatingSpeedReadButton selector={mdxSelector} className="md:hidden" />
     </>
   )
 }

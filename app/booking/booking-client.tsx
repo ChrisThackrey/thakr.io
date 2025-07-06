@@ -36,7 +36,11 @@ export function BookingPageClient() {
     const fetchInitialData = async () => {
       const data = await getBooking()
       if (data) {
-        setFormData(data)
+        setFormData({
+          name: data.name || "",
+          email: data.email || "",
+          topic: data.topic || ""
+        })
         if (data.selectedDate) {
           setSelectedDate(new Date(data.selectedDate))
         }

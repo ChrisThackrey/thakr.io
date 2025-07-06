@@ -16,7 +16,7 @@ interface FloatingShareButtonProps {
 export function FloatingShareButton({ title, url, description, threshold = 300 }: FloatingShareButtonProps) {
   const [isOpen, setIsOpen] = useState(false)
   const scrollPosition = useScrollPosition()
-  const isVisible = scrollPosition > threshold
+  const isVisible = scrollPosition.y > threshold
 
   const toggleShare = () => {
     setIsOpen(!isOpen)

@@ -3,10 +3,10 @@
 import type React from "react"
 
 import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
+import { motion, type HTMLMotionProps } from "framer-motion"
 import { forwardRef } from "react"
 
-interface EnhancedIconProps extends React.HTMLAttributes<HTMLDivElement> {
+interface EnhancedIconProps extends Omit<HTMLMotionProps<"div">, "ref"> {
   children: React.ReactNode
   rotate?: boolean
   pulse?: boolean
