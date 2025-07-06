@@ -1,51 +1,48 @@
 "use client"
 
-import type React from "react"
-import { ErrorBoundary } from "@/components/error-boundary"
-import { FileWarning, Home } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import * as React from "react"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Terminal } from "lucide-react"
 
-interface BlogErrorBoundaryProps {
-  children: React.ReactNode
-  postTitle?: string
-}
+/**
+ * A very small, self-contained error boundary for all blog pages.
+ *   – Does **not** import anything from `/app/layout` or other special files
+ *   – Logs the error in development
+ *   – Shows a friendly message to the reader in production
+ */
+export class BlogErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean; error: Error | null }
+> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props)
+    this.state = { hasError: false, error: null }
+  }
 
-export function BlogErrorBoundary({ children, postTitle }: BlogErrorBoundaryProps) {
-  return (
-    <ErrorBoundary
-      componentName={postTitle ? `"${postTitle}" blog post` : "blog post"}
-      fallback={
-        <div className="w-full py-12 px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg border border-red-200 dark:border-red-800">
-              <FileWarning className="h-12 w-12 text-red-500 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold text-red-700 dark:text-red-400 mb-2">Blog Content Error</h2>
-              <p className="text-red-600/80 dark:text-red-300/80 mb-6">
-                {postTitle
-                  ? `We encountered an issue while loading the "${postTitle}" blog post.`
-                  : "We encountered an issue while loading this blog post."}
-              </p>
-              <p className="text-muted-foreground mb-6">
-                This could be due to a temporary issue. Please try refreshing the page or come back later.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="outline" onClick={() => window.location.reload()}>
-                  Refresh Page
-                </Button>
-                <Button asChild>
-                  <Link href="/blog">
-                    <Home className="mr-2 h-4 w-4" />
-                    Return to Blog
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      }
-    >
-      {children}
-    </ErrorBoundary>
-  )
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error }
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    if (process.env.NODE_ENV !== "production") {
+      // eslint-disable-next-line no-console
+      console.error("Blog page crashed:", error, errorInfo)
+    }
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <Alert variant="destructive" role="alert" className="mx-auto my-24 max-w-xl prose text-center">
+          <Terminal className="mb-2 inline-block h-6 w-6" />
+          <AlertTitle className="text-lg font-semibold">Something went wrong.</AlertTitle>
+          <AlertDescription>
+            Sorry — the blog content failed to load. Please refresh the page or try again later.
+          </AlertDescription>
+        </Alert>
+      )
+    }
+
+    return this.props.children
+  }
 }
