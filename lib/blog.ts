@@ -66,17 +66,6 @@ export const blogPosts: BlogPost[] = [
     image: "/images/projects/rivendell.png",
     featured: true,
   },
-  {
-    slug: "future-of-web-development-with-vercel",
-    title: "The Future of Web Development with Vercel in 2025",
-    date: "2025-02-22",
-    excerpt: "Exploring the latest features and tools in the Vercel ecosystem.",
-    content: "Full content of the blog post...",
-    author: "Chris Thackrey",
-    tags: ["Vercel", "Next.js", "Web Development", "AI"],
-    readingTime: 7,
-    image: "/images/placeholder.svg?width=1200&height=630&query=Vercel+and+Next.js+logos",
-  },
 ]
 
 /* Utility: newest-first copy */
