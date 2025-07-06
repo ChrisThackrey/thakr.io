@@ -5,10 +5,8 @@ import { Icons } from "@/components/icons"
 export function Footer() {
   const socialLinks = [
     { name: "GitHub", href: siteConfig.links.github, icon: "github" },
-    { name: "Twitter", href: siteConfig.links.twitter, icon: "twitter" },
     { name: "LinkedIn", href: siteConfig.links.linkedin, icon: "linkedin" },
     { name: "Email", href: siteConfig.links.email, icon: "mail" },
-    { name: "RSS", href: siteConfig.links.rss, icon: "rss" },
   ]
 
   return (

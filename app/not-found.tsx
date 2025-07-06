@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
+import { Home } from "lucide-react"
 import Link from "next/link"
 
 export default function NotFound() {
@@ -18,7 +18,7 @@ export default function NotFound() {
       </p>
       <Button asChild>
         <Link href="/">
-          <Icons.home className="mr-2 h-4 w-4" />
+          <Home className="mr-2 h-4 w-4" />
           Go to Homepage
         </Link>
       </Button>
