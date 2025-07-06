@@ -1,22 +1,34 @@
-import type { BlogPost } from "@/lib/blog"
-import { BlogPostCard } from "./blog-post-card"
+import { getFeaturedPosts } from "@/lib/blog"
+import { SectionTitle } from "@/components/section-title"
+import { BlogPostCard } from "@/components/blog-post-card"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
-interface BlogPreviewSectionProps {
-  posts: BlogPost[]
-  title?: string
-}
+export async function BlogPreviewSection() {
+  const featuredPosts = await getFeaturedPosts()
 
-export function BlogPreviewSection({ posts, title = "Latest Posts" }: BlogPreviewSectionProps) {
-  if (!posts?.length) return null
+  if (!featuredPosts.length) {
+    return null
+  }
 
   return (
-    <section className="my-12">
-      <h2 className="mb-6 text-2xl font-bold tracking-tight">{title}</h2>
-
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
-          <BlogPostCard key={post.slug} post={post} />
-        ))}
+    <section className="py-20 md:py-28 bg-muted/50">
+      <div className="container">
+        <div className="flex justify-between items-center mb-12">
+          <SectionTitle>From the Blog</SectionTitle>
+          <Button asChild variant="outline">
+            <Link href="/blog" className="group">
+              View All Posts
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
+        </div>
+        <div className="grid gap-8 md:grid-cols-3">
+          {featuredPosts.map((post) => (
+            <BlogPostCard key={post.slug} post={post} />
+          ))}
+        </div>
       </div>
     </section>
   )
