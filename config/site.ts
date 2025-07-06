@@ -8,10 +8,9 @@ export const siteConfig = {
     name: "Chris Thackrey",
   },
   links: {
-    twitter: "https://twitter.com/cthack",
     github: "https://github.com/ChrisThackrey",
     linkedin: "https://www.linkedin.com/in/chris-thackrey-015/",
-    rss: "/rss.xml",
+    instagram: "https://www.instagram.com/christhackrey/",
     email: "mailto:c.r.thackrey@gmail.com",
   },
   navLinks: [
