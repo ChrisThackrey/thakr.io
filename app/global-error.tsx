@@ -34,7 +34,7 @@ export default function GlobalError({
                   We apologize for the inconvenience. You can try refreshing the page or returning to the homepage.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button variant="outline" onClick={reset} className="flex items-center">
+                  <Button variant="outline" onClick={reset} className="flex items-center bg-transparent">
                     <RefreshCw className="mr-2 h-4 w-4" />
                     Try Again
                   </Button>
