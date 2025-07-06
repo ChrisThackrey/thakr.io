@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { technicalSkills, education } from "@/lib/experience-data"
 import { EducationTimeline } from "@/components/education-timeline"
 import { ProfileCard } from "@/components/profile-card"
+import { PageBackground } from "@/components/page-background"
 
 export default function AboutPage() {
   const prefersReducedMotion = useReducedMotion()
@@ -101,7 +102,9 @@ export default function AboutPage() {
 
   if (prefersReducedMotion) {
     return (
-      <motion.div
+      <>
+        <PageBackground />
+        <motion.div
           className="container py-12 md:py-16 flex-grow"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -145,11 +148,14 @@ export default function AboutPage() {
             </div>
           </div>
         </motion.div>
+      </>
     )
   }
 
   return (
-    <div className="container py-12 md:py-16 flex-grow">
+    <>
+      <PageBackground />
+      <div className="container py-12 md:py-16 flex-grow">
         <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
           <div className="md:w-2/3 order-2 md:order-1 space-y-6">
             <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
@@ -213,5 +219,6 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+    </>
   )
 }

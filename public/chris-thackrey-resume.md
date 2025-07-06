@@ -1,8 +1,7 @@
-export const resumeContent = `
 Chris Thackrey				 (707) 319-3306  |  c.r.thackrey@gmail.com  |  San Antonio, TX  
-**Full-Stack Software Engineer**		 [thakr.io](http://thakr.io) | [github.com/ChrisThackrey](http://github.com/ChrisThackrey) | [linkedin.com/in/chris-thackrey-015](http://linkedin.com/in/chris-thackrey-015)
+**Full-Stack Software Engineer**		 [thakr.io](http://thakr.io) | [github.com/ChrisThackrey](http://github.com/ChrisThackrey) | [linkedin.com/in/chris-thackrey-015](http://linkedin.com/in/chris-thackrey-015)  
+Technical Skills
 
-Technical Skills  
 ---
 
 **Front End** | TypeScript, NextJS, Astro, Svelte, React Hooks \+ Context API, Redux, JavaScript, D3, Shadcn/ui, TailwindCSS, ChakraUI, v0  
@@ -66,4 +65,3 @@ Education
 **Gnomon School of Visual Effects, Los Angeles, California** — Studied computer animation, computer programming — 2017-2018  
 **Southern California Institute of Architecture, Los Angeles, California** — Completed 35 hours towards Masters degree in Architecture, 3.5/4.0 GPA — 2016-2017  
 **Texas A\&M University, Bachelor of Science \- Environmental Design** — Graduated Cum Laude 3.5/4.0 GPA — 2015
-`

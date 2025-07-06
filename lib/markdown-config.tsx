@@ -248,13 +248,13 @@ export function createMarkdownComponents(options?: {
     ),
 
     // Images
-    img: ({ className, src, alt, ...props }) => (
+    img: ({ className, src, alt, width, height, ...props }) => (
       <div className={cn("relative w-full my-10", className)}>
         <Image
           src={src || "/placeholder.svg"}
           alt={alt || ""}
-          width={800}
-          height={600}
+          width={typeof width === 'string' ? parseInt(width, 10) : width || 800}
+          height={typeof height === 'string' ? parseInt(height, 10) : height || 600}
           className={cn(
             "rounded-lg shadow-md mx-auto",
             options?.imageClassName,

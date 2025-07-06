@@ -140,7 +140,7 @@ export function FocusMode({
     jumpTo,
     skip,
     startWithContent,
-  } = useSpeedReading(null, null) // Pass null to avoid using selector directly
+  } = useSpeedReading(undefined, undefined) // Pass undefined to avoid using selector directly
 
   // Initialize speed reading with extracted content
   useEffect(() => {

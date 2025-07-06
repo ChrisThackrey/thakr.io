@@ -166,7 +166,7 @@ export function TagFilterDropdown({
 
           {selectedTags.map((tag) => (
             <div key={tag} className="flex items-center h-7">
-              <ColoredTag tag={tag} highlightTag className="pr-1" />
+              <ColoredTag tag={tag} className="pr-1" />
               <Button variant="ghost" size="icon" className="h-7 w-7 p-0 -ml-1" onClick={() => onRemoveTag(tag)}>
                 <X className="h-3 w-3" />
                 <span className="sr-only">Remove {tag} filter</span>

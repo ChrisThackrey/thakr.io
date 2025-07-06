@@ -10,6 +10,7 @@ import type { TimelineItemData, Project } from "@/lib/experience-data"
 
 interface TimelineProps {
   items: TimelineItemData[]
+  defaultExpandedOverrides?: Record<number, boolean> // Optional overrides for specific items
 }
 
 interface DisplayListItem {
@@ -26,12 +27,17 @@ const DOT_TOP_OFFSET = 2 // Icons positioned 2px from the top of their card alig
 const PROJECT_ICON_HEIGHT = 20 // Corresponds to h-5 (20px)
 const WORK_ICON_HEIGHT = 24 // Corresponds to h-6 (24px)
 
-export function Timeline({ items }: TimelineProps) {
+export function Timeline({ items, defaultExpandedOverrides }: TimelineProps) {
   const [expandedWorkItems, setExpandedWorkItems] = useState<Record<number, boolean>>(() => {
     const initialState: Record<number, boolean> = {}
     items.forEach((item, index) => {
       if (item.projects && item.projects.length > 0) {
-        initialState[index] = true // Default to expanded if projects exist
+        // Check if there's an override for this specific index
+        if (defaultExpandedOverrides && index in defaultExpandedOverrides) {
+          initialState[index] = defaultExpandedOverrides[index]
+        } else {
+          initialState[index] = true // Default to expanded if projects exist
+        }
       }
     })
     return initialState
@@ -190,6 +196,11 @@ export function Timeline({ items }: TimelineProps) {
                           <CardDescription className="text-sm md:text-base font-medium text-muted-foreground mt-0.5">
                             {itemData.company}
                           </CardDescription>
+                          {itemData.location && (
+                            <p className="text-xs text-muted-foreground mt-1">
+                              {itemData.location}
+                            </p>
+                          )}
                         </div>
                         {itemData.projects && itemData.projects.length > 0 && dispItem.originalIndex !== undefined && (
                           <Button
@@ -231,7 +242,18 @@ export function Timeline({ items }: TimelineProps) {
                   <>
                     <CardHeader className="pb-2 pt-4">
                       <CardTitle className="text-md md:text-lg font-semibold text-foreground/90">
-                        {projectData.name}
+                        {projectData.link ? (
+                          <a 
+                            href={projectData.link} 
+                            target={projectData.link.startsWith('http') ? '_blank' : undefined}
+                            rel={projectData.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            className="hover:text-primary transition-colors duration-200"
+                          >
+                            {projectData.name}
+                          </a>
+                        ) : (
+                          projectData.name
+                        )}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-0">
@@ -242,6 +264,11 @@ export function Timeline({ items }: TimelineProps) {
                           </li>
                         ))}
                       </ul>
+                      {projectData.ndaNotice && (
+                        <p className="text-xs text-muted-foreground italic mb-3">
+                          {projectData.ndaNotice}
+                        </p>
+                      )}
                       {projectData.skills && projectData.skills.length > 0 && (
                         <div className="flex flex-wrap gap-1.5">
                           {projectData.skills.map((skill, i) => (

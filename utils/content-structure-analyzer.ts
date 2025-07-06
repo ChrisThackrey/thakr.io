@@ -27,6 +27,11 @@ export interface ContentStructure {
   }
 }
 
+// Helper function to create properly typed content structures
+function createContentStructure(structure: any): ContentStructure {
+  return structure as ContentStructure
+}
+
 // Cache for content structures
 const structureCache = new Map<string, ContentStructure>()
 
@@ -68,19 +73,19 @@ export function getStructureFromPath(path: string): ContentStructure | null {
   // Return predefined structures based on the main section
   switch (mainSection) {
     case "blog":
-      return BLOG_STRUCTURES[pathSegments[1] ? "post" : "list"]
+      return createContentStructure(BLOG_STRUCTURES[pathSegments[1] ? "post" : "list"])
     case "projects":
-      return PROJECTS_STRUCTURES[pathSegments[1] ? "detail" : "list"]
+      return createContentStructure(PROJECTS_STRUCTURES[pathSegments[1] ? "detail" : "list"])
     case "architecture":
-      return ARCHITECTURE_STRUCTURES[pathSegments[1] ? "detail" : "list"]
+      return createContentStructure(ARCHITECTURE_STRUCTURES[pathSegments[1] ? "detail" : "list"])
     case "work":
-      return WORK_STRUCTURES.timeline
+      return createContentStructure(WORK_STRUCTURES.timeline)
     case "about":
-      return ABOUT_STRUCTURES.profile
+      return createContentStructure(ABOUT_STRUCTURES.profile)
     case "booking":
-      return BOOKING_STRUCTURES.form
+      return createContentStructure(BOOKING_STRUCTURES.form)
     default:
-      return HOME_STRUCTURES.default
+      return createContentStructure(HOME_STRUCTURES.default)
   }
 }
 
@@ -89,38 +94,38 @@ export function getStructureFromPath(path: string): ContentStructure | null {
  */
 export const HOME_STRUCTURES = {
   default: {
-    type: "page",
+    type: "page" as const,
     children: [
       {
-        type: "section",
-        props: { importance: "primary" },
+        type: "section" as const,
+        props: { importance: "primary" as const },
         children: [
-          { type: "heading", props: { textLength: 48, importance: "primary" } },
-          { type: "text", props: { textLength: 160 } },
+          { type: "heading" as const, props: { textLength: 48, importance: "primary" as const } },
+          { type: "text" as const, props: { textLength: 160 } },
           {
-            type: "grid",
+            type: "grid" as const,
             props: { columns: 2 },
             children: [
-              { type: "image", props: { aspectRatio: 16 / 9 } },
-              { type: "text", props: { textLength: 120 } },
+              { type: "image" as const, props: { aspectRatio: 16 / 9 } },
+              { type: "text" as const, props: { textLength: 120 } },
             ],
           },
         ],
       },
       {
-        type: "section",
-        props: { importance: "secondary" },
+        type: "section" as const,
+        props: { importance: "secondary" as const },
         children: [
-          { type: "heading", props: { textLength: 32, importance: "secondary" } },
+          { type: "heading" as const, props: { textLength: 32, importance: "secondary" as const } },
           {
-            type: "grid",
+            type: "grid" as const,
             props: { columns: 3 },
             children: Array(3).fill({
-              type: "card",
+              type: "card" as const,
               children: [
-                { type: "image", props: { aspectRatio: 16 / 9 } },
-                { type: "heading", props: { textLength: 24, importance: "tertiary" } },
-                { type: "text", props: { textLength: 80 } },
+                { type: "image" as const, props: { aspectRatio: 16 / 9 } },
+                { type: "heading" as const, props: { textLength: 24, importance: "tertiary" as const } },
+                { type: "text" as const, props: { textLength: 80 } },
               ],
             }),
           },

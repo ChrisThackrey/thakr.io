@@ -51,6 +51,7 @@ export function SimpleSpeedReadingModal({ onClose }: SimpleSpeedReadingModalProp
       }, 200)
       return () => clearTimeout(timer)
     }
+    return undefined
   }, [currentWordIndex])
 
   // Handle play/pause

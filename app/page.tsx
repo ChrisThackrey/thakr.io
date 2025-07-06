@@ -11,7 +11,6 @@ import { ProfileSection } from "@/components/profile-section"
 import { FeaturedProjectsSection } from "@/components/featured-projects-section"
 import { ArrowRight } from "lucide-react"
 import { BlogPreviewSection } from "@/components/blog-preview-section"
-import { Suspense } from "react"
 
 export default async function HomePage() {
   const featuredExperience = professionalExperience.slice(0, 3)
@@ -40,7 +39,7 @@ export default async function HomePage() {
               </Link>
             </Button>
           </div>
-          <Timeline items={featuredExperience} />
+          <Timeline items={featuredExperience} defaultExpandedOverrides={{ 1: false }} />
           {/* Updated "View Full Resume" button container */}
           <div className="mt-12 text-center">
             <Button asChild size="lg">
@@ -50,14 +49,12 @@ export default async function HomePage() {
         </div>
 
         {/* Featured Projects Section */}
-        <Suspense fallback={<div className="py-20 md:py-28" />}>
-          <FeaturedProjectsSection />
-        </Suspense>
+        {/* @ts-expect-error - FeaturedProjectsSection is an async component which is valid in Next.js 15 */}
+        <FeaturedProjectsSection />
 
         {/* Blog Preview Section */}
-        <Suspense fallback={<div className="py-20 md:py-28 bg-muted/50" />}>
-          <BlogPreviewSection />
-        </Suspense>
+        {/* @ts-expect-error - BlogPreviewSection is an async component which is valid in Next.js 15 */}
+        <BlogPreviewSection />
 
         {/* Let's Connect Section */}
         <ContactSection />

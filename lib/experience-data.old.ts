@@ -8,7 +8,6 @@ export interface Project {
   description: string[] // bullet-point list
   skills: string[]
   link?: string
-  ndaNotice?: string // Optional NDA notice
 }
 
 export interface TimelineItemData {
@@ -32,52 +31,6 @@ export const professionalExperience: TimelineItemData[] = [
       "Lead software engineering team and built the core AI functionality for a \"version control for reasoning\" dev tool providing AI-driven code-generation, prompt enhancement, architecture strategy, as well as project planning and security features.",
     ],
     skills: ["TypeScript", "Next.js", "React", "AI", "LLMs", "Prompt Engineering", "Security", "Architecture"],
-    projects: [
-      {
-        name: "Rivendell - AI Development and Research Tool",
-        description: [
-          "AI development tool that functions both internally for the company and externally for clients as \"version control for reasoning\".",
-          "Implemented a monte-carlo algorithm to run large batches of prompt calls in parallel to various large-language AI models (llms), providing more deterministic outcomes by improving reliable code metrics such as compute and readability.",
-          "Configured OpenAI API and Anthropic API models to match relevant files and open a branch with a deployment in Vercel.",
-          "Built a monte carlo visualizer with ThreeJS to visualise similar response clusters in 3d space."
-        ],
-        skills: ["TypeScript", "Next.js", "OpenAI API", "Anthropic API", "ThreeJS", "Monte Carlo Algorithm", "Vercel"],
-        link: "/projects/rivendell",
-      },
-    ],
-  },
-  {
-    title: "Freelance / Contract Software Engineering",
-    company: "Self-Employed / Various Clients",
-    location: "Various Engagements",
-    date: "2024-2025",
-    description: [
-      "Provided full-stack development services for various clients, focusing on AI integration, web application development, and data solutions.",
-    ],
-    skills: ["Full-Stack Development", "AI Integration", "Project Management", "Client Communication"],
-    projects: [
-      {
-        name: "AI Repository Code Generation Application",
-        description: [
-          "Led the development of a meeting-to-feature codegen application",
-          "Developed enhanced search capabilities on embedded file content in connected data repositories",
-          "Facilitated automation of code changes as new inputs are identified",
-          "Implemented detailed documentation capabilities for repository history"
-        ],
-        skills: ["AI", "Codegen", "Context Engineering", "Vector DB", "Supabase", "OpenAI API", "Anthropic API", "Octokit API", "Github Actions", "React Flow"],
-        ndaNotice: "Subject to NDA. No further details are available.",
-      },
-      {
-        name: "Collegiate Pathways Application",
-        description: [
-          "AI-driven college planning application with chatbot assistance to combine together course-catalogue offerings from multiple higher-level learning institutions, including major college curriculums, into a full degree plan that satisfies the requirements for any field of study",
-          "Features fully dynamic components generated using custom API calls to AI in real-time",
-          "Implemented a chatbot using OpenAI with a unique persona of an academic counselor",
-          "The fully-generated degree plan outline leveraged AI prompted to accomodate remote learning, schedule planning around any on-site learning at multiple locations, and account for pre-requisites that must be taken in sequential order"
-        ],
-        skills: ["TypeScript", "Astro", "Svelte", "OpenAI API", "Anthropic SDK", "Shadcn-UI"],
-      },
-    ],
   },
   {
     title: "Software Engineer",
@@ -90,6 +43,17 @@ export const professionalExperience: TimelineItemData[] = [
     ],
     skills: ["TypeScript", "Next.js", "React", "AI", "LLMs", "TailwindCSS", "Vercel", "Podcast Production"],
     projects: [
+      {
+        name: "Rivendell - AI Development and Research Tool",
+        description: [
+          "AI development tool that functions both internally for the company and externally for clients as \"version control for reasoning\".",
+          "Implemented a monte-carlo algorithm to run large batches of prompt calls in parallel to various large-language AI models (llms), providing more deterministic outcomes by improving reliable code metrics such as compute and readability.",
+          "Configured OpenAI API and Anthropic API models to match relevant files and open a branch with a deployment in Vercel.",
+          "Built a monte carlo visualizer with ThreeJS to visualise similar response clusters in 3d space."
+        ],
+        skills: ["TypeScript", "Next.js", "OpenAI API", "Anthropic API", "ThreeJS", "Monte Carlo Algorithm", "Vercel"],
+        link: "/projects/rivendell",
+      },
       {
         name: "AI Applications for National Not-for-Profit Education Research Organization",
         description: [

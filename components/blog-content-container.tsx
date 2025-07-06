@@ -1,15 +1,12 @@
-import { Suspense } from "react"
-import BlogContentWrapper from "@/components/blog-content-wrapper"
-
 interface BlogContentContainerProps {
   slug: string
   children: React.ReactNode
 }
 
-export default async function BlogContentContainer({ slug, children }: BlogContentContainerProps) {
+export default function BlogContentContainer({ children }: BlogContentContainerProps) {
   return (
-    <BlogContentWrapper slug={slug}>
+    <div>
       {children}
-    </BlogContentWrapper>
+    </div>
   )
 }

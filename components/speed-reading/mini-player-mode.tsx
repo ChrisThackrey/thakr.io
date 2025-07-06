@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { X, Maximize2, ChevronUp, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { WordDisplay } from "@/components/speed-reading/word-display"
@@ -44,11 +44,12 @@ export function MiniPlayerMode({
   const [showSettings, setShowSettings] = useState(false)
   const [showShortcuts, setShowShortcuts] = useState(false)
   const minimizedHeight = 40 // Height when minimized
+  const elementRef = useRef<HTMLDivElement>(null)
 
   // Initialize draggable behavior
-  const { position: currentPosition, elementRef } = useDraggable({
+  const { position: currentPosition } = useDraggable({
     initialPosition: position,
-    boundarySelector: "body",
+    bounds: "window",
   })
 
   // Initialize speed reading
@@ -234,7 +235,11 @@ export function MiniPlayerMode({
                 word={typeof currentChunk === "string" ? currentChunk : currentChunk?.content || ""}
                 options={options}
                 isPaused={isPaused}
-                type={typeof currentChunk === "object" ? currentChunk.type : undefined}
+                type={typeof currentChunk === "object" && currentChunk.type 
+                  ? (["code", "heading", "list", "paragraph"].includes(currentChunk.type) 
+                     ? currentChunk.type as "code" | "heading" | "list" | "paragraph"
+                     : undefined) 
+                  : undefined}
                 size="compact"
               />
             </div>
