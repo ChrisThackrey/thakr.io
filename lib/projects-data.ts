@@ -44,6 +44,7 @@ const projectsData: Project[] = [
     tags: ["JavaScript", "Algorithm"],
     liveUrl: "https://killer-sudoku-solver.vercel.app/",
     repoUrl: "https://github.com/ChrisThackrey/killer-sudoku-solver",
+    featured: true,
   },
 ]
 

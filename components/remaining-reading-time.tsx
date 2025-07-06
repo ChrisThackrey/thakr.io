@@ -10,11 +10,12 @@ import { Badge } from "@/components/ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { useReadingSpeed } from "@/hooks/use-reading-speed"
 import { motion } from "framer-motion"
+import { getPost } from "@/lib/blog"
 
 interface RemainingReadingTimeProps {
   slug: string
   className?: string
-  variant?: "minimal" | "standard" | "detailed" | "animated"
+  variant?: "minimal" | "standard" | "detailed" | "animated" | "simple"
 }
 
 // Add the missing export as an alias to the existing component
@@ -27,10 +28,20 @@ export function RemainingReadingTime({ slug, className, variant = "standard" }: 
   const [remainingTime, setRemainingTime] = useState<number | null>(null)
   const [isHydrated, setIsHydrated] = useState(false)
   const { theme } = useTheme()
+  const [time, setTime] = useState<number | null>(null)
 
   useEffect(() => {
     setIsHydrated(true)
   }, [])
+
+  useEffect(() => {
+    ;(async () => {
+      const post = await getPost(slug)
+      if (!post?.readingTime) return
+      // crude estimate – could hook into scroll position for accuracy
+      setTime(post.readingTime)
+    })()
+  }, [slug])
 
   useEffect(() => {
     if (readingTime > 0 && currentReadPercentage >= 0) {
@@ -40,7 +51,7 @@ export function RemainingReadingTime({ slug, className, variant = "standard" }: 
     }
   }, [readingTime, currentReadPercentage, wordsPerMinute])
 
-  if (!isHydrated || remainingTime === null) return null
+  if (!isHydrated || (remainingTime === null && time === null)) return null
 
   // Don't show if we're almost done
   if (currentReadPercentage > 95) return null
@@ -49,7 +60,7 @@ export function RemainingReadingTime({ slug, className, variant = "standard" }: 
     return (
       <div className={cn("text-sm text-muted-foreground flex items-center", className)}>
         <Clock className="mr-1 h-3.5 w-3.5" />
-        <span>{remainingTime} min left</span>
+        <span>{remainingTime ?? time} min left</span>
       </div>
     )
   }
@@ -69,7 +80,7 @@ export function RemainingReadingTime({ slug, className, variant = "standard" }: 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5">
             <Clock className="h-4 w-4 text-primary" />
-            <span className="font-medium">{remainingTime} min left</span>
+            <span className="font-medium">{remainingTime ?? time} min left</span>
           </div>
           <Badge variant="outline" className="text-xs">
             {Math.round(currentReadPercentage)}% read
@@ -102,7 +113,7 @@ export function RemainingReadingTime({ slug, className, variant = "standard" }: 
               )}
             >
               <Clock className="h-3 w-3" />
-              <span>{remainingTime} min left</span>
+              <span>{remainingTime ?? time} min left to read</span>
             </Badge>
           </TooltipTrigger>
           <TooltipContent side="bottom">
@@ -115,10 +126,10 @@ export function RemainingReadingTime({ slug, className, variant = "standard" }: 
                 <div className="h-full bg-primary rounded-full" style={{ width: `${currentReadPercentage}%` }} />
               </div>
               <div className="flex items-center justify-between text-xs pt-1">
-                <span>Total: {readingTime} min</span>
+                <span>Total: {time} min</span>
                 <span>
                   <Flag className="h-3 w-3 inline mr-0.5" />
-                  {remainingTime} min left
+                  {remainingTime ?? time} min left
                 </span>
               </div>
             </div>
@@ -126,6 +137,10 @@ export function RemainingReadingTime({ slug, className, variant = "standard" }: 
         </Tooltip>
       </TooltipProvider>
     )
+  }
+
+  if (variant === "simple") {
+    return <div className={cn("text-sm text-muted-foreground", className)}>{time !== null ? `${time} min` : null}</div>
   }
 
   // Standard variant (default)
@@ -139,7 +154,7 @@ export function RemainingReadingTime({ slug, className, variant = "standard" }: 
     >
       <div className="flex items-center">
         <Clock className="mr-1 h-3.5 w-3.5" />
-        <span>{remainingTime} min left</span>
+        <span>{remainingTime ?? time} min left</span>
       </div>
       <div className="h-1.5 w-16 bg-muted rounded-full overflow-hidden">
         <div className="h-full bg-primary rounded-full" style={{ width: `${currentReadPercentage}%` }} />

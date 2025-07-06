@@ -19,7 +19,7 @@ export function ProfileSection() {
               </Link>
             </Button>
             <Button variant="outline" asChild>
-              <Link href={siteConfig.resumeUrl} target="_blank" rel="noopener noreferrer">
+              <Link href="/resume">
                 <Icons.fileText className="mr-2" /> View Resume
               </Link>
             </Button>

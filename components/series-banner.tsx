@@ -1,30 +1,50 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Info } from "lucide-react"
-import type { BlogPost, Series } from "@/types/blog"
+import { cn } from "@/lib/utils"
+import type { BlogPost, Series } from "@/lib/blog"
 
-interface SeriesBannerProps {
+interface Props {
   post: BlogPost
-  series: Series
+  series: Series | null
+  className?: string
 }
 
-export function SeriesBanner({ post, series }: SeriesBannerProps) {
-  const currentIndex = series.posts.findIndex((p) => p.slug === post.slug)
-  const totalPosts = series.posts.length
+/**
+ * Renders a banner that shows a post’s place inside a series.
+ * Returns `null` if the series (or its posts array) is missing.
+ */
+export function SeriesBanner({ post, series, className }: Props) {
+  if (!series?.posts?.length) return null
+
+  const current = series.posts.findIndex((p) => p.slug === post.slug) + 1
+  const total = series.posts.length
 
   return (
-    <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-8 text-sm text-blue-800 dark:text-blue-200">
-      <div className="flex items-start">
-        <Info className="h-5 w-5 mr-3 mt-0.5 flex-shrink-0" />
-        <div>
-          <p className="font-semibold">
-            This post is part {currentIndex + 1} of {totalPosts} in the "{series.name}" series.
-          </p>
-          <Button variant="link" asChild className="px-0 h-auto mt-1">
-            <Link href={`/blog/series/${series.slug}`}>View all posts in this series</Link>
-          </Button>
-        </div>
+    <section
+      className={cn(
+        "rounded-md border bg-muted/50 p-4 mb-8 flex flex-col gap-2 md:flex-row md:items-center md:justify-between",
+        className,
+      )}
+    >
+      <div>
+        <p className="text-sm uppercase tracking-wide text-muted-foreground mb-1">Series</p>
+        <h2 className="text-lg font-semibold">{series.name}</h2>
+        <p className="text-sm text-muted-foreground">
+          Part {current} of {total}
+        </p>
       </div>
-    </div>
+
+      <ul className="flex flex-wrap gap-2 text-sm">
+        {series.posts.map((p) => (
+          <li key={p.slug}>
+            <Link
+              href={`/blog/${p.slug}`}
+              className={cn("rounded px-2 py-1 hover:underline", p.slug === post.slug && "font-medium underline")}
+            >
+              {p.series?.order}. {p.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }

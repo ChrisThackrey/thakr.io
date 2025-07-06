@@ -17,8 +17,66 @@ export interface BlogPost {
 }
 
 /* ------------------------------ In-memory data ----------------------------- */
-const blogPosts: BlogPost[] = [
-  /* … your existing post objects … */
+export const blogPosts: BlogPost[] = [
+  {
+    slug: "the-rise-of-deep-sea-ai",
+    title: "The Rise of Deep Sea AI: Exploring Ocean Depths with Artificial Intelligence",
+    date: "2025-06-01",
+    excerpt: "How AI is revolutionizing deep-sea exploration and marine biology research.",
+    content: "Full content of the blog post…",
+    author: "Chris Thackrey",
+    tags: ["AI", "Research", "Machine Learning"],
+    readingTime: 8,
+    image: "/images/blog/deepseek-ai-model.png",
+    series: { name: "AI Technologies Series", order: 1 },
+    featured: true,
+  },
+  {
+    slug: "retrieval-augmented-generation",
+    title: "Retrieval-Augmented Generation: Enhancing LLMs with External Knowledge",
+    date: "2025-05-15",
+    excerpt: "How RAG systems improve accuracy and utility of large language models.",
+    content: "Full content of the blog post…",
+    author: "Chris Thackrey",
+    tags: ["AI", "RAG", "LLMs", "Research"],
+    readingTime: 12,
+    image: "/images/rag-concept.png",
+    series: { name: "AI Technologies Series", order: 2 },
+  },
+  {
+    slug: "causal-ai-market-research",
+    title: "Causal AI in Market Research: Beyond Correlation to Causation",
+    date: "2025-04-20",
+    excerpt: "How causal AI identifies true cause-and-effect relationships.",
+    content: "Full content of the blog post…",
+    author: "Chris Thackrey",
+    tags: ["AI", "Research", "Machine Learning", "Business"],
+    readingTime: 10,
+    image: "/images/blog/causal-ai-hero.png",
+  },
+  {
+    slug: "building-ai-powered-developer-tools",
+    title: "Building AI-Powered Developer Tools: A Version Control for Reasoning",
+    date: "2025-03-10",
+    excerpt: "Our journey in creating a tool that tracks not just what changed, but why.",
+    content: "Full content of the blog post...",
+    author: "Chris Thackrey",
+    tags: ["AI", "Development", "Vercel", "Next.js"],
+    readingTime: 9,
+    image: "/images/projects/rivendell.png",
+    featured: true,
+  },
+  {
+    slug: "future-of-web-development-with-vercel",
+    title: "The Future of Web Development with Vercel in 2025",
+    date: "2025-02-22",
+    excerpt: "Exploring the latest features and tools in the Vercel ecosystem.",
+    content: "Full content of the blog post...",
+    author: "Chris Thackrey",
+    tags: ["Vercel", "Next.js", "Web Development", "AI"],
+    readingTime: 7,
+    image: "/images/placeholder.svg?width=1200&height=630&query=Vercel+and+Next.js+logos",
+  },
 ]
 
 /* Utility: newest-first copy */
@@ -87,7 +145,7 @@ export async function getFeaturedPosts(limit?: number) {
 export const getFeaturedBlogPosts = getFeaturedPosts
 
 /* ------------------------- series helpers (unchanged) --------------------- */
-interface Series {
+export interface Series {
   name: string
   slug: string
   posts: BlogPost[]
@@ -118,4 +176,17 @@ export async function getSeries(): Promise<Series[]> {
 export async function getSeriesBySlug(slug: string) {
   const all = await getSeries()
   return all.find((s) => s.slug === slug) ?? null
+}
+
+export async function getRelatedPosts(currentSlug: string, tags: string[], limit = 3): Promise<BlogPost[]> {
+  return blogPosts
+    .filter((p) => p.slug !== currentSlug)
+    .map((p) => ({
+      post: p,
+      score: p.tags.filter((t) => tags.includes(t)).length,
+    }))
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((x) => x.post)
 }

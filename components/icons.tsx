@@ -1,6 +1,7 @@
 /* -------------------------------------------------------------------------- */
-/*      CENTRAL ICON MAP – IMPORT NEW LUCIDE ICONS ONLY IN THIS FILE          */
+/*  CENTRAL ICON MAP – IMPORT NEW LUCIDE ICONS *ONLY* IN THIS FILE            */
 /* -------------------------------------------------------------------------- */
+"use client"
 
 import type { LucideIcon } from "lucide-react"
 import {
@@ -72,12 +73,9 @@ import {
   CalendarCheck2,
 } from "lucide-react"
 
-/**
- * 1.  Declare icons with lower-camel-case keys.
- * 2.  Auto-generate PascalCase aliases (Icons.Github, Icons.Construction, …)
- *     so casing mix-ups don’t crash the app.
- * 3.  Provide a legacy ALL-CAPS `GENERATOR` alias for old imports.
- */
+/* -------------------------------------------------------------------------- */
+/* 1. MASTER ICON DICTIONARY                                                  */
+/* -------------------------------------------------------------------------- */
 const baseIcons = {
   /* social */
   github: Github,
@@ -86,8 +84,8 @@ const baseIcons = {
   instagram: Instagram,
   facebook: Facebook,
   rss: Rss,
-  logo: Sparkles, // site-wide logo mark used in Navigation
-  sparkles: Sparkles, // keep the generic name available too
+  logo: Sparkles,
+  sparkles: Sparkles,
 
   /* navigation / sections */
   home: Home,
@@ -96,7 +94,7 @@ const baseIcons = {
   palette: Palette,
   architecture: Building2,
   blog: FileText,
-  fileText: FileText, // alias so <Icons.fileText /> is defined
+  fileText: FileText,
   contact: Mail,
   menu: Menu,
 
@@ -129,7 +127,7 @@ const baseIcons = {
   chevronRight: ChevronRight,
   refreshCw: RefreshCw,
   construction: Construction,
-  generator: Wand2,
+  generator: Wand2, // ---- LEGACY ICON, KEEP!
   settings: Settings,
   plus: Plus,
   trash: Trash2,
@@ -159,23 +157,33 @@ const baseIcons = {
   graduationCap: GraduationCap,
   spinner: Loader2,
   close: X,
-} satisfies Record<string, LucideIcon>
+} as const satisfies Record<string, LucideIcon>
 
-/* --------------------------- PascalCase aliases --------------------------- */
-Object.entries(baseIcons).forEach(([key, value]) => {
+/* -------------------------------------------------------------------------- */
+/* 2. PASCAL-CASE MIRRORS (e.g. Icons.Github)                                 */
+/* -------------------------------------------------------------------------- */
+Object.entries(baseIcons).forEach(([key, icon]) => {
   const pascal = key.charAt(0).toUpperCase() + key.slice(1)
-  if (!(pascal in baseIcons)) {
-    // @ts-expect-error – augmenting the map at runtime is intentional
-    baseIcons[pascal] = value
-  }
+  // @ts-expect-error – dynamic augmentation is intentional
+  if (!baseIcons[pascal]) baseIcons[pascal] = icon
 })
 
-/* ---------------- دستی Legacy ALL-CAPS ------------------------------ */
-export const GENERATOR = baseIcons.generator
+/* -------------------------------------------------------------------------- */
+/* 3. LEGACY ALL-CAPS EXPORTS                                                 */
+/* -------------------------------------------------------------------------- */
+/**
+ * Several older files still do:
+ *   import { GENERATOR } from "@/components/icons"
+ * Keep this working until they are migrated to `<Icons.generator />`.
+ */
+export const GENERATOR: LucideIcon = baseIcons.generator
 
-/* --------------------------- Primary export ------------------------------ */
+/* -------------------------------------------------------------------------- */
+/* 4. PRIMARY EXPORT                                                         */
+/* -------------------------------------------------------------------------- */
 export const Icons = baseIcons as {
   [K in keyof typeof baseIcons]: LucideIcon
 }
 
-export type IconName = keyof typeof Icons
+/* Optional default export for ergonomic importing */
+export default Icons

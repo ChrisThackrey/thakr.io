@@ -1,12 +1,7 @@
 "use client"
 
-import dynamic from "next/dynamic"
+import VercelFuturePostPage from "./VercelFuturePostPage"
 
-// Use dynamic import with ssr: false in this client component
-const DynamicVercelFuturePostPage = dynamic(() => import("./VercelFuturePostPage"), {
-  ssr: false,
-})
-
-export default function VercelFutureClientWrapper() {
-  return <DynamicVercelFuturePostPage />
+export default function ClientWrapper() {
+  return <VercelFuturePostPage />
 }

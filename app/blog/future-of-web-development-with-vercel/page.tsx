@@ -7,7 +7,7 @@ const post = blogPosts.find((p) => p.slug === "future-of-web-development-with-ve
 
 export const metadata: Metadata = {
   title: post?.title || "The Future of Web Development with Vercel",
-  description: post?.description || "Exploring the latest features and tools in the Vercel ecosystem.",
+  description: post?.excerpt || "Exploring the latest features and tools in the Vercel ecosystem.",
 }
 
 export default function VercelFuturePostPageWrapper() {
