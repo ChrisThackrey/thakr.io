@@ -33,8 +33,8 @@ export default function DeepSeekAIBlogContent() {
         Anthropic&apos;s Claude.
       </p>
       <p>
-        As one podcast participant noted: "I had used it a little bit in Cursor before I knew it was from China. And it
-        was about on par with Claude Sonnet on the type of code it could generate."
+        As one podcast participant noted: &quot;I had used it a little bit in Cursor before I knew it was from China. And it
+        was about on par with Claude Sonnet on the type of code it could generate.&quot;
       </p>
       <p>The model has generated significant attention for several reasons:</p>
       <ol>
@@ -59,15 +59,15 @@ export default function DeepSeekAIBlogContent() {
       <h2>The Distillation Controversy</h2>
       <p>
         Perhaps the most controversial aspect of DeepSeek&apos;s development is the allegation that it used GPT-4 in a
-        "distillation" training process.
+        &quot;distillation&quot; training process.
       </p>
       <p>
-        "OpenAI has said that they have verifiable proof that GPT-4 was utilized in the distillation method," mentioned
+        &quot;OpenAI has said that they have verifiable proof that GPT-4 was utilized in the distillation method,&quot; mentioned
         one of the podcast participants, highlighting a growing ethical concern in AI development.
       </p>
       <p>
-        Model distillation involves using a large, high-performing "teacher" model to generate outputs—such as answers
-        or reasoning steps—which are then used to train a smaller, more efficient "student" model. While this approach
+        Model distillation involves using a large, high-performing &quot;teacher&quot; model to generate outputs—such as answers
+        or reasoning steps—which are then used to train a smaller, more efficient &quot;student&quot; model. While this approach
         can dramatically reduce training costs and democratize AI development, it raises significant intellectual
         property questions when proprietary models are involved.
       </p>
@@ -88,8 +88,8 @@ export default function DeepSeekAIBlogContent() {
 
       <p>
         DeepSeek&apos;s emergence exemplifies the complex geopolitical dimensions of modern AI development. One podcast
-        speaker observed the timing: "There was no accident that the TikTok ban and the launch of DeepSeek that upends
-        the American market are happening synchronously. It&apos;s very much a part of the geopolitical landscape."
+        speaker observed the timing: &quot;There was no accident that the TikTok ban and the launch of DeepSeek that upends
+        the American market are happening synchronously. It&apos;s very much a part of the geopolitical landscape.&quot;
       </p>
       <p>
         At the center of this tension are US chip export controls targeting China&apos;s AI capabilities. In October 2022,
@@ -98,9 +98,9 @@ export default function DeepSeekAIBlogContent() {
         reducing performance just below prohibited thresholds.
       </p>
       <p>
-        As one podcast participant explained: "They did it using chips from Nvidia, like A800 chips, which are
+        As one podcast participant explained: &quot;They did it using chips from Nvidia, like A800 chips, which are
         distinctly not the H100 chips that everybody is using or purchasing nowadays, which allows them to skirt the
-        chip ban that the US had in place."
+        chip ban that the US had in place.&quot;
       </p>
       <p>
         This hardware strategy has proven effective, with DeepSeek demonstrating that competitive AI models can be
@@ -116,16 +116,16 @@ export default function DeepSeekAIBlogContent() {
         sending user data back to its developers.
       </p>
       <p>
-        "I&apos;ve seen also where it does track your data. It has telemetry. That&apos;s why I stopped using it," shared one
+        &quot;I&apos;ve seen also where it does track your data. It has telemetry. That&apos;s why I stopped using it,&quot; shared one
         podcast participant.
       </p>
       <p>
         These concerns are amplified when considering enterprise applications, where data sensitivity is paramount. As
-        another speaker wisely advised: "Play with DeepSeek. Don&apos;t build enterprise businesses with it."
+        another speaker wisely advised: &quot;Play with DeepSeek. Don&apos;t build enterprise businesses with it.&quot;
       </p>
       <p>
         The lack of transparency regarding DeepSeek&apos;s training data further complicates trust issues, with one
-        participant noting: "We have no indication of the data that was actually used to train on it."
+        participant noting: &quot;We have no indication of the data that was actually used to train on it.&quot;
       </p>
 
       <h2>Model-Agnostic Development: The Path Forward</h2>
@@ -135,9 +135,9 @@ export default function DeepSeekAIBlogContent() {
         adapt without major reworking.
       </p>
       <p>
-        "This only underscores the relevance and importance of model-agnostic development right now," stressed one
-        speaker. "The pace of change is ridiculous. The behaviors are unpredictable. We need to be able to quickly adapt
-        and not hitch our wagon to anyone."
+        &quot;This only underscores the relevance and importance of model-agnostic development right now,&quot; stressed one
+        speaker. &quot;The pace of change is ridiculous. The behaviors are unpredictable. We need to be able to quickly adapt
+        and not hitch our wagon to anyone.&quot;
       </p>
       <p>Best practices for model-agnostic development include:</p>
 
@@ -155,13 +155,13 @@ export default function DeepSeekAIBlogContent() {
 
       <h3>4. Enabling version pinning for stability</h3>
       <p>
-        As one podcast participant recalled from a recent project: "We pinned to the August version of [GPT-4] right now
-        to maintain consistency." This approach prevents unexpected behavior changes when models are updated.
+        As one podcast participant recalled from a recent project: &quot;We pinned to the August version of [GPT-4] right now
+        to maintain consistency.&quot; This approach prevents unexpected behavior changes when models are updated.
       </p>
 
       <h3>5. Developing hybrid approaches</h3>
       <p>
-        "You could have five different calls going out to five different models doing five different things," suggested
+        &quot;You could have five different calls going out to five different models doing five different things,&quot; suggested
         one speaker, highlighting how specialized models can create superior results compared to relying on a single
         solution.
       </p>
@@ -173,9 +173,9 @@ export default function DeepSeekAIBlogContent() {
         demonstrated by DeepSeek point toward a future where advanced AI becomes more accessible.
       </p>
       <p>
-        "I think it&apos;s going to go towards this lower-end market, people doing crazier and crazier things on cheaper and
-        cheaper hardware," predicted one podcast participant. "Until eventually there&apos;s a proliferation to where this
-        costs basically pennies to run, which still makes everybody a ton of money at scale."
+        &quot;I think it&apos;s going to go towards this lower-end market, people doing crazier and crazier things on cheaper and
+        cheaper hardware,&quot; predicted one podcast participant. &quot;Until eventually there&apos;s a proliferation to where this
+        costs basically pennies to run, which still makes everybody a ton of money at scale.&quot;
       </p>
       <p>
         This trajectory suggests that while leading-edge models like GPT-4 and Claude will maintain their advantages in

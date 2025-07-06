@@ -69,7 +69,7 @@ export async function getBooking(): Promise<BookingSession | null> {
  * Example stub for creating an event in Google Calendar.
  * In production you’d swap this out for an authenticated API call.
  */
-export async function createGoogleCalendarEvent(data: {
+export async function createGoogleCalendarEvent(_data: {
   name: string
   email: string
   topic: string

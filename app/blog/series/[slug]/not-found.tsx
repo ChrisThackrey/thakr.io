@@ -9,7 +9,7 @@ export default function SeriesNotFound() {
       <PageBackground />
       <div className="container py-16 md:py-24 text-center">
         <h1 className="text-4xl font-bold tracking-tight mb-4">Series Not Found</h1>
-        <p className="text-lg text-muted-foreground mb-8">Sorry, we couldn't find the series you're looking for.</p>
+        <p className="text-lg text-muted-foreground mb-8">Sorry, we couldn&apos;t find the series you&apos;re looking for.</p>
         <Button asChild>
           <Link href="/blog/series">
             <ArrowLeft className="mr-2 h-4 w-4" />

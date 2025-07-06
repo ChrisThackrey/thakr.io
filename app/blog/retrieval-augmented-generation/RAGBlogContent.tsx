@@ -257,11 +257,11 @@ export function RAGBlogContent() {
 
         <h2 id="conclusion">Conclusion: Building Trustworthy AI</h2>
         <p>
-          Retrieval Augmented Generation is more than just a technical enhancement; it's a foundational shift toward
+          Retrieval Augmented Generation is more than just a technical enhancement; it&apos;s a foundational shift toward
           creating more reliable, accurate, and transparent AI systems. By grounding generative models in factual,
           retrievable data, RAG addresses some of the most significant challenges facing AI today. For any developer or
           organization looking to build applications that users can trust, understanding and implementing RAG is no
-          longer optional—it's essential.
+          longer optional—it&apos;s essential.
         </p>
 
         <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">

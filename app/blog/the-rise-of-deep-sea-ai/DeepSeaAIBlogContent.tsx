@@ -16,7 +16,7 @@ type TOCEntry = {
 }
 
 function FloatingTOC() {
-  const [activeId, setActiveId] = useState<string>("")
+  const [activeId, setActiveId] = useState<string>(&quot;&quot;)
   const [toc, setToc] = useState<TOCEntry[]>([])
   const observer = useRef<IntersectionObserver | null>(null)
   const [isOpen, setIsOpen] = useState(true)
@@ -74,7 +74,7 @@ function FloatingTOC() {
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 100,
-        behavior: "smooth",
+        behavior: &quot;smooth&quot;,
       })
     }
   }
@@ -93,7 +93,7 @@ function FloatingTOC() {
             onClick={() => setIsOpen(!isOpen)}
             className="text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 text-xs"
           >
-            {isOpen ? "Hide" : "Show"}
+            {isOpen ? &quot;Hide&quot; : &quot;Show&quot;}
           </button>
         </div>
         {isOpen && (
@@ -199,22 +199,22 @@ export function DeepSeaAIBlogContent() {
         <p className="lead">
           The artificial intelligence community has been buzzing about a new model called Deep Sea (also referred to as
           Deep Seek), developed in China. This model has quickly captured attention for its impressive performance, low
-          reported training costs, and the geopolitical context surrounding its release. In today's post, we'll explore
+          reported training costs, and the geopolitical context surrounding its release. In today&apos;s post, we&apos;ll explore
           what Deep Sea is, how it works, and why it matters in the broader AI ecosystem—especially for organizations
           developing AI applications.
         </p>
 
         <h2 id="what-is-deep-sea">What Is Deep Sea and How Does It Perform?</h2>
         <p>
-          Deep Sea is a large language model that originated as "Deep Sea Coder" about a year ago and has since evolved
+          Deep Sea is a large language model that originated as &quot;Deep Sea Coder&quot; about a year ago and has since evolved
           through multiple iterations. The current version being discussed is Deep Sea R3, which according to early
           testing, performs comparably to established models like Claude Sonnet for code generation tasks.
         </p>
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "I had used it a little bit in Cursor before I knew it was from China. It was about on par with Claude
+            &quot;I had used it a little bit in Cursor before I knew it was from China. It was about on par with Claude
             Sonnet on the type of code it could generate. I was doing a little experiment where you can turn Deep Sea R3
-            into a V0-like environment on localhost, and it does have really good answers and responses."
+            into a V0-like environment on localhost, and it does have really good answers and responses.&quot;
           </p>
         </blockquote>
         <p>
@@ -238,8 +238,8 @@ export function DeepSeaAIBlogContent() {
         </p>
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "They claim that it costs them $5 million to train. They have said that's only the cost of the final
-            training run, which is a fun little statement because, you know, how many training runs were there?"
+            &quot;They claim that it costs them $5 million to train. They have said that&apos;s only the cost of the final
+            training run, which is a fun little statement because, you know, how many training runs were there?&quot;
           </p>
         </blockquote>
         <p>
@@ -248,18 +248,18 @@ export function DeepSeaAIBlogContent() {
         </p>
 
         <h2 id="technical-implementation">Technical Implementation: Distillation and Hardware Strategy</h2>
-        <p>Deep Sea's technical implementation includes two particularly interesting aspects:</p>
+        <p>Deep Sea&apos;s technical implementation includes two particularly interesting aspects:</p>
         <h3 id="distillation">1. Distillation from Existing Models</h3>
         <p>According to the discussion, Deep Sea was reportedly built using a distillation method:</p>
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "My understanding is that on some level, it was built using GPT-4 or some other type of model in this
-            distillation type process where essentially they ask the model questions to train the other model."
+            &quot;My understanding is that on some level, it was built using GPT-4 or some other type of model in this
+            distillation type process where essentially they ask the model questions to train the other model.&quot;
           </p>
         </blockquote>
         <p>
           This approach—using an existing powerful model to train a new one—can be more efficient than training from
-          scratch. It's essentially having one AI teach another, which can reduce the amount of raw data and computation
+          scratch. It&apos;s essentially having one AI teach another, which can reduce the amount of raw data and computation
           needed.
         </p>
         <h3 id="hardware-strategy">2. Strategic Hardware Choices</h3>
@@ -269,8 +269,8 @@ export function DeepSeaAIBlogContent() {
         </p>
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "They did it using chips from Nvidia, like 800 chips, which are distinctly not the H100 chips that everybody
-            is using nowadays, which allows them to skirt the chip ban that the US had in place."
+            &quot;They did it using chips from Nvidia, like 800 chips, which are distinctly not the H100 chips that everybody
+            is using nowadays, which allows them to skirt the chip ban that the US had in place.&quot;
           </p>
         </blockquote>
         <p>
@@ -287,8 +287,8 @@ export function DeepSeaAIBlogContent() {
         </p>
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "There was no accident that the TikTok ban and the launch of Deep Sea that upends the American AI market are
-            sort of happening synchronously... it's very much a part of the geopolitical landscape."
+            &quot;There was no accident that the TikTok ban and the launch of Deep Sea that upends the American AI market are
+            sort of happening synchronously... it&apos;s very much a part of the geopolitical landscape.&quot;
           </p>
         </blockquote>
         <p>
@@ -299,21 +299,21 @@ export function DeepSeaAIBlogContent() {
         <h2 id="ethical-considerations">Ethical Considerations: Data Sources and Privacy</h2>
         <p>The podcast participants raised several ethical concerns that merit careful consideration:</p>
         <h3 id="data-provenance">1. Data Provenance</h3>
-        <p>There's limited transparency about the data used to train Deep Sea:</p>
+        <p>There&apos;s limited transparency about the data used to train Deep Sea:</p>
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "We have no indication of the data that was actually used to train it, other than the fact that OpenAI has
-            said that they have verifiable proof that GPT-4 was utilized in the distillation method."
+            &quot;We have no indication of the data that was actually used to train it, other than the fact that OpenAI has
+            said that they have verifiable proof that GPT-4 was utilized in the distillation method.&quot;
           </p>
         </blockquote>
         <p>
-          This lack of clarity about data sources is problematic, though as one speaker noted, it's an issue that
+          This lack of clarity about data sources is problematic, though as one speaker noted, it&apos;s an issue that
           affects many AI models.
         </p>
         <h3 id="privacy-concerns">2. Privacy and Telemetry Concerns</h3>
         <p>There are reports that Deep Sea might track user data:</p>
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
-          <p>"There's definitely concerns because I've seen also where it does track your data. It has telemetry."</p>
+          <p>&quot;There&apos;s definitely concerns because I&apos;ve seen also where it does track your data. It has telemetry.&quot;</p>
         </blockquote>
         <p>This raises questions about privacy, especially for applications handling sensitive information.</p>
 
@@ -323,9 +323,9 @@ export function DeepSeaAIBlogContent() {
         </p>
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "When we're building and designing these generative AI applications, this only underscores the relevance and
+            &quot;When we&apos;re building and designing these generative AI applications, this only underscores the relevance and
             importance of model agnostic development right now. The pace of change is ridiculous. The behaviors are
-            unpredictable. We need to be able to quickly adapt."
+            unpredictable. We need to be able to quickly adapt.&quot;
           </p>
         </blockquote>
         <p>
@@ -335,7 +335,7 @@ export function DeepSeaAIBlogContent() {
 
         <h2 id="conclusion">Conclusion: Navigating Complexity</h2>
         <p>
-          The emergence of Deep Sea represents more than just a new AI model—it's a reflection of how AI development has
+          The emergence of Deep Sea represents more than just a new AI model—it&apos;s a reflection of how AI development has
           become intertwined with global politics, economic factors, and competing visions for the future of technology.
           For developers and organizations, the key lesson is adaptability. The AI landscape will continue to evolve
           rapidly, and those who build flexible, model-agnostic systems will be best positioned to navigate these
