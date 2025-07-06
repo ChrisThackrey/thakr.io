@@ -87,7 +87,7 @@ const Logo: FC<SVGProps<SVGSVGElement>> = (props) => (
 const ICON_MAP = {
   /* Navigation & Sections */
   home: Home,
-  user: Users, // Add this line
+  user: Users,
   briefcase: Briefcase,
   code: Code,
   architecture: Building2,
