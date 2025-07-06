@@ -4,7 +4,7 @@ import type React from "react"
 import type { Annotation } from "./image-gallery"
 import { AnnotationMarker } from "./annotation-marker"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { ZoomIn, ZoomOut, Move } from "lucide-react"
@@ -34,7 +34,6 @@ export function ZoomableImage({
   height = "500px",
   onZoomChange,
   annotations = [],
-  isAnnotatable = true,
   priority = false,
   quality,
   blurDataURL,
@@ -120,7 +119,7 @@ export function ZoomableImage({
     }
   }
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     if (isDragging && isZoomed) {
       const newX = e.clientX - dragStart.x
       const newY = e.clientY - dragStart.y
@@ -143,9 +142,9 @@ export function ZoomableImage({
         setPosition({ x: constrainedX, y: constrainedY })
       }
     }
-  }
+  }, [isDragging, isZoomed, dragStart, zoomLevel])
 
-  const handleTouchMove = (e: TouchEvent) => {
+  const handleTouchMove = useCallback((e: TouchEvent) => {
     if (isDragging && isZoomed && e.touches.length === 1) {
       const newX = e.touches[0].clientX - dragStart.x
       const newY = e.touches[0].clientY - dragStart.y
@@ -168,7 +167,7 @@ export function ZoomableImage({
         setPosition({ x: constrainedX, y: constrainedY })
       }
     }
-  }
+  }, [isDragging, isZoomed, dragStart, zoomLevel])
 
   const handleMouseUp = () => {
     setIsDragging(false)
@@ -192,7 +191,7 @@ export function ZoomableImage({
       window.removeEventListener("touchmove", handleTouchMove)
       window.removeEventListener("touchend", handleTouchEnd)
     }
-  }, [isZoomed, isDragging, dragStart])
+  }, [isZoomed, isDragging, dragStart, handleMouseMove, handleTouchMove])
 
   // Register with priority manager
   useEffect(() => {
@@ -211,7 +210,7 @@ export function ZoomableImage({
         }
       }
     }
-  }, [inView, src, shouldPrioritize, isLoaded])
+  }, [inView, src, shouldPrioritize, isLoaded, imagePriority])
 
   return (
     <div

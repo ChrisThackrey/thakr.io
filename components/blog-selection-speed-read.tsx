@@ -6,10 +6,10 @@ import { SpeedReadingMode } from "./speed-reading/speed-reading-mode"
 
 interface BlogSelectionSpeedReadProps {
   contentSelector: string
-  slug: string
+  slug?: string
 }
 
-export function BlogSelectionSpeedRead({ contentSelector, slug }: BlogSelectionSpeedReadProps) {
+export function BlogSelectionSpeedRead({ contentSelector }: BlogSelectionSpeedReadProps) {
   const [selectedText, setSelectedText] = useState("")
   const [showSpeedReader, setShowSpeedReader] = useState(false)
   const { theme, resolvedTheme } = useTheme()

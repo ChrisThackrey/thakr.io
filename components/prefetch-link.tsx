@@ -13,7 +13,9 @@ interface PrefetchLinkProps {
   onClick?: () => void
   priority?: boolean
   prefetch?: boolean
-  [key: string]: any
+  style?: React.CSSProperties
+  target?: string
+  rel?: string
 }
 
 export function PrefetchLink({
@@ -51,7 +53,7 @@ export function PrefetchLink({
     <Link
       href={href}
       className={className}
-      onClick={(e) => {
+      onClick={() => {
         if (onClick) onClick()
       }}
       onMouseEnter={handlePrefetch}

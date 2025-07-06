@@ -4,9 +4,7 @@ import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 import { forwardRef, useState } from "react"
-import type { InputProps } from "@/components/ui/input"
-
-interface EnhancedInputProps extends InputProps {
+interface EnhancedInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   focusEffect?: boolean
   labelText?: string
 }

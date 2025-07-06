@@ -10,7 +10,6 @@ export function AnimatedProjectSkeleton({ delay = 0 }: AnimatedProjectSkeletonPr
   return (
     <SkeletonBase
       section="projects"
-      animate="scale"
       delay={delay}
       className="rounded-lg border bg-card overflow-hidden"
     >

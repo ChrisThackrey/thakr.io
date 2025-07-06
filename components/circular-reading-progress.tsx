@@ -17,14 +17,13 @@ interface CircularReadingProgressProps {
 }
 
 export function CircularReadingProgress({
-  contentSelector = "article",
   className,
   showTimeRemaining = true,
   readingTime = "5 min",
   size = "medium",
   showBackground = true,
 }: CircularReadingProgressProps) {
-  const { currentReadPercentage } = useReadingPosition(contentSelector)
+  const { currentReadPercentage } = useReadingPosition()
   const [remainingTime, setRemainingTime] = useState<number | null>(null)
   const { theme } = useTheme()
   const isDark = theme === "dark"

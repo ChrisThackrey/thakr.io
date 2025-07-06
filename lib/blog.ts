@@ -14,28 +14,61 @@ export interface BlogPost {
   image?: string
   series?: { name: string; order: number }
   featured?: boolean
+  id?: string
+  coverImage?: string
+  description?: string
+  estimatedReadingTime?: number
 }
 
 /* ------------------------------ In-memory data ----------------------------- */
+/*  NOTE: newest posts first keeps things tidy at a glance                    */
 export const blogPosts: BlogPost[] = [
   {
-    slug: "the-rise-of-deep-sea-ai",
-    title: "The Rise of Deep Sea AI: Exploring Ocean Depths with Artificial Intelligence",
+    slug: "ai-version-control-for-reasoning",
+    title: "Building AI-Powered Developer Tools: A Version Control for Reasoning",
+    date: "2025-07-05",
+    excerpt:
+      "Discover how we built a revolutionary version-control system that tracks not just code changes, but the reasoning behind them.",
+    content: "Full content of the blog post...",
+    author: "Chris Thackrey",
+    tags: ["AI", "Developer Tools", "Version Control", "Software Engineering", "Machine Learning"],
+    readingTime: 9,
+    image: "/images/ai-version-control-architecture.png",
+    featured: true,
+  },
+  /* ---------------- DeepSeek POSTS --------------------------------------- */
+  {
+    slug: "deepseek-ai-model-agnostic-development",
+    title: "DeepSeek AI: Innovation, Geopolitics, and the Future of Model-Agnostic Development",
+    date: "2025-06-15",
+    excerpt:
+      "An in-depth analysis of DeepSeek AI, its impact on the AI landscape, and the importance of model-agnostic development approaches.",
+    content: "Full content of the blog post...",
+    author: "Chris Thackrey",
+    tags: ["AI", "DeepSeek", "Geopolitics", "Model Agnostic", "Software Engineering"],
+    readingTime: 11,
+    image: "/images/blog/deepseek-ai-model.png",
+  },
+  {
+    slug: "the-rise-of-deepseek-ai",
+    title: "The Rise of DeepSeek AI: Geopolitics, Open Source Models, and the Future of AI Development",
     date: "2025-06-01",
-    excerpt: "How AI is revolutionizing deep-sea exploration and marine biology research.",
+    excerpt:
+      "How DeepSeek AI, open-source models, and geopolitics are shaping the next chapter of artificial-intelligence research and deployment.",
     content: "Full content of the blog post…",
     author: "Chris Thackrey",
-    tags: ["AI", "Research", "Machine Learning"],
+    tags: ["AI", "DeepSeek", "Geopolitics", "Open Source", "Machine Learning"],
     readingTime: 8,
     image: "/images/blog/deepseek-ai-model.png",
     series: { name: "AI Technologies Series", order: 1 },
     featured: true,
   },
+  /* ----------------------------------------------------------------------- */
   {
     slug: "retrieval-augmented-generation",
     title: "Retrieval-Augmented Generation: Enhancing LLMs with External Knowledge",
     date: "2025-05-15",
-    excerpt: "How RAG systems improve accuracy and utility of large language models.",
+    excerpt: "How RAG systems improve accuracy and utility of large-language models.",
     content: "Full content of the blog post…",
     author: "Chris Thackrey",
     tags: ["AI", "RAG", "LLMs", "Research"],
@@ -47,39 +80,16 @@ export const blogPosts: BlogPost[] = [
     slug: "causal-ai-market-research",
     title: "Causal AI in Market Research: Beyond Correlation to Causation",
     date: "2025-04-20",
-    excerpt: "How causal AI identifies true cause-and-effect relationships.",
+    excerpt: "How causal AI identifies true cause-and-effect relationships in business.",
     content: "Full content of the blog post…",
     author: "Chris Thackrey",
     tags: ["AI", "Research", "Machine Learning", "Business"],
     readingTime: 10,
     image: "/images/blog/causal-ai-hero.png",
   },
-  {
-    slug: "building-ai-powered-developer-tools",
-    title: "Building AI-Powered Developer Tools: A Version Control for Reasoning",
-    date: "2025-03-10",
-    excerpt: "Our journey in creating a tool that tracks not just what changed, but why.",
-    content: "Full content of the blog post...",
-    author: "Chris Thackrey",
-    tags: ["AI", "Development", "Vercel", "Next.js"],
-    readingTime: 9,
-    image: "/images/projects/rivendell.png",
-    featured: true,
-  },
-  {
-    slug: "future-of-web-development-with-vercel",
-    title: "The Future of Web Development with Vercel in 2025",
-    date: "2025-02-22",
-    excerpt: "Exploring the latest features and tools in the Vercel ecosystem.",
-    content: "Full content of the blog post...",
-    author: "Chris Thackrey",
-    tags: ["Vercel", "Next.js", "Web Development", "AI"],
-    readingTime: 7,
-    image: "/images/placeholder.svg?width=1200&height=630&query=Vercel+and+Next.js+logos",
-  },
 ]
 
-/* Utility: newest-first copy */
+/* -------- utility: sort newest-first (non-mutating) ----------------------- */
 function sortNewestFirst(posts: BlogPost[]) {
   return posts.slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
@@ -87,42 +97,33 @@ function sortNewestFirst(posts: BlogPost[]) {
 /* -------------------------------------------------------------------------- */
 /*                              PUBLIC HELPERS                                */
 /* -------------------------------------------------------------------------- */
-
-/* 1.  Modern async helper (preferred in new server components) */
 export async function getPosts(): Promise<BlogPost[]> {
   return sortNewestFirst(blogPosts)
 }
-
-/* 2.  **Synchronous** helper for legacy code that does NOT `await`           */
-/*     (e.g. BlogPage, TagCloud, etc.).                                       */
 export function getAllBlogPosts(): BlogPost[] {
   return sortNewestFirst(blogPosts)
 }
+/* Back-compat */
+export const getAllPosts = getAllBlogPosts
+export const getAllBlogposts = getAllBlogPosts
 
-/* 3.  Back-compat aliases so no old import breaks                            */
-export const getAllPosts = getAllBlogPosts // sync
-export const getAllBlogposts = getAllBlogPosts // common typo
-
-/* ------------------------------ Other helpers ----------------------------- */
-
+/* ---------------------------- individual post ----------------------------- */
 export async function getPost(slug: string): Promise<BlogPost | null> {
   return blogPosts.find((p) => p.slug === slug) ?? null
 }
 
+/* -------------------------------- tags ------------------------------------ */
 export function getAllTags(): string[] {
   const set = new Set<string>()
   blogPosts.forEach((p) => p.tags.forEach((t) => set.add(t)))
   return Array.from(set).sort()
 }
-
 export async function getTags() {
   return getAllTags()
 }
-
 export function getTagCount(tag: string) {
   return blogPosts.filter((p) => p.tags.includes(tag)).length
 }
-
 export function getTagCounts() {
   const counts: Record<string, number> = {}
   blogPosts.forEach((p) =>
@@ -132,39 +133,32 @@ export function getTagCounts() {
   )
   return counts
 }
-
-// Sync version for components that need it
-export function getBlogPostsByTag(tag: string): BlogPost[] {
+export function getBlogPostsByTag(tag: string) {
   return blogPosts.filter((p) => p.tags.includes(tag))
 }
-
-// Async version for Server Components
-export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
+export async function getPostsByTag(tag: string) {
   return getBlogPostsByTag(tag)
 }
 
-/* -- featured posts -------------------------------------------------------- */
+/* --------------------------- featured helpers ----------------------------- */
 export async function getFeaturedPosts(limit?: number) {
   const featured = sortNewestFirst(blogPosts).filter((p) => p.featured)
   return typeof limit === "number" ? featured.slice(0, limit) : featured
 }
 export const getFeaturedBlogPosts = getFeaturedPosts
 
-/* ------------------------- series helpers --------------------- */
+/* ----------------------------- series helpers ----------------------------- */
 export interface Series {
   name: string
   slug: string
   posts: BlogPost[]
 }
-
 function slugify(s: string) {
   return s
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "")
 }
-
-// Sync version for generateStaticParams and other sync components
 export function getAllSeries(): Series[] {
   const map = new Map<string, BlogPost[]>()
   blogPosts.forEach((p) => {
@@ -179,19 +173,15 @@ export function getAllSeries(): Series[] {
     posts: posts.sort((a, b) => a.series!.order - b.series!.order),
   }))
 }
-
-// Async version for Server Components
-export async function getSeries(): Promise<Series[]> {
+export async function getSeries() {
   return getAllSeries()
 }
-
-// Sync version
 export function getSeriesBySlug(slug: string): Series | null {
-  const all = getAllSeries()
-  return all.find((s) => s.slug === slug) ?? null
+  return getAllSeries().find((s) => s.slug === slug) ?? null
 }
 
-export async function getRelatedPosts(currentSlug: string, tags: string[], limit = 3): Promise<BlogPost[]> {
+/* --------------------------- related-post helper -------------------------- */
+export async function getRelatedPosts(currentSlug: string, tags: string[], limit = 3) {
   return blogPosts
     .filter((p) => p.slug !== currentSlug)
     .map((p) => ({

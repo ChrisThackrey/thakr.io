@@ -44,7 +44,7 @@ export function useSpeedReading(contentSelector?: string, slug?: string) {
   const slugRef = useRef(slug)
   const continuousPlaybackRef = useRef<NodeJS.Timeout | null>(null)
   const playbackMonitorRef = useRef<NodeJS.Timeout | null>(null)
-  const lastPlayAttemptRef = useRef(0)
+  // const lastPlayAttemptRef = useRef(0) // Currently unused but may be needed later
   const playbackStateRef = useRef({
     isPlaying: false,
     lastWordIndex: -1,

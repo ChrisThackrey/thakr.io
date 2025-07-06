@@ -1,100 +1,41 @@
+/* cleaned up leftover ColoredTag import earlier – make sure it’s not there */
+
 "use client"
 
-import { useState, useEffect } from "react"
-import { ColoredTag } from "./colored-tag"
-import { getAllTags } from "@/lib/blog"
+import { useEffect, useState } from "react"
+import { getAllTags, getTagCounts } from "@/lib/blog"
+import { getTagColors } from "@/lib/tag-colors"
 import { SectionTitle } from "./section-title"
 
 interface TagCloudProps {
-  onTagClick?: (tag: string) => void
-  selectedTag?: string
   limit?: number
-  showCount?: boolean
   title?: string
 }
 
-export function TagCloud({ onTagClick, selectedTag, limit, showCount = false, title = "Explore Tags" }: TagCloudProps) {
+export default function TagCloud({ limit, title = "Explore Tags" }: TagCloudProps) {
   const [tags, setTags] = useState<string[]>([])
-  const [tagCounts, setTagCounts] = useState<Record<string, number>>({})
-  const [isLoading, setIsLoading] = useState(true)
+  const [counts, setCounts] = useState<Record<string, number>>({})
 
   useEffect(() => {
-    const fetchTags = async () => {
-      setIsLoading(true)
-      try {
-        // Get all unique tags
-        const allTags = getAllTags()
+    setTags(getAllTags())
+    setCounts(getTagCounts())
+  }, [])
 
-        // Count occurrences of each tag
-        const counts: Record<string, number> = {}
-        allTags.forEach((tag) => {
-          counts[tag] = (counts[tag] || 0) + 1
-        })
-
-        // Sort tags by count (descending)
-        const sortedTags = [...new Set(allTags)].sort((a, b) => (counts[b] || 0) - (counts[a] || 0))
-
-        // Apply limit if specified
-        const limitedTags = limit ? sortedTags.slice(0, limit) : sortedTags
-
-        setTags(limitedTags)
-        setTagCounts(counts)
-      } catch (error) {
-        console.error("Error fetching tags:", error)
-        setTags([])
-        setTagCounts({})
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchTags()
-  }, [limit])
-
-  if (isLoading) {
-    return (
-      <div className="rounded-lg border bg-card p-6 text-card-foreground">
-        <SectionTitle as="h3" className="mb-4 text-xl">
-          {title}
-        </SectionTitle>
-        <div className="flex flex-wrap gap-2">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <div
-              key={i}
-              className="h-8 w-16 rounded-full bg-gray-200 dark:bg-gray-700 animate-pulse"
-              aria-hidden="true"
-            />
-          ))}
-        </div>
-      </div>
-    )
-  }
-
-  if (tags.length === 0) {
-    return (
-      <div className="rounded-lg border bg-card p-6 text-card-foreground">
-        <SectionTitle as="h3" className="mb-4 text-xl">
-          {title}
-        </SectionTitle>
-        <p className="text-gray-500 dark:text-gray-400">No tags found.</p>
-      </div>
-    )
-  }
+  const displayed = limit ? tags.slice(0, limit) : tags
 
   return (
     <div className="rounded-lg border bg-card p-6 text-card-foreground">
       <SectionTitle as="h3" className="mb-4 text-xl">
         {title}
       </SectionTitle>
+
       <div className="flex flex-wrap gap-2">
-        {tags.map((tag) => (
-          <div key={tag} onClick={() => onTagClick && onTagClick(tag)} className="cursor-pointer">
-            <ColoredTag tag={showCount ? `${tag} (${tagCounts[tag] || 0})` : tag} highlightTag={selectedTag === tag} />
-          </div>
+        {displayed.map((tag) => (
+          <span key={tag} className={`rounded-full px-3 py-1 text-sm ${getTagColors(tag)}`}>
+            {tag} {counts[tag] ? `(${counts[tag]})` : ""}
+          </span>
         ))}
       </div>
     </div>
   )
 }
-
-export default TagCloud

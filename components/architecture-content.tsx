@@ -249,7 +249,7 @@ export default function ArchitectureContent() {
           staggerDelay={0.05}
           childrenDelay={0.1}
         >
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <ArchitectureProjectSimple
               key={project.slug}
               title={project.title}

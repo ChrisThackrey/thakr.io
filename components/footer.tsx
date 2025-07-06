@@ -21,6 +21,9 @@ export function Footer() {
           <div className="flex items-center gap-4">
             {socialLinks.map((link) => {
               const Icon = Icons[link.icon as keyof typeof Icons]
+              if (!Icon) {
+                return null
+              }
               return (
                 <Link
                   key={link.name}

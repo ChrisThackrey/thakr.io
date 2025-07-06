@@ -22,12 +22,7 @@ export function PageWrapper({ children }: PageWrapperProps) {
     return () => clearTimeout(timer)
   }, [pathname])
 
-  // Log when content becomes visible
-  useEffect(() => {
-    if (isVisible) {
-      console.log(`Page content visible for: ${pathname}`)
-    }
-  }, [isVisible, pathname])
+  // Log when content becomes visible (removed for production)
 
   return (
     <div

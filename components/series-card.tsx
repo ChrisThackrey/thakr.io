@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Layers, ListTree } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -18,7 +18,6 @@ export function SeriesCard({ series }: SeriesCardProps) {
           <Layers className="h-5 w-5 text-primary" />
           <CardTitle>{series.name}</CardTitle>
         </div>
-        <CardDescription>{series.description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow">
         <div className="space-y-3">

@@ -24,7 +24,6 @@ export function SelectionSpeedRead({ contentId, selector = "article .prose", slu
   const [selectedText, setSelectedText] = useState("")
   const [selectionPosition, setSelectionPosition] = useState<number | null>(null)
   const [startInMiniPlayer, setStartInMiniPlayer] = useState(false)
-  const [selectionLength, setSelectionLength] = useState(0)
   const [wordCount, setWordCount] = useState(0)
   const [estimatedTime, setEstimatedTime] = useState("")
   const popupRef = useRef<HTMLDivElement>(null)
@@ -36,7 +35,7 @@ export function SelectionSpeedRead({ contentId, selector = "article .prose", slu
   useEffect(() => {
     try {
       hasShownTutorial.current = localStorage.getItem("speed-reading-tutorial-shown") === "true"
-    } catch (e) {
+    } catch {
       // Ignore localStorage errors
     }
   }, [])
@@ -101,7 +100,6 @@ export function SelectionSpeedRead({ contentId, selector = "article .prose", slu
 
       setSelectedText(text)
       setSelectionPosition(position)
-      setSelectionLength(text.length)
       setWordCount(wordCount)
       setEstimatedTime(timeStr)
       setPopupPosition({ x: popupX, y: popupY })
@@ -112,7 +110,7 @@ export function SelectionSpeedRead({ contentId, selector = "article .prose", slu
         try {
           localStorage.setItem("speed-reading-tutorial-shown", "true")
           hasShownTutorial.current = true
-        } catch (e) {
+        } catch {
           // Ignore localStorage errors
         }
       }

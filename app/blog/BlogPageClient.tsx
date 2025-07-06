@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { TagFilterDropdown } from "@/components/tag-filter-dropdown"
-import { getAllTags, getAllBlogPosts, getFeaturedBlogPosts, type BlogPost } from "@/lib/blog"
+import { getAllTags, getAllBlogPosts, type BlogPost } from "@/lib/blog"
 import { CategorizedTagCloud } from "@/components/categorized-tag-cloud"
 import { TagCategoryPills } from "@/components/tag-category-pills"
 import { getTagsByCategory } from "@/lib/tag-categories"
@@ -13,20 +13,20 @@ import { SectionTitle } from "@/components/section-title"
 
 interface BlogPageClientProps {
   posts?: BlogPost[]
+  featuredPosts?: BlogPost[]
 }
 
-export default function BlogPageClient({ posts = [] }: BlogPageClientProps) {
-  // Use the provided posts or get all blog posts if none provided
+export default function BlogPageClient({ posts = [], featuredPosts = [] }: BlogPageClientProps) {
+  // Use the provided posts or get all blog posts if none provided  
   const allBlogPosts = posts.length > 0 ? posts : getAllBlogPosts()
-  const featuredPosts = getFeaturedBlogPosts()
 
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(allBlogPosts)
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [filterMode, setFilterMode] = useState<"AND" | "OR">("OR")
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const [activeTab, setActiveTab] = useState<string>("all")
+  const [selectedCategory, setSelectedCategory] = useState<string | undefined>(undefined)
+  const [, setActiveTab] = useState<string>("all")
 
-  const getFilteredPosts = () => {
+  const getFilteredPosts = useCallback(() => {
     let filtered = [...allBlogPosts]
 
     // Filter by category first
@@ -47,11 +47,11 @@ export default function BlogPageClient({ posts = [] }: BlogPageClientProps) {
         return selectedTags.every((tag) => post.tags.includes(tag))
       }
     })
-  }
+  }, [allBlogPosts, selectedCategory, selectedTags, filterMode])
 
   useEffect(() => {
     setFilteredPosts(getFilteredPosts())
-  }, [selectedTags, filterMode, selectedCategory])
+  }, [selectedTags, filterMode, selectedCategory, getFilteredPosts])
 
   const handleSelectTag = (tag: string) => {
     setSelectedTags((prev) => {
@@ -71,6 +71,10 @@ export default function BlogPageClient({ posts = [] }: BlogPageClientProps) {
 
   const handleChangeFilterMode = (mode: "AND" | "OR") => {
     setFilterMode(mode)
+  }
+
+  const handleSelectCategory = (categoryId: string | null) => {
+    setSelectedCategory(categoryId ?? undefined)
   }
 
   return (
@@ -139,7 +143,7 @@ export default function BlogPageClient({ posts = [] }: BlogPageClientProps) {
         <aside className="space-y-8">
           <div className="bg-gray-100/50 dark:bg-gray-800/50 p-4 rounded-lg">
             <h3 className="font-medium text-lg mb-4">Filter by Category</h3>
-            <TagCategoryPills selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />
+            <TagCategoryPills selectedCategory={selectedCategory} onSelectCategory={handleSelectCategory} />
           </div>
 
           <div className="bg-gray-100/50 dark:bg-gray-800/50 p-4 rounded-lg">

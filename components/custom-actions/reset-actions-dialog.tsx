@@ -12,7 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { useCustomActions } from "@/contexts/custom-actions-context"
-import { Icons } from "@/components/icons"
+import { RefreshCw } from "lucide-react"
 
 export function ResetActionsDialog() {
   const { resetToDefaults } = useCustomActions()
@@ -27,7 +27,7 @@ export function ResetActionsDialog() {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button variant="outline">
-          <Icons.RefreshCw className="mr-2 h-4 w-4" />
+          <RefreshCw className="mr-2 h-4 w-4" />
           Reset to Defaults
         </Button>
       </DialogTrigger>

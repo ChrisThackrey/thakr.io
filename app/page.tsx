@@ -11,13 +11,15 @@ import { ProfileSection } from "@/components/profile-section"
 import { FeaturedProjectsSection } from "@/components/featured-projects-section"
 import { ArrowRight } from "lucide-react"
 import { BlogPreviewSection } from "@/components/blog-preview-section"
+import { Suspense } from "react"
 
-export default function HomePage() {
+export default async function HomePage() {
   const featuredExperience = professionalExperience.slice(0, 3)
 
   return (
-    <PageTransition className="flex flex-col flex-grow">
-      <div className="flex-grow">
+    <PageTransition>
+      <div className="flex flex-col flex-grow">
+        <div className="flex-grow">
         <PageBackground />
         {/* Profile Section */}
         <div className="container mx-auto max-w-4xl pt-16 md:pt-24 pb-0 px-4">
@@ -48,13 +50,18 @@ export default function HomePage() {
         </div>
 
         {/* Featured Projects Section */}
-        <FeaturedProjectsSection />
+        <Suspense fallback={<div className="py-20 md:py-28" />}>
+          <FeaturedProjectsSection />
+        </Suspense>
 
         {/* Blog Preview Section */}
-        <BlogPreviewSection />
+        <Suspense fallback={<div className="py-20 md:py-28 bg-muted/50" />}>
+          <BlogPreviewSection />
+        </Suspense>
 
         {/* Let's Connect Section */}
         <ContactSection />
+        </div>
       </div>
     </PageTransition>
   )

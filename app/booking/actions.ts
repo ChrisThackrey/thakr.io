@@ -22,8 +22,9 @@ const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 /*  Helpers                                                     */
 /* ------------------------------------------------------------ */
 
-function readCookie(): BookingSession | null {
-  const raw = cookies().get(COOKIE_KEY)?.value
+async function readCookie(): Promise<BookingSession | null> {
+  const cookieStore = await cookies()
+  const raw = cookieStore.get(COOKIE_KEY)?.value
   if (!raw) return null
   try {
     return JSON.parse(raw) as BookingSession
@@ -32,8 +33,9 @@ function readCookie(): BookingSession | null {
   }
 }
 
-function writeCookie(data: BookingSession) {
-  cookies().set(COOKIE_KEY, JSON.stringify(data), {
+async function writeCookie(data: BookingSession) {
+  const cookieStore = await cookies()
+  cookieStore.set(COOKIE_KEY, JSON.stringify(data), {
     path: "/",
     httpOnly: true,
     sameSite: "lax",
@@ -50,9 +52,9 @@ function writeCookie(data: BookingSession) {
  * Returns the updated session object.
  */
 export async function saveBooking(partial: Partial<BookingSession>): Promise<BookingSession> {
-  const current = readCookie() ?? {}
+  const current = await readCookie() ?? {}
   const updated = { ...current, ...partial }
-  writeCookie(updated)
+  await writeCookie(updated)
   return updated
 }
 
@@ -60,7 +62,7 @@ export async function saveBooking(partial: Partial<BookingSession>): Promise<Boo
  * Retrieve the currently-saved booking session, if any.
  */
 export async function getBooking(): Promise<BookingSession | null> {
-  return readCookie()
+  return await readCookie()
 }
 
 /**
@@ -74,6 +76,9 @@ export async function createGoogleCalendarEvent(data: {
   date: string
 }) {
   try {
+    // TODO: Use the data parameter when implementing the actual calendar integration
+    console.log("Creating calendar event for:", data.email)
+    
     // In production, you would:
     // 1. Use proper authentication with Google OAuth
     // 2. Create a calendar event with the Google Calendar API

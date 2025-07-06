@@ -50,7 +50,7 @@ export function getSelectionInfo(
   const text = selection.toString().trim()
 
   // Get the position of the selection within the container's text content
-  const containerText = container.textContent || ""
+  // const containerText = container.textContent || ""
   const preSelectionRange = range.cloneRange()
   preSelectionRange.selectNodeContents(container)
   preSelectionRange.setEnd(range.startContainer, range.startOffset)

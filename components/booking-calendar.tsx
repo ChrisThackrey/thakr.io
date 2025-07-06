@@ -14,8 +14,6 @@ import {
   isSameDay,
   getDay,
   startOfMonth,
-  getMonth,
-  getYear,
   isSameMonth,
 } from "date-fns"
 import { cn } from "@/lib/utils"
@@ -77,8 +75,6 @@ export function BookingCalendar({ onDateSelect, initialDate }: BookingCalendarPr
   }
 
   const getDaysInMonth = (date: Date): CalendarDay[] => {
-    const year = getYear(date)
-    const month = getMonth(date)
     const firstDayOfMonth = startOfMonth(date)
     const startDayOfWeek = getDay(firstDayOfMonth)
 

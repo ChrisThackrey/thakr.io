@@ -4,6 +4,9 @@ import type { BlogPost } from "@/lib/blog"
 
 interface Props {
   posts?: BlogPost[]
+  currentSlug?: string
+  tags?: string[]
+  maxPosts?: number
 }
 
 /**

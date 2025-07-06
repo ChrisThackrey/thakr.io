@@ -5,11 +5,14 @@ import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { useInView } from "react-intersection-observer"
 
-interface BlogImageProps {
+/** All props previously used across your MDX / TSX posts */
+export interface BlogImageProps {
   src: string
   alt: string
   caption?: string
   className?: string
+
+  /* Optional fine-tuning props used in some posts */
   width?: number
   height?: number
   priority?: boolean
@@ -18,6 +21,11 @@ interface BlogImageProps {
   isHero?: boolean
 }
 
+/**
+ * Responsive blog image with progressive loading and an optional
+ * caption.  Exported both as a **named** export (`BlogImage`) and a
+ * **default** export for legacy imports.
+ */
 export function BlogImage({
   src,
   alt,
@@ -32,46 +40,32 @@ export function BlogImage({
 }: BlogImageProps) {
   const [error, setError] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+
+  // Only load once the figure is near the viewport
   const [ref, inView] = useInView({
     triggerOnce: true,
-    rootMargin: "200px 0px", // Load images 200px before they enter viewport
+    rootMargin: "200px 0px",
   })
 
-  // Determine if this image should have priority
-  const shouldPrioritize =
-    priority ||
-    isHero ||
-    (src && (src.includes("hero") || src.includes("banner") || src.includes("cover") || src.includes("thumbnail")))
+  // Treat hero / banner images as high priority
+  const shouldPrioritize = priority || isHero || src.match(/hero|banner|cover|thumbnail/gi) !== null
 
-  // Generate a blur placeholder if not provided
   const placeholder = blurDataURL ? "blur" : "empty"
-
-  // Determine appropriate sizes based on image context
   const sizes = isHero
     ? "(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1200px"
     : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
 
-  // Normalize image path
-  const normalizedSrc = src.startsWith("/") ? src : `/${src}`
+  // Normalise path so "/images/foo.png" and "images/foo.png" both work
+  const normalisedSrc = src.startsWith("/") ? src : `/${src}`
 
   if (error) {
     return (
-      <div
-        className={cn("bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center", className)}
+      <figure
+        className={cn("my-8 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800", className)}
         style={{ aspectRatio: `${width}/${height}` }}
       >
-        <div className="text-center p-8">
-          <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-            />
-          </svg>
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Image could not be loaded</p>
-        </div>
-      </div>
+        <span className="p-4 text-center text-sm text-muted-foreground">Image failed to load</span>
+      </figure>
     )
   }
 
@@ -82,11 +76,11 @@ export function BlogImage({
       >
         {(inView || shouldPrioritize) && (
           <Image
-            src={normalizedSrc || "/placeholder.svg"}
+            src={normalisedSrc || "/placeholder.svg"}
             alt={alt}
             width={width}
             height={height}
-            className={cn("w-full h-auto transition-opacity duration-300", isLoaded ? "opacity-100" : "opacity-0")}
+            className={cn("h-auto w-full transition-opacity duration-300", isLoaded ? "opacity-100" : "opacity-0")}
             onError={() => setError(true)}
             onLoad={() => setIsLoaded(true)}
             priority={shouldPrioritize}
@@ -99,9 +93,11 @@ export function BlogImage({
           />
         )}
       </div>
-      {caption && (
-        <figcaption className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">{caption}</figcaption>
-      )}
+
+      {caption && <figcaption className="mt-2 text-center text-sm text-muted-foreground">{caption}</figcaption>}
     </figure>
   )
 }
+
+/* Default export for default-import callers */
+export default BlogImage

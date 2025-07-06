@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { usePathname } from "next/navigation"
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import type { ReactNode } from "react"
 
@@ -23,12 +23,12 @@ export function SectionStaggeredItem({ children, className = "", as = "div" }: S
   }
 
   // Determine section-specific item animation
-  let itemVariants = {
+  let itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
     },
   }
 
@@ -38,7 +38,7 @@ export function SectionStaggeredItem({ children, className = "", as = "div" }: S
       visible: {
         opacity: 1,
         x: 0,
-        transition: { duration: 0.4, ease: [0.25, 1, 0.5, 1] },
+        transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] },
       },
     }
   } else if (pathname.startsWith("/projects")) {
@@ -47,7 +47,7 @@ export function SectionStaggeredItem({ children, className = "", as = "div" }: S
       visible: {
         opacity: 1,
         scale: 1,
-        transition: { duration: 0.45, ease: [0.34, 1.56, 0.64, 1] },
+        transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] },
       },
     }
   } else if (pathname.startsWith("/architecture")) {
@@ -57,7 +57,7 @@ export function SectionStaggeredItem({ children, className = "", as = "div" }: S
         opacity: 1,
         y: 0,
         rotateX: 0,
-        transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
+        transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
       },
     }
   } else if (pathname.startsWith("/about")) {
@@ -66,7 +66,7 @@ export function SectionStaggeredItem({ children, className = "", as = "div" }: S
       visible: {
         opacity: 1,
         filter: "blur(0px)",
-        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
       },
     }
   } else if (pathname.startsWith("/work")) {
@@ -76,12 +76,16 @@ export function SectionStaggeredItem({ children, className = "", as = "div" }: S
         opacity: 1,
         y: 0,
         rotateX: 0,
-        transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+        transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] },
       },
     }
   }
 
-  const Component = motion[as as keyof typeof motion] || motion.div
+  const Component = as === 'div' ? motion.div : 
+                   as === 'section' ? motion.section :
+                   as === 'article' ? motion.article :
+                   as === 'span' ? motion.span :
+                   motion.div
 
   return (
     <Component className={className} variants={itemVariants}>

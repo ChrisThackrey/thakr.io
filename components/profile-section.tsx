@@ -1,6 +1,7 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
+import { Github, Linkedin, Instagram } from "lucide-react"
 import { siteConfig } from "@/config/site"
 
 export function ProfileSection() {
@@ -21,24 +22,25 @@ export function ProfileSection() {
           </div>
           <div className="mt-6 flex items-center gap-4">
             <Link href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <Icons.github className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
+              <Github className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
             </Link>
             <Link href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <Icons.linkedin className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
+              <Linkedin className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
             </Link>
             <Link href={siteConfig.links.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <Icons.instagram className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
+              <Instagram className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
             </Link>
           </div>
         </div>
         <div className="order-1 md:order-2">
-          <div className="aspect-square overflow-hidden rounded-full border-4 border-background">
-            <img
+          <div className="relative aspect-square overflow-hidden rounded-full border-4 border-background">
+            <Image
               src="/images/profile-1.jpg"
               alt="Chris Thackrey"
-              width={400}
-              height={400}
-              className="aspect-square h-full w-full object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, 400px"
+              className="object-cover"
+              priority
             />
           </div>
         </div>

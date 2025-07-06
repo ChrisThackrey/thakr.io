@@ -8,7 +8,7 @@ interface AnimatedBlogSkeletonProps {
 
 export function AnimatedBlogSkeleton({ delay = 0 }: AnimatedBlogSkeletonProps) {
   return (
-    <SkeletonBase section="blog" animate="slide" delay={delay} className="rounded-lg border bg-card overflow-hidden">
+    <SkeletonBase section="blog" delay={delay} className="rounded-lg border bg-card overflow-hidden">
       <div className="p-6 space-y-4">
         {/* Featured tag */}
         <SkeletonBase section="blog" stagger={1} delay={delay} className="h-5 w-24 rounded-full" />

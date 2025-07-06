@@ -4,9 +4,7 @@ import { Card } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 import { forwardRef } from "react"
-import type { CardProps } from "@/components/ui/card"
-
-interface EnhancedCardProps extends CardProps {
+interface EnhancedCardProps extends React.HTMLAttributes<HTMLDivElement> {
   hoverEffect?: boolean
   pressEffect?: boolean
   hoverScale?: number

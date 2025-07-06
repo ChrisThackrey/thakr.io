@@ -70,12 +70,12 @@ export default function ModernUrbanHousingPage() {
         <h2 className="text-2xl font-semibold mb-4">Design Approach</h2>
         <p className="mb-4">
           The design approach focused on creating a balance between private living spaces and communal areas that foster
-          community interaction. The building's form responds to its urban context while maximizing natural light and
+          community interaction. The building&apos;s form responds to its urban context while maximizing natural light and
           ventilation.
         </p>
         <p>Sustainable features include:</p>
         <ul className="list-disc pl-5 space-y-2 mt-2">
-          <li>Rooftop solar panels providing 40% of the building's energy needs</li>
+          <li>Rooftop solar panels providing 40% of the building&apos;s energy needs</li>
           <li>Rainwater collection and greywater recycling systems</li>
           <li>High-performance building envelope with triple-glazed windows</li>
           <li>Shared electric vehicle charging stations</li>

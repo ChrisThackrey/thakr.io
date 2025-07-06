@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { Icons } from "@/components/icons"
+import { Share2, Twitter, Facebook, Linkedin, Mail, Check, Copy } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { toast } from "@/hooks/use-toast"
@@ -61,7 +61,7 @@ export function ImageShareMenu({
         description: "Image link has been copied to your clipboard.",
       })
       setTimeout(() => setCopied(false), 2000)
-    } catch (err) {
+    } catch {
       toast({
         title: "Failed to copy",
         description: "Could not copy the link to your clipboard.",
@@ -127,7 +127,7 @@ export function ImageShareMenu({
           )}
           aria-label="Share image"
         >
-          <Icons.share className={cn("h-4 w-4", isFullscreen && "h-5 w-5")} />
+          <Share2 className={cn("h-4 w-4", isFullscreen && "h-5 w-5")} />
         </Button>
       ) : (
         <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
@@ -141,7 +141,7 @@ export function ImageShareMenu({
               )}
               aria-label="Share image"
             >
-              <Icons.share className={cn("h-4 w-4", isFullscreen && "h-5 w-5")} />
+              <Share2 className={cn("h-4 w-4", isFullscreen && "h-5 w-5")} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
@@ -152,7 +152,7 @@ export function ImageShareMenu({
                 rel="noopener noreferrer"
                 className="flex items-center cursor-pointer"
               >
-                <Icons.twitter className="mr-2 h-4 w-4" />
+                <Twitter className="mr-2 h-4 w-4" />
                 <span>Twitter</span>
               </a>
             </DropdownMenuItem>
@@ -163,7 +163,7 @@ export function ImageShareMenu({
                 rel="noopener noreferrer"
                 className="flex items-center cursor-pointer"
               >
-                <Icons.facebook className="mr-2 h-4 w-4" />
+                <Facebook className="mr-2 h-4 w-4" />
                 <span>Facebook</span>
               </a>
             </DropdownMenuItem>
@@ -174,18 +174,18 @@ export function ImageShareMenu({
                 rel="noopener noreferrer"
                 className="flex items-center cursor-pointer"
               >
-                <Icons.linkedin className="mr-2 h-4 w-4" />
+                <Linkedin className="mr-2 h-4 w-4" />
                 <span>LinkedIn</span>
               </a>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <a href={shareLinks.email} className="flex items-center cursor-pointer">
-                <Icons.mail className="mr-2 h-4 w-4" />
+                <Mail className="mr-2 h-4 w-4" />
                 <span>Email</span>
               </a>
             </DropdownMenuItem>
             <DropdownMenuItem onClick={handleCopyLink} className="flex items-center cursor-pointer">
-              {copied ? <Icons.check className="mr-2 h-4 w-4" /> : <Icons.copy className="mr-2 h-4 w-4" />}
+              {copied ? <Check className="mr-2 h-4 w-4" /> : <Copy className="mr-2 h-4 w-4" />}
               <span>{copied ? "Copied!" : "Copy link"}</span>
             </DropdownMenuItem>
           </DropdownMenuContent>

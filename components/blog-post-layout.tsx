@@ -16,7 +16,6 @@ import { BlogErrorBoundary } from "@/components/blog-error-boundary"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { RelatedPosts } from "@/components/related-posts"
 import type { BlogPost } from "@/lib/blog"
-import { SeriesBanner } from "./series-banner"
 
 interface BlogPostLayoutProps {
   post: BlogPost
@@ -25,7 +24,7 @@ interface BlogPostLayoutProps {
   withDropCap?: boolean
 }
 
-export function BlogPostLayout({ post, content, children, withDropCap = true }: BlogPostLayoutProps) {
+export function BlogPostLayout({ post, content, children }: BlogPostLayoutProps) {
   const { theme } = useTheme()
   const url = typeof window !== "undefined" ? window.location.href : `https://yourdomain.com/blog/${post.slug}`
 
@@ -42,7 +41,7 @@ export function BlogPostLayout({ post, content, children, withDropCap = true }: 
           </Button>
         </div>
 
-        {post.series && <SeriesBanner post={post} />}
+        {/* Series banner should be rendered by parent component that has access to series data */}
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           <div className="md:col-span-9 lg:col-span-8 xl:col-span-9">
@@ -72,7 +71,7 @@ export function BlogPostLayout({ post, content, children, withDropCap = true }: 
             </div>
 
             <BlogErrorBoundary postTitle={post.title}>
-              <MarkdownRenderer content={content} blogSlug={post.slug} className="mt-8" withDropCap={withDropCap} />
+              <MarkdownRenderer content={content} className="mt-8" />
             </BlogErrorBoundary>
 
             <ErrorBoundary componentName="Related Posts">

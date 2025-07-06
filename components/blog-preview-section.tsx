@@ -1,39 +1,35 @@
-import { Suspense } from "react"
-import { getPosts } from "@/lib/blog"
+import { getFeaturedPosts } from "@/lib/blog"
+import { SectionTitle } from "@/components/section-title"
 import { BlogPostCard } from "@/components/blog-post-card"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
-/**
- * A simple server component that renders the six most recent blog posts in a grid.
- * It works whether the data layer is file-based or static because it relies on `getPosts()`.
- */
 export async function BlogPreviewSection() {
-  const posts = await getPosts()
-  const recent = posts.slice(0, 6)
+  const featuredPosts = await getFeaturedPosts()
+
+  if (!featuredPosts.length) {
+    return null
+  }
 
   return (
-    <section className="py-16">
-      <div className="container space-y-8">
-        <h2 className="text-3xl font-bold">Latest Articles</h2>
-
-        <Suspense
-          fallback={
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="h-56 animate-pulse rounded-lg bg-muted" />
-              ))}
-            </div>
-          }
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {recent.map((post) => (
-              <BlogPostCard key={post.slug} post={post} />
-            ))}
-          </div>
-        </Suspense>
+    <section className="py-20 md:py-28 bg-muted/50">
+      <div className="container">
+        <div className="flex justify-between items-center mb-12">
+          <SectionTitle>From the Blog</SectionTitle>
+          <Button asChild variant="outline">
+            <Link href="/blog" className="group">
+              View All Posts
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
+        </div>
+        <div className="grid gap-8 md:grid-cols-3">
+          {featuredPosts.map((post) => (
+            <BlogPostCard key={post.slug} post={post} />
+          ))}
+        </div>
       </div>
     </section>
   )
 }
-
-/* Provide a default export so consumers can choose either style */
-export default BlogPreviewSection

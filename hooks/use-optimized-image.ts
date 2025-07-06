@@ -77,6 +77,7 @@ export function useOptimizedImage({
     }
 
     if (eager) {
+      // @ts-ignore - fetchPriority is a valid HTML attribute but not in TypeScript types yet
       img.fetchPriority = "high"
       img.loading = "eager"
     }

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Icons } from "@/components/icons"
+import { Twitter, Linkedin, Facebook, Mail, Check, Link, Share } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { toast } from "@/hooks/use-toast"
 import { cn } from "@/lib/utils"
@@ -48,7 +48,7 @@ export function SocialShare({
         description: "The link has been copied to your clipboard.",
       })
       setTimeout(() => setCopied(false), 2000)
-    } catch (err) {
+    } catch {
       toast({
         title: "Failed to copy",
         description: "Could not copy the link to your clipboard.",
@@ -88,11 +88,11 @@ export function SocialShare({
   const buttonVariant = compact ? "ghost" : "outline"
 
   const platformIcons = {
-    twitter: <Icons.twitter size={iconSize} />,
-    linkedin: <Icons.linkedin size={iconSize} />,
-    facebook: <Icons.facebook size={iconSize} />,
-    email: <Icons.mail size={iconSize} />,
-    copy: copied ? <Icons.check size={iconSize} /> : <Icons.link size={iconSize} />,
+    twitter: <Twitter width={iconSize} height={iconSize} />,
+    linkedin: <Linkedin width={iconSize} height={iconSize} />,
+    facebook: <Facebook width={iconSize} height={iconSize} />,
+    email: <Mail width={iconSize} height={iconSize} />,
+    copy: copied ? <Check width={iconSize} height={iconSize} /> : <Link width={iconSize} height={iconSize} />,
   }
 
   const platformLabels = {
@@ -115,7 +115,7 @@ export function SocialShare({
           aria-label="Share"
         >
           <EnhancedIcon>
-            <Icons.share size={iconSize} />
+            <Share width={iconSize} height={iconSize} />
           </EnhancedIcon>
           {showLabel && <span className="ml-2">Share</span>}
         </EnhancedButton>

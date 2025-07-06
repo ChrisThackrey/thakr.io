@@ -9,7 +9,6 @@ import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { CustomActionsProvider } from "@/contexts/custom-actions-context"
 import { ChunkErrorHandler } from "@/components/chunk-error-handler"
-import { PageBackground } from "@/components/page-background"
 import "@/styles/globals.css"
 import "@/styles/section-animations.css"
 import "@/styles/highlight-animations.css"
@@ -48,7 +47,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         <ChunkErrorHandler />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          <PageBackground />
           <Suspense fallback={null}>
             <CustomActionsProvider>
               <div className="relative flex min-h-dvh flex-col bg-transparent">

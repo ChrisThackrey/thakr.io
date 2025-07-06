@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Icons } from "@/components/icons"
+import { ArrowRight } from "lucide-react"
 
 export function Hero() {
   return (
@@ -40,10 +40,10 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.6 }}
           >
-            <h2 className="text-3xl font-bold tracking-tight">Let's Connect</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Let&apos;s Connect</h2>
             <div className="w-20 h-1 bg-primary mx-auto mt-3 mb-4 rounded-full" />
             <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              I'm currently available for freelance work and full-time opportunities. If you're interested in working
+              I&apos;m currently available for freelance work and full-time opportunities. If you&apos;re interested in working
               together, please get in touch.
             </p>
           </motion.div>
@@ -57,13 +57,13 @@ export function Hero() {
             <Button asChild size="lg" className="font-medium text-base">
               <Link href="/contact" className="group">
                 Contact Me
-                <Icons.arrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild className="font-medium text-base bg-transparent">
               <Link href="/resume" className="group">
                 View Resume
-                <Icons.arrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </motion.div>

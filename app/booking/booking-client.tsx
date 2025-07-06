@@ -22,17 +22,25 @@ export function BookingPageClient() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  const { formData, setFormData, clearFormData } = usePersistentForm<{
+  const [formData, setFormData, clearFormData] = usePersistentForm<{
     name: string
     email: string
     topic: string
-  }>("bookingFormData")
+  }>("bookingFormData", {
+    name: "",
+    email: "",
+    topic: ""
+  })
 
   useEffect(() => {
     const fetchInitialData = async () => {
       const data = await getBooking()
       if (data) {
-        setFormData(data)
+        setFormData({
+          name: data.name || "",
+          email: data.email || "",
+          topic: data.topic || ""
+        })
         if (data.selectedDate) {
           setSelectedDate(new Date(data.selectedDate))
         }
@@ -63,7 +71,7 @@ export function BookingPageClient() {
 
   const handleDataChange = useCallback(
     (data: Partial<{ name: string; email: string; topic: string }>) => {
-      setFormData((prev) => ({ ...prev, ...data }))
+      setFormData((prev: { name: string; email: string; topic: string }) => ({ ...prev, ...data }))
       saveBooking(data)
     },
     [setFormData],

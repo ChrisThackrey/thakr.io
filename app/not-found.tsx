@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
+import { SearchX, Home, BookOpen } from "lucide-react"
 import { motion } from "framer-motion"
 
 export default function NotFound() {
@@ -30,7 +30,7 @@ export default function NotFound() {
             ease: "easeInOut",
           }}
         >
-          <Icons.searchX className="h-32 w-32 text-primary/70" />
+          <SearchX className="h-32 w-32 text-primary/70" />
         </motion.div>
         <motion.div
           className="absolute text-5xl font-bold text-muted-foreground/50"
@@ -60,7 +60,7 @@ export default function NotFound() {
       >
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">Page Not Found</h1>
         <p className="mt-4 text-lg text-muted-foreground">
-          Oops! It seems the page you're looking for has drifted off into the digital void.
+          Oops! It seems the page you&apos;re looking for has drifted off into the digital void.
         </p>
       </motion.div>
 
@@ -72,13 +72,13 @@ export default function NotFound() {
       >
         <Button asChild>
           <Link href="/">
-            <Icons.home className="mr-2 h-4 w-4" />
+            <Home className="mr-2 h-4 w-4" />
             Return to Home Base
           </Link>
         </Button>
         <Button asChild variant="outline">
           <Link href="/blog">
-            <Icons.bookOpen className="mr-2 h-4 w-4" />
+            <BookOpen className="mr-2 h-4 w-4" />
             Explore the Blog
           </Link>
         </Button>

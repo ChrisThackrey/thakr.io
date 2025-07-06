@@ -1,6 +1,6 @@
 "use client"
 
-import { getAllTags, getTagCount } from "@/lib/blog"
+import { getAllTags, getTagCounts } from "@/lib/blog"
 import { ColoredTag } from "@/components/colored-tag"
 
 interface GridTagCloudProps {
@@ -9,7 +9,7 @@ interface GridTagCloudProps {
 
 export function GridTagCloud({ onSelectTag }: GridTagCloudProps) {
   const tags = getAllTags()
-  const tagCounts = getTagCount()
+  const tagCounts = getTagCounts()
 
   // Sort tags by count (most posts first)
   const sortedTags = [...tags].sort((a, b) => (tagCounts[b] || 0) - (tagCounts[a] || 0))
@@ -24,7 +24,7 @@ export function GridTagCloud({ onSelectTag }: GridTagCloudProps) {
             className="text-left hover:bg-accent rounded p-1 transition-colors overflow-hidden"
             onClick={() => onSelectTag?.(tag)}
           >
-            <ColoredTag tag={tag} count={tagCounts[tag]} className="w-full max-w-full" />
+            <ColoredTag tag={tag} className="w-full max-w-full" />
           </button>
         ))}
       </div>

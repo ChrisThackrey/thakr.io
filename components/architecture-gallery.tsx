@@ -18,15 +18,16 @@ interface ArchitectureProject {
   imageUrl?: string
   title?: string
   location?: string
-  year?: string
+  year?: string | number
   tags?: string[]
   modelUrl?: string
   description?: string
   modelScale?: number
   modelPosition?: [number, number, number]
   modelRotation?: [number, number, number]
-  // Allow other properties if necessary, but prefer explicit typing
-  [key: string]: any
+  // Additional properties
+  type?: string
+  area?: string
 }
 
 interface ArchitectureGalleryProps {
@@ -144,10 +145,6 @@ export function ArchitectureGallery({ projects }: ArchitectureGalleryProps) {
                   <div className="h-[400px] w-full">
                     {showModel ? (
                       <ThreeDViewer
-                        modelUrl={selectedProject.modelUrl}
-                        scale={selectedProject?.modelScale ?? 1}
-                        position={selectedProject?.modelPosition ?? [0, 0, 0]}
-                        rotation={selectedProject?.modelRotation ?? [0, 0, 0]}
                         height="400px"
                         fallbackText="3D model visualization temporarily unavailable"
                         imageUrl={selectedProject?.imageUrl ?? "/placeholder.svg?height=800&width=1200"}

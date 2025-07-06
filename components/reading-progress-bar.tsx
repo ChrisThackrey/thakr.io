@@ -139,6 +139,7 @@ export function ReadingProgressBar({
         document.head.removeChild(style)
       }
     }
+    return undefined
   }, [animation])
 
   return (

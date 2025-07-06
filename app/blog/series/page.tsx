@@ -1,4 +1,3 @@
-import { PageBackground } from "@/components/page-background"
 import { SeriesCard } from "@/components/series-card"
 import { getAllSeries } from "@/lib/blog"
 import { Button } from "@/components/ui/button"
@@ -10,9 +9,7 @@ export default function SeriesListPage() {
   const allSeries = getAllSeries()
 
   return (
-    <>
-      <PageBackground />
-      <div className="container py-16 md:py-24">
+    <div className="container py-16 md:py-24">
         <div className="mb-8">
           <Button variant="ghost" asChild className="mb-4">
             <Link href="/blog">
@@ -32,6 +29,5 @@ export default function SeriesListPage() {
           ))}
         </div>
       </div>
-    </>
   )
 }

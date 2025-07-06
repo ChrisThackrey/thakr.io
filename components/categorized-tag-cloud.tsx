@@ -1,125 +1,110 @@
+/* removed ColoredTag import – uses spans */
+
 "use client"
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronDown, ChevronRight, Cpu, Lightbulb, Briefcase, MapPin, Users, Shield } from "lucide-react"
-import { ColoredTag } from "./colored-tag"
-import { getAllTags, getTagCount } from "@/lib/blog"
+import { ChevronDown, ChevronRight } from "lucide-react"
+import { getAllTags, getTagCounts } from "@/lib/blog"
 import { tagCategories, getUncategorizedTags } from "@/lib/tag-categories"
+import { getTagColors } from "@/lib/tag-colors"
 import { cn } from "@/lib/utils"
 
 interface CategorizedTagCloudProps {
-  onSelectTag?: (tag: string) => void
   className?: string
+  onSelectTag?: (tag: string) => void
 }
 
-const iconMap = {
-  cpu: Cpu,
-  lightbulb: Lightbulb,
-  briefcase: Briefcase,
-  "map-pin": MapPin,
-  users: Users,
-  shield: Shield,
-}
-
-export function CategorizedTagCloud({ onSelectTag, className }: CategorizedTagCloudProps) {
-  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(tagCategories.map((c) => c.id)))
-
+export function CategorizedTagCloud({ className, onSelectTag }: CategorizedTagCloudProps) {
+  const [expanded, setExpanded] = useState<Set<string>>(new Set(tagCategories.map((c) => c.id)))
   const allTags = getAllTags()
-  const tagCounts = getTagCount()
-  const uncategorizedTags = getUncategorizedTags(allTags)
+  const counts = getTagCounts()
+  const uncategorized = getUncategorizedTags(allTags)
 
-  const toggleCategory = (categoryId: string) => {
-    setExpandedCategories((prev) => {
-      const newSet = new Set(prev)
-      if (newSet.has(categoryId)) {
-        newSet.delete(categoryId)
+  const toggle = (id: string) =>
+    setExpanded((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) {
+        next.delete(id)
       } else {
-        newSet.add(categoryId)
+        next.add(id)
       }
-      return newSet
+      return next
     })
-  }
-
-  const renderCategory = (category: (typeof tagCategories)[0]) => {
-    const Icon = category.icon ? iconMap[category.icon as keyof typeof iconMap] : null
-    const isExpanded = expandedCategories.has(category.id)
-    const categoryTags = category.tags.filter((tag) => allTags.includes(tag))
-
-    if (categoryTags.length === 0) return null
-
-    return (
-      <div key={category.id} className="mb-4">
-        <button
-          onClick={() => toggleCategory(category.id)}
-          className="flex items-center gap-2 w-full text-left mb-2 hover:bg-accent/50 rounded-md p-2 transition-colors"
-        >
-          {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-          {Icon && <Icon className="w-4 h-4 text-muted-foreground" />}
-          <span className="font-medium text-sm">{category.name}</span>
-          <span className="text-xs text-muted-foreground ml-auto">
-            {categoryTags.length} tag{categoryTags.length !== 1 ? "s" : ""}
-          </span>
-        </button>
-
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="overflow-hidden"
-            >
-              <div className="pl-8 grid grid-cols-2 gap-2 mb-2">
-                {categoryTags
-                  .sort((a, b) => (tagCounts[b] || 0) - (tagCounts[a] || 0))
-                  .map((tag) => (
-                    <button
-                      key={tag}
-                      onClick={() => onSelectTag?.(tag)}
-                      className="text-left hover:bg-accent rounded p-1 transition-colors overflow-hidden"
-                    >
-                      <ColoredTag tag={tag} count={tagCounts[tag]} className="w-full max-w-full" />
-                    </button>
-                  ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    )
-  }
 
   return (
     <div className={cn("p-4", className)}>
-      <div className="space-y-2">
-        {tagCategories.map(renderCategory)}
+      {tagCategories.map((cat) => {
+        const tagsInCat = cat.tags.filter((t) => allTags.includes(t))
+        if (!tagsInCat.length) return null
+        const open = expanded.has(cat.id)
 
-        {uncategorizedTags.length > 0 && (
-          <div className="mb-4">
-            <div className="flex items-center gap-2 mb-2 p-2">
-              <span className="font-medium text-sm text-muted-foreground">Other</span>
-              <span className="text-xs text-muted-foreground ml-auto">
-                {uncategorizedTags.length} tag{uncategorizedTags.length !== 1 ? "s" : ""}
+        return (
+          <div key={cat.id} className="mb-4">
+            <button
+              onClick={() => toggle(cat.id)}
+              className="mb-2 flex w-full items-center gap-2 rounded-md p-2 text-left hover:bg-accent/50 transition-colors"
+            >
+              {open ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+              <span className="text-sm font-medium">{cat.name}</span>
+              <span className="ml-auto text-xs text-muted-foreground">
+                {tagsInCat.length} tag{tagsInCat.length !== 1 && "s"}
               </span>
-            </div>
-            <div className="pl-8 grid grid-cols-2 gap-2">
-              {uncategorizedTags
-                .sort((a, b) => (tagCounts[b] || 0) - (tagCounts[a] || 0))
-                .map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => onSelectTag?.(tag)}
-                    className="text-left hover:bg-accent rounded p-1 transition-colors overflow-hidden"
-                  >
-                    <ColoredTag tag={tag} count={tagCounts[tag]} className="w-full max-w-full" />
-                  </button>
-                ))}
-            </div>
+            </button>
+
+            <AnimatePresence>
+              {open && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden"
+                >
+                  <div className="mb-2 grid grid-cols-2 gap-2 pl-8">
+                    {tagsInCat
+                      .sort((a, b) => (counts[b] || 0) - (counts[a] || 0))
+                      .map((tag) => (
+                        <button
+                          key={tag}
+                          onClick={() => onSelectTag?.(tag)}
+                          className={`inline-block truncate rounded-full px-2 py-0.5 text-xs hover:opacity-80 transition-opacity ${getTagColors(tag)}`}
+                        >
+                          {tag} ({counts[tag] || 0})
+                        </button>
+                      ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-        )}
-      </div>
+        )
+      })}
+
+      {/* uncategorized */}
+      {uncategorized.length > 0 && (
+        <div className="mb-4">
+          <div className="mb-2 flex items-center gap-2 p-2">
+            <span className="text-sm font-medium">Other</span>
+            <span className="ml-auto text-xs text-muted-foreground">
+              {uncategorized.length} tag{uncategorized.length !== 1 && "s"}
+            </span>
+          </div>
+          <div className="grid grid-cols-2 gap-2 pl-8">
+            {uncategorized
+              .sort((a, b) => (counts[b] || 0) - (counts[a] || 0))
+              .map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => onSelectTag?.(tag)}
+                  className={`inline-block truncate rounded-full px-2 py-0.5 text-xs hover:opacity-80 transition-opacity ${getTagColors(tag)}`}
+                >
+                  {tag} ({counts[tag] || 0})
+                </button>
+              ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

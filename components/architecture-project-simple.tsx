@@ -29,7 +29,6 @@ export function ArchitectureProjectSimple({
   description,
   imageUrl,
   images,
-  modelUrl,
   tags,
   year,
   location,
@@ -42,7 +41,6 @@ export function ArchitectureProjectSimple({
       <Card className="overflow-hidden h-full flex flex-col border border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
         <div className="aspect-video w-full overflow-hidden relative group">
           <ThreeDViewer
-            modelUrl={null} // Set to null to prevent loading
             imageUrl={imageUrl}
             fallbackText="3D model loading disabled"
             height="240px"

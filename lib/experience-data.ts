@@ -203,8 +203,10 @@ export const technicalSkills: Record<string, string[]> = {
 }
 
 /* ---------- Default export for convenience ---------- */
-export default {
+const experienceData = {
   professionalExperience,
   education,
   technicalSkills,
 }
+
+export default experienceData

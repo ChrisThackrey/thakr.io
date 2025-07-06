@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation"
 import { getAllSeries, getSeriesBySlug } from "@/lib/blog"
 import { BlogPostCard } from "@/components/blog-post-card"
-import { PageBackground } from "@/components/page-background"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { PageHeader } from "@/components/page-header"
+import { BlogErrorBoundary } from "@/components/blog-error-boundary"
 
 export function generateStaticParams() {
   const allSeries = getAllSeries()
@@ -14,16 +14,16 @@ export function generateStaticParams() {
   }))
 }
 
-export default function SeriesPage({ params }: { params: { slug: string } }) {
-  const series = getSeriesBySlug(params.slug)
+export default async function SeriesPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const series = getSeriesBySlug(slug)
 
   if (!series) {
     notFound()
   }
 
   return (
-    <>
-      <PageBackground />
+    <BlogErrorBoundary postTitle={series.name}>
       <div className="container py-16 md:py-24">
         <div className="mb-8">
           <Button variant="ghost" asChild className="mb-4">
@@ -41,6 +41,6 @@ export default function SeriesPage({ params }: { params: { slug: string } }) {
           ))}
         </div>
       </div>
-    </>
+    </BlogErrorBoundary>
   )
 }

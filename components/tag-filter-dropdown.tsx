@@ -15,7 +15,7 @@ import {
   DropdownMenuRadioItem,
 } from "@/components/ui/dropdown-menu"
 import { ColoredTag } from "@/components/colored-tag"
-import { getAllTags, getTagCount } from "@/lib/blog"
+import { getAllTags, getTagCounts } from "@/lib/blog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
@@ -24,6 +24,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 export type FilterMode = "OR" | "AND"
 
 interface TagFilterDropdownProps {
+  tags?: string[]
   selectedTags: string[]
   filterMode: FilterMode
   onSelectTag: (tag: string) => void
@@ -44,7 +45,7 @@ export function TagFilterDropdown({
 }: TagFilterDropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const tags = getAllTags()
-  const tagCounts = getTagCount()
+  const tagCounts = getTagCounts()
 
   // Sort tags by count (most posts first)
   const sortedTags = [...tags].sort((a, b) => (tagCounts[b] || 0) - (tagCounts[a] || 0))

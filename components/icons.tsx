@@ -2,92 +2,102 @@
 
 import type { FC, SVGProps } from "react"
 import {
-  Home,
-  Users,
-  Briefcase,
-  Code,
-  Building2,
-  FileText,
-  BookOpen,
-  Palette,
-  Mail,
-  Menu,
+  Activity,
+  AlertTriangle,
   ArrowRight,
+  Award,
+  BarChart,
+  BookOpen,
+  BrainCircuit,
+  Briefcase,
+  Building2,
+  Calendar,
+  CalendarCheck2,
+  Check,
+  CheckCircle2,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   ChevronUp,
-  ChevronDown,
-  SunMedium,
-  Moon,
-  Search,
-  SearchX,
-  Copy,
-  Check,
-  CheckCircle2,
-  Loader2,
-  AlertTriangle,
-  ExternalLink,
-  RefreshCw,
-  RotateCw,
-  ZoomIn,
-  ZoomOut,
-  Expand,
-  Download,
-  Printer,
-  Edit,
-  Trash,
-  List,
-  ListOrdered,
-  Play,
-  Pause,
-  Rewind,
-  FastForward,
-  GripVertical,
-  Construction,
-  Calendar,
-  CalendarCheck2,
   Clock,
-  Tag,
-  File,
+  Code,
+  Construction,
+  Copy,
+  Cpu,
   CreditCard,
-  Phone,
-  MapPin,
-  Send,
+  Database,
+  Download,
+  Edit,
+  Expand,
+  ExternalLink,
+  FastForward,
+  File,
+  FileText,
   Github,
-  Linkedin,
-  Twitter,
+  GripVertical,
+  Home,
+  Image,
+  ImageIcon,
   Instagram,
   Laptop,
-  Cpu,
-  Database,
-  Server,
-  Zap,
-  LineChart,
-  BarChart,
-  PieChart,
-  Activity,
   Layers,
-  BrainCircuit,
-  Wand2,
-  ImageIcon,
+  LineChart,
+  Linkedin,
+  List,
+  ListOrdered,
+  ListTree,
+  Loader2,
+  Mail,
+  MapPin,
+  Menu,
+  Moon,
+  Palette,
+  Pause,
+  Phone,
+  PieChart,
   Pizza,
-  GraduationCap,
-  Award,
+  Play,
+  Plus,
+  Printer,
+  RefreshCw,
+  Rewind,
+  RotateCw,
+  Search,
+  SearchX,
+  Send,
+  Server,
+  Share,
+  Share2,
   Sparkles,
+  SunMedium,
+  Tag,
+  Trash,
+  Twitter,
+  Type,
+  Users,
+  Wand2,
+  X,
+  Zap,
+  ZoomIn,
+  ZoomOut,
+  GraduationCap,
+  MessageSquare,
+  Maximize2,
+  MoveUp,
+  MoveDown,
+  Facebook,
+  Rocket,
+  Link,
 } from "lucide-react"
 
-/* -------------------------------------------------------------------------- */
-/*  1. Fallback / branding icon                                               */
-/* -------------------------------------------------------------------------- */
+/* ---------- 1.  Fallback / branding icon --------------------------------- */
 const Logo: FC<SVGProps<SVGSVGElement>> = (props) => (
-  <Sparkles {...props} className={`h-6 w-6 ${props.className ?? ""}`} />
+  <Building2 {...props} className={`h-6 w-6 ${props.className ?? ""}`} />
 )
 
-/* -------------------------------------------------------------------------- */
-/*  2. Master dictionary of icons                                             */
-/* -------------------------------------------------------------------------- */
+/* ---------- 2.  Master dictionary of icons ------------------------------- */
 const ICON_MAP = {
-  /* Navigation & Sections */
+  /* Navigation & sections */
   home: Home,
   user: Users,
   briefcase: Briefcase,
@@ -98,7 +108,7 @@ const ICON_MAP = {
   palette: Palette,
   contact: Mail,
 
-  /* UI Controls & Common */
+  /* UI controls */
   menu: Menu,
   arrowRight: ArrowRight,
   chevronLeft: ChevronLeft,
@@ -126,14 +136,25 @@ const ICON_MAP = {
   trash: Trash,
   list: List,
   listOrdered: ListOrdered,
+  listTree: ListTree,
   play: Play,
   pause: Pause,
   rewind: Rewind,
   fastForward: FastForward,
   gripVertical: GripVertical,
   construction: Construction,
+  plus: Plus,
+  Plus: Plus,
+  close: X,
+  share: Share,
+  share2: Share2,
+  moveUp: MoveUp,
+  moveDown: MoveDown,
+  RefreshCw: RefreshCw,
+  ChevronLeft: ChevronLeft,
+  ChevronRight: ChevronRight,
 
-  /* Forms & Data */
+  /* Forms & data */
   calendar: Calendar,
   calendarCheck: CalendarCheck2,
   clock: Clock,
@@ -141,7 +162,7 @@ const ICON_MAP = {
   file: File,
   creditCard: CreditCard,
 
-  /* Contact / Location */
+  /* Contact / location */
   mail: Mail,
   phone: Phone,
   mapPin: MapPin,
@@ -152,9 +173,13 @@ const ICON_MAP = {
   linkedin: Linkedin,
   twitter: Twitter,
   instagram: Instagram,
-  x: Twitter, // alias for "x" logo
+  facebook: Facebook,
+  
+  /* Additional icons */
+  rocket: Rocket,
+  link: Link,
 
-  /* Tech / Misc */
+  /* Tech / misc */
   laptop: Laptop,
   cpu: Cpu,
   database: Database,
@@ -168,11 +193,15 @@ const ICON_MAP = {
   brain: BrainCircuit,
   bot: BrainCircuit,
   generator: Wand2,
-  image: ImageIcon,
+  image: Image,
+  ImageIcon: ImageIcon,
   users: Users,
   pizza: Pizza,
+  type: Type,
+  MessageSquare: MessageSquare,
+  Maximize2: Maximize2,
 
-  /* Résumé / Work-timeline */
+  /* Résumé / timeline */
   graduationCap: GraduationCap,
   award: Award,
 
@@ -181,36 +210,10 @@ const ICON_MAP = {
   sparkles: Sparkles,
 } as const
 
-/* -------------------------------------------------------------------------- */
-/*  3. Public types & proxy export                                            */
-/* -------------------------------------------------------------------------- */
+/* ---------- 3.  Export Icons object directly ----------------------------- */
 export type IconName = keyof typeof ICON_MAP
 
-/**
- * `Icons` is the object you import elsewhere:
- *
- *   const Icon = Icons['home']
- *   return <Icon className="..." />
- *
- * If a key is missing, we log a warning and fall back to <Sparkles />.
- */
-export const Icons: Record<IconName, FC<SVGProps<SVGSVGElement>>> = new Proxy(
-  ICON_MAP as Record<string, FC<SVGProps<SVGSVGElement>>>,
-  {
-    get(target, prop: string) {
-      if (prop in target) return target[prop]
-      // eslint-disable-next-line no-console
-      console.warn(`[Icons] "${prop}" is not in ICON_MAP – falling back to Sparkles icon.`)
-      return Sparkles
-    },
-  },
-) as any // `as any` silences TS about Proxy signature
+export const Icons = ICON_MAP
 
-/* Optional: still allow consumers to import ICON_MAP directly */
-export { ICON_MAP }
-
-/**
- * Default export so components can do:
- *   import Icons from "@/components/icons"
- */
+/* Allow both `import { Icons }` and default import styles */
 export default Icons

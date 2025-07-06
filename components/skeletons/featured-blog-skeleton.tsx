@@ -10,7 +10,6 @@ export function FeaturedBlogSkeleton({ delay = 0 }: FeaturedBlogSkeletonProps) {
   return (
     <SkeletonBase
       section="blog"
-      animate="slide"
       delay={delay}
       className="rounded-lg border bg-card overflow-hidden md:flex"
     >

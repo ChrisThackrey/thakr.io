@@ -148,7 +148,7 @@ export function CausalAIBlogContent() {
       <FloatingTOC />
 
       <h1 className="text-4xl font-bold mt-8 mb-4 text-gray-900 dark:text-gray-50">
-        The 'Why' Behind the Buy: How Causal AI is Revolutionizing Market Research
+        The &apos;Why&apos; Behind the Buy: How Causal AI is Revolutionizing Market Research
       </h1>
 
       {/* Add reading time estimate */}
@@ -228,7 +228,7 @@ export function CausalAIBlogContent() {
 
         <p>
           Enter synthetic data—AI-generated responses that simulate human behavior and decision-making. While the
-          concept isn't new, recent advances in large language models (LLMs) have transformed what was once considered
+          concept isn&apos;t new, recent advances in large language models (LLMs) have transformed what was once considered
           an unreliable approach into what many now see as an inevitable evolution of the market research industry. At
           the forefront of this transformation is a growing understanding that synthetic respondents can do more than
           just describe preferences—they can help reveal causal relationships that explain why consumers make the
@@ -236,7 +236,7 @@ export function CausalAIBlogContent() {
         </p>
 
         <p>
-          This revolutionary approach isn't just changing how research is conducted; it's compressing decision cycles
+          This revolutionary approach isn&apos;t just changing how research is conducted; it&apos;s compressing decision cycles
           from months to days, enabling experimentation that would be unethical with human subjects, and potentially
           overcoming long-standing biases in traditional research methods. As the line between synthetic and human
           responses becomes increasingly blurred, market researchers are being forced to reconsider fundamental
@@ -256,15 +256,15 @@ export function CausalAIBlogContent() {
 
         <p>
           For nearly three decades, researchers have attempted to use synthetic data in market research, but these
-          efforts consistently fell short. The fundamental issue was the "out-of-sample" problem—models trained on
+          efforts consistently fell short. The fundamental issue was the &quot;out-of-sample&quot; problem—models trained on
           specific data would fail when applied to new scenarios outside their training domain.
         </p>
 
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "People have been trying to sell synthetic data for like 30 years. And for 30 years it's been ineffective
+            &quot;People have been trying to sell synthetic data for like 30 years. And for 30 years it&apos;s been ineffective
             because when you train some sort of model on in-sample data and then try to apply it out-of-sample, it fails
-            in these very obvious ways."
+            in these very obvious ways.&quot;
           </p>
         </blockquote>
 
@@ -272,12 +272,12 @@ export function CausalAIBlogContent() {
           Large language models have changed this equation fundamentally. By being trained on vast amounts of
           human-generated content covering countless domains and contexts, these models effectively eliminate the
           out-of-sample problem. This has triggered a remarkable shift in industry perception—from dismissing synthetic
-          data as "impossible" just two years ago to now viewing it as "inevitable."
+          data as &quot;impossible&quot; just two years ago to now viewing it as &quot;inevitable.&quot;
         </p>
 
         <p>
           Companies like Subconscious, founded by Avi Eisenberger, are at the forefront of this transition. By creating
-          "synthetic respondents" that can participate in research studies, these companies are promising insights at a
+          &quot;synthetic respondents&quot; that can participate in research studies, these companies are promising insights at a
           fraction of the cost and time of traditional methods. The market for synthetic data generation is projected to
           grow from $123 million in 2021 to $1.15 billion by 2027, representing a compound annual growth rate of 45.7%,
           according to industry reports.
@@ -295,13 +295,13 @@ export function CausalAIBlogContent() {
         </ul>
 
         <p>
-          The rapid evolution has caught even veteran market researchers by surprise: "The big market research companies
+          The rapid evolution has caught even veteran market researchers by surprise: &quot;The big market research companies
           were saying this is impossible. We need humans. And now people are saying [panel research] is already mostly
-          synthetic. And we're paying human prices for synthetic panels."
+          synthetic. And we&apos;re paying human prices for synthetic panels.&quot;
         </p>
 
         <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900 dark:text-gray-50">
-          Causal Modeling: Understanding the "Why" Behind Decisions
+          Causal Modeling: Understanding the &quot;Why&quot; Behind Decisions
         </h2>
 
         <BlogImage
@@ -313,7 +313,7 @@ export function CausalAIBlogContent() {
 
         <p>
           Traditional market research often focuses on descriptive data—what people say they prefer, what they report
-          they've purchased, or how they describe their opinions. But description alone doesn't answer the crucial "why"
+          they&apos;ve purchased, or how they describe their opinions. But description alone doesn&apos;t answer the crucial &quot;why&quot;
           questions that drive business decisions.
         </p>
 
@@ -324,20 +324,20 @@ export function CausalAIBlogContent() {
 
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "You cannot answer why something happens without causal understanding. Why did something happen? Because of
-            this. The ability to ask why and understand why is kind of what separates us from the animals."
+            &quot;You cannot answer why something happens without causal understanding. Why did something happen? Because of
+            this. The ability to ask why and understand why is kind of what separates us from the animals.&quot;
           </p>
         </blockquote>
 
         <p>
-          This ability to understand "why" is what separates humans from other beings—even highly trained animals like
-          Koko the gorilla could learn to communicate but never asked "why."
+          This ability to understand &quot;why&quot; is what separates humans from other beings—even highly trained animals like
+          Koko the gorilla could learn to communicate but never asked &quot;why.&quot;
         </p>
 
         <p>
-          Interestingly, this limitation also applies to current AI systems. "The big limitations of language models
-          today, one of the limitations is they do not have causal understanding. They don't understand why," notes
-          Eisenberger. His company is attempting to overcome this by creating a "layer on top of the causal models"
+          Interestingly, this limitation also applies to current AI systems. &quot;The big limitations of language models
+          today, one of the limitations is they do not have causal understanding. They don&apos;t understand why,&quot; notes
+          Eisenberger. His company is attempting to overcome this by creating a &quot;layer on top of the causal models&quot;
           where through self-inquiry and running experiments on themselves, they can begin to understand causal
           relationships.
         </p>
@@ -353,12 +353,12 @@ export function CausalAIBlogContent() {
 
         <p>
           By performing these tests hundreds of times across hundreds of synthetic people, researchers can identify why
-          different demographic groups purchase different products, how much they're willing to pay, what messaging
+          different demographic groups purchase different products, how much they&apos;re willing to pay, what messaging
           works with which segments, and even demand elasticity.
         </p>
 
         <p>
-          This approach represents the "gold standard" for quantitative research, providing insights that go beyond mere
+          This approach represents the &quot;gold standard&quot; for quantitative research, providing insights that go beyond mere
           correlation to establish genuine causation—answering not just what happens, but why it happens.
         </p>
 
@@ -375,9 +375,9 @@ export function CausalAIBlogContent() {
 
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "Now you can perform a study in an hour. You can set up the change in your business in a couple of weeks,
-            and you can measure if that change had impact... Now you've understood in a couple of weeks, you've made a
-            decision in two weeks what would have taken you six months."
+            &quot;Now you can perform a study in an hour. You can set up the change in your business in a couple of weeks,
+            and you can measure if that change had impact... Now you&apos;ve understood in a couple of weeks, you&apos;ve made a
+            decision in two weeks what would have taken you six months.&quot;
           </p>
         </blockquote>
 
@@ -389,15 +389,15 @@ export function CausalAIBlogContent() {
         </p>
 
         <p>
-          While synthetic data advocates acknowledge they "might not be as accurate as humans," they argue that the
+          While synthetic data advocates acknowledge they &quot;might not be as accurate as humans,&quot; they argue that the
           speed advantage often outweighs this limitation. In fast-moving markets, being 95% right today is typically
           more valuable than being 100% right six months from now.
         </p>
 
         <p>
-          As one industry expert puts it, "Are you willing to accept slightly less accurate results to change your
+          As one industry expert puts it, &quot;Are you willing to accept slightly less accurate results to change your
           business faster and learn faster than waiting 18 months for a study to run? By the time you get two years down
-          the road, the market will have changed."
+          the road, the market will have changed.&quot;
         </p>
 
         <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900 dark:text-gray-50">
@@ -407,35 +407,35 @@ export function CausalAIBlogContent() {
         <p>
           Perhaps the most provocative potential of synthetic respondents lies in their ability to participate in
           studies that would be unethical to conduct with humans. Research ethics are governed by the principle of
-          "beneficence"—studies must benefit participants and avoid causing harm. This creates a significant blind spot
+          &quot;beneficence&quot;—studies must benefit participants and avoid causing harm. This creates a significant blind spot
           in our understanding of what causes psychological harm.
         </p>
 
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "If I wanted to prove that TikTok caused depression, I would have to run a randomized controlled study. I'd
-            have to take a bunch of 12-year-olds and force them to watch enough TikTok until they got depressed. That's
-            an unethical study. You can't run that study."
+            &quot;If I wanted to prove that TikTok caused depression, I would have to run a randomized controlled study. I&apos;d
+            have to take a bunch of 12-year-olds and force them to watch enough TikTok until they got depressed. That&apos;s
+            an unethical study. You can&apos;t run that study.&quot;
           </p>
         </blockquote>
 
         <p>
-          This ethical constraint has allowed companies from Philip Morris to Meta to claim there's "no causal proof"
+          This ethical constraint has allowed companies from Philip Morris to Meta to claim there&apos;s &quot;no causal proof&quot;
           that their products cause harm—because it would be unethical to design studies specifically testing for harm.
           Correlation studies abound, but causal proof remains elusive.
         </p>
 
         <p>
-          Synthetic respondents could change this equation. "Assuming that language models are not conscious and do not
-          feel pain, we may be able to run causal studies for harm," suggests Eisenberger. This could potentially enable
-          the creation of something akin to "an FDA for mental health"—a regulatory framework based on causal evidence
+          Synthetic respondents could change this equation. &quot;Assuming that language models are not conscious and do not
+          feel pain, we may be able to run causal studies for harm,&quot; suggests Eisenberger. This could potentially enable
+          the creation of something akin to &quot;an FDA for mental health&quot;—a regulatory framework based on causal evidence
           about what digital experiences might cause psychological harm.
         </p>
 
         <p>
           Of course, this raises profound questions about AI consciousness and consent. Some researchers go so far as to
-          ask language models for consent before conducting studies. Interestingly, older models typically say "I don't
-          have feelings, no problem," while newer models sometimes refuse consent altogether—raising questions about how
+          ask language models for consent before conducting studies. Interestingly, older models typically say &quot;I don&apos;t
+          have feelings, no problem,&quot; while newer models sometimes refuse consent altogether—raising questions about how
           we should interpret and respect such refusals.
         </p>
 
@@ -453,8 +453,8 @@ export function CausalAIBlogContent() {
         </h3>
 
         <p>
-          Researchers are unanimous that synthetic data cannot stand alone: "You can't trust synthetic data only. You
-          really need humans to validate." Companies like Subconscious use a hybrid approach, with the majority of data
+          Researchers are unanimous that synthetic data cannot stand alone: &quot;You can&apos;t trust synthetic data only. You
+          really need humans to validate.&quot; Companies like Subconscious use a hybrid approach, with the majority of data
           being synthetic but validated against human responses.
         </p>
 
@@ -462,7 +462,7 @@ export function CausalAIBlogContent() {
 
         <p>
           Research has uncovered interesting biases in language models. For example, when replicating immigration
-          studies, language models show a strong preference for "educated women" across domains—a bias that exists
+          studies, language models show a strong preference for &quot;educated women&quot; across domains—a bias that exists
           across geographies and cultures. Different models also show different biases: the European Mistral model, for
           instance, displays a more positive bias toward Iraqi immigrants than human respondents.
         </p>
@@ -476,11 +476,11 @@ export function CausalAIBlogContent() {
 
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "We don't let the language model generate really anything. There's natural language understanding and
+            &quot;We don&apos;t let the language model generate really anything. There&apos;s natural language understanding and
             natural language generation. In my experience, the natural language understanding portion is much more
-            powerful than the generation. When we perform a task... we say here's your options A and B, understand this
-            scenario as best as you can and give me a single response. Give me one character. You don't get to
-            hallucinate."
+            powerful than the generation. When we perform a task... we say here&apos;s your options A and B, understand this
+            scenario as best as you can and give me a single response. Give me one character. You don&apos;t get to
+            hallucinate.&quot;
           </p>
         </blockquote>
 
@@ -503,7 +503,7 @@ export function CausalAIBlogContent() {
           incremental improvement in methodology—it signals a fundamental shift in how we understand human
           decision-making. By compressing research cycles from months to minutes, enabling ethical testing of
           potentially harmful scenarios, and providing access to populations that traditional research struggles to
-          reach, these technologies are expanding the boundaries of what's possible in consumer insights.
+          reach, these technologies are expanding the boundaries of what&apos;s possible in consumer insights.
         </p>
 
         <p>
@@ -519,17 +519,17 @@ export function CausalAIBlogContent() {
         </p>
 
         <p>
-          What remains clear is that understanding the "why" behind human decisions—the causal mechanisms that drive
+          What remains clear is that understanding the &quot;why&quot; behind human decisions—the causal mechanisms that drive
           choice—remains the central challenge of market research. Whether those insights come from humans, synthetic
-          respondents, or a combination of both, the businesses that can answer "why" most effectively will ultimately
+          respondents, or a combination of both, the businesses that can answer &quot;why&quot; most effectively will ultimately
           gain the competitive edge in understanding and serving their customers.
         </p>
 
         <p>
           The synthetic revolution in market research is just beginning, but its implications for business
           decision-making, consumer understanding, and even our conception of research ethics are already profound. As
-          one researcher concludes, "It is now possible to understand why any human makes any decision, at least to a
-          first approximation." That possibility represents nothing less than a transformation in our approach to the
+          one researcher concludes, &quot;It is now possible to understand why any human makes any decision, at least to a
+          first approximation.&quot; That possibility represents nothing less than a transformation in our approach to the
           most fundamental question in business: why do people choose what they choose?
         </p>
 
@@ -537,7 +537,7 @@ export function CausalAIBlogContent() {
 
         <ol className="list-decimal pl-6 my-4 space-y-2">
           <li>Podcast interview with Avi Eisenberger, Co-Founder & CEO of Subconscious</li>
-          <li>MarketsandMarkets Research. "Synthetic Data Generation Market - Global Forecast to 2027"</li>
+          <li>MarketsandMarkets Research. &quot;Synthetic Data Generation Market - Global Forecast to 2027&quot;</li>
           <li>
             Subconscious company information -{" "}
             <a
@@ -550,7 +550,7 @@ export function CausalAIBlogContent() {
             </a>
           </li>
           <li>
-            Nature article: "Will synthetic data transform behavioral research?" -{" "}
+            Nature article: &quot;Will synthetic data transform behavioral research?&quot; -{" "}
             <a
               href="https://www.nature.com/articles/d41586-023-03278-x"
               target="_blank"
@@ -561,7 +561,7 @@ export function CausalAIBlogContent() {
             </a>
           </li>
           <li>
-            Harvard Business Review Podcast: "Ethics of Synthetic Humans: New Considerations in the AI Age" - December
+            Harvard Business Review Podcast: &quot;Ethics of Synthetic Humans: New Considerations in the AI Age&quot; - December
             2023
           </li>
         </ol>

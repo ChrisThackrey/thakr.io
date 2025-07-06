@@ -11,6 +11,7 @@ export interface Project {
   liveUrl?: string
   repoUrl?: string
   featured?: boolean
+  content?: string
 }
 
 const projectsData: Project[] = [

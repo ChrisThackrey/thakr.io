@@ -1,27 +1,25 @@
-import Link from "next/link"
-import { getTagColors } from "../lib/tag-colors"
+"use client"
 
-interface ColoredTagProps {
+import { cn } from "@/lib/utils"
+
+type ColoredTagProps = {
   tag: string
-  highlightTag?: boolean
-  small?: boolean
-  href?: string
+  className?: string
 }
 
-export function ColoredTag({ tag, highlightTag = false, small = false, href }: ColoredTagProps) {
-  const baseClasses = `inline-block rounded-full ${small ? "text-xs px-2 py-0.5" : "text-sm px-3 py-1"} ${getTagColors(
-    tag,
-  )} ${highlightTag ? "ring-2 ring-offset-2 ring-blue-500 dark:ring-blue-400" : ""}`
-
-  if (href) {
-    return (
-      <Link href={href} className={`${baseClasses} hover:opacity-90 transition-opacity`}>
-        {tag}
-      </Link>
-    )
-  }
-
-  return <span className={baseClasses}>{tag}</span>
+/**
+ * A very small pill-shaped tag.
+ * All tag colours were removed from the code-base, so we render a neutral pill.
+ */
+export function ColoredTag({ tag, className }: ColoredTagProps) {
+  return (
+    <span
+      className={cn("inline-block rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-foreground/80", className)}
+    >
+      {tag}
+    </span>
+  )
 }
 
+/* Legacy default export so `<ColoredTag />` and `{ ColoredTag }` both work. */
 export default ColoredTag

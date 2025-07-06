@@ -3,12 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import type { Annotation, ImageWithAnnotations } from "@/components/image-gallery"
 import { useImagePriority } from "@/utils/image-priority-manager"
-import { exportAnnotatedImage } from "@/utils/export-annotations"
-
-export interface ExportOptions {
-  includeImage: boolean
-  includeSummary: boolean
-}
+import { exportAnnotatedImage, type ExportOptions } from "@/utils/export-annotations"
 
 export const useImageGallery = (initialImages: ImageWithAnnotations[]) => {
   const [currentIndex, setCurrentIndex] = useState(0)

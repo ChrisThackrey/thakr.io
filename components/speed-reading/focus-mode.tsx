@@ -127,14 +127,12 @@ export function FocusMode({
   }, [contentId, validSelector, slug, initialContent])
 
   const {
-    isActive,
     isPaused,
     content,
     currentIndex,
     currentChunk,
     progress,
     options,
-    start,
     pause,
     resume,
     stop,
@@ -150,7 +148,7 @@ export function FocusMode({
 
     try {
       console.log("Starting speed reading with extracted content")
-      startWithContent(contentText, initialPosition || 0)
+      startWithContent(contentText, initialPosition ?? 0)
     } catch (error) {
       console.error("Error starting speed reading with content:", error)
       setError("Error initializing speed reading. Please try again.")
@@ -174,13 +172,6 @@ export function FocusMode({
   }
 
   // Navigation functions
-  const handlePrevious = () => {
-    skip(-1)
-  }
-
-  const handleNext = () => {
-    skip(1)
-  }
 
   const handleSkipBackward = () => {
     skip(-10)

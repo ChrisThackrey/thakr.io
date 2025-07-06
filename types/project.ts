@@ -7,5 +7,5 @@ export type Project = {
   liveUrl?: string
   repoUrl?: string
   featured?: boolean
-  content: string
+  content?: string
 }

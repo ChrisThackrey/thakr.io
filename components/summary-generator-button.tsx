@@ -1,55 +1,46 @@
-"use client"
+"use client";
 
-import type * as React from "react"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
-import { generateSummary, type BlogSummary } from "@/utils/summary-generator"
-import { PrintableSummary } from "@/components/printable-summary"
-import { cn } from "@/lib/utils"
+import type * as React from "react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Loader2, Wand2 } from "lucide-react";
+import { type BlogSummary, generateSummary } from "@/utils/summary-generator";
+import { PrintableSummary } from "@/components/printable-summary";
+import { cn } from "@/lib/utils";
 
-interface SummaryGeneratorButtonProps extends React.ComponentPropsWithoutRef<typeof Button> {
+interface SummaryGeneratorButtonProps
+  extends React.ComponentPropsWithoutRef<typeof Button> {
   /** ID of the element that contains the blog post’s HTML (used later). */
-  contentId: string
+  contentId: string;
   /** Title of the post – passed to the eventual summary routine. */
-  title: string
+  title: string;
 }
 
 /* -------------------------------------------------------------------------- */
 /*                            Internal click handler                          */
 /* -------------------------------------------------------------------------- */
 
-async function handleGenerateClick(
-  e: React.MouseEvent<HTMLButtonElement>,
-  { contentId, title }: { contentId: string; title: string },
-) {
-  e.preventDefault()
-
-  // TODO: connect a real server action / API call here.
-  // For now we just log so the button does not break hydration.
-  /* eslint-disable no-console */
-  console.info(`[SummaryGeneratorButton] Would generate summary for “${title}”, element #${contentId}`)
-}
-
 /* -------------------------------------------------------------------------- */
 /*                                 Component                                  */
 /* -------------------------------------------------------------------------- */
 
-export function SummaryGeneratorButton({ contentId, title }: SummaryGeneratorButtonProps) {
-  const [summary, setSummary] = useState<BlogSummary | null>(null)
-  const [isGenerating, setIsGenerating] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+export function SummaryGeneratorButton(
+  { contentId, title }: SummaryGeneratorButtonProps,
+) {
+  const [summary, setSummary] = useState<BlogSummary | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleGenerateSummary = async () => {
-    setIsGenerating(true)
-    setError(null)
+    setIsGenerating(true);
+    setError(null);
 
     try {
       // Find the content element
-      let contentElement: HTMLElement | null = null
+      let contentElement: HTMLElement | null = null;
 
       if (contentId) {
-        contentElement = document.getElementById(contentId)
+        contentElement = document.getElementById(contentId);
       }
 
       if (!contentElement) {
@@ -66,35 +57,37 @@ export function SummaryGeneratorButton({ contentId, title }: SummaryGeneratorBut
           "[data-mdx-content]",
           ".markdown-body",
           "[data-blog-content]",
-        ]
+        ];
 
         for (const selector of selectors) {
-          const element = document.querySelector(selector)
+          const element = document.querySelector(selector);
           if (element instanceof HTMLElement) {
-            contentElement = element
-            break
+            contentElement = element;
+            break;
           }
         }
       }
 
       if (!contentElement) {
-        throw new Error("Could not find blog content to summarize")
+        throw new Error("Could not find blog content to summarize");
       }
 
       // Generate the summary
-      const generatedSummary = await generateSummary(contentElement, title)
-      setSummary(generatedSummary)
+      const generatedSummary = await generateSummary(contentElement, title);
+      setSummary(generatedSummary);
     } catch (err) {
-      console.error("Error generating summary:", err)
-      setError(err instanceof Error ? err.message : "Failed to generate summary")
+      console.error("Error generating summary:", err);
+      setError(
+        err instanceof Error ? err.message : "Failed to generate summary",
+      );
     } finally {
-      setIsGenerating(false)
+      setIsGenerating(false);
     }
-  }
+  };
 
   const handleCloseSummary = () => {
-    setSummary(null)
-  }
+    setSummary(null);
+  };
 
   return (
     <div>
@@ -104,19 +97,19 @@ export function SummaryGeneratorButton({ contentId, title }: SummaryGeneratorBut
         onClick={handleGenerateSummary}
         disabled={isGenerating}
       >
-        {isGenerating ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.generator className="mr-2 h-4 w-4" />
-        )}
+        {isGenerating
+          ? <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          : <Wand2 className="mr-2 h-4 w-4" />}
         <span>{isGenerating ? "Generating..." : "Generate Summary"}</span>
       </Button>
 
       {error && <div className="text-sm text-red-500 mt-1">{error}</div>}
 
-      {summary && <PrintableSummary summary={summary} onClose={handleCloseSummary} />}
+      {summary && (
+        <PrintableSummary summary={summary} onClose={handleCloseSummary} />
+      )}
     </div>
-  )
+  );
 }
 
 /* -------------------------------------------------------------------------- */
@@ -125,6 +118,6 @@ export function SummaryGeneratorButton({ contentId, title }: SummaryGeneratorBut
 
 // If some other part of the codebase still imports { GENERATOR } from this
 // module by mistake, re-export the correct icon to avoid runtime failures.
-export { Icons as GENERATOR }
+export { Wand2 as GENERATOR };
 
 // ‼️ add this at the very end of the file

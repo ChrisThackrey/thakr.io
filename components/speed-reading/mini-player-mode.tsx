@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { X, Maximize2, ChevronUp, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { WordDisplay } from "@/components/speed-reading/word-display"
@@ -43,7 +43,6 @@ export function MiniPlayerMode({
   const [isMinimized, setIsMinimized] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   const [showShortcuts, setShowShortcuts] = useState(false)
-  const playerRef = useRef<HTMLDivElement>(null)
   const minimizedHeight = 40 // Height when minimized
 
   // Initialize draggable behavior
@@ -56,8 +55,6 @@ export function MiniPlayerMode({
   const {
     isActive,
     isPaused,
-    content,
-    currentIndex,
     currentChunk,
     progress,
     options,
@@ -69,7 +66,6 @@ export function MiniPlayerMode({
     jumpTo,
     skip,
     startWithContent,
-    startFromIndex,
   } = useSpeedReading(selector, slug)
 
   // Handle initialization
@@ -110,7 +106,11 @@ export function MiniPlayerMode({
   // Set up keyboard shortcuts
   useKeypress(" ", () => {
     if (isActive) {
-      isPaused ? resume() : pause()
+      if (isPaused) {
+        resume()
+      } else {
+        pause()
+      }
     }
   })
 

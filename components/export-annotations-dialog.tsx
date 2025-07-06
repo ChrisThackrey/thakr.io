@@ -46,7 +46,7 @@ export function ExportAnnotationsDialog({ isOpen, onClose, onExport, hasAnnotati
       })
 
       onClose()
-    } catch (error) {
+    } catch {
       toast({
         title: "Export failed",
         description: "There was an error exporting your image. Please try again.",
@@ -62,7 +62,7 @@ export function ExportAnnotationsDialog({ isOpen, onClose, onExport, hasAnnotati
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Export Annotated Image</DialogTitle>
-          <DialogDescription>Choose how you'd like to export your annotated image.</DialogDescription>
+          <DialogDescription>Choose how you&apos;d like to export your annotated image.</DialogDescription>
         </DialogHeader>
 
         <div className="space-y-6 py-4">

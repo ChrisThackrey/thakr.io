@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Icons } from "@/components/icons"
+import { X, Share2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { SocialShare } from "@/components/social-share"
 import { useScrollPosition } from "@/hooks/use-scroll-position"
@@ -16,7 +16,7 @@ interface FloatingShareButtonProps {
 export function FloatingShareButton({ title, url, description, threshold = 300 }: FloatingShareButtonProps) {
   const [isOpen, setIsOpen] = useState(false)
   const scrollPosition = useScrollPosition()
-  const isVisible = scrollPosition > threshold
+  const isVisible = scrollPosition.y > threshold
 
   const toggleShare = () => {
     setIsOpen(!isOpen)
@@ -31,7 +31,7 @@ export function FloatingShareButton({ title, url, description, threshold = 300 }
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-sm font-medium">Share this article</h3>
             <Button variant="ghost" size="sm" onClick={toggleShare} className="h-8 w-8 p-0">
-              <Icons.close className="h-4 w-4" />
+              <X className="h-4 w-4" />
               <span className="sr-only">Close</span>
             </Button>
           </div>
@@ -39,7 +39,7 @@ export function FloatingShareButton({ title, url, description, threshold = 300 }
         </div>
       ) : (
         <Button onClick={toggleShare} size="icon" className="h-12 w-12 rounded-full shadow-lg">
-          <Icons.share className="h-5 w-5" />
+          <Share2 className="h-5 w-5" />
           <span className="sr-only">Share</span>
         </Button>
       )}

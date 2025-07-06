@@ -231,7 +231,7 @@ export function Timeline({ items }: TimelineProps) {
                   <>
                     <CardHeader className="pb-2 pt-4">
                       <CardTitle className="text-md md:text-lg font-semibold text-foreground/90">
-                        {projectData.title}
+                        {projectData.name}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-0">

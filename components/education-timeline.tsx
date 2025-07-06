@@ -8,7 +8,7 @@ import { motion, useMotionValue, animate } from "framer-motion"
 import type { TimelineItemData } from "@/lib/experience-data"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
+import { Briefcase } from "lucide-react"
 
 interface EducationTimelineProps {
   items: TimelineItemData[]
@@ -115,7 +115,7 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
           <h2 className="text-3xl font-bold tracking-tight text-center sm:text-left">Education</h2>
           <Button asChild variant="outline" size="sm">
             <Link href="/work">
-              <Icons.briefcase className="mr-2 h-4 w-4 flex-shrink-0" />
+              <Briefcase className="mr-2 h-4 w-4 flex-shrink-0" />
               <span className="whitespace-nowrap">View Work Experience</span>
             </Link>
           </Button>
@@ -131,7 +131,7 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
         <h2 className="text-3xl font-bold tracking-tight">Education</h2>
         <Button asChild variant="outline" size="sm">
           <Link href="/work" className="flex items-center">
-            <Icons.briefcase className="mr-2 h-4 w-4 flex-shrink-0" />
+            <Briefcase className="mr-2 h-4 w-4 flex-shrink-0" />
             <span className="whitespace-nowrap">View Work Experience</span>
           </Link>
         </Button>
@@ -169,7 +169,7 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
           ref={draggableRef}
           drag="x"
           dragConstraints={dragConstraints}
-          dragElasticity={0.05}
+          dragElastic={0.05}
           dragMomentum={false}
           onDragEnd={handleDragEnd}
           className="flex space-x-4 pb-4"

@@ -14,19 +14,10 @@ export function Navigation() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
 
-  const routes = [
-    { href: "/", label: "Home", icon: "home" },
-    { href: "/work", label: "Work", icon: "briefcase" },
-    { href: "/projects", label: "Projects", icon: "code" },
-    { href: "/architecture", label: "Architecture", icon: "architecture" },
-    {
-      href: "/blog",
-      label: "Blog",
-      icon: "fileText",
-      active: pathname === "/blog" || pathname?.startsWith("/blog/"),
-    },
-    { href: "/contact", label: "Contact", icon: "mail" },
-  ] as const
+  const routes = siteConfig.navLinks.map((link) => ({
+    ...link,
+    active: link.href === "/blog" ? pathname === "/blog" || pathname?.startsWith("/blog/") : undefined,
+  }))
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur">
@@ -38,7 +29,10 @@ export function Navigation() {
 
         <nav className="hidden md:flex md:items-center md:gap-6">
           {routes.map(({ href, label, icon, active }) => {
-            const Icon = Icons[icon]
+            const Icon = Icons[icon as keyof typeof Icons]
+            if (!Icon) {
+              return null
+            }
             const isActive = typeof active !== "undefined" ? active : pathname === href
             return (
               <Link
@@ -67,7 +61,11 @@ export function Navigation() {
             <SheetContent side="right" className="p-6">
               <nav className="grid gap-4">
                 {routes.map(({ href, label, icon, active }) => {
-                  const Icon = Icons[icon]
+                  const Icon = Icons[icon as keyof typeof Icons]
+                  if (!Icon) {
+                    console.warn(`Icon "${icon}" not found in Icons object`)
+                    return null
+                  }
                   const isActive = typeof active !== "undefined" ? active : pathname === href
                   return (
                     <Link

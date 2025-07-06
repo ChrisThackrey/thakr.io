@@ -1,32 +1,50 @@
-"use client"
+"use client";
 
-import { useRef, useState, Suspense, useEffect } from "react"
-import { Canvas, useThree } from "@react-three/fiber"
-import { OrbitControls, Environment, Html, PerspectiveCamera } from "@react-three/drei"
-import { Button } from "@/components/ui/button"
-import { Loader2, Maximize2, Minimize2, AlertTriangle, ImageIcon } from "lucide-react"
-import Image from "next/image"
+import { Suspense, useEffect, useRef, useState } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
+import {
+  Environment,
+  Html,
+  OrbitControls,
+  PerspectiveCamera,
+} from "@react-three/drei";
+import { Button } from "@/components/ui/button";
+import {
+  AlertTriangle,
+  ImageIcon,
+  Loader2,
+  Maximize2,
+  Minimize2,
+} from "lucide-react";
+import Image from "next/image";
 
 // Fallback component when 3D model can't be loaded
-function ModelFallback({ text = "No 3D model available", imageUrl = null }) {
+function ModelFallback(
+  { text = "No 3D model available", imageUrl = null }: {
+    text?: string;
+    imageUrl?: string | null;
+  },
+) {
   return (
     <Html center>
       <div className="flex flex-col items-center justify-center text-muted-foreground p-4 text-center">
-        {imageUrl ? (
-          <>
-            <ImageIcon className="h-8 w-8 mb-2 text-primary/60" />
-            <p className="text-sm mb-2">{text}</p>
-            <p className="text-xs">Using 2D image instead</p>
-          </>
-        ) : (
-          <>
-            <AlertTriangle className="h-8 w-8 mb-2 text-yellow-500" />
-            <p className="text-sm">{text}</p>
-          </>
-        )}
+        {imageUrl
+          ? (
+            <>
+              <ImageIcon className="h-8 w-8 mb-2 text-primary/60" />
+              <p className="text-sm mb-2">{text}</p>
+              <p className="text-xs">Using 2D image instead</p>
+            </>
+          )
+          : (
+            <>
+              <AlertTriangle className="h-8 w-8 mb-2 text-yellow-500" />
+              <p className="text-sm">{text}</p>
+            </>
+          )}
       </div>
     </Html>
-  )
+  );
 }
 
 // Loading component shown while the 3D model is loading
@@ -35,71 +53,94 @@ function ModelLoader() {
     <Html center>
       <div className="flex flex-col items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="mt-2 text-sm text-muted-foreground">Loading 3D model...</p>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Loading 3D model...
+        </p>
       </div>
     </Html>
-  )
+  );
 }
 
 // Camera controls component
 function CameraController() {
-  const { camera, gl } = useThree()
+  const { camera, gl } = useThree();
 
   return (
-    <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} camera={camera} domElement={gl.domElement} />
-  )
+    <OrbitControls
+      enableZoom={true}
+      enablePan={true}
+      enableRotate={true}
+      camera={camera}
+      domElement={gl.domElement}
+    />
+  );
 }
 
 // Main 3D viewer component
 export function ThreeDViewer({
-  modelUrl,
-  scale = 1,
-  position = [0, 0, 0],
-  rotation = [0, 0, 0],
   environmentPreset = "city",
   className = "",
   height = "400px",
   fallbackText = "3D model could not be loaded",
   imageUrl,
+}: {
+  environmentPreset?:
+    | "city"
+    | "apartment"
+    | "dawn"
+    | "forest"
+    | "lobby"
+    | "night"
+    | "park"
+    | "studio"
+    | "sunset"
+    | "warehouse";
+  className?: string;
+  height?: string;
+  fallbackText?: string;
+  imageUrl?: string | null;
 }) {
-  const [isFullscreen, setIsFullscreen] = useState(false)
-  const [modelError, setModelError] = useState(false)
-  const containerRef = useRef(null)
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [modelError, setModelError] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
-      containerRef.current.requestFullscreen().catch((err) => {
-        console.error(`Error attempting to enable fullscreen: ${err.message}`)
-      })
-      setIsFullscreen(true)
+      containerRef.current?.requestFullscreen().catch((err: Error) => {
+        console.error(`Error attempting to enable fullscreen: ${err.message}`);
+      });
+      setIsFullscreen(true);
     } else {
-      document.exitFullscreen()
-      setIsFullscreen(false)
+      document.exitFullscreen();
+      setIsFullscreen(false);
     }
-  }
+  };
 
   // Always use the fallback for now to avoid model loading errors
   useEffect(() => {
     // Set modelError to true to always use the fallback
-    setModelError(true)
-  }, [])
+    setModelError(true);
+  }, []);
 
   // Listen for fullscreen change events
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement)
-    }
+      setIsFullscreen(!!document.fullscreenElement);
+    };
 
     if (typeof document !== "undefined") {
-      document.addEventListener("fullscreenchange", handleFullscreenChange)
+      document.addEventListener("fullscreenchange", handleFullscreenChange);
     }
 
     return () => {
       if (typeof document !== "undefined") {
-        document.removeEventListener("fullscreenchange", handleFullscreenChange)
+        document.removeEventListener(
+          "fullscreenchange",
+          handleFullscreenChange,
+        );
       }
-    }
-  }, [])
+    };
+  }, []);
 
   // If we've detected an error with the model and we have an image fallback,
   // show the image instead of trying to render the 3D scene
@@ -112,7 +153,8 @@ export function ThreeDViewer({
       >
         <div className="relative h-full w-full">
           <Image
-            src={imageUrl || "/placeholder.svg?height=400&width=600&query=3D%20architectural%20model"}
+            src={imageUrl ||
+              "/placeholder.svg?height=400&width=600&query=3D%20architectural%20model"}
             alt="Project visualization"
             fill
             className="object-cover rounded-lg"
@@ -124,12 +166,14 @@ export function ThreeDViewer({
               className="bg-background/80 backdrop-blur-sm z-10"
               onClick={toggleFullscreen}
             >
-              {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+              {isFullscreen
+                ? <Minimize2 className="h-4 w-4" />
+                : <Maximize2 className="h-4 w-4" />}
             </Button>
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -141,9 +185,15 @@ export function ThreeDViewer({
       <Canvas shadows dpr={[1, 2]}>
         <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={50} />
         <ambientLight intensity={0.5} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
+        <spotLight
+          position={[10, 10, 10]}
+          angle={0.15}
+          penumbra={1}
+          intensity={1}
+          castShadow
+        />
         <Suspense fallback={<ModelLoader />}>
-          <ModelFallback text={fallbackText} imageUrl={imageUrl} />
+          <ModelFallback text={fallbackText} imageUrl={imageUrl || null} />
           <Environment preset={environmentPreset} />
         </Suspense>
         <CameraController />
@@ -155,8 +205,10 @@ export function ThreeDViewer({
         className="absolute top-2 right-2 bg-background/80 backdrop-blur-sm z-10"
         onClick={toggleFullscreen}
       >
-        {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+        {isFullscreen
+          ? <Minimize2 className="h-4 w-4" />
+          : <Maximize2 className="h-4 w-4" />}
       </Button>
     </div>
-  )
+  );
 }

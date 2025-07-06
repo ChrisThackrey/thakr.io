@@ -1,6 +1,6 @@
 "use client"
 
-import { BlogImage } from "@/components/blog-image"
+import BlogImage from "@/components/blog-image"
 import { RelatedPosts } from "@/components/related-posts"
 import { ReadingTime } from "@/components/reading-time"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -201,10 +201,9 @@ export function RAGBlogContent() {
 
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "If you're just talking to a chat bot or basically an LM, you're really kind of just like talking to a
-            person you met off the street... But imagine you're talking with that same person, but you're sitting at a
-            library and there's a librarian behind the reference desk. When you ask that person a question now they can
-            actually go and check."
+            {
+              "If you're just talking to a chat bot or basically an LM, you're really kind of just like talking to a person you met off the street... But imagine you're talking with that same person, but you're sitting at a library and there's a librarian behind the reference desk. When you ask that person a question now they can actually go and check."
+            }
           </p>
         </blockquote>
 
@@ -258,11 +257,11 @@ export function RAGBlogContent() {
 
         <h2 id="conclusion">Conclusion: Building Trustworthy AI</h2>
         <p>
-          Retrieval Augmented Generation is more than just a technical enhancement; it's a foundational shift toward
+          Retrieval Augmented Generation is more than just a technical enhancement; it&apos;s a foundational shift toward
           creating more reliable, accurate, and transparent AI systems. By grounding generative models in factual,
           retrievable data, RAG addresses some of the most significant challenges facing AI today. For any developer or
           organization looking to build applications that users can trust, understanding and implementing RAG is no
-          longer optional—it's essential.
+          longer optional—it&apos;s essential.
         </p>
 
         <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">

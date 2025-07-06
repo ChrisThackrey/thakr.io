@@ -24,7 +24,7 @@ interface ReadingSpeedSettingsProps {
 }
 
 export function ReadingSpeedSettings({ inDialog = false }: ReadingSpeedSettingsProps) {
-  const { wordsPerMinute, setWordsPerMinute, preset, setPreset } = useReadingSpeed()
+  const { wordsPerMinute, setWordsPerMinute } = useReadingSpeed()
   const [isOpen, setIsOpen] = useState(false)
   const [tempWpm, setTempWpm] = useState(wordsPerMinute)
   const pathname = usePathname()

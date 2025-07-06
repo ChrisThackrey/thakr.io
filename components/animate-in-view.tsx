@@ -61,7 +61,11 @@ export function AnimateInView({
   const selectedAnimation = prefersReducedMotion ? "none" : animation
   const { hidden, visible } = animations[selectedAnimation]
 
-  const Component = motion[as as keyof typeof motion] || motion.div
+  const Component = as === 'div' ? motion.div : 
+                   as === 'section' ? motion.section :
+                   as === 'article' ? motion.article :
+                   as === 'span' ? motion.span :
+                   motion.div
 
   return (
     <Component

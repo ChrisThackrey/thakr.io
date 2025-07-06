@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
+import { Rocket } from "lucide-react"
 import { SpeedReadingMode } from "./speed-reading-mode"
 
 interface SpeedReadingButtonProps {
@@ -10,9 +10,10 @@ interface SpeedReadingButtonProps {
   selector?: string
   className?: string
   slug?: string
+  startInMiniPlayer?: boolean
 }
 
-export function SpeedReadingButton({ contentId, selector, className, slug }: SpeedReadingButtonProps) {
+export function SpeedReadingButton({ contentId, selector, slug }: SpeedReadingButtonProps) {
   const [showSpeedReader, setShowSpeedReader] = useState(false)
 
   const handleOpenSpeedReader = () => {
@@ -31,7 +32,7 @@ export function SpeedReadingButton({ contentId, selector, className, slug }: Spe
         variant="outline"
         size="sm"
       >
-        <Icons.rocket className="h-4 w-4" />
+        <Rocket className="h-4 w-4" />
         <span>Speed Read</span>
       </Button>
 
