@@ -1,5 +1,3 @@
-/* previously imported ColoredTag – now plain spans */
-
 import { getTagColors } from "@/lib/tag-colors"
 
 interface RelatedTagsProps {
