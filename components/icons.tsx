@@ -75,16 +75,16 @@ import {
 } from "lucide-react"
 
 /* -------------------------------------------------------------------------- */
-/*                                   Branding                                 */
+/* Branding icon used as site logo & safe fallback                            */
 /* -------------------------------------------------------------------------- */
 const Logo: FC<SVGProps<SVGSVGElement>> = (props) => (
   <Sparkles {...props} className={`h-6 w-6 ${props.className ?? ""}`} />
 )
 
 /* -------------------------------------------------------------------------- */
-/*                                  Icon Map                                  */
+/* Core icon dictionary                                                       */
 /* -------------------------------------------------------------------------- */
-export const Icons = {
+const ICON_MAP = {
   /* Navigation & Sections */
   home: Home,
   briefcase: Briefcase,
@@ -112,9 +112,7 @@ export const Icons = {
   spinner: Loader2,
   warning: AlertTriangle,
   externalLink: ExternalLink,
-  construction: Construction,
   refreshCw: RefreshCw,
-  send: Send,
   rotateCw: RotateCw,
   zoomIn: ZoomIn,
   zoomOut: ZoomOut,
@@ -130,6 +128,7 @@ export const Icons = {
   rewind: Rewind,
   fastForward: FastForward,
   gripVertical: GripVertical,
+  construction: Construction,
 
   /* Forms & Data */
   calendar: Calendar,
@@ -143,6 +142,7 @@ export const Icons = {
   mail: Mail,
   phone: Phone,
   mapPin: MapPin,
+  send: Send,
 
   /* Social */
   github: Github,
@@ -174,4 +174,19 @@ export const Icons = {
   sparkles: Sparkles,
 } as const
 
-export type IconName = keyof typeof Icons
+export type IconName = keyof typeof ICON_MAP
+
+/* -------------------------------------------------------------------------- */
+/* Safe proxy – never returns undefined                                       */
+/* -------------------------------------------------------------------------- */
+export const Icons: Record<IconName, FC<SVGProps<SVGSVGElement>>> = new Proxy(
+  ICON_MAP as Record<string, FC<SVGProps<SVGSVGElement>>>,
+  {
+    get(target, prop: string) {
+      if (prop in target) return target[prop]
+      // eslint-disable-next-line no-console
+      console.warn(`[Icons] "${prop}" is not in ICON_MAP – falling back to Sparkles icon.`)
+      return Sparkles
+    },
+  },
+) as any // Type cast keeps TS happy while giving runtime safety
