@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useCallback } from "react"
+import Image from "next/image"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -187,10 +188,12 @@ export function FullscreenGallery({
                   )}
                   aria-label={`View image ${index + 1}`}
                 >
-                  <img
+                  <Image
                     src={image.url || "/placeholder.svg"}
                     alt={`Thumbnail ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 64px, 96px"
+                    className="object-cover"
                   />
                 </button>
               ))}

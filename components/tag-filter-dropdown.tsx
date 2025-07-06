@@ -35,7 +35,6 @@ interface TagFilterDropdownProps {
 }
 
 export function TagFilterDropdown({
-  tags: propTags,
   selectedTags,
   filterMode,
   onSelectTag,

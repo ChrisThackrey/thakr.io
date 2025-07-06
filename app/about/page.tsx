@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Icons } from "@/components/icons"
+import { FileText, Briefcase } from "lucide-react"
 import { PageBackground } from "@/components/page-background"
 import { motion, Variants } from "framer-motion"
 import { useReducedMotion } from "@/hooks/use-reduced-motion"
@@ -11,7 +11,7 @@ import { BookingCTA } from "@/components/booking-cta"
 import { Badge } from "@/components/ui/badge"
 import { technicalSkills, education } from "@/lib/experience-data"
 import { EducationTimeline } from "@/components/education-timeline"
-import { ProfileSection } from "@/components/profile-section"
+import { ProfileCard } from "@/components/profile-card"
 
 export default function AboutPage() {
   const prefersReducedMotion = useReducedMotion()
@@ -80,7 +80,7 @@ export default function AboutPage() {
   const ViewResumeButton = () => (
     <Button asChild size="lg" className="font-medium text-base w-full sm:w-auto md:w-full">
       <Link href="/resume">
-        <Icons.fileText className="mr-2 h-5 w-5" />
+        <FileText className="mr-2 h-5 w-5" />
         View Resume
       </Link>
     </Button>
@@ -94,7 +94,7 @@ export default function AboutPage() {
       className="font-medium text-base w-full sm:w-auto md:w-full bg-transparent"
     >
       <Link href="/projects">
-        <Icons.briefcase className="mr-2 h-5 w-5" />
+        <Briefcase className="mr-2 h-5 w-5" />
         View Projects
       </Link>
     </Button>
@@ -133,7 +133,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="md:w-1/3 order-1 md:order-2 flex flex-col space-y-8 items-center md:items-stretch">
-              <ProfileSection />
+              <ProfileCard />
               <div className="flex flex-col space-y-4 w-full items-center md:items-stretch">
                 <ViewResumeButton />
                 <ViewProjectsButton />
@@ -181,7 +181,7 @@ export default function AboutPage() {
           </div>
           <div className="md:w-1/3 order-1 md:order-2 flex flex-col space-y-8 items-center md:items-stretch">
             <motion.div variants={avatarSocialVariants} initial="hidden" animate="visible" exit="exit">
-              <ProfileSection />
+              <ProfileCard />
             </motion.div>
             <div className="flex flex-col space-y-4 w-full items-center md:items-stretch">
               <motion.div

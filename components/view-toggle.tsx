@@ -4,7 +4,7 @@ import { LayoutGrid, List } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { cn } from "@/lib/utils"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 
 interface ViewToggleProps {
   view: "detailed" | "gallery"
@@ -22,7 +22,7 @@ export function ViewToggle({ view, onViewChange }: ViewToggleProps) {
   })
 
   // Update indicator position and size based on the selected button
-  const updateIndicator = () => {
+  const updateIndicator = useCallback(() => {
     if (prefersReducedMotion) return
 
     const activeButton = view === "detailed" ? detailedButtonRef.current : galleryButtonRef.current
@@ -34,14 +34,13 @@ export function ViewToggle({ view, onViewChange }: ViewToggleProps) {
         transform: `translateX(${offsetLeft}px)`,
       })
     }
-  }
+  }, [prefersReducedMotion, view])
 
   // Update on mount and when view changes
   useEffect(() => {
     setMounted(true)
     updateIndicator()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [view, mounted, prefersReducedMotion])
+  }, [view, mounted, prefersReducedMotion, updateIndicator])
 
   // Update on window resize
   useEffect(() => {
@@ -50,7 +49,7 @@ export function ViewToggle({ view, onViewChange }: ViewToggleProps) {
     const handleResize = () => updateIndicator()
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
-  }, [prefersReducedMotion])
+  }, [prefersReducedMotion, updateIndicator])
 
   return (
     <div className="relative bg-muted rounded-md p-1 flex">

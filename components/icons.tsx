@@ -210,20 +210,10 @@ const ICON_MAP = {
   sparkles: Sparkles,
 } as const
 
-/* ---------- 3.  Safe, typed proxy ---------------------------------------- */
+/* ---------- 3.  Export Icons object directly ----------------------------- */
 export type IconName = keyof typeof ICON_MAP
 
-export const Icons: Record<IconName, FC<SVGProps<SVGSVGElement>>> = new Proxy(
-  ICON_MAP as Record<string, FC<SVGProps<SVGSVGElement>>>,
-  {
-    get(target, prop: string) {
-      if (prop in target) return target[prop]
-      // eslint-disable-next-line no-console
-      console.warn(`[Icons] "${prop}" is not in ICON_MAP – falling back to <Sparkles />.`)
-      return Sparkles
-    },
-  },
-) as any
+export const Icons = ICON_MAP
 
 /* Allow both `import { Icons }` and default import styles */
 export default Icons

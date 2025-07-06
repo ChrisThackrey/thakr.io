@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Icons } from "@/components/icons"
+import { Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { toast } from "@/hooks/use-toast"
 import { cn } from "@/lib/utils"
@@ -81,7 +81,7 @@ export function ImageDownloadButton({ imageUrl, imageName, className, variant = 
       )}
       aria-label="Download image"
     >
-      <Icons.download className={cn("h-4 w-4", isFullscreen && "h-5 w-5")} />
+      <Download className={cn("h-4 w-4", isFullscreen && "h-5 w-5")} />
     </Button>
   )
 }

@@ -9,11 +9,10 @@ import { ImageAnnotationTool } from "./image-annotation-tool"
 import { AnnotationPanel } from "./annotation-panel"
 import { ExportAnnotationsDialog } from "./export-annotations-dialog"
 import { useImageGallery } from "@/hooks/use-image-gallery"
-import { ImageGalleryControls } from "./image-gallery/image-gallery-controls"
 import { ImageGalleryNavigation } from "./image-gallery/image-gallery-navigation"
 import { ImageGalleryInfo } from "./image-gallery/image-gallery-info"
 import { ImageGalleryThumbnails } from "./image-gallery/image-gallery-thumbnails"
-import { Icons } from "./icons"
+import { ImageIcon, MessageSquare, Maximize2 } from "lucide-react"
 
 export interface Annotation {
   id: string
@@ -56,11 +55,8 @@ export function ImageGallery({
     handleZoomChange,
     isFullscreen,
     setIsFullscreen,
-    toggleFullscreen,
     isAnnotating,
-    toggleAnnotationMode,
     showAnnotations,
-    toggleShowAnnotations,
     imagesWithAnnotations,
     loadedImages,
     showExportDialog,
@@ -75,7 +71,6 @@ export function ImageGallery({
     updateAnnotation,
     deleteAnnotation,
     handleExport,
-    handleAnnotationUpdateInFullscreen,
   } = useImageGallery(images)
 
   return (
@@ -152,13 +147,13 @@ export function ImageGallery({
         {!isZoomed && !isAnnotating && (
           <div className="text-xs text-muted-foreground flex items-center justify-center space-x-4">
             <span className="flex items-center">
-              <Icons.ImageIcon className="h-3 w-3 mr-1" /> Click image to zoom
+              <ImageIcon className="h-3 w-3 mr-1" /> Click image to zoom
             </span>
             <span className="flex items-center">
-              <Icons.MessageSquare className="h-3 w-3 mr-1" /> Annotate available
+              <MessageSquare className="h-3 w-3 mr-1" /> Annotate available
             </span>
             <span className="flex items-center">
-              <Icons.Maximize2 className="h-3 w-3 mr-1" /> Fullscreen available
+              <Maximize2 className="h-3 w-3 mr-1" /> Fullscreen available
             </span>
           </div>
         )}
@@ -166,7 +161,7 @@ export function ImageGallery({
         {isAnnotating && (
           <div className="text-xs text-muted-foreground flex items-center justify-center">
             <span className="flex items-center">
-              <Icons.MessageSquare className="h-3 w-3 mr-1" /> Click on the image to add annotations
+              <MessageSquare className="h-3 w-3 mr-1" /> Click on the image to add annotations
             </span>
           </div>
         )}

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useReadingPosition } from "@/hooks/use-reading-position"
+import { useReadingPosition, type ReadingHistoryEntry } from "@/hooks/use-reading-position"
 import { Button } from "@/components/ui/button"
 import { ArrowDown, X, Clock } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -13,7 +13,7 @@ interface ReadingProgressIndicatorProps {
 
 export function ReadingProgressIndicator({ slug }: ReadingProgressIndicatorProps) {
   const { getReadingHistory, restorePosition, clearArticleHistory } = useReadingPosition()
-  const [savedPosition, setSavedPosition] = useState<any>(null)
+  const [savedPosition, setSavedPosition] = useState<ReadingHistoryEntry | null>(null)
   const [isDismissed, setIsDismissed] = useState(false)
   const { theme } = useTheme()
 

@@ -69,13 +69,16 @@ export async function getBooking(): Promise<BookingSession | null> {
  * Example stub for creating an event in Google Calendar.
  * In production you’d swap this out for an authenticated API call.
  */
-export async function createGoogleCalendarEvent(_data: {
+export async function createGoogleCalendarEvent(data: {
   name: string
   email: string
   topic: string
   date: string
 }) {
   try {
+    // TODO: Use the data parameter when implementing the actual calendar integration
+    console.log("Creating calendar event for:", data.email)
+    
     // In production, you would:
     // 1. Use proper authentication with Google OAuth
     // 2. Create a calendar event with the Google Calendar API

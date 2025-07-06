@@ -20,7 +20,7 @@ export function FloatingSpeedReadButton({
   slug,
 }: FloatingSpeedReadButtonProps) {
   const [isOpen, setIsOpen] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible] = useState(true) // Add isVisible state
 
   return (
     <>

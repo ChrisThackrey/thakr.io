@@ -1,4 +1,3 @@
-import { DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import type React from "react";
 import { getPost, getPosts, getSeriesBySlug } from "@/lib/blog";
 import { notFound } from "next/navigation";
@@ -25,6 +24,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { BlogSelectionSpeedRead } from "@/components/blog-selection-speed-read";
 import { FloatingBubbleProgress } from "@/components/floating-bubble-progress";
@@ -36,9 +36,9 @@ import { BlogLayout } from "@/components/blog-layout";
 
 interface LayoutProps {
   children: ReactNode;
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -49,7 +49,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Layout({ children, params }: LayoutProps) {
-  const post = await getPost(params.slug);
+  const { slug } = await params;
+  const post = await getPost(slug);
   if (!post) {
     return notFound();
   }
@@ -57,7 +58,7 @@ export default async function Layout({ children, params }: LayoutProps) {
   const series = post.series ? getSeriesBySlug(post.series.name) : null;
 
   // Create a consistent content ID for the blog post
-  const contentId = `blog-post-${params.slug}`;
+  const contentId = `blog-post-${slug}`;
 
   return (
     <>
@@ -99,7 +100,7 @@ export default async function Layout({ children, params }: LayoutProps) {
                   <DropdownMenuItem asChild>
                     <SpeedReadingButton
                       contentId={contentId}
-                      slug={params.slug}
+                      slug={slug}
                       className="w-full justify-start"
                       startInMiniPlayer={false}
                     />
@@ -107,7 +108,7 @@ export default async function Layout({ children, params }: LayoutProps) {
                   <DropdownMenuItem asChild>
                     <SpeedReadingButton
                       contentId={contentId}
-                      slug={params.slug}
+                      slug={slug}
                       className="w-full justify-start"
                       startInMiniPlayer={true}
                     />
@@ -138,13 +139,13 @@ export default async function Layout({ children, params }: LayoutProps) {
             {/* Add the selection speed read component */}
             <BlogSelectionSpeedRead
               contentSelector="article[data-blog-content='true']"
-              slug={params.slug}
+              slug={slug}
             />
           </main>
           <aside className="px-0 sm:px-2">
             {/* Add the reading time remaining indicator */}
             <ReadingTimeRemaining
-              slug={params.slug}
+              slug={slug}
               className="mb-6 hidden md:block"
               variant="detailed"
             />
@@ -156,7 +157,7 @@ export default async function Layout({ children, params }: LayoutProps) {
               defaultOpen={true}
               maxDepth={3}
             />
-            <RelatedPosts currentSlug={params.slug} tags={post.tags} />
+            <RelatedPosts currentSlug={slug} tags={post.tags} />
           </aside>
         </article>
 
@@ -170,7 +171,7 @@ export default async function Layout({ children, params }: LayoutProps) {
         )}
 
         {/* Add the reading progress indicator */}
-        <ReadingProgressIndicator slug={params.slug} />
+        <ReadingProgressIndicator slug={slug} />
 
         {/* Add circular reading progress for mobile */}
         <CircularReadingProgress
@@ -205,7 +206,7 @@ export default async function Layout({ children, params }: LayoutProps) {
         <FloatingSpeedReadLauncher
           contentId={contentId}
           selector="article[data-blog-content='true']"
-          slug={params.slug}
+          slug={slug}
           className="hidden md:block"
           position="bottom-right"
         />
@@ -217,7 +218,7 @@ export default async function Layout({ children, params }: LayoutProps) {
         />
 
         {/* Add selection-based speed reading */}
-        <SelectionSpeedRead contentId={contentId} slug={params.slug} />
+        <SelectionSpeedRead contentId={contentId} slug={slug} />
       </BlogPostLayout>
     </>
   );

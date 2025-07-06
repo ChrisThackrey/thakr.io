@@ -35,7 +35,7 @@ export function CompactSpeedControls({
   onUpdateSpeed,
   showSpeedDisplay = false,
 }: CompactSpeedControlsProps) {
-  const [isSliderDragging, setIsSliderDragging] = useState(false)
+  const [isSliderDragging] = useState(false)
   const [localProgress, setLocalProgress] = useState(progress)
 
   // Update local progress when the prop changes

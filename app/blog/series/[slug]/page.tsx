@@ -15,8 +15,9 @@ export function generateStaticParams() {
   }))
 }
 
-export default function SeriesPage({ params }: { params: { slug: string } }) {
-  const series = getSeriesBySlug(params.slug)
+export default async function SeriesPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const series = getSeriesBySlug(slug)
 
   if (!series) {
     notFound()

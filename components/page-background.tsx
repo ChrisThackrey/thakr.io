@@ -36,7 +36,6 @@ export function PageBackground() {
         priority
         sizes="100vw"
         quality={80}
-        placeholder="blur"
         className={cn(
           "object-cover transition-opacity duration-1000",
           !prefersReducedMotion && "animate-subtle-shift",

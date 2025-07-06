@@ -89,7 +89,7 @@ export function generateId(len = 8): string {
 /**
  * Classic debounce.
  */
-export function debounce<T extends (...args: any[]) => void>(fn: T, wait = 250) {
+export function debounce<T extends (...args: unknown[]) => void>(fn: T, wait = 250) {
   let timeout: NodeJS.Timeout | undefined
   return (...args: Parameters<T>) => {
     clearTimeout(timeout)

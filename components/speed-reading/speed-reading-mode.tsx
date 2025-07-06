@@ -27,17 +27,10 @@ export function SpeedReadingMode({
   onClose,
   slug,
   initialContent,
-  content,
   initialPosition,
   startInMiniPlayer = false,
-  darkMode,
-  contentType,
-  initialWpm,
-  blogSlug,
-  contentSelector,
 }: SpeedReadingModeProps) {
-  const { theme, resolvedTheme } = useTheme()
-  const isDarkMode = theme === "dark" || resolvedTheme === "dark"
+  useTheme()
 
   const [mode, setMode] = useState<"focus" | "mini">(startInMiniPlayer ? "mini" : "focus")
 

@@ -13,7 +13,9 @@ interface PrefetchLinkProps {
   onClick?: () => void
   priority?: boolean
   prefetch?: boolean
-  [key: string]: any
+  style?: React.CSSProperties
+  target?: string
+  rel?: string
 }
 
 export function PrefetchLink({

@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useToast } from "@/hooks/use-toast"
-import { Icons } from "@/components/icons"
+import { Loader2, Send } from "lucide-react"
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters long." }),
@@ -169,12 +169,12 @@ export function ContactForm() {
       <Button type="submit" className="w-full" disabled={isPending}>
         {isPending ? (
           <>
-            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             Sending...
           </>
         ) : (
           <>
-            <Icons.send className="mr-2 h-4 w-4" />
+            <Send className="mr-2 h-4 w-4" />
             Send Message
           </>
         )}

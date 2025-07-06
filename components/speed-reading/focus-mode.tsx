@@ -127,14 +127,12 @@ export function FocusMode({
   }, [contentId, validSelector, slug, initialContent])
 
   const {
-    isActive,
     isPaused,
     content,
     currentIndex,
     currentChunk,
     progress,
     options,
-    start,
     pause,
     resume,
     stop,
@@ -174,13 +172,6 @@ export function FocusMode({
   }
 
   // Navigation functions
-  const handlePrevious = () => {
-    skip(-1)
-  }
-
-  const handleNext = () => {
-    skip(1)
-  }
 
   const handleSkipBackward = () => {
     skip(-10)

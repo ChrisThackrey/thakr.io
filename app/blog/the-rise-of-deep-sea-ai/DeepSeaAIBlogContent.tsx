@@ -16,7 +16,7 @@ type TOCEntry = {
 }
 
 function FloatingTOC() {
-  const [activeId, setActiveId] = useState<string>(&quot;&quot;)
+  const [activeId, setActiveId] = useState<string>("")
   const [toc, setToc] = useState<TOCEntry[]>([])
   const observer = useRef<IntersectionObserver | null>(null)
   const [isOpen, setIsOpen] = useState(true)
@@ -74,7 +74,7 @@ function FloatingTOC() {
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 100,
-        behavior: &quot;smooth&quot;,
+        behavior: "smooth",
       })
     }
   }
@@ -93,7 +93,7 @@ function FloatingTOC() {
             onClick={() => setIsOpen(!isOpen)}
             className="text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 text-xs"
           >
-            {isOpen ? &quot;Hide&quot; : &quot;Show&quot;}
+            {isOpen ? "Hide" : "Show"}
           </button>
         </div>
         {isOpen && (
@@ -176,7 +176,7 @@ export function DeepSeaAIBlogContent() {
             <li className="flex items-start">
               <Check className="h-5 w-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
               <span>
-                The model's release is seen in a geopolitical context, highlighting the tech race between the US and
+                The model&apos;s release is seen in a geopolitical context, highlighting the tech race between the US and
                 China.
               </span>
             </li>
@@ -225,7 +225,7 @@ export function DeepSeaAIBlogContent() {
         <BlogImage
           src="/images/blog/deepseek-ai-model.png"
           alt="Abstract visualization of the Deep Sea AI model architecture"
-          caption="Deep Sea's efficient architecture allows for competitive performance with lower training costs."
+          caption="Deep Sea&apos;s efficient architecture allows for competitive performance with lower training costs."
           className="my-10"
         />
 

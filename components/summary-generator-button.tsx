@@ -3,7 +3,7 @@
 import type * as React from "react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/icons";
+import { Loader2, Wand2 } from "lucide-react";
 import { type BlogSummary, generateSummary } from "@/utils/summary-generator";
 import { PrintableSummary } from "@/components/printable-summary";
 import { cn } from "@/lib/utils";
@@ -98,8 +98,8 @@ export function SummaryGeneratorButton(
         disabled={isGenerating}
       >
         {isGenerating
-          ? <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-          : <Icons.generator className="mr-2 h-4 w-4" />}
+          ? <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          : <Wand2 className="mr-2 h-4 w-4" />}
         <span>{isGenerating ? "Generating..." : "Generate Summary"}</span>
       </Button>
 
@@ -118,6 +118,6 @@ export function SummaryGeneratorButton(
 
 // If some other part of the codebase still imports { GENERATOR } from this
 // module by mistake, re-export the correct icon to avoid runtime failures.
-export { Icons as GENERATOR };
+export { Wand2 as GENERATOR };
 
 // ‼️ add this at the very end of the file

@@ -145,18 +145,5 @@
     "browser-tools",
     "g-search",
     "blender"
-  ],
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.local/scripts/eslint-validator.py"
-          }
-        ]
-      }
-    ]
-  }
+  ]
 }

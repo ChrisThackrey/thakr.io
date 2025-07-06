@@ -13,7 +13,7 @@ export function ThemeTransition() {
     setMounted(true)
     // Initialize with the current theme on mount
     setThemeBeforeChange(resolvedTheme)
-  }, []) // Empty dependency array: run once on mount
+  }, [resolvedTheme])
 
   useEffect(() => {
     if (!mounted) return

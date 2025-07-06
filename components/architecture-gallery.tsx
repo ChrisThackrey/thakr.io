@@ -25,8 +25,11 @@ interface ArchitectureProject {
   modelScale?: number
   modelPosition?: [number, number, number]
   modelRotation?: [number, number, number]
-  // Allow other properties if necessary, but prefer explicit typing
-  [key: string]: any
+  // Additional properties
+  type?: string
+  location?: string
+  year?: number
+  area?: string
 }
 
 interface ArchitectureGalleryProps {

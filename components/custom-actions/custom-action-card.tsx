@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Switch } from "@/components/ui/switch"
 import { getIconByName } from "@/contexts/custom-actions-context"
 import type { CustomAction } from "@/types/custom-actions"
-import { Icons } from "@/components/icons"
+import { Edit, Trash, MoveUp, MoveDown } from "lucide-react"
 
 interface CustomActionCardProps {
   action: CustomAction
@@ -59,21 +59,21 @@ export function CustomActionCard({
       <CardFooter className="flex justify-between pt-2">
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={() => onEdit(action)}>
-            <Icons.edit className="h-4 w-4" />
+            <Edit className="h-4 w-4" />
             <span className="sr-only">Edit</span>
           </Button>
           <Button variant="outline" size="sm" onClick={() => onRemove(action.id)}>
-            <Icons.trash className="h-4 w-4" />
+            <Trash className="h-4 w-4" />
             <span className="sr-only">Delete</span>
           </Button>
         </div>
         <div className="flex gap-2">
           <Button variant="ghost" size="sm" onClick={() => onMove(action.id, "up")} disabled={isFirst}>
-            <Icons.moveUp className="h-4 w-4" />
+            <MoveUp className="h-4 w-4" />
             <span className="sr-only">Move Up</span>
           </Button>
           <Button variant="ghost" size="sm" onClick={() => onMove(action.id, "down")} disabled={isLast}>
-            <Icons.moveDown className="h-4 w-4" />
+            <MoveDown className="h-4 w-4" />
             <span className="sr-only">Move Down</span>
           </Button>
         </div>

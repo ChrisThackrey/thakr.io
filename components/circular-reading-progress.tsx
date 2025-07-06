@@ -17,7 +17,6 @@ interface CircularReadingProgressProps {
 }
 
 export function CircularReadingProgress({
-  contentSelector = "article",
   className,
   showTimeRemaining = true,
   readingTime = "5 min",

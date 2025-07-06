@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, Rocket } from "lucide-react"
-import { MDXRemote } from "next-mdx-remote/rsc"
+import { MDXContent } from "@/components/mdx-content"
 
 import { getPost, getPosts, getSeries, getRelatedPosts, type Series } from "@/lib/blog"
 
@@ -35,7 +35,7 @@ import { FloatingSpeedReadLauncher } from "@/components/speed-reading/floating-s
 import { BlogErrorBoundary } from "@/components/blog-error-boundary"
 
 interface PageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 /* ---------------- Build-time static params ---------------- */
@@ -46,7 +46,8 @@ export async function generateStaticParams() {
 
 /* --------------------------- Page -------------------------- */
 export default async function BlogPostPage({ params }: PageProps) {
-  const post = await getPost(params.slug)
+  const { slug } = await params
+  const post = await getPost(slug)
   if (!post) notFound()
 
   /* -------- Resolve series safely (by name) -------- */
@@ -56,7 +57,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const related = await getRelatedPosts(post.slug, post.tags)
-  const contentId = `blog-post-${params.slug}`
+  const contentId = `blog-post-${slug}`
 
   return (
     <BlogErrorBoundary postTitle={post.title}>
@@ -109,16 +110,16 @@ export default async function BlogPostPage({ params }: PageProps) {
             <article
               id={contentId}
               data-blog-content
-              data-blog-slug={params.slug}
+              data-blog-slug={slug}
               className="prose prose-lg dark:prose-invert mt-4 max-w-none"
             >
-              <MDXRemote source={post.content} components={mdxComponents} />
+              <MDXContent source={post.content} />
             </article>
-            <BlogSelectionSpeedRead contentSelector={`#${contentId}`} slug={params.slug} />
+            <BlogSelectionSpeedRead contentSelector={`#${contentId}`} slug={slug} />
           </main>
 
           <aside className="px-0 sm:px-2">
-            <ReadingTimeRemaining slug={params.slug} className="mb-6 hidden md:block" variant="detailed" />
+            <ReadingTimeRemaining slug={slug} className="mb-6 hidden md:block" variant="detailed" />
             <AutoTOC contentSelector={`#${contentId}`} className="hidden md:block mb-8" defaultOpen maxDepth={3} />
             <RelatedPosts posts={related} />
           </aside>
@@ -126,7 +127,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* floating helpers */}
         {series && <FloatingTocButton series={series} currentPostSlug={post.slug} className="md:hidden" />}
-        <ReadingProgressIndicator slug={params.slug} title={post.title} />
+        <ReadingProgressIndicator slug={slug} />
         <CircularReadingProgress
           contentSelector={`#${contentId}`}
           className="fixed bottom-24 right-4 z-50 md:hidden"
@@ -146,12 +147,12 @@ export default async function BlogPostPage({ params }: PageProps) {
         <FloatingSpeedReadLauncher
           contentId={contentId}
           selector={`#${contentId}`}
-          slug={params.slug}
+          slug={slug}
           className="hidden md:block"
           position="bottom-right"
         />
         <FloatingSpeedReadButton contentSelector={`#${contentId}`} className="md:hidden" />
-        <SelectionSpeedRead contentId={contentId} slug={params.slug} />
+        <SelectionSpeedRead contentId={contentId} slug={slug} />
       </article>
     </BlogErrorBoundary>
   )

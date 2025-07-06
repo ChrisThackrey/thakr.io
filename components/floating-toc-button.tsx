@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
+import { X, ListTree } from "lucide-react"
 import { SeriesToc } from "@/components/series-toc"
 import { cn } from "@/lib/utils"
 import { useTheme } from "next-themes"
@@ -52,7 +52,7 @@ export function FloatingTocButton({ series, currentPostSlug, className }: Floati
         )}
         aria-label={isOpen ? "Close table of contents" : "Open table of contents"}
       >
-        {isOpen ? <Icons.close className="h-5 w-5" /> : <Icons.listTree className="h-5 w-5" />}
+        {isOpen ? <X className="h-5 w-5" /> : <ListTree className="h-5 w-5" />}
       </Button>
     </div>
   )

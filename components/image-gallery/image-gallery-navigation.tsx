@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface ImageGalleryNavigationProps {
   onPrevious: () => void
@@ -18,7 +18,7 @@ export function ImageGalleryNavigation({ onPrevious, onNext }: ImageGalleryNavig
         onClick={onPrevious}
         aria-label="Previous image"
       >
-        <Icons.ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-6 w-6" />
       </Button>
       <Button
         variant="ghost"
@@ -27,7 +27,7 @@ export function ImageGalleryNavigation({ onPrevious, onNext }: ImageGalleryNavig
         onClick={onNext}
         aria-label="Next image"
       >
-        <Icons.ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-6 w-6" />
       </Button>
     </div>
   )

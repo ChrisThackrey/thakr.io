@@ -1,4 +1,5 @@
-import type { Components, Options } from "react-markdown";
+import type { Components } from "react-markdown";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 /**
@@ -67,7 +68,7 @@ export function createMarkdownComponents(options?: {
 }): Components {
   return {
     // Headings
-    h1: ({ node, className, children, ...props }) => (
+    h1: ({ className, children, ...props }) => (
       <h1
         className={cn(
           "text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-16 mb-8 pb-2 border-b border-border",
@@ -83,7 +84,7 @@ export function createMarkdownComponents(options?: {
         {children}
       </h1>
     ),
-    h2: ({ node, className, children, ...props }) => (
+    h2: ({ className, children, ...props }) => (
       <h2
         className={cn(
           "text-2xl sm:text-3xl font-bold tracking-tight mt-12 mb-6 pb-1 border-b border-border/70",
@@ -99,7 +100,7 @@ export function createMarkdownComponents(options?: {
         {children}
       </h2>
     ),
-    h3: ({ node, className, children, ...props }) => (
+    h3: ({ className, children, ...props }) => (
       <h3
         className={cn(
           "text-xl sm:text-2xl font-semibold tracking-tight mt-10 mb-4",
@@ -115,7 +116,7 @@ export function createMarkdownComponents(options?: {
         {children}
       </h3>
     ),
-    h4: ({ node, className, children, ...props }) => (
+    h4: ({ className, children, ...props }) => (
       <h4
         className={cn(
           "text-lg sm:text-xl font-semibold tracking-tight mt-8 mb-3",
@@ -133,7 +134,7 @@ export function createMarkdownComponents(options?: {
     ),
 
     // Paragraphs
-    p: ({ node, className, children, ...props }) => (
+    p: ({ className, children, ...props }) => (
       <p
         className={cn(
           "text-base sm:text-lg leading-7 sm:leading-8 tracking-normal mb-6",
@@ -148,7 +149,7 @@ export function createMarkdownComponents(options?: {
     ),
 
     // Links
-    a: ({ node, className, href, children, ...props }) => (
+    a: ({ className, href, children, ...props }) => (
       <a
         href={href}
         className={cn(
@@ -165,7 +166,7 @@ export function createMarkdownComponents(options?: {
     ),
 
     // Code blocks
-    code: ({ node, className, children, ...props }) => {
+    code: ({ className, children, ...props }) => {
       const match = /language-(\w+)/.exec(className || "");
       return !match
         ? (
@@ -199,7 +200,7 @@ export function createMarkdownComponents(options?: {
     },
 
     // Blockquotes
-    blockquote: ({ node, className, children, ...props }) => (
+    blockquote: ({ className, children, ...props }) => (
       <blockquote
         className={cn(
           "border-l-4 border-primary/40 pl-6 py-4 my-8 italic text-muted-foreground bg-muted/20 rounded-r",
@@ -213,7 +214,7 @@ export function createMarkdownComponents(options?: {
     ),
 
     // Lists
-    ul: ({ node, className, children, ...props }) => (
+    ul: ({ className, children, ...props }) => (
       <ul
         className={cn(
           "my-6 ml-6 space-y-2 text-base sm:text-lg",
@@ -225,7 +226,7 @@ export function createMarkdownComponents(options?: {
         {children}
       </ul>
     ),
-    ol: ({ node, className, children, ...props }) => (
+    ol: ({ className, children, ...props }) => (
       <ol
         className={cn(
           "my-6 ml-6 space-y-2 text-base sm:text-lg",
@@ -237,7 +238,7 @@ export function createMarkdownComponents(options?: {
         {children}
       </ol>
     ),
-    li: ({ node, className, children, ...props }) => (
+    li: ({ className, children, ...props }) => (
       <li
         className={cn("mb-2 pl-2 leading-7 sm:leading-8", className)}
         {...props}
@@ -247,27 +248,30 @@ export function createMarkdownComponents(options?: {
     ),
 
     // Images
-    img: ({ node, className, src, alt, ...props }) => (
-      <img
-        src={src || "/placeholder.svg"}
-        alt={alt || ""}
-        className={cn(
-          "rounded-lg shadow-md my-10 mx-auto max-w-full",
-          options?.imageClassName,
-          className,
-        )}
-        loading="lazy"
-        {...props}
-      />
+    img: ({ className, src, alt, ...props }) => (
+      <div className={cn("relative w-full my-10", className)}>
+        <Image
+          src={src || "/placeholder.svg"}
+          alt={alt || ""}
+          width={800}
+          height={600}
+          className={cn(
+            "rounded-lg shadow-md mx-auto",
+            options?.imageClassName,
+          )}
+          style={{ width: "100%", height: "auto" }}
+          {...props}
+        />
+      </div>
     ),
 
     // Figure and figcaption
-    figure: ({ node, className, children, ...props }) => (
+    figure: ({ className, children, ...props }) => (
       <figure className={cn("my-10", className)} {...props}>
         {children}
       </figure>
     ),
-    figcaption: ({ node, className, children, ...props }) => (
+    figcaption: ({ className, children, ...props }) => (
       <figcaption
         className={cn(
           "text-sm text-center text-muted-foreground mt-2 italic",
@@ -280,7 +284,7 @@ export function createMarkdownComponents(options?: {
     ),
 
     // Tables
-    table: ({ node, className, children, ...props }) => (
+    table: ({ className, children, ...props }) => (
       <div className="overflow-x-auto my-8">
         <table
           className={cn(
@@ -293,22 +297,22 @@ export function createMarkdownComponents(options?: {
         </table>
       </div>
     ),
-    thead: ({ node, className, children, ...props }) => (
+    thead: ({ className, children, ...props }) => (
       <thead className={cn("bg-muted", className)} {...props}>
         {children}
       </thead>
     ),
-    tbody: ({ node, className, children, ...props }) => (
+    tbody: ({ className, children, ...props }) => (
       <tbody className={className} {...props}>
         {children}
       </tbody>
     ),
-    tr: ({ node, className, children, ...props }) => (
+    tr: ({ className, children, ...props }) => (
       <tr className={cn("border-b border-muted", className)} {...props}>
         {children}
       </tr>
     ),
-    th: ({ node, className, children, ...props }) => (
+    th: ({ className, children, ...props }) => (
       <th
         className={cn(
           "border border-border p-2 text-left font-semibold",
@@ -319,7 +323,7 @@ export function createMarkdownComponents(options?: {
         {children}
       </th>
     ),
-    td: ({ node, className, children, ...props }) => (
+    td: ({ className, children, ...props }) => (
       <td
         className={cn("border border-border p-2 text-left", className)}
         {...props}
@@ -329,7 +333,7 @@ export function createMarkdownComponents(options?: {
     ),
 
     // Horizontal rule
-    hr: ({ node, className, ...props }) => (
+    hr: ({ className, ...props }) => (
       <hr
         className={cn(
           "my-12 border-t-2 border-border/50 max-w-md mx-auto",
@@ -340,7 +344,7 @@ export function createMarkdownComponents(options?: {
     ),
 
     // Enhanced elements
-    mark: ({ node, className, children, ...props }) => (
+    mark: ({ className, children, ...props }) => (
       <mark
         className={cn(
           "bg-yellow-200 dark:bg-yellow-800 px-1 rounded",
@@ -352,7 +356,7 @@ export function createMarkdownComponents(options?: {
       </mark>
     ),
 
-    kbd: ({ node, className, children, ...props }) => (
+    kbd: ({ className, children, ...props }) => (
       <kbd
         className={cn(
           "bg-muted px-2 py-1 text-xs font-mono rounded border border-border shadow-sm",
@@ -364,39 +368,39 @@ export function createMarkdownComponents(options?: {
       </kbd>
     ),
 
-    sub: ({ node, className, children, ...props }) => (
+    sub: ({ className, children, ...props }) => (
       <sub className={cn("text-xs", className)} {...props}>
         {children}
       </sub>
     ),
 
-    sup: ({ node, className, children, ...props }) => (
+    sup: ({ className, children, ...props }) => (
       <sup className={cn("text-xs", className)} {...props}>
         {children}
       </sup>
     ),
 
     // Definition lists
-    dl: ({ node, className, children, ...props }) => (
+    dl: ({ className, children, ...props }) => (
       <dl className={cn("my-6", className)} {...props}>
         {children}
       </dl>
     ),
 
-    dt: ({ node, className, children, ...props }) => (
+    dt: ({ className, children, ...props }) => (
       <dt className={cn("font-semibold mt-4", className)} {...props}>
         {children}
       </dt>
     ),
 
-    dd: ({ node, className, children, ...props }) => (
+    dd: ({ className, children, ...props }) => (
       <dd className={cn("ml-4 mb-4", className)} {...props}>
         {children}
       </dd>
     ),
 
     // Details and summary
-    details: ({ node, className, children, ...props }) => (
+    details: ({ className, children, ...props }) => (
       <details
         className={cn(
           "my-4 border border-border rounded-md overflow-hidden",
@@ -408,7 +412,7 @@ export function createMarkdownComponents(options?: {
       </details>
     ),
 
-    summary: ({ node, className, children, ...props }) => (
+    summary: ({ className, children, ...props }) => (
       <summary
         className={cn("bg-muted/50 p-3 cursor-pointer font-medium", className)}
         {...props}
@@ -420,7 +424,9 @@ export function createMarkdownComponents(options?: {
 }
 
 // Re-export for backward compatibility
-export default {
+const markdownConfig = {
   defaultMarkdownOptions,
   createMarkdownComponents,
 };
+
+export default markdownConfig;

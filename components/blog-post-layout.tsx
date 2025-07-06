@@ -16,7 +16,6 @@ import { BlogErrorBoundary } from "@/components/blog-error-boundary"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { RelatedPosts } from "@/components/related-posts"
 import type { BlogPost } from "@/lib/blog"
-import { SeriesBanner } from "./series-banner"
 
 interface BlogPostLayoutProps {
   post: BlogPost
@@ -25,7 +24,7 @@ interface BlogPostLayoutProps {
   withDropCap?: boolean
 }
 
-export function BlogPostLayout({ post, content, children, withDropCap = true }: BlogPostLayoutProps) {
+export function BlogPostLayout({ post, content, children }: BlogPostLayoutProps) {
   const { theme } = useTheme()
   const url = typeof window !== "undefined" ? window.location.href : `https://yourdomain.com/blog/${post.slug}`
 

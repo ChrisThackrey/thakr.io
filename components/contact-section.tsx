@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
+import { Mail, MapPin } from "lucide-react"
 import { siteConfig } from "@/config/site"
 
 export function ContactSection() {
@@ -14,20 +14,20 @@ export function ContactSection() {
           </p>
           <div className="mt-8 space-y-4">
             <div className="flex items-center gap-3">
-              <Icons.mail className="h-5 w-5 text-muted-foreground" />
+              <Mail className="h-5 w-5 text-muted-foreground" />
               <Link href={`mailto:${siteConfig.contact.email}`} className="text-foreground hover:underline">
                 {siteConfig.contact.email}
               </Link>
             </div>
             <div className="flex items-center gap-3">
-              <Icons.mapPin className="h-5 w-5 text-muted-foreground" />
+              <MapPin className="h-5 w-5 text-muted-foreground" />
               <span className="text-foreground">{siteConfig.contact.location}</span>
             </div>
           </div>
         </div>
         <div className="flex flex-col items-start justify-center">
           <p className="text-muted-foreground">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
           </p>
           <div className="mt-6 flex flex-col gap-4 sm:flex-row">
             <Button asChild>

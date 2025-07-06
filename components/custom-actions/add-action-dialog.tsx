@@ -15,7 +15,7 @@ import {
 import { useCustomActions } from "@/contexts/custom-actions-context"
 import { ActionForm, type ActionFormData } from "./action-form"
 import type { CustomActionType } from "@/types/custom-actions"
-import { Icons } from "@/components/icons"
+import { Plus } from "lucide-react"
 
 const initialFormData: ActionFormData = {
   name: "",
@@ -49,7 +49,7 @@ export function AddActionDialog() {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button variant="default">
-          <Icons.Plus className="mr-2 h-4 w-4" />
+          <Plus className="mr-2 h-4 w-4" />
           Add Action
         </Button>
       </DialogTrigger>

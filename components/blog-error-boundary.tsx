@@ -39,7 +39,7 @@ export class BlogErrorBoundary extends React.Component<BlogErrorBoundaryProps, B
         <div className="container mx-auto my-12 max-w-3xl rounded-lg border border-destructive/50 bg-destructive/10 p-8 text-center">
           <h1 className="mb-4 text-3xl font-bold text-destructive">Something went wrong</h1>
           <p className="mb-2 text-lg text-destructive/80">
-            There was an error rendering the blog post: "{this.props.postTitle}".
+            There was an error rendering the blog post: &quot;{this.props.postTitle}&quot;.
           </p>
           <p className="mb-6 text-sm font-mono text-destructive/70 bg-destructive/10 p-2 rounded">
             {this.state.error?.message}

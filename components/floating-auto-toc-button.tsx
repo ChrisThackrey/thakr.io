@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Icons } from "@/components/icons"
+import { List, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { AutoTOC } from "@/components/auto-toc"
 import { cn } from "@/lib/utils"
@@ -32,7 +32,7 @@ export function FloatingAutoTocButton({ contentSelector, className }: FloatingAu
         )}
         onClick={() => setIsOpen(true)}
       >
-        <Icons.list className="h-5 w-5" />
+        <List className="h-5 w-5" />
         <span className="sr-only">Table of Contents</span>
       </Button>
 
@@ -42,7 +42,7 @@ export function FloatingAutoTocButton({ contentSelector, className }: FloatingAu
           <div className="flex justify-between items-center p-4 border-b">
             <h2 className="text-lg font-semibold">Table of Contents</h2>
             <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
-              <Icons.close className="h-5 w-5" />
+              <X className="h-5 w-5" />
               <span className="sr-only">Close</span>
             </Button>
           </div>

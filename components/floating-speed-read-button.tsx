@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Icons } from "@/components/icons";
+import { BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SpeedReadingMode } from "@/components/speed-reading/speed-reading-mode";
 import { cn } from "@/lib/utils";
@@ -54,7 +54,7 @@ export function FloatingSpeedReadButton(
         onClick={handleOpenSpeedReader}
         aria-label="Speed Read"
       >
-        <Icons.bookOpen className="h-5 w-5" />
+        <BookOpen className="h-5 w-5" />
       </Button>
 
       {showSpeedReader && (
