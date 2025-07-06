@@ -10,7 +10,6 @@ import {
   BookOpen,
   BrainCircuit,
   Briefcase,
-  Building2,
   Calendar,
   CalendarCheck2,
   Check,
@@ -74,13 +73,15 @@ import {
   ZoomIn,
   ZoomOut,
   GraduationCap,
+  BuildingIcon as Architecture,
+  User,
 } from "lucide-react"
 
 /* -------------------------------------------------------------------------- */
 /* 1. Fallback / branding icon                                                */
 /* -------------------------------------------------------------------------- */
 const Logo: FC<SVGProps<SVGSVGElement>> = (props) => (
-  <Sparkles {...props} className={`h-6 w-6 ${props.className ?? ""}`} />
+  <Architecture {...props} className={`h-6 w-6 ${props.className ?? ""}`} />
 )
 
 /* -------------------------------------------------------------------------- */
@@ -89,10 +90,10 @@ const Logo: FC<SVGProps<SVGSVGElement>> = (props) => (
 const ICON_MAP = {
   /* Navigation & sections */
   home: Home,
-  user: Users,
+  user: User,
   briefcase: Briefcase,
   code: Code,
-  architecture: Building2,
+  architecture: Architecture,
   fileText: FileText,
   bookOpen: BookOpen,
   palette: Palette,
@@ -153,6 +154,7 @@ const ICON_MAP = {
   twitter: Twitter,
   instagram: Instagram,
   x: Twitter, // alias
+
   /* Tech / misc */
   laptop: Laptop,
   cpu: Cpu,
