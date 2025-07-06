@@ -1,6 +1,6 @@
 export const resumeContent = `
 Chris Thackrey				 (707) 319-3306  |  c.r.thackrey@gmail.com  |  San Antonio, TX  
-**Full-Stack Software Engineer**		 [github.com/ChrisThackrey](http://github.com/ChrisThackrey) | [linkedin.com/in/chris-thackrey-015](http://linkedin.com/in/chris-thackrey-015)
+**Full-Stack Software Engineer**		 [thakr.io](http://thakr.io) | [github.com/ChrisThackrey](http://github.com/ChrisThackrey) | [linkedin.com/in/chris-thackrey-015](http://linkedin.com/in/chris-thackrey-015)
 
 Technical Skills  
 ---

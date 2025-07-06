@@ -231,7 +231,18 @@ export function Timeline({ items }: TimelineProps) {
                   <>
                     <CardHeader className="pb-2 pt-4">
                       <CardTitle className="text-md md:text-lg font-semibold text-foreground/90">
-                        {projectData.name}
+                        {projectData.link ? (
+                          <a 
+                            href={projectData.link} 
+                            target={projectData.link.startsWith('http') ? '_blank' : undefined}
+                            rel={projectData.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            className="hover:text-primary transition-colors duration-200"
+                          >
+                            {projectData.name}
+                          </a>
+                        ) : (
+                          projectData.name
+                        )}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-0">
