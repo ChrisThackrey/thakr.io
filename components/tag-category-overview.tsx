@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils"
 
 interface TagCategoryOverviewProps {
   className?: string
-  onSelectCategory?: (categoryId: string) => void
 }
 
 const iconMap = {
@@ -20,7 +19,7 @@ const iconMap = {
   shield: Shield,
 }
 
-export function TagCategoryOverview({ className, onSelectCategory }: TagCategoryOverviewProps) {
+export function TagCategoryOverview({ className }: TagCategoryOverviewProps) {
   const allTags = getAllTags()
   const tagCounts = getTagCount()
 
@@ -39,11 +38,8 @@ export function TagCategoryOverview({ className, onSelectCategory }: TagCategory
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            whileHover={{ scale: 1.02 }}
-            className="group cursor-pointer"
-            onClick={() => onSelectCategory?.(category.id)}
           >
-            <div className="border rounded-lg p-4 h-full transition-all group-hover:shadow-md group-hover:border-primary/50">
+            <div className="border rounded-lg p-4 h-full">
               <div className="flex items-start gap-3">
                 {Icon && (
                   <div className="p-2 rounded-md bg-primary/10 text-primary">

@@ -9,7 +9,6 @@ import { tagCategories, getUncategorizedTags } from "@/lib/tag-categories"
 import { cn } from "@/lib/utils"
 
 interface CategorizedTagCloudProps {
-  onSelectTag?: (tag: string) => void
   className?: string
 }
 
@@ -22,7 +21,7 @@ const iconMap = {
   shield: Shield,
 }
 
-export function CategorizedTagCloud({ onSelectTag, className }: CategorizedTagCloudProps) {
+export function CategorizedTagCloud({ className }: CategorizedTagCloudProps) {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(tagCategories.map((c) => c.id)))
 
   const allTags = getAllTags()
@@ -75,13 +74,9 @@ export function CategorizedTagCloud({ onSelectTag, className }: CategorizedTagCl
                 {categoryTags
                   .sort((a, b) => (tagCounts[b] || 0) - (tagCounts[a] || 0))
                   .map((tag) => (
-                    <button
-                      key={tag}
-                      onClick={() => onSelectTag?.(tag)}
-                      className="text-left hover:bg-accent rounded p-1 transition-colors overflow-hidden"
-                    >
+                    <div key={tag} className="text-left p-1 overflow-hidden">
                       <ColoredTag tag={tag} count={tagCounts[tag]} className="w-full max-w-full" />
-                    </button>
+                    </div>
                   ))}
               </div>
             </motion.div>
@@ -108,13 +103,9 @@ export function CategorizedTagCloud({ onSelectTag, className }: CategorizedTagCl
               {uncategorizedTags
                 .sort((a, b) => (tagCounts[b] || 0) - (tagCounts[a] || 0))
                 .map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => onSelectTag?.(tag)}
-                    className="text-left hover:bg-accent rounded p-1 transition-colors overflow-hidden"
-                  >
+                  <div key={tag} className="text-left p-1 overflow-hidden">
                     <ColoredTag tag={tag} count={tagCounts[tag]} className="w-full max-w-full" />
-                  </button>
+                  </div>
                 ))}
             </div>
           </div>

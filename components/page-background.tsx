@@ -1,40 +1,58 @@
 "use client"
 
+import { useState, useEffect } from "react"
+import Image from "next/image"
 import { useTheme } from "next-themes"
-import { useEffect, useState } from "react"
+import { useReducedMotion } from "@/hooks/use-reduced-motion"
+import { cn } from "@/lib/utils"
 
 /**
- * Renders a subtle, decorative background that adapts to the current theme.
- * This component is self-contained and does not rely on importing `/app/layout`.
+ * Renders the softly-blurred, gently-moving gradient background that
+ * appears on every page.
  */
 export function PageBackground() {
-  const { theme } = useTheme()
-  const [isMounted, setIsMounted] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+  const prefersReducedMotion = useReducedMotion()
 
+  // Avoid hydration mismatch
   useEffect(() => {
-    setIsMounted(true)
+    setMounted(true)
   }, [])
 
-  // We need to wait for the component to mount to know the theme.
-  // This prevents a hydration mismatch between server and client.
-  if (!isMounted) {
-    return null
+  if (!mounted) {
+    return <div className="fixed inset-0 -z-50 bg-background" />
   }
 
-  const backgroundStyle =
-    theme === "dark"
-      ? {
-          backgroundImage:
-            "radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.03), transparent 40%), radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.03), transparent 40%)",
-          backgroundColor: "#020617",
-        }
-      : {
-          backgroundImage:
-            "radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.02), transparent 40%), radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.02), transparent 40%)",
-          backgroundColor: "#f8fafc",
-        }
+  const isDark = resolvedTheme === "dark"
+  const imageSrc = "/images/light-background-01.jpg" // served from /public
 
   return (
-    <div className="fixed inset-0 -z-50 transition-colors duration-500" style={backgroundStyle} aria-hidden="true" />
+    <div className="fixed inset-0 -z-50 overflow-hidden">
+      <Image
+        src={imageSrc || "/placeholder.svg"}
+        alt={"Soft abstract gradient background with pastel blues, yellows and pinks"}
+        fill
+        priority
+        sizes="100vw"
+        quality={80}
+        placeholder="blur"
+        className={cn(
+          "object-cover transition-opacity duration-1000",
+          !prefersReducedMotion && "animate-subtle-shift",
+          // slightly dim in dark mode for contrast
+          isDark ? "opacity-30" : "opacity-60",
+        )}
+      />
+      {/* extra overlay tint & blur for readability */}
+      <div
+        className={cn(
+          "absolute inset-0 backdrop-blur-3xl transition-colors duration-1000",
+          isDark ? "bg-black/60" : "bg-white/40",
+        )}
+      />
+      {/* Subtle grid pattern overlay */}
+      <div className="absolute inset-0 bg-grid-pattern" />
+    </div>
   )
 }

@@ -2,18 +2,16 @@
 
 import { useState, useEffect } from "react"
 import { ColoredTag } from "./colored-tag"
-import { getAllTags } from "@/lib/blog"
+import { getAllTags, getTagCount } from "@/lib/blog"
 import { SectionTitle } from "./section-title"
 
 interface TagCloudProps {
-  onTagClick?: (tag: string) => void
-  selectedTag?: string
   limit?: number
   showCount?: boolean
   title?: string
 }
 
-export function TagCloud({ onTagClick, selectedTag, limit, showCount = false, title = "Explore Tags" }: TagCloudProps) {
+export function TagCloud({ limit, showCount = false, title = "Explore Tags" }: TagCloudProps) {
   const [tags, setTags] = useState<string[]>([])
   const [tagCounts, setTagCounts] = useState<Record<string, number>>({})
   const [isLoading, setIsLoading] = useState(true)
@@ -22,19 +20,10 @@ export function TagCloud({ onTagClick, selectedTag, limit, showCount = false, ti
     const fetchTags = async () => {
       setIsLoading(true)
       try {
-        // Get all unique tags
         const allTags = getAllTags()
+        const counts = getTagCount()
 
-        // Count occurrences of each tag
-        const counts: Record<string, number> = {}
-        allTags.forEach((tag) => {
-          counts[tag] = (counts[tag] || 0) + 1
-        })
-
-        // Sort tags by count (descending)
         const sortedTags = [...new Set(allTags)].sort((a, b) => (counts[b] || 0) - (counts[a] || 0))
-
-        // Apply limit if specified
         const limitedTags = limit ? sortedTags.slice(0, limit) : sortedTags
 
         setTags(limitedTags)
@@ -88,8 +77,8 @@ export function TagCloud({ onTagClick, selectedTag, limit, showCount = false, ti
       </SectionTitle>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <div key={tag} onClick={() => onTagClick && onTagClick(tag)} className="cursor-pointer">
-            <ColoredTag tag={showCount ? `${tag} (${tagCounts[tag] || 0})` : tag} highlightTag={selectedTag === tag} />
+          <div key={tag}>
+            <ColoredTag tag={showCount ? `${tag} (${tagCounts[tag] || 0})` : tag} />
           </div>
         ))}
       </div>
