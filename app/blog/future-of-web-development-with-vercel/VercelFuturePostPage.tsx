@@ -5,7 +5,6 @@ import { ReadingTime } from "@/components/reading-time"
 import { BlogPostTracker } from "@/components/blog-post-tracker"
 import { useReadingTimeCalculator } from "@/hooks/use-reading-time-calculator"
 import { useState, useEffect } from "react"
-import { ColoredTag } from "@/components/colored-tag"
 
 const post = blogPosts.find((p) => p.slug === "future-of-web-development-with-vercel")
 
@@ -39,11 +38,6 @@ export default function VercelFuturePostPage() {
         <div className="mb-8 mt-8">
           <h1 className="text-4xl font-bold tracking-tight mb-6">{post.title}</h1>
           <div className="flex items-center justify-between mb-3">
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <ColoredTag key={tag} tag={tag} href={`/blog/categories/${encodeURIComponent(tag)}`} />
-              ))}
-            </div>
             <time className="text-foreground/80 font-medium text-sm flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
