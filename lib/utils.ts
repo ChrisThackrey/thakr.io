@@ -23,16 +23,12 @@ export function cn(...inputs: ClassValue[]) {
  *   formatDate("2025-07-05")           // "July 5, 2025"
  *   formatDate("2025-07-05", { month: "short" }) // "Jul 5, 2025"
  */
-export function formatDate(
-  dateString: string,
-  options: Intl.DateTimeFormatOptions = {
+export function formatDate(dateString: string): string {
+  return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
-  },
-): string {
-  const date = new Date(dateString)
-  return new Intl.DateTimeFormat("en-US", options).format(date)
+  }).format(new Date(dateString))
 }
 
 /* -------------------------------------------------------------------------- */
