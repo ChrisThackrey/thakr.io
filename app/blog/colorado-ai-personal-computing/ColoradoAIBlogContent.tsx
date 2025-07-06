@@ -1,6 +1,6 @@
 "use client"
 
-import { BlogImage } from "@/components/blog-image"
+import BlogImage from "@/components/blog-image"
 
 export function ColoradoAIBlogContent() {
   return (
