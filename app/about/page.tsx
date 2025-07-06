@@ -8,7 +8,7 @@ import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { SectionTitle } from "@/components/section-title"
 import { Card, CardContent } from "@/components/ui/card"
 import { BookingCTA } from "@/components/booking-cta"
-import { ColoredTag } from "@/components/colored-tag"
+import { Badge } from "@/components/ui/badge"
 import { technicalSkills, education } from "@/lib/experience-data"
 import { EducationTimeline } from "@/components/education-timeline"
 import { ProfileSection } from "@/components/profile-section"
@@ -65,7 +65,9 @@ export default function AboutPage() {
               <h3 className="font-semibold text-lg mb-3">{category}</h3>
               <div className="flex flex-wrap gap-2">
                 {skillList.map((skill) => (
-                  <ColoredTag key={`${category}-${skill}`} tag={skill} />
+                  <Badge variant="secondary" key={`${category}-${skill}`}>
+                    {skill}
+                  </Badge>
                 ))}
               </div>
             </div>
