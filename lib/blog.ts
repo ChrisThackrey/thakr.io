@@ -133,8 +133,14 @@ export function getTagCounts() {
   return counts
 }
 
-export async function getPostsByTag(tag: string) {
+// Sync version for components that need it
+export function getBlogPostsByTag(tag: string): BlogPost[] {
   return blogPosts.filter((p) => p.tags.includes(tag))
+}
+
+// Async version for Server Components
+export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
+  return getBlogPostsByTag(tag)
 }
 
 /* -- featured posts -------------------------------------------------------- */
@@ -144,7 +150,7 @@ export async function getFeaturedPosts(limit?: number) {
 }
 export const getFeaturedBlogPosts = getFeaturedPosts
 
-/* ------------------------- series helpers (unchanged) --------------------- */
+/* ------------------------- series helpers --------------------- */
 export interface Series {
   name: string
   slug: string
@@ -158,7 +164,8 @@ function slugify(s: string) {
     .replace(/(^-|-$)/g, "")
 }
 
-export async function getSeries(): Promise<Series[]> {
+// Sync version for generateStaticParams and other sync components
+export function getAllSeries(): Series[] {
   const map = new Map<string, BlogPost[]>()
   blogPosts.forEach((p) => {
     if (!p.series) return
@@ -173,8 +180,14 @@ export async function getSeries(): Promise<Series[]> {
   }))
 }
 
-export async function getSeriesBySlug(slug: string) {
-  const all = await getSeries()
+// Async version for Server Components
+export async function getSeries(): Promise<Series[]> {
+  return getAllSeries()
+}
+
+// Sync version
+export function getSeriesBySlug(slug: string): Series | null {
+  const all = getAllSeries()
   return all.find((s) => s.slug === slug) ?? null
 }
 

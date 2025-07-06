@@ -4,6 +4,7 @@ import { getAllSeries } from "@/lib/blog"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import { PageHeader } from "@/components/page-header"
 
 export default function SeriesListPage() {
   const allSeries = getAllSeries()
@@ -19,10 +20,10 @@ export default function SeriesListPage() {
               Back to All Posts
             </Link>
           </Button>
-          <h1 className="text-4xl font-bold tracking-tight mb-2">Blog Series</h1>
-          <p className="text-lg text-muted-foreground max-w-3xl">
-            Collections of related posts organized into multi-part series for in-depth exploration of topics.
-          </p>
+          <PageHeader
+            title="Blog Series"
+            description="Collections of related posts organized into multi-part series for in-depth exploration of topics."
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
