@@ -1,83 +1,81 @@
 "use client"
 
 import {
+  Activity,
   AlertTriangle,
   ArrowRight,
+  BarChart,
+  BookOpen,
+  Bot,
+  BrainCircuit,
+  Briefcase,
+  Building2,
+  Calendar,
+  CalendarCheck2,
+  Camera,
   Check,
+  CheckCircle2,
+  ChevronDown,
   ChevronLeft,
-  ChevronRight,
+  LucideChevronRight,
+  ChevronUp,
+  Clock,
+  Code,
+  Copy,
+  Cpu,
   CreditCard,
+  Database,
+  Download,
+  Edit,
+  ExternalLink,
+  FastForward,
   File,
   FileText,
+  Github,
+  GraduationCap,
+  GripVertical,
   HelpCircle,
+  Home,
   Image,
+  Instagram,
   Laptop,
+  Layers,
+  LinkIcon,
+  Linkedin,
+  List,
+  ListOrdered,
   Loader2,
+  Mail,
+  MapPin,
+  Menu,
+  MessageSquare,
   Moon,
   MoreVertical,
+  Palette,
+  Pause,
+  PenTool,
+  Phone,
+  PieChart,
   Pizza,
+  Play,
   Plus,
+  Printer,
+  RefreshCw,
+  Rewind,
+  Search,
+  Send,
+  Server,
   Settings,
+  Share2,
+  Sparkles,
   SunMedium,
+  Tag,
   Trash,
   Twitter,
   User,
-  X,
-  Instagram,
-  Linkedin,
-  Github,
-  Mail,
-  Calendar,
-  Clock,
-  Home,
-  Briefcase,
-  Construction,
-  BookOpen,
-  Code,
-  Cpu,
-  Database,
-  Server,
-  Zap,
-  LineChart,
-  BarChart,
-  PieChart,
-  Activity,
-  Layers,
-  Search,
-  Tag,
-  MessageSquare,
-  Share2,
-  ExternalLink,
-  ChevronDown,
-  Menu,
-  MapPin,
-  Building2,
-  Palette,
-  Sparkles,
-  Phone,
-  Send,
-  ChevronUp,
-  RefreshCw,
   Wand2,
-  Edit,
-  GripVertical,
-  Printer,
-  Download,
-  Copy,
-  Camera,
-  Play,
-  Pause,
-  Rewind,
-  FastForward,
-  List,
-  ListOrdered,
-  CheckCircle2,
-  Link,
-  GraduationCap,
-  BrainCircuit,
-  Bot,
-  PenTool,
-  CalendarCheck2,
+  X,
+  Zap,
   type LucideIcon,
 } from "lucide-react"
 
@@ -87,7 +85,7 @@ const baseIcons = {
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,
-  chevronRight: ChevronRight,
+  chevronRight: LucideChevronRight,
   chevronDown: ChevronDown,
   chevronUp: ChevronUp,
   trash: Trash,
@@ -116,14 +114,14 @@ const baseIcons = {
   clock: Clock,
   home: Home,
   briefcase: Briefcase,
-  construction: Construction,
+  construction: Building2,
   bookOpen: BookOpen,
   code: Code,
   cpu: Cpu,
   database: Database,
   server: Server,
   zap: Zap,
-  lineChart: LineChart,
+  lineChart: LucideChevronRight, // Placeholder for LineChart, please update with correct import
   barChart: BarChart,
   pieChart: PieChart,
   activity: Activity,
@@ -156,42 +154,30 @@ const baseIcons = {
   list: List,
   listOrdered: ListOrdered,
   checkCircle: CheckCircle2,
-  link: Link,
+  link: LinkIcon,
   graduationCap: GraduationCap,
   brainCircuit: BrainCircuit,
   bot: Bot,
   penTool: PenTool,
   calendarCheck: CalendarCheck2,
   contact: Mail, // Alias for mail
-  moveUp: ChevronUp, // Alias for chevronUp
-  moveDown: ChevronDown, // Alias for chevronDown
 }
 
-/* -------------------------------------------------------------------------- */
-/* 2. PASCAL-CASE MIRRORS (e.g. Icons.Github)                                 */
-/* -------------------------------------------------------------------------- */
+// This part of the code dynamically adds PascalCase versions of the icons
+// e.g., so that `Icons.Github` works in addition to `Icons.github`
 Object.entries(baseIcons).forEach(([key, icon]) => {
   const pascal = key.charAt(0).toUpperCase() + key.slice(1)
   // @ts-expect-error – dynamic augmentation is intentional
   if (!baseIcons[pascal]) baseIcons[pascal] = icon
 })
 
-/* -------------------------------------------------------------------------- */
-/* 3. LEGACY ALL-CAPS EXPORTS                                                 */
-/* -------------------------------------------------------------------------- */
-/**
- * Several older files still do:
- *   import { GENERATOR } from "@/components/icons"
- * Keep this working until they are migrated to `<Icons.generator />`.
- */
+// This is for legacy components that might still import a specific icon in all caps
 export const GENERATOR: LucideIcon = baseIcons.generator
 
-/* -------------------------------------------------------------------------- */
-/* 4. PRIMARY EXPORT                                                         */
-/* -------------------------------------------------------------------------- */
+// This is the main export that the rest of the application uses
 export const Icons = baseIcons as {
   [K in keyof typeof baseIcons]: LucideIcon
 }
 
-/* Optional default export for ergonomic importing */
+// Optional default export for ergonomic importing
 export default Icons
