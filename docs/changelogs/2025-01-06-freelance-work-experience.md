@@ -44,9 +44,9 @@ Added a new Freelance/Contract Software Engineering work experience between Prin
 ## Technical Implementation
 
 1. **Timeline Expansion Logic**:
-   ```typescript
+   \`\`\`typescript
    defaultExpandedOverrides?: Record<number, boolean>
-   ```
+   \`\`\`
    - Allows specific items to override default expansion behavior
    - Homepage: Freelance item (index 1) defaults to collapsed
    - Work page: All items default to expanded (no override needed)

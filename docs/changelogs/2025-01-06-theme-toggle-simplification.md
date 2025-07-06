@@ -29,11 +29,11 @@ Simplified the theme toggle button in the header to directly switch between dark
 
 ## Technical Implementation
 
-```typescript
+\`\`\`typescript
 const toggleTheme = () => {
   setTheme(theme === "dark" ? "light" : "dark")
 }
-```
+\`\`\`
 
 - Direct toggle between two states only
 - No system theme detection or fallback

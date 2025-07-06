@@ -26,7 +26,7 @@ Fixed all ESLint linting errors to ensure code quality standards and improve mai
   - Added function signatures for formatters
   - Removed explicit `any` type annotations from map functions
 - **Types Added**:
-  ```typescript
+  \`\`\`typescript
   payload?: Array<{
     value?: number | string
     name?: string
@@ -36,7 +36,7 @@ Fixed all ESLint linting errors to ensure code quality standards and improve mai
   }>
   labelFormatter?: (value: string | number) => string
   formatter?: (value: number | string, name: string) => string | React.ReactNode
-  ```
+  \`\`\`
 
 ## Technical Details
 
