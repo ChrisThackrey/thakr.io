@@ -4,23 +4,26 @@ import BlogImage from "@/components/blog-image"
 
 export default function DeepSeekAIBlogContent() {
   return (
-    <div className="blog-content with-drop-cap">
+    <article className="prose mx-auto py-8">
       <h1>DeepSeek AI: Innovation, Geopolitics, and the Future of Model-Agnostic Development</h1>
 
       <p>
-        The AI landscape is experiencing another seismic shift with the release of DeepSeek, a powerful
-        Chinese-developed large language model that's generating buzz—and concern—throughout the tech world. Recently, I
-        had the opportunity to analyze an in-depth podcast discussion among AI engineers who shared insights about
-        DeepSeek's capabilities, potential risks, and broader implications for developers working with generative AI
-        systems.
+        DeepSeek AI has recently taken the open-source community by storm with its model-agnostic approach to training
+        and deployment. In this post, we explore the technological innovations, the geopolitical context, and what it
+        means for the next generation of AI tools.
       </p>
 
       <BlogImage
         src="/images/blog/deepseek-ai-model.png"
         alt="DeepSeek AI model architecture diagram"
-        caption="DeepSeek's MoE (Mixture-of-Experts) architecture activates only necessary sub-networks for specific tasks"
-        className="my-10"
+        width={1200}
+        height={630}
       />
+
+      <p>
+        From China’s rising open-source movement to the global demand for transparent research, DeepSeek AI represents a
+        pivotal moment in the AI landscape…
+      </p>
 
       <h2>What Is DeepSeek and Why Does It Matter?</h2>
       <p>
@@ -79,8 +82,8 @@ export default function DeepSeekAIBlogContent() {
       <BlogImage
         src="/images/blog/geopolitical-ai-chess.png"
         alt="AI geopolitical chess between US and China"
-        caption="The AI landscape has become a geopolitical chessboard, with export controls and technological competition"
-        className="my-10"
+        width={1200}
+        height={630}
       />
 
       <p>
@@ -208,6 +211,6 @@ export default function DeepSeekAIBlogContent() {
         <li>Model distillation training ethics and legal implications research</li>
         <li>Model-agnostic development best practices</li>
       </ol>
-    </div>
+    </article>
   )
 }
