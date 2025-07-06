@@ -10,6 +10,7 @@ import {
   BookOpen,
   BrainCircuit,
   Briefcase,
+  Building2,
   Calendar,
   CalendarCheck2,
   Check,
@@ -67,33 +68,28 @@ import {
   Tag,
   Trash,
   Twitter,
+  Type,
   Users,
   Wand2,
   Zap,
   ZoomIn,
   ZoomOut,
   GraduationCap,
-  BuildingIcon as Architecture,
-  User,
 } from "lucide-react"
 
-/* -------------------------------------------------------------------------- */
-/* 1. Fallback / branding icon                                                */
-/* -------------------------------------------------------------------------- */
+/* ---------- 1.  Fallback / branding icon --------------------------------- */
 const Logo: FC<SVGProps<SVGSVGElement>> = (props) => (
-  <Architecture {...props} className={`h-6 w-6 ${props.className ?? ""}`} />
+  <Building2 {...props} className={`h-6 w-6 ${props.className ?? ""}`} />
 )
 
-/* -------------------------------------------------------------------------- */
-/* 2. Master dictionary                                                       */
-/* -------------------------------------------------------------------------- */
+/* ---------- 2.  Master dictionary of icons ------------------------------- */
 const ICON_MAP = {
   /* Navigation & sections */
   home: Home,
-  user: User,
+  user: Users,
   briefcase: Briefcase,
   code: Code,
-  architecture: Architecture,
+  architecture: Building2,
   fileText: FileText,
   bookOpen: BookOpen,
   palette: Palette,
@@ -172,6 +168,7 @@ const ICON_MAP = {
   image: ImageIcon,
   users: Users,
   pizza: Pizza,
+  type: Type,
 
   /* Résumé / timeline */
   graduationCap: GraduationCap,
@@ -182,9 +179,7 @@ const ICON_MAP = {
   sparkles: Sparkles,
 } as const
 
-/* -------------------------------------------------------------------------- */
-/* 3. Typed Proxy that never returns undefined                                */
-/* -------------------------------------------------------------------------- */
+/* ---------- 3.  Safe, typed proxy ---------------------------------------- */
 export type IconName = keyof typeof ICON_MAP
 
 export const Icons: Record<IconName, FC<SVGProps<SVGSVGElement>>> = new Proxy(
@@ -199,5 +194,5 @@ export const Icons: Record<IconName, FC<SVGProps<SVGSVGElement>>> = new Proxy(
   },
 ) as any
 
-/* named & default export so both import styles work */
+/* Allow both `import { Icons }` and default import styles */
 export default Icons
