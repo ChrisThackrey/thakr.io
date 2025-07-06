@@ -39,7 +39,7 @@ export default async function HomePage() {
               </Link>
             </Button>
           </div>
-          <Timeline items={featuredExperience} />
+          <Timeline items={featuredExperience} defaultExpandedOverrides={{ 1: false }} />
           {/* Updated "View Full Resume" button container */}
           <div className="mt-12 text-center">
             <Button asChild size="lg">

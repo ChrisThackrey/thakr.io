@@ -8,6 +8,7 @@ export interface Project {
   description: string[] // bullet-point list
   skills: string[]
   link?: string
+  ndaNotice?: string // Optional NDA notice
 }
 
 export interface TimelineItemData {
@@ -42,6 +43,29 @@ export const professionalExperience: TimelineItemData[] = [
         ],
         skills: ["TypeScript", "Next.js", "OpenAI API", "Anthropic API", "ThreeJS", "Monte Carlo Algorithm", "Vercel"],
         link: "/projects/rivendell",
+      },
+    ],
+  },
+  {
+    title: "Freelance / Contract Software Engineering",
+    company: "Self-Employed / Various Clients",
+    location: "Various Engagements",
+    date: "2024-2025",
+    description: [
+      "Provided full-stack development services for various clients, focusing on AI integration, web application development, and data solutions.",
+    ],
+    skills: ["Full-Stack Development", "AI Integration", "Project Management", "Client Communication"],
+    projects: [
+      {
+        name: "AI Repository Code Generation Application",
+        description: [
+          "Led the development of a meeting-to-feature codegen application",
+          "Developed enhanced search capabilities on embedded file content in connected data repositories",
+          "Facilitated automation of code changes as new inputs are identified",
+          "Implemented detailed documentation capabilities for repository history"
+        ],
+        skills: ["AI", "Codegen", "Context Engineering", "Vector DB", "Supabase", "OpenAI API", "Anthropic API", "Octokit API", "Github Actions", "React Flow"],
+        ndaNotice: "Subject to NDA. No further details are available.",
       },
       {
         name: "Collegiate Pathways Application",
