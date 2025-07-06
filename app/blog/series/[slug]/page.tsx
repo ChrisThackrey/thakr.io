@@ -1,23 +1,17 @@
-import { PageBackground } from "@/components/page-background"
-import { BlogPostCard } from "@/components/blog-post-card"
 import { getSeriesBySlug, getAllSeries } from "@/lib/blog"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { ArrowLeft, Layers } from "lucide-react"
 import { notFound } from "next/navigation"
-import { SeriesProgress } from "@/components/series-progress"
-import { SeriesToc } from "@/components/series-toc"
+import { BlogPostCard } from "@/components/blog-post-card"
+import { PageHeader } from "@/components/page-header"
+import { slugify } from "@/lib/utils"
 
-// Fix the generateStaticParams function to correctly extract slugs from series data
-export function generateStaticParams() {
-  const seriesArray = getAllSeries()
-  // Make sure we're returning an array of objects with slug properties
-  return seriesArray.map((series) => ({
-    slug: series.slug,
+export async function generateStaticParams() {
+  const series = getAllSeries()
+  return series.map((seriesName) => ({
+    slug: slugify(seriesName),
   }))
 }
 
-export default function SeriesPage({ params }: { params: { slug: string } }) {
+export default async function SeriesPage({ params }: { params: { slug: string } }) {
   const series = getSeriesBySlug(params.slug)
 
   if (!series) {
@@ -25,49 +19,13 @@ export default function SeriesPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <>
-      <PageBackground />
-      <div className="container py-16 md:py-24">
-        <div className="mb-8">
-          <Button variant="ghost" asChild className="mb-4">
-            <Link href="/blog/series">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to All Series
-            </Link>
-          </Button>
-          <div className="flex items-center gap-2 mb-2">
-            <Layers className="h-6 w-6 text-primary" />
-            <h1 className="text-4xl font-bold tracking-tight">{series.name}</h1>
-          </div>
-          <p className="text-lg text-muted-foreground mb-6">
-            {series.description} This series contains {series.posts.length} posts.
-          </p>
-
-          {/* Overall series progress bar */}
-          <div className="max-w-md">
-            <SeriesProgress currentPart={series.posts.length} totalParts={series.posts.length} className="mb-8" />
-          </div>
-
-          {/* Series Table of Contents - expanded by default */}
-          <div className="mb-12">
-            <SeriesToc posts={series.posts} expanded={true} className="max-w-2xl mx-auto" />
-          </div>
-        </div>
-
-        <div className="space-y-8 mt-8">
-          {series.posts.map((post, index) => (
-            <div key={post.slug} className="relative">
-              {index > 0 && <div className="absolute left-4 -top-4 h-8 w-px bg-border" aria-hidden="true" />}
-              <div className="relative">
-                <div className="mb-4 ml-4">
-                  <SeriesProgress currentPart={index + 1} totalParts={series.posts.length} className="max-w-md" />
-                </div>
-                <BlogPostCard post={post} />
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className="container mx-auto px-4 py-12">
+      <PageHeader title={series.name} description={`A series of ${series.posts.length} posts.`} />
+      <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {series.posts.map((post) => (
+          <BlogPostCard key={post.slug} post={post} />
+        ))}
       </div>
-    </>
+    </div>
   )
 }

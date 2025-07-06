@@ -1,126 +1,117 @@
+/* -------------------------------------------------------------------------- */
+/*      CENTRAL ICON MAP – IMPORT NEW LUCIDE ICONS ONLY IN THIS FILE          */
+/* -------------------------------------------------------------------------- */
+
+import type { LucideIcon } from "lucide-react"
 import {
-  type LucideIcon,
   Github,
   Twitter,
   Linkedin,
   Instagram,
   Facebook,
+  Rss,
+  Home,
+  User,
+  Briefcase,
+  Palette,
+  Building2,
+  FileText,
+  Mail,
   Menu,
-  X,
+  Phone,
+  MapPin,
+  Send,
   Sun,
   Moon,
   Laptop,
-  CheckCircle2,
-  MailIcon,
-  User,
-  MessageSquare,
   ArrowRight,
-  BookOpen,
-  Share2,
-  Download,
+  ChevronUp,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   RefreshCw,
-  Printer,
+  Wand2,
+  Construction,
   Settings,
   Plus,
   Trash2,
   Edit,
   GripVertical,
-  ChevronLeft,
-  ChevronRight,
+  Layers,
+  Printer,
+  Share2,
+  Download,
   Search,
   Copy,
-  ExternalLink,
   Calendar,
-  CalendarCheck2,
+  Camera,
+  Play,
+  Pause,
+  Rewind,
+  FastForward,
+  BookOpen,
+  List,
+  ListOrdered,
   Clock,
-  MapPin,
-  FileText,
+  MessageSquare,
+  CheckCircle2,
+  Link,
+  Tag,
+  GraduationCap,
   Code,
-  Palette,
   Server,
   Database,
   Cloud,
   Terminal,
   BrainCircuit,
   Bot,
-  PenTool,
-  Briefcase,
-  GraduationCap,
   Sparkles,
-  Link,
-  Eye,
-  EyeOff,
-  Book,
-  Tag,
-  Tags,
-  Rss,
-  Home,
-  UserCircle,
-  FolderGit2,
-  Building2,
+  PenTool,
   Loader2,
-  Send,
-  Construction,
-  Layers,
-  MoveUp,
-  MoveDown,
-  Phone,
+  X,
+  CalendarCheck2,
 } from "lucide-react"
 
-export type Icon = LucideIcon
-
-const baseIcons: Record<string, LucideIcon> = {
-  // social
-  gitHub: Github,
+/**
+ * 1.  Declare icons with lower-camel-case keys.
+ * 2.  Auto-generate PascalCase aliases (Icons.Github, Icons.Construction, …)
+ *     so casing mix-ups don’t crash the app.
+ * 3.  Provide a legacy ALL-CAPS `GENERATOR` alias for old imports.
+ */
+const baseIcons = {
+  /* social */
+  github: Github,
   twitter: Twitter,
   linkedin: Linkedin,
   instagram: Instagram,
   facebook: Facebook,
-  mail: MailIcon,
-  phone: Phone,
+  rss: Rss,
+  logo: Sparkles, // site-wide logo mark used in Navigation
+  sparkles: Sparkles, // keep the generic name available too
 
-  // ui
-  menu: Menu,
-  close: X,
-  sun: Sun,
-  moon: Moon,
-  laptop: Laptop,
-  checkCircle: CheckCircle2,
-  arrowRight: ArrowRight,
-  chevronLeft: ChevronLeft,
-  chevronRight: ChevronRight,
-  copy: Copy,
-  externalLink: ExternalLink,
-  printer: Printer,
-  calendarCheck: CalendarCheck2,
-  download: Download,
-  share: Share2,
-  settings: Settings,
-  plus: Plus,
-  trash: Trash2,
-  edit: Edit,
-  gripVertical: GripVertical,
-  search: Search,
-  refreshCw: RefreshCw,
-  spinner: Loader2,
-  send: Send,
-  construction: Construction,
-  moveUp: MoveUp,
-  moveDown: MoveDown,
-
-  // navigation & content
+  /* navigation / sections */
   home: Home,
   user: User,
-  contact: MessageSquare,
-  messageSquare: MessageSquare,
   briefcase: Briefcase,
   palette: Palette,
   architecture: Building2,
-  blog: BookOpen,
-  fileText: FileText,
-  calendar: Calendar,
-  clock: Clock,
+  blog: FileText,
+  fileText: FileText, // alias so <Icons.fileText /> is defined
+  contact: Mail,
+  menu: Menu,
+
+  /* contact details */
+  mail: Mail,
+  phone: Phone,
   mapPin: MapPin,
+  send: Send,
+
+  /* theme */
+  sun: Sun,
+  moon: Moon,
+  laptop: Laptop,
+
+  /* technical skills */
   code: Code,
   server: Server,
   database: Database,
@@ -129,26 +120,62 @@ const baseIcons: Record<string, LucideIcon> = {
   brainCircuit: BrainCircuit,
   bot: Bot,
   penTool: PenTool,
-  graduationCap: GraduationCap,
-  sparkles: Sparkles,
-  link: Link,
-  eye: Eye,
-  eyeOff: EyeOff,
-  book: Book,
-  tag: Tag,
-  tags: Tags,
-  rss: Rss,
-  userCircle: UserCircle,
-  folderGit: FolderGit2,
+
+  /* ui & misc */
+  arrowRight: ArrowRight,
+  moveUp: ChevronUp,
+  moveDown: ChevronDown,
+  chevronLeft: ChevronLeft,
+  chevronRight: ChevronRight,
+  refreshCw: RefreshCw,
+  construction: Construction,
+  generator: Wand2,
+  settings: Settings,
+  plus: Plus,
+  trash: Trash2,
+  edit: Edit,
+  gripVertical: GripVertical,
   layers: Layers,
-}
+  printer: Printer,
+  share: Share2,
+  download: Download,
+  search: Search,
+  copy: Copy,
+  calendar: Calendar,
+  calendarCheck: CalendarCheck2,
+  camera: Camera,
+  play: Play,
+  pause: Pause,
+  rewind: Rewind,
+  fastForward: FastForward,
+  bookOpen: BookOpen,
+  list: List,
+  listOrdered: ListOrdered,
+  clock: Clock,
+  messageSquare: MessageSquare,
+  checkCircle: CheckCircle2,
+  link: Link,
+  tag: Tag,
+  graduationCap: GraduationCap,
+  spinner: Loader2,
+  close: X,
+} satisfies Record<string, LucideIcon>
 
-/** Pascal-case aliases (Plus, ExternalLink, …)  */
-const Icons: Record<string, LucideIcon> = { ...baseIcons }
-
-for (const key of Object.keys(baseIcons)) {
+/* --------------------------- PascalCase aliases --------------------------- */
+Object.entries(baseIcons).forEach(([key, value]) => {
   const pascal = key.charAt(0).toUpperCase() + key.slice(1)
-  if (!Icons[pascal]) Icons[pascal] = baseIcons[key]
+  if (!(pascal in baseIcons)) {
+    // @ts-expect-error – augmenting the map at runtime is intentional
+    baseIcons[pascal] = value
+  }
+})
+
+/* ---------------- دستی Legacy ALL-CAPS ------------------------------ */
+export const GENERATOR = baseIcons.generator
+
+/* --------------------------- Primary export ------------------------------ */
+export const Icons = baseIcons as {
+  [K in keyof typeof baseIcons]: LucideIcon
 }
 
-export { Icons }
+export type IconName = keyof typeof Icons

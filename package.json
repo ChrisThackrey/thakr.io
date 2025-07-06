@@ -31,6 +31,7 @@
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
     "@sveltejs/kit": "latest",
+    "@tailwindcss/typography": "latest",
     "@upstash/ratelimit": "latest",
     "@upstash/redis": "latest",
     "@vercel/analytics": "latest",

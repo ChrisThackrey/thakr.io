@@ -1,69 +1,100 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
 import { ColoredTag } from "./colored-tag"
-import { getAllTags, getTagCount } from "@/lib/blog"
-import { useReducedMotion } from "@/hooks/use-reduced-motion"
+import { getAllTags } from "@/lib/blog"
+import { SectionTitle } from "./section-title"
 
 interface TagCloudProps {
-  className?: string
-  maxTags?: number
+  onTagClick?: (tag: string) => void
+  selectedTag?: string
+  limit?: number
+  showCount?: boolean
+  title?: string
 }
 
-export function TagCloud({ className = "", maxTags = 9 }: TagCloudProps) {
-  const [mounted, setMounted] = useState(false)
-  const prefersReducedMotion = useReducedMotion()
-
-  // Get tags data once when component mounts
+export function TagCloud({ onTagClick, selectedTag, limit, showCount = false, title = "Explore Tags" }: TagCloudProps) {
   const [tags, setTags] = useState<string[]>([])
+  const [tagCounts, setTagCounts] = useState<Record<string, number>>({})
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Get all tags and their counts
-    const allTags = getAllTags()
-    const tagCounts = getTagCount()
+    const fetchTags = async () => {
+      setIsLoading(true)
+      try {
+        // Get all unique tags
+        const allTags = getAllTags()
 
-    // Sort tags by count (descending)
-    const sortedTags = [...allTags].sort((a, b) => tagCounts[b] - tagCounts[a])
+        // Count occurrences of each tag
+        const counts: Record<string, number> = {}
+        allTags.forEach((tag) => {
+          counts[tag] = (counts[tag] || 0) + 1
+        })
 
-    // Limit to maxTags
-    setTags(sortedTags.slice(0, maxTags))
-    setMounted(true)
-  }, [maxTags])
+        // Sort tags by count (descending)
+        const sortedTags = [...new Set(allTags)].sort((a, b) => (counts[b] || 0) - (counts[a] || 0))
 
-  if (!mounted) {
+        // Apply limit if specified
+        const limitedTags = limit ? sortedTags.slice(0, limit) : sortedTags
+
+        setTags(limitedTags)
+        setTagCounts(counts)
+      } catch (error) {
+        console.error("Error fetching tags:", error)
+        setTags([])
+        setTagCounts({})
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchTags()
+  }, [limit])
+
+  if (isLoading) {
     return (
-      <div className={`w-full ${className}`}>
-        <div className="flex items-center justify-center h-full">
-          <p className="text-muted-foreground">Loading topics...</p>
+      <div className="rounded-lg border bg-card p-6 text-card-foreground">
+        <SectionTitle as="h3" className="mb-4 text-xl">
+          {title}
+        </SectionTitle>
+        <div className="flex flex-wrap gap-2">
+          {Array.from({ length: 10 }).map((_, i) => (
+            <div
+              key={i}
+              className="h-8 w-16 rounded-full bg-gray-200 dark:bg-gray-700 animate-pulse"
+              aria-hidden="true"
+            />
+          ))}
         </div>
       </div>
     )
   }
 
+  if (tags.length === 0) {
+    return (
+      <div className="rounded-lg border bg-card p-6 text-card-foreground">
+        <SectionTitle as="h3" className="mb-4 text-xl">
+          {title}
+        </SectionTitle>
+        <p className="text-gray-500 dark:text-gray-400">No tags found.</p>
+      </div>
+    )
+  }
+
   return (
-    <div className={`w-full h-full flex items-center justify-center ${className}`}>
-      <div className="grid grid-cols-3 gap-4 w-full max-w-md">
-        {tags.map((tag, index) => (
-          <motion.div
-            key={tag}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.4,
-              delay: index * 0.1,
-              ease: "easeOut",
-            }}
-            className="flex justify-center overflow-hidden"
-          >
-            <ColoredTag
-              tag={tag}
-              href={`/blog/categories/${encodeURIComponent(tag)}`}
-              className="whitespace-nowrap text-sm max-w-full"
-            />
-          </motion.div>
+    <div className="rounded-lg border bg-card p-6 text-card-foreground">
+      <SectionTitle as="h3" className="mb-4 text-xl">
+        {title}
+      </SectionTitle>
+      <div className="flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <div key={tag} onClick={() => onTagClick && onTagClick(tag)} className="cursor-pointer">
+            <ColoredTag tag={showCount ? `${tag} (${tagCounts[tag] || 0})` : tag} highlightTag={selectedTag === tag} />
+          </div>
         ))}
       </div>
     </div>
   )
 }
+
+export default TagCloud

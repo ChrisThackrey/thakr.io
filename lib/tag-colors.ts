@@ -21,21 +21,37 @@ export const tagColors: TagColorMap = {
   // AI and ML related
   AI: {
     light: {
-      background: "bg-purple-50",
-      border: "border-purple-200",
-      text: "text-purple-800",
-      hoverBackground: "hover:bg-purple-100",
-      hoverBorder: "hover:border-purple-300",
+      background: "bg-violet-50",
+      border: "border-violet-200",
+      text: "text-violet-800",
+      hoverBackground: "hover:bg-violet-100",
+      hoverBorder: "hover:border-violet-300",
     },
     dark: {
-      background: "dark:bg-purple-900/20",
-      border: "dark:border-purple-700/50",
-      text: "dark:text-purple-300",
-      hoverBackground: "dark:hover:bg-purple-800/30",
-      hoverBorder: "dark:hover:border-purple-600",
+      background: "dark:bg-violet-900",
+      border: "dark:border-violet-700",
+      text: "dark:text-violet-300",
+      hoverBackground: "dark:hover:bg-violet-800",
+      hoverBorder: "dark:hover:border-violet-600",
     },
   },
-  "Deep Sea": {
+  "Machine Learning": {
+    light: {
+      background: "bg-fuchsia-50",
+      border: "border-fuchsia-200",
+      text: "text-fuchsia-800",
+      hoverBackground: "hover:bg-fuchsia-100",
+      hoverBorder: "hover:border-fuchsia-300",
+    },
+    dark: {
+      background: "dark:bg-fuchsia-900",
+      border: "dark:border-fuchsia-700",
+      text: "dark:text-fuchsia-300",
+      hoverBackground: "dark:hover:bg-fuchsia-800",
+      hoverBorder: "dark:hover:border-fuchsia-600",
+    },
+  },
+  LLMs: {
     light: {
       background: "bg-indigo-50",
       border: "border-indigo-200",
@@ -44,61 +60,93 @@ export const tagColors: TagColorMap = {
       hoverBorder: "hover:border-indigo-300",
     },
     dark: {
-      background: "dark:bg-indigo-900/20",
-      border: "dark:border-indigo-700/50",
+      background: "dark:bg-indigo-900",
+      border: "dark:border-indigo-700",
       text: "dark:text-indigo-300",
-      hoverBackground: "dark:hover:bg-indigo-800/30",
+      hoverBackground: "dark:hover:bg-indigo-800",
       hoverBorder: "dark:hover:border-indigo-600",
     },
   },
-  "Model Agnostic": {
+  GPT: {
     light: {
-      background: "bg-violet-50",
-      border: "border-violet-200",
-      text: "text-violet-800",
-      hoverBackground: "hover:bg-violet-100",
-      hoverBorder: "hover:border-violet-300",
+      background: "bg-emerald-50",
+      border: "border-emerald-200",
+      text: "text-emerald-800",
+      hoverBackground: "hover:bg-emerald-100",
+      hoverBorder: "hover:border-emerald-300",
     },
     dark: {
-      background: "dark:bg-violet-900/20",
-      border: "dark:border-violet-700/50",
-      text: "dark:text-violet-300",
-      hoverBackground: "dark:hover:bg-violet-800/30",
-      hoverBorder: "dark:hover:border-violet-600",
+      background: "dark:bg-emerald-900",
+      border: "dark:border-emerald-700",
+      text: "dark:text-emerald-300",
+      hoverBackground: "dark:hover:bg-emerald-800",
+      hoverBorder: "dark:hover:border-emerald-600",
+    },
+  },
+  RAG: {
+    light: {
+      background: "bg-amber-50",
+      border: "border-amber-200",
+      text: "text-amber-800",
+      hoverBackground: "hover:bg-amber-100",
+      hoverBorder: "hover:border-amber-300",
+    },
+    dark: {
+      background: "dark:bg-amber-900",
+      border: "dark:border-amber-700",
+      text: "dark:text-amber-300",
+      hoverBackground: "dark:hover:bg-amber-800",
+      hoverBorder: "dark:hover:border-amber-600",
+    },
+  },
+  "Prompt Engineering": {
+    light: {
+      background: "bg-rose-50",
+      border: "border-rose-200",
+      text: "text-rose-800",
+      hoverBackground: "hover:bg-rose-100",
+      hoverBorder: "hover:border-rose-300",
+    },
+    dark: {
+      background: "dark:bg-rose-900",
+      border: "dark:border-rose-700",
+      text: "dark:text-rose-300",
+      hoverBackground: "dark:hover:bg-rose-800",
+      hoverBorder: "dark:hover:border-rose-600",
     },
   },
 
   // Web development related
   "Next.js": {
     light: {
-      background: "bg-sky-50",
-      border: "border-sky-200",
-      text: "text-sky-800",
-      hoverBackground: "hover:bg-sky-100",
-      hoverBorder: "hover:border-sky-300",
+      background: "bg-black",
+      border: "border-white",
+      text: "text-white",
+      hoverBackground: "hover:bg-gray-800",
+      hoverBorder: "hover:border-gray-200",
     },
     dark: {
-      background: "dark:bg-sky-900/20",
-      border: "dark:border-sky-700/50",
-      text: "dark:text-sky-300",
-      hoverBackground: "dark:hover:bg-sky-800/30",
-      hoverBorder: "dark:hover:border-sky-600",
+      background: "dark:bg-gray-800",
+      border: "dark:border-gray-200",
+      text: "dark:text-gray-200",
+      hoverBackground: "dark:hover:bg-gray-700",
+      hoverBorder: "dark:hover:border-gray-600",
     },
   },
   Vercel: {
     light: {
-      background: "bg-blue-50",
-      border: "border-blue-200",
-      text: "text-blue-800",
-      hoverBackground: "hover:bg-blue-100",
-      hoverBorder: "hover:border-blue-300",
+      background: "bg-black",
+      border: "border-white",
+      text: "text-white",
+      hoverBackground: "hover:bg-gray-800",
+      hoverBorder: "hover:border-gray-200",
     },
     dark: {
-      background: "dark:bg-blue-900/20",
-      border: "dark:border-blue-700/50",
-      text: "dark:text-blue-300",
-      hoverBackground: "dark:hover:bg-blue-800/30",
-      hoverBorder: "dark:hover:border-blue-600",
+      background: "dark:bg-gray-800",
+      border: "dark:border-gray-200",
+      text: "dark:text-gray-200",
+      hoverBackground: "dark:hover:bg-gray-700",
+      hoverBorder: "dark:hover:border-gray-600",
     },
   },
   "Web Development": {
@@ -110,11 +158,347 @@ export const tagColors: TagColorMap = {
       hoverBorder: "hover:border-cyan-300",
     },
     dark: {
-      background: "dark:bg-cyan-900/20",
-      border: "dark:border-cyan-700/50",
+      background: "dark:bg-cyan-900",
+      border: "dark:border-cyan-700",
       text: "dark:text-cyan-300",
-      hoverBackground: "dark:hover:bg-cyan-800/30",
+      hoverBackground: "dark:hover:bg-cyan-800",
       hoverBorder: "dark:hover:border-cyan-600",
+    },
+  },
+  React: {
+    light: {
+      background: "bg-blue-100",
+      border: "border-blue-800",
+      text: "text-blue-800",
+      hoverBackground: "hover:bg-blue-200",
+      hoverBorder: "hover:border-blue-900",
+    },
+    dark: {
+      background: "dark:bg-blue-900",
+      border: "dark:border-blue-300",
+      text: "dark:text-blue-300",
+      hoverBackground: "dark:hover:bg-blue-800",
+      hoverBorder: "dark:hover:border-blue-700",
+    },
+  },
+  TypeScript: {
+    light: {
+      background: "bg-blue-100",
+      border: "border-blue-800",
+      text: "text-blue-800",
+      hoverBackground: "hover:bg-blue-200",
+      hoverBorder: "hover:border-blue-900",
+    },
+    dark: {
+      background: "dark:bg-blue-900",
+      border: "dark:border-blue-300",
+      text: "dark:text-blue-300",
+      hoverBackground: "dark:hover:bg-blue-800",
+      hoverBorder: "dark:hover:border-blue-700",
+    },
+  },
+  JavaScript: {
+    light: {
+      background: "bg-yellow-100",
+      border: "border-yellow-800",
+      text: "text-yellow-800",
+      hoverBackground: "hover:bg-yellow-200",
+      hoverBorder: "hover:border-yellow-900",
+    },
+    dark: {
+      background: "dark:bg-yellow-900",
+      border: "dark:border-yellow-300",
+      text: "dark:text-yellow-300",
+      hoverBackground: "dark:hover:bg-yellow-800",
+      hoverBorder: "dark:hover:border-yellow-700",
+    },
+  },
+  "Node.js": {
+    light: {
+      background: "bg-green-100",
+      border: "border-green-800",
+      text: "text-green-800",
+      hoverBackground: "hover:bg-green-200",
+      hoverBorder: "hover:border-green-900",
+    },
+    dark: {
+      background: "dark:bg-green-900",
+      border: "dark:border-green-300",
+      text: "dark:text-green-300",
+      hoverBackground: "dark:hover:bg-green-800",
+      hoverBorder: "dark:hover:border-green-700",
+    },
+  },
+  GraphQL: {
+    light: {
+      background: "bg-pink-100",
+      border: "border-pink-800",
+      text: "text-pink-800",
+      hoverBackground: "hover:bg-pink-200",
+      hoverBorder: "hover:border-pink-900",
+    },
+    dark: {
+      background: "dark:bg-pink-900",
+      border: "dark:border-pink-300",
+      text: "dark:text-pink-300",
+      hoverBackground: "dark:hover:bg-pink-800",
+      hoverBorder: "dark:hover:border-pink-700",
+    },
+  },
+  MongoDB: {
+    light: {
+      background: "bg-green-100",
+      border: "border-green-800",
+      text: "text-green-800",
+      hoverBackground: "hover:bg-green-200",
+      hoverBorder: "hover:border-green-900",
+    },
+    dark: {
+      background: "dark:bg-green-900",
+      border: "dark:border-green-300",
+      text: "dark:text-green-300",
+      hoverBackground: "dark:hover:bg-green-800",
+      hoverBorder: "dark:hover:border-green-700",
+    },
+  },
+  SQL: {
+    light: {
+      background: "bg-blue-100",
+      border: "border-blue-800",
+      text: "text-blue-800",
+      hoverBackground: "hover:bg-blue-200",
+      hoverBorder: "hover:border-blue-900",
+    },
+    dark: {
+      background: "dark:bg-blue-900",
+      border: "dark:border-blue-300",
+      text: "dark:text-blue-300",
+      hoverBackground: "dark:hover:bg-blue-800",
+      hoverBorder: "dark:hover:border-blue-700",
+    },
+  },
+  Prisma: {
+    light: {
+      background: "bg-indigo-100",
+      border: "border-indigo-800",
+      text: "text-indigo-800",
+      hoverBackground: "hover:bg-indigo-200",
+      hoverBorder: "hover:border-indigo-900",
+    },
+    dark: {
+      background: "dark:bg-indigo-900",
+      border: "dark:border-indigo-300",
+      text: "dark:text-indigo-300",
+      hoverBackground: "dark:hover:bg-indigo-800",
+      hoverBorder: "dark:hover:border-indigo-700",
+    },
+  },
+  Supabase: {
+    light: {
+      background: "bg-emerald-100",
+      border: "border-emerald-800",
+      text: "text-emerald-800",
+      hoverBackground: "hover:bg-emerald-200",
+      hoverBorder: "hover:border-emerald-900",
+    },
+    dark: {
+      background: "dark:bg-emerald-900",
+      border: "dark:border-emerald-300",
+      text: "dark:text-emerald-300",
+      hoverBackground: "dark:hover:bg-emerald-800",
+      hoverBorder: "dark:hover:border-emerald-700",
+    },
+  },
+  Firebase: {
+    light: {
+      background: "bg-amber-100",
+      border: "border-amber-800",
+      text: "text-amber-800",
+      hoverBackground: "hover:bg-amber-200",
+      hoverBorder: "hover:border-amber-900",
+    },
+    dark: {
+      background: "dark:bg-amber-900",
+      border: "dark:border-amber-300",
+      text: "dark:text-amber-300",
+      hoverBackground: "dark:hover:bg-amber-800",
+      hoverBorder: "dark:hover:border-amber-700",
+    },
+  },
+  Redis: {
+    light: {
+      background: "bg-red-100",
+      border: "border-red-800",
+      text: "text-red-800",
+      hoverBackground: "hover:bg-red-200",
+      hoverBorder: "hover:border-red-900",
+    },
+    dark: {
+      background: "dark:bg-red-900",
+      border: "dark:border-red-300",
+      text: "dark:text-red-300",
+      hoverBackground: "dark:hover:bg-red-800",
+      hoverBorder: "dark:hover:border-red-700",
+    },
+  },
+  Python: {
+    light: {
+      background: "bg-blue-100",
+      border: "border-blue-800",
+      text: "text-blue-800",
+      hoverBackground: "hover:bg-blue-200",
+      hoverBorder: "hover:border-blue-900",
+    },
+    dark: {
+      background: "dark:bg-blue-900",
+      border: "dark:border-blue-300",
+      text: "dark:text-blue-300",
+      hoverBackground: "dark:hover:bg-blue-800",
+      hoverBorder: "dark:hover:border-blue-700",
+    },
+  },
+  TailwindCSS: {
+    light: {
+      background: "bg-cyan-100",
+      border: "border-cyan-800",
+      text: "text-cyan-800",
+      hoverBackground: "hover:bg-cyan-200",
+      hoverBorder: "hover:border-cyan-900",
+    },
+    dark: {
+      background: "dark:bg-cyan-900",
+      border: "dark:border-cyan-300",
+      text: "dark:text-cyan-300",
+      hoverBackground: "dark:hover:bg-cyan-800",
+      hoverBorder: "dark:hover:border-cyan-700",
+    },
+  },
+  ChakraUI: {
+    light: {
+      background: "bg-teal-100",
+      border: "border-teal-800",
+      text: "text-teal-800",
+      hoverBackground: "hover:bg-teal-200",
+      hoverBorder: "hover:border-teal-900",
+    },
+    dark: {
+      background: "dark:bg-teal-900",
+      border: "dark:border-teal-300",
+      text: "dark:text-teal-300",
+      hoverBackground: "dark:hover:bg-teal-800",
+      hoverBorder: "dark:hover:border-teal-700",
+    },
+  },
+  "Shadcn/ui": {
+    light: {
+      background: "bg-gray-100",
+      border: "border-gray-800",
+      text: "text-gray-800",
+      hoverBackground: "hover:bg-gray-200",
+      hoverBorder: "hover:border-gray-900",
+    },
+    dark: {
+      background: "dark:bg-gray-900",
+      border: "dark:border-gray-300",
+      text: "dark:text-gray-300",
+      hoverBackground: "dark:hover:bg-gray-800",
+      hoverBorder: "dark:hover:border-gray-700",
+    },
+  },
+  v0: {
+    light: {
+      background: "bg-purple-100",
+      border: "border-purple-800",
+      text: "text-purple-800",
+      hoverBackground: "hover:bg-purple-200",
+      hoverBorder: "hover:border-purple-900",
+    },
+    dark: {
+      background: "dark:bg-purple-900",
+      border: "dark:border-purple-300",
+      text: "dark:text-purple-300",
+      hoverBackground: "dark:hover:bg-purple-800",
+      hoverBorder: "dark:hover:border-purple-700",
+    },
+  },
+  D3: {
+    light: {
+      background: "bg-orange-100",
+      border: "border-orange-800",
+      text: "text-orange-800",
+      hoverBackground: "hover:bg-orange-200",
+      hoverBorder: "hover:border-orange-900",
+    },
+    dark: {
+      background: "dark:bg-orange-900",
+      border: "dark:border-orange-300",
+      text: "dark:text-orange-300",
+      hoverBackground: "dark:hover:bg-orange-800",
+      hoverBorder: "dark:hover:border-orange-700",
+    },
+  },
+  Astro: {
+    light: {
+      background: "bg-orange-100",
+      border: "border-orange-800",
+      text: "text-orange-800",
+      hoverBackground: "hover:bg-orange-200",
+      hoverBorder: "hover:border-orange-900",
+    },
+    dark: {
+      background: "dark:bg-orange-900",
+      border: "dark:border-orange-300",
+      text: "dark:text-orange-300",
+      hoverBackground: "dark:hover:bg-orange-800",
+      hoverBorder: "dark:hover:border-orange-700",
+    },
+  },
+  Svelte: {
+    light: {
+      background: "bg-red-100",
+      border: "border-red-800",
+      text: "text-red-800",
+      hoverBackground: "hover:bg-red-200",
+      hoverBorder: "hover:border-red-900",
+    },
+    dark: {
+      background: "dark:bg-red-900",
+      border: "dark:border-red-300",
+      text: "dark:text-red-300",
+      hoverBackground: "dark:hover:bg-red-800",
+      hoverBorder: "dark:hover:border-red-700",
+    },
+  },
+  Redux: {
+    light: {
+      background: "bg-purple-100",
+      border: "border-purple-800",
+      text: "text-purple-800",
+      hoverBackground: "hover:bg-purple-200",
+      hoverBorder: "hover:border-purple-900",
+    },
+    dark: {
+      background: "dark:bg-purple-900",
+      border: "dark:border-purple-300",
+      text: "dark:text-purple-300",
+      hoverBackground: "dark:hover:bg-purple-800",
+      hoverBorder: "dark:hover:border-purple-700",
+    },
+  },
+  DeepSeek: {
+    light: {
+      background: "bg-indigo-100",
+      border: "border-indigo-800",
+      text: "text-indigo-800",
+      hoverBackground: "hover:bg-indigo-200",
+      hoverBorder: "hover:border-indigo-900",
+    },
+    dark: {
+      background: "dark:bg-indigo-900",
+      border: "dark:border-indigo-300",
+      text: "dark:text-indigo-300",
+      hoverBackground: "dark:hover:bg-indigo-800",
+      hoverBorder: "dark:hover:border-indigo-700",
     },
   },
 
@@ -128,10 +512,10 @@ export const tagColors: TagColorMap = {
       hoverBorder: "hover:border-amber-300",
     },
     dark: {
-      background: "dark:bg-amber-900/20",
-      border: "dark:border-amber-700/50",
+      background: "dark:bg-amber-900",
+      border: "dark:border-amber-700",
       text: "dark:text-amber-300",
-      hoverBackground: "dark:hover:bg-amber-800/30",
+      hoverBackground: "dark:hover:bg-amber-800",
       hoverBorder: "dark:hover:border-amber-600",
     },
   },
@@ -146,10 +530,10 @@ export const tagColors: TagColorMap = {
       hoverBorder: "hover:border-emerald-300",
     },
     dark: {
-      background: "dark:bg-emerald-900/20",
-      border: "dark:border-emerald-700/50",
+      background: "dark:bg-emerald-900",
+      border: "dark:border-emerald-700",
       text: "dark:text-emerald-300",
-      hoverBackground: "dark:hover:bg-emerald-800/30",
+      hoverBackground: "dark:hover:bg-emerald-800",
       hoverBorder: "dark:hover:border-emerald-600",
     },
   },
@@ -162,52 +546,14 @@ export const tagColors: TagColorMap = {
       hoverBorder: "hover:border-teal-300",
     },
     dark: {
-      background: "dark:bg-teal-900/20",
-      border: "dark:border-teal-700/50",
+      background: "dark:bg-teal-900",
+      border: "dark:border-teal-700",
       text: "dark:text-teal-300",
-      hoverBackground: "dark:hover:bg-teal-800/30",
+      hoverBackground: "dark:hover:bg-teal-800",
       hoverBorder: "dark:hover:border-teal-600",
     },
   },
-
-  // Ethics and standards
-  AIEthics: {
-    light: {
-      background: "bg-rose-50",
-      border: "border-rose-200",
-      text: "text-rose-800",
-      hoverBackground: "hover:bg-rose-100",
-      hoverBorder: "hover:border-rose-300",
-    },
-    dark: {
-      background: "dark:bg-rose-900/20",
-      border: "dark:border-rose-700/50",
-      text: "dark:text-rose-300",
-      hoverBackground: "dark:hover:bg-rose-800/30",
-      hoverBorder: "dark:hover:border-rose-600",
-    },
-  },
-
-  // Trends and industry
-  TechTrends: {
-    light: {
-      background: "bg-fuchsia-50",
-      border: "border-fuchsia-200",
-      text: "text-fuchsia-800",
-      hoverBackground: "hover:bg-fuchsia-100",
-      hoverBorder: "hover:border-fuchsia-300",
-    },
-    dark: {
-      background: "dark:bg-fuchsia-900/20",
-      border: "dark:border-fuchsia-700/50",
-      text: "dark:text-fuchsia-300",
-      hoverBackground: "dark:hover:bg-fuchsia-800/30",
-      hoverBorder: "dark:hover:border-fuchsia-600",
-    },
-  },
-
-  // Personal and career
-  Career: {
+  Programming: {
     light: {
       background: "bg-orange-50",
       border: "border-orange-200",
@@ -216,27 +562,203 @@ export const tagColors: TagColorMap = {
       hoverBorder: "hover:border-orange-300",
     },
     dark: {
-      background: "dark:bg-orange-900/20",
-      border: "dark:border-orange-700/50",
+      background: "dark:bg-orange-900",
+      border: "dark:border-orange-700",
       text: "dark:text-orange-300",
-      hoverBackground: "dark:hover:bg-orange-800/30",
+      hoverBackground: "dark:hover:bg-orange-800",
       hoverBorder: "dark:hover:border-orange-600",
     },
   },
-  Personal: {
+  Research: {
     light: {
-      background: "bg-pink-50",
-      border: "border-pink-200",
-      text: "text-pink-800",
-      hoverBackground: "hover:bg-pink-100",
-      hoverBorder: "hover:border-pink-300",
+      background: "bg-red-50",
+      border: "border-red-200",
+      text: "text-red-800",
+      hoverBackground: "hover:bg-red-100",
+      hoverBorder: "hover:border-red-300",
     },
     dark: {
-      background: "dark:bg-pink-900/20",
-      border: "dark:border-pink-700/50",
-      text: "dark:text-pink-300",
-      hoverBackground: "dark:hover:bg-pink-800/30",
-      hoverBorder: "dark:hover:border-pink-600",
+      background: "dark:bg-red-900",
+      border: "dark:border-red-700",
+      text: "dark:text-red-300",
+      hoverBackground: "dark:hover:bg-red-800",
+      hoverBorder: "dark:hover:border-red-600",
+    },
+  },
+  Tutorial: {
+    light: {
+      background: "bg-green-50",
+      border: "border-green-200",
+      text: "text-green-800",
+      hoverBackground: "hover:bg-green-100",
+      hoverBorder: "hover:border-green-300",
+    },
+    dark: {
+      background: "dark:bg-green-900",
+      border: "dark:border-green-700",
+      text: "dark:text-green-300",
+      hoverBackground: "dark:hover:bg-green-800",
+      hoverBorder: "dark:hover:border-green-600",
+    },
+  },
+  Business: {
+    light: {
+      background: "bg-blue-50",
+      border: "border-blue-200",
+      text: "text-blue-800",
+      hoverBackground: "hover:bg-blue-100",
+      hoverBorder: "hover:border-blue-300",
+    },
+    dark: {
+      background: "dark:bg-blue-900",
+      border: "dark:border-blue-700",
+      text: "dark:text-blue-300",
+      hoverBackground: "dark:hover:bg-blue-800",
+      hoverBorder: "dark:hover:border-blue-600",
+    },
+  },
+  News: {
+    light: {
+      background: "bg-red-50",
+      border: "border-red-200",
+      text: "text-red-800",
+      hoverBackground: "hover:bg-red-100",
+      hoverBorder: "hover:border-red-300",
+    },
+    dark: {
+      background: "dark:bg-red-900",
+      border: "dark:border-red-700",
+      text: "dark:text-red-300",
+      hoverBackground: "dark:hover:bg-red-800",
+      hoverBorder: "dark:hover:border-red-600",
+    },
+  },
+  "Case Study": {
+    light: {
+      background: "bg-purple-50",
+      border: "border-purple-200",
+      text: "text-purple-800",
+      hoverBackground: "hover:bg-purple-100",
+      hoverBorder: "hover:border-purple-300",
+    },
+    dark: {
+      background: "dark:bg-purple-900",
+      border: "dark:border-purple-700",
+      text: "dark:text-purple-300",
+      hoverBackground: "dark:hover:bg-purple-800",
+      hoverBorder: "dark:hover:border-purple-600",
+    },
+  },
+  Technology: {
+    light: {
+      background: "bg-cyan-50",
+      border: "border-cyan-200",
+      text: "text-cyan-800",
+      hoverBackground: "hover:bg-cyan-100",
+      hoverBorder: "hover:border-cyan-300",
+    },
+    dark: {
+      background: "dark:bg-cyan-900",
+      border: "dark:border-cyan-700",
+      text: "dark:text-cyan-300",
+      hoverBackground: "dark:hover:bg-cyan-800",
+      hoverBorder: "dark:hover:border-cyan-600",
+    },
+  },
+  "Market Research": {
+    light: {
+      background: "bg-blue-50",
+      border: "border-blue-200",
+      text: "text-blue-800",
+      hoverBackground: "hover:bg-blue-100",
+      hoverBorder: "hover:border-blue-300",
+    },
+    dark: {
+      background: "dark:bg-blue-900",
+      border: "dark:border-blue-700",
+      text: "dark:text-blue-300",
+      hoverBackground: "dark:hover:bg-blue-800",
+      hoverBorder: "dark:hover:border-blue-600",
+    },
+  },
+  "Personal Computing": {
+    light: {
+      background: "bg-cyan-50",
+      border: "border-cyan-200",
+      text: "text-cyan-800",
+      hoverBackground: "hover:bg-cyan-100",
+      hoverBorder: "hover:border-cyan-300",
+    },
+    dark: {
+      background: "dark:bg-cyan-900",
+      border: "dark:border-cyan-700",
+      text: "dark:text-cyan-300",
+      hoverBackground: "dark:hover:bg-cyan-800",
+      hoverBorder: "dark:hover:border-cyan-600",
+    },
+  },
+  Colorado: {
+    light: {
+      background: "bg-amber-50",
+      border: "border-amber-200",
+      text: "text-amber-800",
+      hoverBackground: "hover:bg-amber-100",
+      hoverBorder: "hover:border-amber-300",
+    },
+    dark: {
+      background: "dark:bg-amber-900",
+      border: "dark:border-amber-700",
+      text: "dark:text-amber-300",
+      hoverBackground: "dark:hover:bg-amber-800",
+      hoverBorder: "dark:hover:border-amber-600",
+    },
+  },
+  "Model Agnostic": {
+    light: {
+      background: "bg-violet-50",
+      border: "border-violet-200",
+      text: "text-violet-800",
+      hoverBackground: "hover:bg-violet-100",
+      hoverBorder: "hover:border-violet-300",
+    },
+    dark: {
+      background: "dark:bg-violet-900",
+      border: "dark:border-violet-700",
+      text: "dark:text-violet-300",
+      hoverBackground: "dark:hover:bg-violet-800",
+      hoverBorder: "dark:hover:border-violet-600",
+    },
+  },
+  Development: {
+    light: {
+      background: "bg-green-50",
+      border: "border-green-200",
+      text: "text-green-800",
+      hoverBackground: "hover:bg-green-100",
+      hoverBorder: "hover:border-green-300",
+    },
+    dark: {
+      background: "dark:bg-green-900",
+      border: "dark:border-green-700",
+      text: "dark:text-green-300",
+      hoverBackground: "dark:hover:bg-green-800",
+      hoverBorder: "dark:hover:border-green-600",
+    },
+  },
+  "Causal AI": {
+    light: {
+      background: "bg-purple-50",
+      border: "border-purple-200",
+      text: "text-purple-800",
+      hoverBackground: "hover:bg-purple-100",
+      hoverBorder: "hover:border-purple-300",
+    },
+    dark: {
+      background: "dark:bg-purple-900",
+      border: "dark:border-purple-700",
+      text: "dark:text-purple-300",
+      hoverBackground: "dark:hover:bg-purple-800",
+      hoverBorder: "dark:hover:border-purple-600",
     },
   },
 }
@@ -251,10 +773,10 @@ const defaultColorScheme = {
     hoverBorder: "hover:border-gray-300",
   },
   dark: {
-    background: "dark:bg-gray-800/20",
-    border: "dark:border-gray-700/50",
+    background: "dark:bg-gray-900",
+    border: "dark:border-gray-700",
     text: "dark:text-gray-300",
-    hoverBackground: "dark:hover:bg-gray-700/30",
+    hoverBackground: "dark:hover:bg-gray-800",
     hoverBorder: "dark:hover:border-gray-600",
   },
 }
@@ -282,54 +804,55 @@ export function getTagColors(tag: string) {
 }
 
 /**
- * Get combined color classes for a tag (for both light and dark mode)
+ * Alias for getTagColors for backward compatibility
  * @param tag The tag to get colors for
- * @returns String of combined Tailwind classes
+ * @returns Object with light and dark mode color classes
  */
-export function getTagColorClasses(tag: string): string {
-  // Normalize the tag for comparison
-  const normalizedTag = tag.toLowerCase().trim()
+export function getTagColor(tag: string) {
+  return getTagColors(tag)
+}
 
-  // AI and ML related tags
-  if (["ai", "deep sea", "model agnostic", "machine learning", "llm"].includes(normalizedTag)) {
-    return "bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-900/50"
-  }
+export default tagColors
 
-  // Web development tags
-  if (["next.js", "vercel", "web development", "react", "javascript", "typescript"].includes(normalizedTag)) {
-    return "bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/50"
-  }
+// Map of tag categories to color classes
+const tagColorMap: Record<string, string> = {
+  // Technologies
+  AI: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100",
+  "Machine Learning": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100",
+  LLM: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100",
+  LLMs: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100",
+  RAG: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100",
+  "Next.js": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100",
+  React: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100",
+  TypeScript: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100",
+  JavaScript: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100",
+  Vercel: "bg-black text-white dark:bg-gray-800 dark:text-gray-100",
+  DeepSeek: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100",
 
-  // Business/Strategy tags
-  if (["geopolitics", "business", "strategy"].includes(normalizedTag)) {
-    return "bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/50"
-  }
+  // Categories
+  "Web Development": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100",
+  "Developer Tools": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100",
+  Programming: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100",
+  Research: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100",
+  Tutorial: "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-100",
+  Business: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100",
+  News: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-100",
+  Technology: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-100",
+  "Market Research": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100",
+  "Personal Computing": "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-100",
+  Colorado: "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-100",
+  "Model Agnostic": "bg-violet-100 text-violet-800 dark:bg-violet-900 dark:text-violet-100",
+  Development: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100",
+  "Causal AI": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100",
 
-  // Technical tags
-  if (["open source", "developer tools", "programming", "code", "api"].includes(normalizedTag)) {
-    return "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/50"
-  }
+  // Default
+  default: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-100",
+}
 
-  // Ethics tags
-  if (["ethics", "aiethics", "privacy"].includes(normalizedTag)) {
-    return "bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 hover:bg-rose-100 dark:hover:bg-rose-900/50"
-  }
-
-  // Trends tags
-  if (["trends", "techtrends", "future"].includes(normalizedTag)) {
-    return "bg-fuchsia-50 dark:bg-fuchsia-950/40 border-fuchsia-200 dark:border-fuchsia-800 text-fuchsia-700 dark:text-fuchsia-300 hover:bg-fuchsia-100 dark:hover:bg-fuchsia-900/50"
-  }
-
-  // Personal/Career tags
-  if (["career", "personal"].includes(normalizedTag)) {
-    return "bg-orange-50 dark:bg-orange-950/40 border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-300 hover:bg-orange-100 dark:hover:bg-orange-900/50"
-  }
-
-  // Data visualization tags
-  if (["visualization", "geo-spatial", "uber h3", "d3"].includes(normalizedTag)) {
-    return "bg-cyan-50 dark:bg-cyan-950/40 border-cyan-200 dark:border-cyan-800 text-cyan-700 dark:text-cyan-300 hover:bg-cyan-100 dark:hover:bg-cyan-900/50"
-  }
-
-  // Default color for any other tags
-  return "bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60"
+/**
+ * Get all available tag colors
+ * @returns Record of tag to color classes
+ */
+export function getAllTagColors(): Record<string, string> {
+  return { ...tagColorMap }
 }

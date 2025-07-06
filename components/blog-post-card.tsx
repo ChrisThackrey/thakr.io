@@ -1,105 +1,89 @@
-"use client"
-
-import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { ReadingTime } from "@/components/reading-time"
-import type { BlogPost } from "@/lib/blog"
-import { cn } from "@/lib/utils"
-import { ColoredTag } from "@/components/colored-tag"
-import { EnhancedCard } from "@/components/micro-interactions/enhanced-card"
-import { EnhancedLink } from "@/components/micro-interactions/enhanced-link"
-import { EnhancedIcon } from "@/components/micro-interactions/enhanced-icon"
 import Image from "next/image"
-import { Icons } from "./icons"
+import Link from "next/link"
+import { formatDate } from "../lib/utils"
+import { getTagColors } from "../lib/tag-colors"
+import type { BlogPost } from "../lib/blog"
 
 interface BlogPostCardProps {
   post: BlogPost
-  highlightTag?: string
+  featured?: boolean
 }
 
-export function BlogPostCard({ post, highlightTag }: BlogPostCardProps) {
-  // Ensure we have a valid cover image or use a placeholder
-  const coverImage = post.coverImage || `/placeholder.svg?height=200&width=400&query=${encodeURIComponent(post.title)}`
+/**
+ * BlogPostCard
+ *
+ * NOTE: To avoid the HTML validation/hydration error
+ * “In HTML, &lt;a&gt; cannot be a descendant of &lt;a&gt;”,
+ * the clickable card (outer &lt;Link&gt;) now wraps only the
+ * image, title, meta and excerpt.
+ * The tag pills are rendered **outside** that link so each
+ * remains a valid standalone &lt;Link&gt; element.
+ */
+export function BlogPostCard({ post, featured = false }: BlogPostCardProps) {
+  const { title, date, excerpt, slug, tags, readingTime, image } = post
 
   return (
-    <EnhancedCard className="flex flex-col h-full backdrop-blur-sm bg-background/80 dark:bg-background/80 border-border overflow-hidden">
-      <div className="relative h-48 w-full overflow-hidden">
-        <Image
-          src={coverImage || "/placeholder.svg"}
-          alt={post.title}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-          priority={false}
-        />
-      </div>
-      <CardHeader className="pb-2">
-        {post.series && (
-          <div className="space-y-1.5">
-            <div className="flex items-center gap-1">
-              <EnhancedIcon pulse>
-                <Icons.layers className="h-4 w-4 text-primary" />
-              </EnhancedIcon>
-              <EnhancedLink
-                href={`/blog/series/${post.series.slug}`}
-                className="text-xs text-muted-foreground hover:text-primary transition-colors"
-              >
-                {post.series.name} (Part {post.series.part})
-              </EnhancedLink>
-            </div>
+    <article
+      className={`rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl ${
+        featured
+          ? "bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900"
+          : "bg-white dark:bg-gray-800"
+      }`}
+    >
+      {/* Main clickable area */}
+      <Link href={`/blog/${slug}`} className="block group">
+        <div className="relative h-48 w-full overflow-hidden">
+          <Image
+            src={image || "/placeholder.svg?height=400&width=600&query=blog post"}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={featured}
+          />
 
-            {/* Mini progress indicator */}
-            <div className="flex h-0.5 gap-0.5 w-24">
-              {Array.from({ length: 5 }).map((_, i) => {
-                // If we don't know the total parts, show 5 segments with the current one highlighted
-                const isActive = i < (post.series.part || 0)
-                return (
-                  <div
-                    key={i}
-                    className={cn("h-full flex-1 rounded-full", isActive ? "bg-primary" : "bg-muted")}
-                    aria-hidden="true"
-                  />
-                )
-              })}
+          {featured && (
+            <div className="absolute top-2 right-2 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+              Featured
             </div>
-          </div>
-        )}
-        <CardTitle className="line-clamp-2">{post.title}</CardTitle>
-      </CardHeader>
-      <CardContent className="flex-grow pb-2">
-        <div className="flex flex-wrap gap-2 mb-4">
-          {post.tags &&
-            post.tags
-              .slice(0, 3)
-              .map((tag) => (
-                <ColoredTag
-                  key={tag}
-                  tag={tag}
-                  href={`/blog/categories/${encodeURIComponent(tag)}`}
-                  highlightTag={tag === highlightTag}
-                />
-              ))}
-          {post.tags && post.tags.length > 3 && (
-            <span className="text-xs text-muted-foreground px-2 py-1">+{post.tags.length - 3} more</span>
           )}
         </div>
-        <p className="text-muted-foreground line-clamp-3 text-sm">
-          {post.excerpt || "Read this article to learn more about " + post.title}
-        </p>
-      </CardContent>
-      <CardFooter className="flex justify-between items-center pt-2">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center text-sm text-muted-foreground">
-            <Icons.calendar className="h-3 w-3 mr-1" />
-            <span>{post.date}</span>
+
+        <div className="p-5">
+          <h3
+            className={`font-bold mb-2 line-clamp-2 ${
+              featured ? "text-xl md:text-2xl" : "text-lg"
+            } group-hover:underline`}
+          >
+            {title}
+          </h3>
+
+          <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-3">
+            <span>{formatDate(date)}</span>
+            <span className="mx-2">•</span>
+            <span>{readingTime} min read</span>
           </div>
-          {post.estimatedReadingTime && <ReadingTime minutes={post.estimatedReadingTime} showSpeedIndicator={false} />}
+
+          <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">{excerpt}</p>
         </div>
-        <EnhancedLink href="/blog" className="text-sm font-medium flex items-center group">
-          Read More
-          <EnhancedIcon className="ml-1 inline-block">
-            <Icons.arrowRight className="h-4 w-4" />
-          </EnhancedIcon>
-        </EnhancedLink>
-      </CardFooter>
-    </EnhancedCard>
+      </Link>
+
+      {/* Tag links rendered outside the main link to avoid nesting */}
+      {tags.length > 0 && (
+        <div className="flex flex-wrap gap-2 px-5 pb-5 pt-0">
+          {tags.map((tag) => (
+            <Link
+              href={`/blog/categories/${tag}`}
+              key={tag}
+              className={`text-xs px-2 py-1 rounded-full ${getTagColors(tag)} hover:opacity-80 transition-opacity`}
+            >
+              {tag}
+            </Link>
+          ))}
+        </div>
+      )}
+    </article>
   )
 }
+
+export default BlogPostCard

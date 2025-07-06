@@ -6,17 +6,14 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Github, ExternalLink } from "lucide-react"
 import { motion } from "framer-motion"
+import type { Project } from "@/types/project"
 
 interface ProjectCardProps {
-  title: string
-  description: string
-  tags: string[]
-  demoUrl?: string
-  githubUrl?: string
-  imageUrl?: string
+  project: Project
 }
 
-export function ProjectCard({ title, description, tags, demoUrl, githubUrl, imageUrl }: ProjectCardProps) {
+export function ProjectCard({ project }: ProjectCardProps) {
+  const { title, description, tags, liveUrl, repoUrl, image } = project
   return (
     <motion.div
       whileHover={{ y: -5, scale: 1.02 }}
@@ -24,10 +21,10 @@ export function ProjectCard({ title, description, tags, demoUrl, githubUrl, imag
       className="h-full group"
     >
       <Card className="h-full flex flex-col bg-background/80 backdrop-blur-sm border border-border/30 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-        {imageUrl && (
+        {image && (
           <div className="relative h-48 w-full overflow-hidden">
             <Image
-              src={imageUrl || "/placeholder.svg"}
+              src={image || "/placeholder.svg"}
               alt={`Preview image for ${title}`}
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out"
@@ -46,9 +43,9 @@ export function ProjectCard({ title, description, tags, demoUrl, githubUrl, imag
             ))}
           </div>
           <div className="mt-auto flex items-center gap-4 pt-4 border-t border-border/50">
-            {demoUrl && (
+            {liveUrl && (
               <Link
-                href={demoUrl}
+                href={liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -57,9 +54,9 @@ export function ProjectCard({ title, description, tags, demoUrl, githubUrl, imag
                 Demo
               </Link>
             )}
-            {githubUrl && (
+            {repoUrl && (
               <Link
-                href={githubUrl}
+                href={repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"

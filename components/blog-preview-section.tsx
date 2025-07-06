@@ -1,39 +1,39 @@
-import { SectionTitle } from "@/components/section-title"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { Suspense } from "react"
+import { getPosts } from "@/lib/blog"
 import { BlogPostCard } from "@/components/blog-post-card"
-import { getAllBlogPosts } from "@/lib/blog"
-import { ArrowRight } from "lucide-react"
 
-export function BlogPreviewSection() {
-  const allPosts = getAllBlogPosts()
-  // Sort posts by date, most recent first, and take top 3
-  const recentPosts = allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3)
-
-  if (recentPosts.length === 0) {
-    return null // Don't render section if there are no posts
-  }
+/**
+ * A simple server component that renders the six most recent blog posts in a grid.
+ * It works whether the data layer is file-based or static because it relies on `getPosts()`.
+ */
+export async function BlogPreviewSection() {
+  const posts = await getPosts()
+  const recent = posts.slice(0, 6)
 
   return (
-    <section className="pb-16 md:pb-24">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-12 gap-4">
-          <SectionTitle as="h2" className="mb-0 text-center sm:text-left">
-            Latest From The Blog
-          </SectionTitle>
-          <Button asChild variant="outline" className="w-full sm:w-auto">
-            <Link href="/blog" className="group">
-              View All Posts
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {recentPosts.map((post) => (
-            <BlogPostCard key={post.id} post={post} />
-          ))}
-        </div>
+    <section className="py-16">
+      <div className="container space-y-8">
+        <h2 className="text-3xl font-bold">Latest Articles</h2>
+
+        <Suspense
+          fallback={
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="h-56 animate-pulse rounded-lg bg-muted" />
+              ))}
+            </div>
+          }
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {recent.map((post) => (
+              <BlogPostCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </Suspense>
       </div>
     </section>
   )
 }
+
+/* Provide a default export so consumers can choose either style */
+export default BlogPreviewSection

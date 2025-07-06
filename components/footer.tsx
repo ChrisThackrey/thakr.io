@@ -1,38 +1,46 @@
 import Link from "next/link"
+import { siteConfig } from "@/config/site"
 import { Icons } from "@/components/icons"
 
 export function Footer() {
+  const socialLinks = [
+    { name: "GitHub", href: siteConfig.links.github, icon: "github" },
+    { name: "Twitter", href: siteConfig.links.twitter, icon: "twitter" },
+    { name: "LinkedIn", href: siteConfig.links.linkedin, icon: "linkedin" },
+    { name: "Email", href: siteConfig.links.email, icon: "mail" },
+    { name: "RSS", href: siteConfig.links.rss, icon: "rss" },
+  ]
+
   return (
-    <footer className="border-t py-6 md:py-0">
-      <div className="container flex flex-col items-center justify-between gap-4 md:h-16 md:flex-row">
-        <p className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Chris Thackrey. All rights reserved.
-        </p>
-        <div className="flex items-center gap-4">
-          <Link
-            href="https://github.com/ChrisThackrey"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Icons.gitHub className="h-5 w-5" />
-            <span className="sr-only">GitHub</span>
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/chris-thackrey-015"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Icons.linkedin className="h-5 w-5" />
-            <span className="sr-only">LinkedIn</span>
-          </Link>
-          <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
-            <Icons.mail className="h-5 w-5" />
-            <span className="sr-only">Contact</span>
-          </Link>
+    <footer className="bg-background border-t">
+      <div className="container py-8">
+        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+          <div className="text-center sm:text-left">
+            <p className="text-sm text-muted-foreground">
+              &copy; {new Date().getFullYear()} {siteConfig.author.name}. All Rights Reserved.
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+            {socialLinks.map((link) => {
+              const Icon = Icons[link.icon as keyof typeof Icons]
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  aria-label={link.name}
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <Icon className="h-5 w-5" />
+                </Link>
+              )
+            })}
+          </div>
         </div>
       </div>
     </footer>
   )
 }
+
+export default Footer

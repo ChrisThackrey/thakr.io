@@ -1,6 +1,6 @@
-import { getPost, getPosts, getSeriesBySlug } from "@/lib/blog"
+import { getPost, getPosts, getSeriesBySlug, getRelatedPosts } from "@/lib/blog"
 import { notFound } from "next/navigation"
-import { BlogPostLayout as PostLayoutComponent } from "@/components/blog-post-layout"
+import { BlogPostLayout } from "@/components/blog-post-layout"
 import { RelatedPosts } from "@/components/related-posts"
 import { SeriesBanner } from "@/components/series-banner"
 import { FloatingTocButton } from "@/components/floating-toc-button"
@@ -30,7 +30,7 @@ import { FloatingBubbleProgress } from "@/components/floating-bubble-progress"
 import { HeaderReadingProgress } from "@/components/header-reading-progress"
 import { FloatingSpeedReadLauncher } from "@/components/speed-reading/floating-speed-read-launcher"
 import { MDXRemote } from "next-mdx-remote/rsc"
-import { mdxComponents } from "@/mdx-components"
+import { useMDXComponents } from "@/mdx-components"
 
 interface PageProps {
   params: {
@@ -46,12 +46,14 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
+  const mdxComponents = useMDXComponents({})
   const post = await getPost(params.slug)
   if (!post) {
     return notFound()
   }
 
-  const series = post.series ? getSeriesBySlug(post.series.slug) : null
+  const series = post.series ? await getSeriesBySlug(post.series.slug) : null
+  const relatedPosts = await getRelatedPosts(post.slug, post.tags)
   const contentId = `blog-post-${params.slug}`
 
   return (
@@ -103,9 +105,9 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         </div>
 
-        {post.series && series && <SeriesBanner post={post} />}
+        {post.series && series && <SeriesBanner post={post} series={series} />}
 
-        <PostLayoutComponent post={post}>
+        <BlogPostLayout post={post}>
           <main className="px-0 sm:px-4">
             <article
               className="prose prose-lg dark:prose-invert mt-4 blog-content max-w-none"
@@ -125,9 +127,9 @@ export default async function BlogPostPage({ params }: PageProps) {
               defaultOpen={true}
               maxDepth={3}
             />
-            <RelatedPosts currentSlug={params.slug} tags={post.tags} />
+            <RelatedPosts posts={relatedPosts} />
           </aside>
-        </PostLayoutComponent>
+        </BlogPostLayout>
 
         {series && <FloatingTocButton series={series} currentPostSlug={post.slug} className="md:hidden" />}
         <ReadingProgressIndicator slug={params.slug} title={post.title} />
@@ -135,13 +137,13 @@ export default async function BlogPostPage({ params }: PageProps) {
           contentSelector="article[data-blog-content]"
           className="md:hidden fixed bottom-24 right-4 z-50"
           showTimeRemaining={true}
-          readingTime={post.readingTime || "5 min"}
+          readingTime={`${post.readingTime} min`}
           size="medium"
         />
         <FloatingBubbleProgress
           className="hidden md:flex"
           showTimeRemaining={true}
-          readingTime={post.readingTime || "5 min"}
+          readingTime={`${post.readingTime} min`}
           position="bottom-right"
           size="medium"
           showOnlyOnScroll={true}

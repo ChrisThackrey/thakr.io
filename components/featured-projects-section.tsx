@@ -1,32 +1,20 @@
-"use client"
-
+import { getProjects } from "@/lib/projects-data"
 import { SectionTitle } from "@/components/section-title"
-import { ProjectCard } from "@/components/project-card"
-import { projectsData } from "@/lib/projects-data"
-import { motion } from "framer-motion"
+import { FeaturedProjectsGrid } from "@/components/featured-projects-grid"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
-export function FeaturedProjectsSection() {
-  const featuredProjects = projectsData.slice(0, 3)
+export async function FeaturedProjectsSection() {
+  const allProjects = await getProjects()
+  const featuredProjects = allProjects.filter((p) => p.featured).slice(0, 3)
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
+  // Fallback to show the first 3 projects if none are explicitly featured
+  if (featuredProjects.length === 0 && allProjects.length > 0) {
+    featuredProjects.push(...allProjects.slice(0, 3))
   }
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
+  if (featuredProjects.length === 0) {
+    return null // Don't render the section if there are no projects
   }
 
   return (
@@ -36,19 +24,12 @@ export function FeaturedProjectsSection() {
         <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto text-center">
           A selection of my recent work. See all my projects on the dedicated projects page.
         </p>
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {featuredProjects.map((project, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <ProjectCard {...project} />
-            </motion.div>
-          ))}
-        </motion.div>
+        <FeaturedProjectsGrid projects={featuredProjects} />
+        <div className="mt-12 text-center">
+          <Button asChild variant="outline">
+            <Link href="/projects">View All Projects</Link>
+          </Button>
+        </div>
       </div>
     </section>
   )

@@ -32,6 +32,7 @@ import { HeaderReadingProgress } from "@/components/header-reading-progress"
 import { FloatingSpeedReadLauncher } from "@/components/speed-reading/floating-speed-read-launcher"
 import { BlogPostLayout } from "@/components/blog-post-layout"
 import type { ReactNode } from "react"
+import { BlogLayout } from "@/components/blog-layout"
 
 interface BlogPostLayoutProps {
   children: React.ReactNode
@@ -127,14 +128,7 @@ export default async function Layout({ children, params }: LayoutProps) {
           {post.series && series && <SeriesBanner post={post} />}
 
           <main className="px-0 sm:px-4">
-            <article
-              className="prose prose-lg dark:prose-invert mt-4 blog-content max-w-none"
-              data-blog-content="true"
-              data-blog-slug={params.slug}
-              id={contentId}
-            >
-              {children}
-            </article>
+            <BlogLayout>{children}</BlogLayout>
 
             {/* Add the selection speed read component */}
             <BlogSelectionSpeedRead contentSelector="article[data-blog-content='true']" slug={params.slug} />

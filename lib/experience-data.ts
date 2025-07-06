@@ -1,173 +1,163 @@
-// Define a type for nested projects, making skills required
+/**
+ * Centralised career & education data used by multiple pages
+ * (About, Resume, Timelines, etc.).
+ */
+
 export interface Project {
-  title: string
-  description: string[]
+  name: string
+  description: string[] // bullet-point list
   skills: string[]
+  link?: string
 }
 
-// Update TimelineItem to include projects and require skills
 export interface TimelineItemData {
   title: string
-  date: string
   company: string
-  description: string[]
+  location?: string
+  date: string // e.g. "2025" or "2013-2015"
+  description: string[] // bullet-point list
   skills: string[]
   projects?: Project[]
 }
 
+/* ---------- Professional Experience ---------- */
 export const professionalExperience: TimelineItemData[] = [
   {
     title: "Principal Software Architect",
-    date: "2025",
     company: "Silver Bow Technology Group",
+    location: "San Antonio, TX",
+    date: "2025",
     description: [
-      'Lead software engineering team and built the core AI functionality for a "version control for reasoning" dev tool providing AI-driven code-generation, prompt enhancement, architecture strategy, as well as project planning and security features.',
+      "Led an engineering team building a “version-control for reasoning” AI platform.",
+      "Owned technical vision, security strategy and project planning across AI initiatives.",
     ],
-    skills: ["AI", "Code Generation", "Architecture Strategy", "Team Leadership", "Project Planning", "Security"],
-    projects: [
-      {
-        title: "Rivendell - AI Development and Research Tool",
-        description: [
-          "Implemented a monte-carlo algorithm to run large batches of prompt calls in parallel to various large-language AI models (llms), providing more deterministic outcomes by improving reliable code metrics such as compute and readability.",
-          "Configured OpenAI API and Anthropic API models to match relevant files and open a branch with a deployment in Vercel.",
-          "Built a monte carlo visualizer with ThreeJS to visualise similar response clusters in 3d space.",
-        ],
-        skills: [
-          "Monte Carlo Algorithm",
-          "LLMs",
-          "OpenAI API",
-          "Anthropic API",
-          "Vercel",
-          "ThreeJS",
-          "Data Visualization",
-        ],
-      },
-    ],
+    skills: ["TypeScript", "Next.js", "React", "AI", "LLMs", "Prompt Engineering"],
   },
   {
     title: "Software Engineer",
-    date: "2024-2025",
     company: "Black Flag Design",
+    location: "San Antonio, TX",
+    date: "2024-2025",
     description: [
-      "Contributed code across five projects in simultaneous development, including Lead Developer of an AI codegen application and internal dev tool, subject to a signed NDA.",
-      "Led, scripted, and hosted the ‘AI DIY’ podcast series on AI coding trends, Vercel’s ecosystem and events in the tech industry.",
+      "Delivered features across five concurrent products, including an internal AI code-gen tool.",
+      "Hosted the “AI DIY” podcast on AI coding trends and the Vercel ecosystem.",
     ],
-    skills: ["Full-Stack Development", "AI", "Vercel", "Podcasting", "NDA Projects"],
-  },
-  {
-    title: "Freelance / Contract Software Engineering",
-    date: "Various Engagements",
-    company: "Various Clients (NDA)",
-    description: [
-      "Delivered full-stack software solutions for multiple clients, focusing on AI-powered applications, data analysis tools, and CRM systems.",
-      "Projects are subject to Non-Disclosure Agreements; details are generalized.",
-    ],
-    skills: ["Full-Stack Development", "AI Integration", "SaaS", "CRM", "ETL", "Client Management"],
+    skills: ["TypeScript", "Next.js", "React", "AI", "LLMs", "TailwindCSS"],
     projects: [
       {
-        title: "AI Applications for National Not-for-Profit Education Research Organization*",
-        description: [
-          "Implemented interactive AI communication tools.",
-          "Deployed a bespoke multi-tenant architecture implementation.",
-          "Designed and implemented interactive interface templates to facilitate AI context and responses.",
-        ],
-        skills: ["AI", "Multi-tenancy", "Interactive UI"],
+        name: "Rivendell – AI Development & Research Tool",
+        description: ["Multi-tenant platform acting as version control for AI reasoning and prompt experiments."],
+        skills: ["TypeScript", "Next.js", "LLMs", "ThreeJS"],
+        link: "/projects/rivendell",
       },
       {
-        title: "AI Analysis Tools For International Wildfire Science and Technology Company*",
-        description: [
-          "Implemented unique systems to improve UI interactivity.",
-          "Utilized secured backends to make safe API calls to private data from public sources.",
-          "Created AI-driven assessment tools and forecast features to improve event response times for 20,000+ incidents per year.",
-        ],
-        skills: ["SaaS", "AI", "Data Security", "Forecasting"],
+        name: "AI Teaching Application",
+        description: ["Realtime multiplayer AI chat for a national not-for-profit education research organisation."],
+        skills: ["TypeScript", "Next.js", "LLMs"],
       },
       {
-        title: "CRM Management App to Handle Insurance Clients and Potential Leads*",
-        description: [
-          "Integrated applications to identify potential market opportunities.",
-          "Completed Extract, Transform, Load (ETL) process from legacy backend into new database connections.",
-        ],
-        skills: ["CRM", "ETL", "Data Integration"],
+        name: "Wildfire Prediction SaaS",
+        description: ["On-demand wildfire-spread forecasting with geospatial visualisation."],
+        skills: ["TypeScript", "React", "Data Visualisation"],
+      },
+      {
+        name: "LineageCRM",
+        description: ["CRM for insurance agencies – 200+ active users, ETL migration from a legacy backend."],
+        skills: ["TypeScript", "Next.js", "Database"],
+        link: "https://lineagecrm.com",
       },
     ],
   },
   {
     title: "Lead Designer",
+    company: "Gianni Ranaulo Design",
+    location: "Dubai, UAE",
     date: "2016",
-    company: "Gianni Ranaulo Design, Dubai, UAE",
-    description: ["Lead designer for architectural projects in Dubai, UAE."],
-    skills: ["Architectural Design", "Project Leadership"],
+    description: [
+      "Led architectural projects for high-profile clients in the UAE.",
+      "Collaborated with international teams on innovative building concepts.",
+    ],
+    skills: ["Architecture", "3D Modelling", "Design", "Project Management"],
   },
   {
     title: "Lead Designer",
+    company: "Xuberance Design",
+    location: "Shanghai, China",
     date: "2013-2015",
-    company: "Xuberance Design, Shanghai, China",
-    description: ["Lead designer for architectural projects in Shanghai, China."],
-    skills: ["Architectural Design", "Computational Design"],
+    description: [
+      "Directed design teams for architectural projects across China.",
+      "Implemented cutting-edge methodologies such as large-scale 3D printing.",
+    ],
+    skills: ["Architecture", "3D Modelling", "Design", "Team Leadership"],
   },
 ]
 
+/* ---------- Education ---------- */
 export const education: TimelineItemData[] = [
   {
-    title: "The Rust Developer Bootcamp",
+    title: "Rust Developer Bootcamp",
+    company: "Independent Study",
     date: "2022",
-    company: "Self-study (Certificate of Completion)",
-    description: ["Learned Rust independently to build high-performance, reliable software."],
-    skills: ["Rust", "Systems Programming"],
+    location: "",
+    description: ["Completed bootcamp focused on memory-safe systems programming."],
+    skills: ["Rust", "Concurrency", "Systems Programming"],
   },
   {
     title: "AlgoExpert.io",
+    company: "Online",
     date: "2022",
-    company: "Certificate of Completion",
-    description: ["Completed 100 technical interview questions, mastering various data structures and algorithms."],
+    location: "",
+    description: ["Solved 100+ data-structure & algorithm interview questions."],
     skills: ["Algorithms", "Data Structures", "Problem Solving"],
   },
   {
-    title: "Software Engineering Immersive",
-    date: "Graduated March 2021",
-    company: "Hack Reactor, Austin, TX",
-    description: [
-      "Completed an advanced, immersive software engineering program focused on full-stack JavaScript development and computer science fundamentals.",
-    ],
-    skills: ["Full-Stack Development", "JavaScript", "React", "Node.js"],
+    title: "Hack Reactor – Software Engineering Immersive",
+    company: "Austin, TX",
+    date: "2021",
+    location: "",
+    description: ["Full-stack JavaScript program covering React, Node and databases."],
+    skills: ["JavaScript", "React", "Node.js", "SQL", "MongoDB"],
   },
   {
-    title: "Computer Animation & Programming",
+    title: "Gnomon School of Visual Effects",
+    company: "Los Angeles, CA",
     date: "2017-2018",
-    company: "Gnomon School of Visual Effects, Los Angeles, CA",
-    description: ["Studied computer animation, visual effects, and computer programming."],
-    skills: ["3D Animation", "VFX", "Programming"],
+    location: "",
+    description: ["Studied computer animation, VFX and graphics programming."],
+    skills: ["3D Modelling", "Animation", "Visual Effects"],
   },
   {
-    title: "Master of Architecture (studies)",
+    title: "SCI-Arc – M.Arch (partial)",
+    company: "Los Angeles, CA",
     date: "2016-2017",
-    company: "Southern California Institute of Architecture, Los Angeles, CA",
-    description: ["Completed 35 hours towards a Master of Architecture degree with a 3.5/4.0 GPA."],
-    skills: ["Architectural Theory", "Advanced Design"],
+    location: "",
+    description: ["Completed 35 graduate credits toward a Master of Architecture."],
+    skills: ["Architectural Design", "Urban Planning"],
   },
   {
-    title: "Bachelor of Science, Environmental Design",
+    title: "Texas A&M University – B.Sc. Environmental Design",
+    company: "College Station, TX",
     date: "2015",
-    company: "Texas A&M University",
-    description: ["Graduated Cum Laude with a 3.5/4.0 GPA, focusing on architectural design."],
-    skills: ["Environmental Design", "Architecture", "Urban Planning"],
+    location: "",
+    description: ["Graduated Cum Laude (GPA 3.5/4.0)."],
+    skills: ["Sustainable Design", "Environmental Design"],
   },
 ]
 
-export const technicalSkills = {
+/* ---------- Technical Skills (used on About page) ---------- */
+export const technicalSkills: Record<string, string[]> = {
   "Front End": [
     "TypeScript",
-    "NextJS",
+    "Next.js",
     "Astro",
     "Svelte",
-    "React Hooks + Context API",
+    "React Hooks & Context API",
     "Redux",
     "JavaScript",
     "D3",
-    "Shadcn/ui",
-    "TailwindCSS",
-    "ChakraUI",
+    "shadcn/ui",
+    "Tailwind CSS",
+    "Chakra UI",
     "v0",
   ],
   "Back End": [
@@ -184,8 +174,8 @@ export const technicalSkills = {
   ],
   Deployment: [
     "Vercel Platform",
-    "Github Actions",
-    "Github Apps",
+    "GitHub Actions",
+    "GitHub Apps",
     "Vercel CLI",
     "Deploy Hooks",
     "Vercel REST API",
@@ -193,21 +183,28 @@ export const technicalSkills = {
     "Heroku",
     "DigitalOcean",
     "Electron",
-    "AWS: EC2",
-    "AWS Lambda Functions",
+    "AWS EC2",
+    "AWS Lambda",
     "Google Cloud Functions",
   ],
   DevOps: [
     "Turbopack",
     "Turborepo",
-    "Azure DevOps Integration",
+    "Azure DevOps",
     "Observability Tools",
     "Trigger.dev",
     "Datadog",
     "Artillery.io",
-    "TDD prompt engineering",
+    "TDD Prompt Engineering",
     "Critical-CSS",
-    "React-Suspense",
+    "React Suspense",
     "NGINX",
   ],
+}
+
+/* ---------- Default export for convenience ---------- */
+export default {
+  professionalExperience,
+  education,
+  technicalSkills,
 }

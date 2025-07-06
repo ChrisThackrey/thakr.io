@@ -1,15 +1,10 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
-import dynamic from "next/dynamic"
 import { AnimatedArchitectureSkeleton } from "@/components/skeletons/animated-architecture-skeleton"
 import { BookingCTA } from "@/components/booking-cta"
 import { ErrorBoundary } from "@/components/error-boundary"
-import { PageBackground } from "@/components/page-background" // Added import
-
-// Dynamically import the ArchitectureContent component
-const ArchitectureContent = dynamic(() => import("@/components/architecture-content"), {
-  ssr: true,
-})
+import { PageBackground } from "@/components/page-background"
+import ArchitectureContent from "@/components/architecture-content"
 
 export const metadata: Metadata = {
   title: "Architecture | Chris Thackrey",
@@ -19,7 +14,7 @@ export const metadata: Metadata = {
 export default function ArchitecturePage() {
   return (
     <div className="flex flex-col flex-grow">
-      <PageBackground /> {/* Added PageBackground component */}
+      <PageBackground />
       <div className="flex-grow">
         <Suspense
           fallback={

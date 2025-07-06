@@ -1,66 +1,30 @@
 import Link from "next/link"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChevronLeft, ChevronRight, Layers } from "lucide-react"
-import { type BlogPost, getNextPostInSeries, getPreviousPostInSeries, getSeriesBySlug } from "@/lib/blog"
-import { SeriesProgress } from "@/components/series-progress"
-import { SeriesToc } from "@/components/series-toc"
+import { Button } from "@/components/ui/button"
+import { Info } from "lucide-react"
+import type { BlogPost, Series } from "@/types/blog"
 
 interface SeriesBannerProps {
   post: BlogPost
+  series: Series
 }
 
-export function SeriesBanner({ post }: SeriesBannerProps) {
-  if (!post.series) return null
-
-  const series = getSeriesBySlug(post.series.slug)
-  if (!series) return null
-
-  const previousPost = getPreviousPostInSeries(post)
-  const nextPost = getNextPostInSeries(post)
-  const totalParts = series.posts.length
+export function SeriesBanner({ post, series }: SeriesBannerProps) {
+  const currentIndex = series.posts.findIndex((p) => p.slug === post.slug)
+  const totalPosts = series.posts.length
 
   return (
-    <Card className="mb-8 bg-muted/30 border-primary/20">
-      <CardHeader className="pb-2">
-        <div className="flex items-center gap-2">
-          <Layers className="h-5 w-5 text-primary" />
-          <CardTitle className="text-lg">
-            <Link href={`/blog/series/${series.slug}`} className="text-primary hover:underline">
-              {series.name}
-            </Link>
-          </CardTitle>
+    <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-8 text-sm text-blue-800 dark:text-blue-200">
+      <div className="flex items-start">
+        <Info className="h-5 w-5 mr-3 mt-0.5 flex-shrink-0" />
+        <div>
+          <p className="font-semibold">
+            This post is part {currentIndex + 1} of {totalPosts} in the "{series.name}" series.
+          </p>
+          <Button variant="link" asChild className="px-0 h-auto mt-1">
+            <Link href={`/blog/series/${series.slug}`}>View all posts in this series</Link>
+          </Button>
         </div>
-        <CardDescription>{series.description}</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <SeriesProgress currentPart={post.series.part} totalParts={totalParts} />
-
-        <SeriesToc posts={series.posts} currentPostSlug={post.slug} className="mt-4 border-primary/20" />
-
-        <div className="flex flex-col sm:flex-row justify-between gap-4 pt-2">
-          {previousPost ? (
-            <Link
-              href={`/blog/${previousPost.slug}`}
-              className="flex items-center text-sm hover:text-primary transition-colors group"
-            >
-              <ChevronLeft className="h-4 w-4 mr-1 transition-transform group-hover:-translate-x-0.5" />
-              <span className="line-clamp-1">Previous: {previousPost.title}</span>
-            </Link>
-          ) : (
-            <div></div>
-          )}
-
-          {nextPost && (
-            <Link
-              href={`/blog/${nextPost.slug}`}
-              className="flex items-center text-sm hover:text-primary transition-colors sm:text-right group"
-            >
-              <span className="line-clamp-1">Next: {nextPost.title}</span>
-              <ChevronRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-          )}
-        </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   )
 }

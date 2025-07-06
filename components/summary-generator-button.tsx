@@ -1,24 +1,46 @@
 "use client"
 
+import type * as React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { FileText } from "lucide-react"
+import { Icons } from "@/components/icons"
 import { generateSummary, type BlogSummary } from "@/utils/summary-generator"
 import { PrintableSummary } from "@/components/printable-summary"
 import { cn } from "@/lib/utils"
 
-interface SummaryGeneratorButtonProps {
-  contentId?: string
+interface SummaryGeneratorButtonProps extends React.ComponentPropsWithoutRef<typeof Button> {
+  /** ID of the element that contains the blog post’s HTML (used later). */
+  contentId: string
+  /** Title of the post – passed to the eventual summary routine. */
   title: string
-  className?: string
 }
 
-export function SummaryGeneratorButton({ contentId, title, className }: SummaryGeneratorButtonProps) {
+/* -------------------------------------------------------------------------- */
+/*                            Internal click handler                          */
+/* -------------------------------------------------------------------------- */
+
+async function handleGenerateClick(
+  e: React.MouseEvent<HTMLButtonElement>,
+  { contentId, title }: { contentId: string; title: string },
+) {
+  e.preventDefault()
+
+  // TODO: connect a real server action / API call here.
+  // For now we just log so the button does not break hydration.
+  /* eslint-disable no-console */
+  console.info(`[SummaryGeneratorButton] Would generate summary for “${title}”, element #${contentId}`)
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 Component                                  */
+/* -------------------------------------------------------------------------- */
+
+export function SummaryGeneratorButton({ contentId, title }: SummaryGeneratorButtonProps) {
   const [summary, setSummary] = useState<BlogSummary | null>(null)
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const handleGenerateSummary = () => {
+  const handleGenerateSummary = async () => {
     setIsGenerating(true)
     setError(null)
 
@@ -60,7 +82,7 @@ export function SummaryGeneratorButton({ contentId, title, className }: SummaryG
       }
 
       // Generate the summary
-      const generatedSummary = generateSummary(contentElement, title)
+      const generatedSummary = await generateSummary(contentElement, title)
       setSummary(generatedSummary)
     } catch (err) {
       console.error("Error generating summary:", err)
@@ -75,21 +97,34 @@ export function SummaryGeneratorButton({ contentId, title, className }: SummaryG
   }
 
   return (
-    <>
+    <div>
       <Button
-        variant="ghost"
-        size="sm"
+        variant="outline"
+        className={cn("flex items-center gap-2", contentId)}
         onClick={handleGenerateSummary}
         disabled={isGenerating}
-        className={cn("flex items-center gap-2", className)}
       >
-        <FileText className="h-4 w-4" />
+        {isGenerating ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.generator className="mr-2 h-4 w-4" />
+        )}
         <span>{isGenerating ? "Generating..." : "Generate Summary"}</span>
       </Button>
 
       {error && <div className="text-sm text-red-500 mt-1">{error}</div>}
 
       {summary && <PrintableSummary summary={summary} onClose={handleCloseSummary} />}
-    </>
+    </div>
   )
 }
+
+/* -------------------------------------------------------------------------- */
+/*                      Named export for convenience (optional)               */
+/* -------------------------------------------------------------------------- */
+
+// If some other part of the codebase still imports { GENERATOR } from this
+// module by mistake, re-export the correct icon to avoid runtime failures.
+export { Icons as GENERATOR }
+
+// ‼️ add this at the very end of the file

@@ -1,15 +1,10 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
-import dynamic from "next/dynamic"
 import { AnimatedProjectSkeleton } from "@/components/skeletons/animated-project-skeleton"
 import { SectionTitle } from "@/components/section-title"
 import { BookingCTA } from "@/components/booking-cta"
-import { PageBackground } from "@/components/page-background" // Added import
-
-// Dynamically import the ProjectsContent component
-const ProjectsContent = dynamic(() => import("@/components/projects-content"), {
-  ssr: true,
-})
+import { PageBackground } from "@/components/page-background"
+import ProjectsContent from "@/components/projects-content"
 
 export const metadata: Metadata = {
   title: "Projects | Chris Thackrey",

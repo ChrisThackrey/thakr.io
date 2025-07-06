@@ -1,60 +1,54 @@
-"use client"
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import Image from "next/image"
 import Link from "next/link"
+import { siteConfig } from "@/config/site"
 import { Icons } from "@/components/icons"
-
-const socialLinks = [
-  {
-    name: "GitHub",
-    href: "https://github.com/ChrisThackrey",
-    icon: Icons.gitHub,
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/chris-thackrey-015/",
-    icon: Icons.linkedin,
-  },
-  {
-    name: "Instagram",
-    href: "https://www.instagram.com/chris_thackrey/",
-    icon: Icons.instagram,
-  },
-  {
-    name: "Email",
-    href: "/contact",
-    icon: Icons.mail,
-  },
-]
+import { Button } from "@/components/ui/button"
 
 export function ProfileSection() {
   return (
-    <div className="flex flex-col items-center">
-      <Avatar className="w-52 h-52 md:w-60 md:h-60 border-4 border-primary/20 shadow-lg mb-8 md:mb-6">
-        <AvatarImage src="/images/profile-1.jpg" alt="Chris Thackrey" />
-        <AvatarFallback>CT</AvatarFallback>
-      </Avatar>
-      <div className="flex space-x-6">
-        {socialLinks.map((link) => (
-          <Button
-            key={link.name}
-            variant="outline"
-            size="lg"
-            asChild
-            className="rounded-full hover:bg-primary/10 transition-colors bg-transparent"
-          >
-            <Link
-              href={link.href}
-              target={link.href.startsWith("http") ? "_blank" : undefined}
-              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              aria-label={link.name}
-            >
-              <link.icon className="h-9 w-9" />
+    <section id="profile" className="container py-12 md:py-20">
+      <div className="grid items-center gap-10 md:grid-cols-2">
+        <div className="order-2 md:order-1">
+          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">{siteConfig.name}</h1>
+          <h2 className="mt-2 text-xl font-medium text-muted-foreground sm:text-2xl">Full-Stack Software Engineer</h2>
+          <p className="mt-4 max-w-lg text-muted-foreground">{siteConfig.description}</p>
+          <div className="mt-6 flex flex-wrap gap-4">
+            <Button asChild>
+              <Link href="/contact">
+                <Icons.mail className="mr-2" /> Get in Touch
+              </Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link href={siteConfig.resumeUrl} target="_blank" rel="noopener noreferrer">
+                <Icons.fileText className="mr-2" /> View Resume
+              </Link>
+            </Button>
+          </div>
+          <div className="mt-6 flex items-center gap-4">
+            <Link href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <Icons.github className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
             </Link>
-          </Button>
-        ))}
+            <Link href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Icons.linkedin className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
+            </Link>
+            <Link href={siteConfig.links.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <Icons.twitter className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
+            </Link>
+          </div>
+        </div>
+        <div className="order-1 flex justify-center md:order-2">
+          <Image
+            src="/images/profile-1.jpg"
+            width={300}
+            height={300}
+            alt="Profile picture of Chris Thackrey"
+            className="rounded-full border-4 border-primary/20 object-cover shadow-lg"
+            priority
+          />
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
+
+export default ProfileSection
