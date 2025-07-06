@@ -17,10 +17,10 @@ export const siteConfig = {
     { href: "/", label: "Home", icon: "home" },
     { href: "/about", label: "About", icon: "user" },
     { href: "/work", label: "Work", icon: "briefcase" },
-    { href: "/projects", label: "Projects", icon: "palette" },
+    { href: "/projects", label: "Projects", icon: "code" },
     { href: "/architecture", label: "Architecture", icon: "architecture" },
-    { href: "/blog", label: "Blog", icon: "bookOpen" },
-    { href: "/contact", label: "Contact", icon: "contact" },
+    { href: "/blog", label: "Blog", icon: "fileText" },
+    { href: "/contact", label: "Contact", icon: "mail" },
   ],
   contact: {
     email: "c.r.thackrey@gmail.com",
