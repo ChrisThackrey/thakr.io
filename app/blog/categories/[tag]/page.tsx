@@ -6,6 +6,7 @@ import Link from "next/link"
 import { ArrowLeft, ArrowRightLeft } from "lucide-react"
 import { notFound } from "next/navigation"
 import { RelatedTags } from "@/components/related-tags"
+import { BlogErrorBoundary } from "@/components/blog-error-boundary"
 
 export function generateStaticParams() {
   const tags = getAllTags()
@@ -21,7 +22,7 @@ export default async function TagPage({ params }: { params: { tag: string } }) {
   }
 
   return (
-    <>
+    <BlogErrorBoundary>
       <PageBackground />
       <div className="container py-16 md:py-24">
         <div className="mb-8">
@@ -54,6 +55,6 @@ export default async function TagPage({ params }: { params: { tag: string } }) {
         {/* Add the RelatedTags component */}
         <RelatedTags currentTag={tag} />
       </div>
-    </>
+    </BlogErrorBoundary>
   )
 }

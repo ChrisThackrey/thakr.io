@@ -33,6 +33,7 @@ import { BlogSelectionSpeedRead } from "@/components/blog-selection-speed-read"
 import { FloatingBubbleProgress } from "@/components/floating-bubble-progress"
 import { HeaderReadingProgress } from "@/components/header-reading-progress"
 import { FloatingSpeedReadLauncher } from "@/components/speed-reading/floating-speed-read-launcher"
+import { BlogErrorBoundary } from "@/components/blog-error-boundary"
 
 interface PageProps {
   params: { slug: string }
@@ -60,7 +61,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const contentId = `blog-post-${params.slug}`
 
   return (
-    <>
+    <BlogErrorBoundary postTitle={post.title}>
       {/* global progress bars */}
       <ReadingProgressBar position="top" thickness="medium" animation="smooth" color="primary" />
       <HeaderReadingProgress height="thin" className="hidden md:block" />
@@ -154,6 +155,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         <FloatingSpeedReadButton contentSelector={`#${contentId}`} className="md:hidden" />
         <SelectionSpeedRead contentId={contentId} slug={params.slug} />
       </article>
-    </>
+    </BlogErrorBoundary>
   )
 }

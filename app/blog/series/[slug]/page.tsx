@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { PageHeader } from "@/components/page-header"
+import { BlogErrorBoundary } from "@/components/blog-error-boundary"
 
 export function generateStaticParams() {
   const allSeries = getAllSeries()
@@ -22,7 +23,7 @@ export default function SeriesPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <>
+    <BlogErrorBoundary>
       <PageBackground />
       <div className="container py-16 md:py-24">
         <div className="mb-8">
@@ -41,6 +42,6 @@ export default function SeriesPage({ params }: { params: { slug: string } }) {
           ))}
         </div>
       </div>
-    </>
+    </BlogErrorBoundary>
   )
 }
