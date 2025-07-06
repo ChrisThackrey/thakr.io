@@ -1,33 +1,23 @@
-import type React from "react"
+"use client"
+
+import type { MDXComponents } from "mdx/types"
 import { Callout } from "@/components/ui/callout"
 import { Steps } from "@/components/ui/steps"
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+import { Table } from "@/components/ui/table"
 
-const components = {
-  Callout,
-  Steps,
-  table: Table,
-  thead: TableHeader,
-  tbody: TableBody,
-  tfoot: TableFooter,
-  tr: TableRow,
-  th: TableHead,
-  td: TableCell,
-  caption: TableCaption,
-}
-
-export function useMDXComponents(componentsProp: Record<string, React.ComponentType<any>>) {
+/**
+ * Registers custom components for MDX content.
+ */
+export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    // short-hand tags used inside MDX:
+    Callout,
+    callout: Callout,
+    Steps,
+    steps: Steps,
+    Table,
+    table: Table,
+    // spread any components passed in manually
     ...components,
-    ...componentsProp,
   }
 }

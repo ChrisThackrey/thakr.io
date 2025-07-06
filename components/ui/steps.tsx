@@ -1,17 +1,39 @@
-import type * as React from "react"
+"use client"
+
+import type React from "react"
+
 import { cn } from "@/lib/utils"
 
-const Steps = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "ml-4 mb-4 border-l pl-6 [counter-reset:step]",
-      "[&>h3]:mt-8 [&>h3]:mb-2 [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:tracking-tight",
-      "[&>h3::before]:bg-primary [&>h3::before]:text-primary-foreground [&>h3::before]:content-[counter(step)] [&>h3::before]:[counter-increment:step] [&>h3::before]:w-7 [&>h3::before]:h-7 [&>h3::before]:rounded-full [&>h3::before]:flex [&>h3::before]:items-center [&>h3::before]:justify-center [&>h3::before]:mr-4 [&>h3::before]:font-mono [&>h3::before]:text-sm",
-      "[&>h3]:flex [&>h3]:items-center",
-      className,
-    )}
-    {...props}
-  />
-)
+type StepsProps = React.HTMLAttributes<HTMLOListElement>
+type StepProps = React.LiHTMLAttributes<HTMLLIElement>
 
-export { Steps }
+/**
+ * Parent ordered list for a multi-step explanation.
+ */
+export function Steps({ children, className, ...props }: StepsProps) {
+  return (
+    <ol className={cn("my-6 space-y-4 pl-5", className)} {...props}>
+      {children}
+    </ol>
+  )
+}
+
+/**
+ * An individual step – exported as `Steps.Step` for MDX ergonomics.
+ */
+function Step({ children, className, ...props }: StepProps) {
+  return (
+    <li
+      className={cn(
+        "relative ml-2 border-l-2 border-border pl-4",
+        "before:absolute before:-left-[11px] before:top-1 before:h-3 before:w-3 before:rounded-full before:border-2 before:border-primary",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </li>
+  )
+}
+
+Steps.Step = Step

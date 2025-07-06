@@ -1,22 +1,25 @@
-/**
- * Minimal replacement so existing MDX/blog imports that expect
- * `ColoredTag` continue to work.  Uses a neutral style – adjust as needed.
- */
-export interface ColoredTagProps {
+"use client"
+
+import { cn } from "@/lib/utils"
+
+type ColoredTagProps = {
   tag: string
   className?: string
 }
 
-export function ColoredTag({ tag, className = "" }: ColoredTagProps) {
+/**
+ * A very small pill-shaped tag.
+ * All tag colours were removed from the code-base, so we render a neutral pill.
+ */
+export function ColoredTag({ tag, className }: ColoredTagProps) {
   return (
-    <span className={`inline-block rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-foreground ${className}`}>
+    <span
+      className={cn("inline-block rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-foreground/80", className)}
+    >
       {tag}
     </span>
   )
 }
 
-/* Support both:
-     import { ColoredTag } from "...";
-     import ColoredTag from "...";
-*/
+/* Legacy default export so `<ColoredTag />` and `{ ColoredTag }` both work. */
 export default ColoredTag
