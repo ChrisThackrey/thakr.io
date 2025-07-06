@@ -1,4 +1,3 @@
-// components/navigation.tsx
 "use client"
 
 import Link from "next/link"
@@ -11,11 +10,6 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { siteConfig } from "@/config/site"
 
-/**
- * Site-wide navigation bar.
- * This version is self-contained (no props required) to avoid
- * “Cannot read properties of undefined (reading 'map')” at runtime.
- */
 export function Navigation() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
@@ -37,13 +31,11 @@ export function Navigation() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur">
       <div className="container flex h-16 items-center justify-between">
-        {/* Logo / site name */}
         <Link href="/" className="flex items-center gap-2">
           <Icons.logo className="h-6 w-6" />
           <span className="hidden font-bold sm:inline-block">{siteConfig.name}</span>
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden md:flex md:items-center md:gap-6">
           {routes.map(({ href, label, icon, active }) => {
             const Icon = Icons[icon]
@@ -63,11 +55,9 @@ export function Navigation() {
           })}
         </nav>
 
-        {/* Right-side controls */}
         <div className="flex items-center gap-2">
           <ThemeToggle />
 
-          {/* Mobile menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden bg-transparent" aria-label="Toggle menu">

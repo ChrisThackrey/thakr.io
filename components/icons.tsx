@@ -1,88 +1,90 @@
 "use client"
 
-import type { SVGProps, FC } from "react"
+import type { FC, SVGProps } from "react"
 import {
-  Activity,
-  AlertTriangle,
-  ArrowRight,
-  BarChart,
-  BookOpen,
-  BrainCircuit,
+  Home,
+  Users,
   Briefcase,
+  Code,
   Building2,
-  Calendar,
-  CalendarCheck2,
-  Check,
-  CheckCircle2,
-  ChevronDown,
+  FileText,
+  BookOpen,
+  Palette,
+  Mail,
+  Menu,
+  ArrowRight,
   ChevronLeft,
   ChevronRight,
   ChevronUp,
-  Code,
-  Copy,
-  Cpu,
-  CreditCard,
-  Database,
-  Download,
-  Edit,
-  ExternalLink,
-  FastForward,
-  File,
-  FileText,
-  Github,
-  GripVertical,
-  Home,
-  ImageIcon,
-  Instagram,
-  Layers,
-  Laptop,
-  LineChart,
-  Linkedin,
-  List,
-  ListOrdered,
-  Loader2,
-  Mail,
-  MapPin,
-  Menu,
+  ChevronDown,
+  SunMedium,
   Moon,
-  Palette,
-  Pause,
-  Phone,
-  PieChart,
-  Pizza,
-  Play,
-  Printer,
-  RefreshCw,
-  Rewind,
-  Send,
   Search,
   SearchX,
-  Server,
-  Sparkles,
-  SunMedium,
-  Tag,
-  Trash,
-  Twitter,
-  Wand2,
-  Zap,
+  Copy,
+  Check,
+  CheckCircle2,
+  Loader2,
+  AlertTriangle,
+  ExternalLink,
+  RefreshCw,
+  RotateCw,
   ZoomIn,
   ZoomOut,
-  RotateCw,
   Expand,
-  Users,
-  Clock,
+  Download,
+  Printer,
+  Edit,
+  Trash,
+  List,
+  ListOrdered,
+  Play,
+  Pause,
+  Rewind,
+  FastForward,
+  GripVertical,
   Construction,
+  Calendar,
+  CalendarCheck2,
+  Clock,
+  Tag,
+  File,
+  CreditCard,
+  Phone,
+  MapPin,
+  Send,
+  Github,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Laptop,
+  Cpu,
+  Database,
+  Server,
+  Zap,
+  LineChart,
+  BarChart,
+  PieChart,
+  Activity,
+  Layers,
+  BrainCircuit,
+  Wand2,
+  ImageIcon,
+  Pizza,
+  GraduationCap,
+  Award,
+  Sparkles,
 } from "lucide-react"
 
 /* -------------------------------------------------------------------------- */
-/* Branding icon used as site logo & safe fallback                            */
+/*  1. Fallback / branding icon                                               */
 /* -------------------------------------------------------------------------- */
 const Logo: FC<SVGProps<SVGSVGElement>> = (props) => (
   <Sparkles {...props} className={`h-6 w-6 ${props.className ?? ""}`} />
 )
 
 /* -------------------------------------------------------------------------- */
-/* Core icon dictionary                                                       */
+/*  2. Master dictionary of icons                                             */
 /* -------------------------------------------------------------------------- */
 const ICON_MAP = {
   /* Navigation & Sections */
@@ -150,7 +152,7 @@ const ICON_MAP = {
   linkedin: Linkedin,
   twitter: Twitter,
   instagram: Instagram,
-  x: Twitter, // alias for "x" social icon
+  x: Twitter, // alias for "x" logo
 
   /* Tech / Misc */
   laptop: Laptop,
@@ -170,16 +172,28 @@ const ICON_MAP = {
   users: Users,
   pizza: Pizza,
 
+  /* Résumé / Work-timeline */
+  graduationCap: GraduationCap,
+  award: Award,
+
   /* Branding */
   logo: Logo,
   sparkles: Sparkles,
 } as const
 
+/* -------------------------------------------------------------------------- */
+/*  3. Public types & proxy export                                            */
+/* -------------------------------------------------------------------------- */
 export type IconName = keyof typeof ICON_MAP
 
-/* -------------------------------------------------------------------------- */
-/* Safe proxy – never returns undefined                                       */
-/* -------------------------------------------------------------------------- */
+/**
+ * `Icons` is the object you import elsewhere:
+ *
+ *   const Icon = Icons['home']
+ *   return <Icon className="..." />
+ *
+ * If a key is missing, we log a warning and fall back to <Sparkles />.
+ */
 export const Icons: Record<IconName, FC<SVGProps<SVGSVGElement>>> = new Proxy(
   ICON_MAP as Record<string, FC<SVGProps<SVGSVGElement>>>,
   {
@@ -190,4 +204,7 @@ export const Icons: Record<IconName, FC<SVGProps<SVGSVGElement>>> = new Proxy(
       return Sparkles
     },
   },
-) as any // Type cast keeps TS happy while giving runtime safety
+) as any // `as any` silences TS about Proxy signature
+
+/* Optional: still allow consumers to import ICON_MAP directly */
+export { ICON_MAP }

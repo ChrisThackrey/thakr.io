@@ -1,22 +1,41 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { Calendar } from "@/components/ui/calendar"
+import { motion, AnimatePresence } from "framer-motion"
+import { ChevronLeft, ChevronRight, Clock, ArrowRight, CalendarIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { addDays, format, setHours, setMinutes, isBefore, isToday } from "date-fns"
-import { Clock, ArrowRight, CalendarIcon } from "lucide-react"
+import {
+  format,
+  setHours,
+  setMinutes,
+  isBefore,
+  isToday,
+  isSameDay,
+  getDay,
+  startOfMonth,
+  getMonth,
+  getYear,
+  isSameMonth,
+} from "date-fns"
+import { cn } from "@/lib/utils"
 
 interface BookingCalendarProps {
   onDateSelect: (date: Date) => void
   initialDate?: Date | null
 }
 
-// Generate available time slots from 9 AM to 5 PM
+interface CalendarDay {
+  date: Date
+  isCurrentMonth: boolean
+  isToday: boolean
+  isSelected: boolean
+  isDisabled: boolean
+}
+
 const generateTimeSlots = () => {
   const slots = []
   for (let hour = 9; hour < 17; hour++) {
-    // 9 AM to 4 PM slots, meeting is 1 hour
     slots.push({
       display: format(setHours(new Date(), hour), "h:mm a"),
       value: `${hour}:00`,
@@ -26,24 +45,77 @@ const generateTimeSlots = () => {
 }
 
 const timeSlots = generateTimeSlots()
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]
+const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
 export function BookingCalendar({ onDateSelect, initialDate }: BookingCalendarProps) {
+  const [currentMonthDate, setCurrentMonthDate] = useState(initialDate || new Date())
   const [selectedDay, setSelectedDay] = useState<Date | undefined>(initialDate || undefined)
   const [selectedTime, setSelectedTime] = useState<string | undefined>(
     initialDate ? format(initialDate, "H:mm") : undefined,
   )
 
-  const disabledDays = (date: Date) => {
+  const isDayDisabled = (date: Date): boolean => {
     const today = new Date()
     today.setHours(0, 0, 0, 0)
     if (isBefore(date, today)) return true
-    const day = date.getDay()
-    return day === 0 || day === 6 // Disable weekends
+    const dayOfWeek = getDay(date)
+    return dayOfWeek === 0 || dayOfWeek === 6 // Disable weekends
   }
 
-  const handleDayChange = (day: Date | undefined) => {
+  const getDaysInMonth = (date: Date): CalendarDay[] => {
+    const year = getYear(date)
+    const month = getMonth(date)
+    const firstDayOfMonth = startOfMonth(date)
+    const startDayOfWeek = getDay(firstDayOfMonth)
+
+    const days: CalendarDay[] = []
+    const startDate = new Date(firstDayOfMonth)
+    startDate.setDate(startDate.getDate() - startDayOfWeek)
+
+    const today = new Date()
+
+    for (let i = 0; i < 42; i++) {
+      const day = new Date(startDate)
+      day.setDate(startDate.getDate() + i)
+      days.push({
+        date: day,
+        isCurrentMonth: isSameMonth(day, date),
+        isToday: isSameDay(day, today),
+        isSelected: selectedDay ? isSameDay(day, selectedDay) : false,
+        isDisabled: isDayDisabled(day),
+      })
+    }
+    return days
+  }
+
+  const calendarDays = getDaysInMonth(currentMonthDate)
+
+  const nextMonth = () => {
+    setCurrentMonthDate(new Date(currentMonthDate.getFullYear(), currentMonthDate.getMonth() + 1, 1))
+  }
+
+  const prevMonth = () => {
+    setCurrentMonthDate(new Date(currentMonthDate.getFullYear(), currentMonthDate.getMonth() - 1, 1))
+  }
+
+  const handleDayChange = (day: Date) => {
+    if (isDayDisabled(day)) return
     setSelectedDay(day)
-    setSelectedTime(undefined) // Reset time when day changes
+    setSelectedTime(undefined)
   }
 
   const handleTimeChange = (time: string) => {
@@ -82,20 +154,62 @@ export function BookingCalendar({ onDateSelect, initialDate }: BookingCalendarPr
       </CardHeader>
       <CardContent className="space-y-8">
         <div className="grid gap-8 md:grid-cols-2">
-          <div className="space-y-4">
-            <h3 className="text-lg font-medium text-center md:text-left">Select a Date</h3>
-            <div className="flex justify-center p-1 rounded-md sm:border">
-              <Calendar
-                mode="single"
-                selected={selectedDay}
-                onSelect={handleDayChange}
-                disabled={disabledDays}
-                className="p-0"
-                fromDate={new Date()}
-                toDate={addDays(new Date(), 60)}
-              />
+          <motion.div
+            key={currentMonthDate.getMonth()}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-4"
+          >
+            <div className="flex items-center justify-between">
+              <Button variant="ghost" size="icon" onClick={prevMonth} aria-label="Previous month">
+                <ChevronLeft className="w-5 h-5" />
+              </Button>
+              <h3 className="text-lg font-semibold text-center">
+                {monthNames[currentMonthDate.getMonth()]} {currentMonthDate.getFullYear()}
+              </h3>
+              <Button variant="ghost" size="icon" onClick={nextMonth} aria-label="Next month">
+                <ChevronRight className="w-5 h-5" />
+              </Button>
             </div>
-          </div>
+
+            <div className="grid grid-cols-7 gap-1 text-center text-sm text-muted-foreground">
+              {dayNames.map((day) => (
+                <div key={day} className="py-2 font-medium">
+                  {day}
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-7 gap-1">
+              <AnimatePresence>
+                {calendarDays.map((day, index) => (
+                  <motion.div
+                    key={day.date.toISOString()}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.01, duration: 0.2 }}
+                  >
+                    <Button
+                      variant="ghost"
+                      onClick={() => handleDayChange(day.date)}
+                      disabled={day.isDisabled}
+                      className={cn(
+                        "w-full h-10 p-0 rounded-md transition-colors duration-200",
+                        !day.isCurrentMonth && "text-muted-foreground/50",
+                        day.isDisabled && "text-muted-foreground/30 cursor-not-allowed",
+                        !day.isDisabled && day.isCurrentMonth && "hover:bg-accent hover:text-accent-foreground",
+                        day.isToday && !day.isSelected && "bg-accent/50 text-accent-foreground",
+                        day.isSelected && "bg-primary text-primary-foreground hover:bg-primary/90",
+                      )}
+                    >
+                      {day.date.getDate()}
+                    </Button>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+          </motion.div>
 
           <div className="space-y-4">
             <h3 className="text-lg font-medium text-center md:text-left">Select a Time</h3>
