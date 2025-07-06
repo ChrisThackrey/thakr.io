@@ -208,3 +208,9 @@ export const Icons: Record<IconName, FC<SVGProps<SVGSVGElement>>> = new Proxy(
 
 /* Optional: still allow consumers to import ICON_MAP directly */
 export { ICON_MAP }
+
+/**
+ * Default export so components can do:
+ *   import Icons from "@/components/icons"
+ */
+export default Icons
