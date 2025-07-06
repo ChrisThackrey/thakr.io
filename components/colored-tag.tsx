@@ -13,7 +13,7 @@ export interface ColoredTagProps extends React.HTMLAttributes<HTMLSpanElement> {
   tag: string
 }
 
-export default function ColoredTag({ tag, className = "", ...rest }: ColoredTagProps) {
+export function ColoredTag({ tag, className = "", ...rest }: ColoredTagProps) {
   return (
     <span
       {...rest}
