@@ -197,11 +197,11 @@ export function AIVersionControlBlogContent() {
         <p>
           In the world of software development, the tools we use shape not only our productivity but also the way we
           think about code. Traditional version control systems like Git have revolutionized how we collaborate on code,
-          but they're fundamentally built around tracking changes to text files. What if we could create a system that
+          but they&apos;re fundamentally built around tracking changes to text files. What if we could create a system that
           tracks the reasoning behind our code decisions?
         </p>
         <p>
-          That's exactly what we set out to build: a "version control for reasoning" that leverages AI to capture not
+          That&apos;s exactly what we set out to build: a &quot;version control for reasoning&quot; that leverages AI to capture not
           just what changed, but why it changed. This post details our journey in creating this tool and the technical
           challenges we faced along the way.
         </p>
@@ -221,7 +221,7 @@ export function AIVersionControlBlogContent() {
         <h2 id="our-solution">Our Solution</h2>
         <p>
           We built a system that uses AI to analyze code changes and automatically generate explanations of the
-          reasoning behind them. But we didn't stop there. Our tool also:
+          reasoning behind them. But we didn&apos;t stop there. Our tool also:
         </p>
         <ul className="list-disc pl-6 my-4 space-y-2">
           <li>Tracks reasoning chains across multiple commits and branches</li>
@@ -231,12 +231,12 @@ export function AIVersionControlBlogContent() {
         </ul>
         <p>
           The result is a tool that not only tracks what changes were made but preserves the contextual knowledge that
-          typically lives only in developers' heads.
+          typically lives only in developers&apos; heads.
         </p>
 
         <h2 id="technical-implementation">Technical Implementation</h2>
         <p>
-          The full technical details of our implementation would require several more blog posts, but we'll be sharing
+          The full technical details of our implementation would require several more blog posts, but we&apos;ll be sharing
           those in the coming weeks. Stay tuned for deep dives into our architecture, AI integration, and deployment
           strategies.
         </p>
@@ -283,7 +283,7 @@ export function AIVersionControlBlogContent() {
         </ul>
 
         <h2 id="future-work">Future Work</h2>
-        <p>We're continuing to evolve the system with several exciting features on our roadmap:</p>
+        <p>We&apos;re continuing to evolve the system with several exciting features on our roadmap:</p>
         <ul className="list-disc pl-6 my-4 space-y-2">
           <li>Integration with code review systems to provide reasoning context</li>
           <li>Team-level insights about decision patterns</li>

@@ -148,7 +148,7 @@ export function CausalAIBlogContent() {
       <FloatingTOC />
 
       <h1 className="text-4xl font-bold mt-8 mb-4 text-gray-900 dark:text-gray-50">
-        The 'Why' Behind the Buy: How Causal AI is Revolutionizing Market Research
+        The &apos;Why&apos; Behind the Buy: How Causal AI is Revolutionizing Market Research
       </h1>
 
       {/* Add reading time estimate */}
@@ -228,7 +228,7 @@ export function CausalAIBlogContent() {
 
         <p>
           Enter synthetic data—AI-generated responses that simulate human behavior and decision-making. While the
-          concept isn't new, recent advances in large language models (LLMs) have transformed what was once considered
+          concept isn&apos;t new, recent advances in large language models (LLMs) have transformed what was once considered
           an unreliable approach into what many now see as an inevitable evolution of the market research industry. At
           the forefront of this transformation is a growing understanding that synthetic respondents can do more than
           just describe preferences—they can help reveal causal relationships that explain why consumers make the
@@ -236,7 +236,7 @@ export function CausalAIBlogContent() {
         </p>
 
         <p>
-          This revolutionary approach isn't just changing how research is conducted; it's compressing decision cycles
+          This revolutionary approach isn&apos;t just changing how research is conducted; it&apos;s compressing decision cycles
           from months to days, enabling experimentation that would be unethical with human subjects, and potentially
           overcoming long-standing biases in traditional research methods. As the line between synthetic and human
           responses becomes increasingly blurred, market researchers are being forced to reconsider fundamental
@@ -256,15 +256,15 @@ export function CausalAIBlogContent() {
 
         <p>
           For nearly three decades, researchers have attempted to use synthetic data in market research, but these
-          efforts consistently fell short. The fundamental issue was the "out-of-sample" problem—models trained on
+          efforts consistently fell short. The fundamental issue was the &quot;out-of-sample&quot; problem—models trained on
           specific data would fail when applied to new scenarios outside their training domain.
         </p>
 
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "People have been trying to sell synthetic data for like 30 years. And for 30 years it's been ineffective
+            &quot;People have been trying to sell synthetic data for like 30 years. And for 30 years it&apos;s been ineffective
             because when you train some sort of model on in-sample data and then try to apply it out-of-sample, it fails
-            in these very obvious ways."
+            in these very obvious ways.&quot;
           </p>
         </blockquote>
 
@@ -272,12 +272,12 @@ export function CausalAIBlogContent() {
           Large language models have changed this equation fundamentally. By being trained on vast amounts of
           human-generated content covering countless domains and contexts, these models effectively eliminate the
           out-of-sample problem. This has triggered a remarkable shift in industry perception—from dismissing synthetic
-          data as "impossible" just two years ago to now viewing it as "inevitable."
+          data as &quot;impossible&quot; just two years ago to now viewing it as &quot;inevitable.&quot;
         </p>
 
         <p>
           Companies like Subconscious, founded by Avi Eisenberger, are at the forefront of this transition. By creating
-          "synthetic respondents" that can participate in research studies, these companies are promising insights at a
+          &quot;synthetic respondents&quot; that can participate in research studies, these companies are promising insights at a
           fraction of the cost and time of traditional methods. The market for synthetic data generation is projected to
           grow from $123 million in 2021 to $1.15 billion by 2027, representing a compound annual growth rate of 45.7%,
           according to industry reports.
@@ -295,13 +295,13 @@ export function CausalAIBlogContent() {
         </ul>
 
         <p>
-          The rapid evolution has caught even veteran market researchers by surprise: "The big market research companies
+          The rapid evolution has caught even veteran market researchers by surprise: &quot;The big market research companies
           were saying this is impossible. We need humans. And now people are saying [panel research] is already mostly
-          synthetic. And we're paying human prices for synthetic panels."
+          synthetic. And we&apos;re paying human prices for synthetic panels.&quot;
         </p>
 
         <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900 dark:text-gray-50">
-          Causal Modeling: Understanding the "Why" Behind Decisions
+          Causal Modeling: Understanding the &quot;Why&quot; Behind Decisions
         </h2>
 
         <BlogImage
@@ -313,7 +313,7 @@ export function CausalAIBlogContent() {
 
         <p>
           Traditional market research often focuses on descriptive data—what people say they prefer, what they report
-          they've purchased, or how they describe their opinions. But description alone doesn't answer the crucial "why"
+          they&apos;ve purchased, or how they describe their opinions. But description alone doesn&apos;t answer the crucial &quot;why&quot;
           questions that drive business decisions.
         </p>
 
@@ -324,7 +324,7 @@ export function CausalAIBlogContent() {
 
         <blockquote className="pl-4 border-l-4 border-blue-500 italic my-6 text-gray-700 dark:text-gray-300">
           <p>
-            "You cannot answer why something happens without causal understanding. Why did something happen? Because of
+            &quot;You cannot answer why something happens without causal understanding. Why did something happen? Because of
             this. The ability to ask why and understand why is kind of what separates us from the animals."
           </p>
         </blockquote>

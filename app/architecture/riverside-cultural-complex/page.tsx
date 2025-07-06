@@ -72,7 +72,7 @@ export default function RiversideCulturalComplexPage() {
         <p className="mb-4">
           The design approach for the Riverside Cultural Complex focused on creating a landmark building that respects
           its natural setting along the river while providing flexible spaces for various cultural activities. The
-          building's form is inspired by the flowing water of the adjacent river.
+          building&apos;s form is inspired by the flowing water of the adjacent river.
         </p>
         <p>Notable features include:</p>
         <ul className="list-disc pl-5 space-y-2 mt-2">

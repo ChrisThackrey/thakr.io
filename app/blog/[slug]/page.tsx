@@ -4,7 +4,6 @@ import { ArrowLeft, Rocket } from "lucide-react"
 import { MDXRemote } from "next-mdx-remote/rsc"
 
 import { getPost, getPosts, getSeries, getRelatedPosts, type Series } from "@/lib/blog"
-import { useMDXComponents } from "@/mdx-components"
 
 import { BlogPostLayout } from "@/components/blog-post-layout"
 import { RelatedPosts } from "@/components/related-posts"
@@ -57,12 +56,11 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const related = await getRelatedPosts(post.slug, post.tags)
-  const mdxComponents = useMDXComponents({})
   const contentId = `blog-post-${params.slug}`
 
   return (
     <BlogErrorBoundary postTitle={post.title}>
-      {/* global progress bars */}
+      {/* Global reading indicators */}
       <ReadingProgressBar position="top" thickness="medium" animation="smooth" color="primary" />
       <HeaderReadingProgress height="thin" className="hidden md:block" />
       <MobileReadingIndicator showScrollToTop />
