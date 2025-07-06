@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from "next/server"
+import { NextResponse } from "next/server"
 import { createAdminClient } from "@/lib/supabase/server"
 
 export async function GET() {
@@ -20,7 +20,7 @@ export async function GET() {
       console.error("Supabase storage download error:", downloadError)
       let status = 500
       // Supabase storage errors might have a 'status' or 'statusCode' property
-      const supabaseErrorStatus = (downloadError as any).status || (downloadError as any).statusCode
+      const supabaseErrorStatus = (downloadError as { status?: number; statusCode?: number }).status || (downloadError as { status?: number; statusCode?: number }).statusCode
       if (supabaseErrorStatus === 404 || downloadError.message.toLowerCase().includes("not found")) {
         status = 404
       } else if (supabaseErrorStatus === 401 || supabaseErrorStatus === 403) {
@@ -51,23 +51,24 @@ export async function GET() {
       status: 200,
       headers,
     })
-  } catch (e: any) {
+  } catch (e: unknown) {
     // This catches errors from createAdminClient() or any other unexpected issues.
-    console.error("Error in /api/get-cv GET handler:", e.message, e.stack) // Log stack for more details
+    const error = e as Error
+    console.error("Error in /api/get-cv GET handler:", error.message, error.stack) // Log stack for more details
 
     let errorMessage = "An unexpected error occurred while processing the resume download."
     let errorStatus = 500
 
-    if (e.message.includes("Server configuration error: Supabase admin credentials missing.")) {
+    if (error.message.includes("Server configuration error: Supabase admin credentials missing.")) {
       errorMessage =
         "Server configuration error: Supabase admin credentials missing. Please check environment variables."
       errorStatus = 503 // Service Unavailable (due to misconfiguration)
-    } else if (e.message.includes("Failed to initialize Supabase admin client.")) {
+    } else if (error.message.includes("Failed to initialize Supabase admin client.")) {
       errorMessage = "Failed to initialize Supabase admin client. Check server logs for details."
       errorStatus = 503
     }
     // Add more specific error message handling if needed
 
-    return NextResponse.json({ error: errorMessage, details: e.message }, { status: errorStatus })
+    return NextResponse.json({ error: errorMessage, details: error.message }, { status: errorStatus })
   }
 }

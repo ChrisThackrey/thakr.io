@@ -11,7 +11,7 @@ interface AnnotationMarkerProps {
   onClick?: () => void
 }
 
-export function AnnotationMarker({ annotation, isEditable = false, onClick }: AnnotationMarkerProps) {
+export function AnnotationMarker({ annotation, onClick }: AnnotationMarkerProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (

@@ -8,9 +8,8 @@
       "Bash(eza:*)",
       "Bash(ls:*)",
       "Bash(find:*)",
-      "Bash(git commit:*)",
       "Bash(grep:*)",
-      "Bash(rm:*)",
+      "Bash(npx eslint:*)",
       "mcp__filesystem__read_file",
       "mcp__filesystem__edit_file",
       "Read",
@@ -74,9 +73,6 @@
       "mcp__github__search_issues",
       "mcp__github__get_file_contents",
       "mcp__gemini__chat",
-      "mcp__claude-3-7-sonnet__Task",
-      "mcp__claude-3-5-sonnet__Task",
-      "mcp__claude-3-5-haiku__Task",
       "mcp__git__git_status",
       "mcp__git__git_diff_staged",
       "mcp__git__git_add",
@@ -87,6 +83,8 @@
       "Bash(git add:*)",
       "mcp__git__git_diff",
       "Bash(git commit:*)",
+      "Bash(git diff:*)",
+      "Bash(git status:*)",
       "Bash(bash -c \"git status\")",
       "Bash(/bin/bash -c \"git status\")",
       "mcp__taskmaster-ai__get_tasks",
@@ -100,6 +98,9 @@
       "Bash(npx tsc:*)",
       "mcp__desktop-commander__execute_command",
       "mcp__desktop-commander__read_output",
+      "mcp__task-master-ai__parse_prd",
+      "mcp__task-master-ai__update_task",
+      "mcp__task-master-ai__get_task",
       "Bash(/usr/bin/git status)"
     ],
     "deny": [
@@ -144,5 +145,18 @@
     "browser-tools",
     "g-search",
     "blender"
-  ]
+  ],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.local/scripts/eslint-validator.py"
+          }
+        ]
+      }
+    ]
+  }
 }

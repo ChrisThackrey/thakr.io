@@ -10,7 +10,6 @@ export function Architecture3DSkeleton({ delay = 0 }: Architecture3DSkeletonProp
   return (
     <SkeletonBase
       section="architecture"
-      animate="fade"
       delay={delay}
       className="rounded-lg border bg-card overflow-hidden"
     >

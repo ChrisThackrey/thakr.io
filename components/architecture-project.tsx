@@ -29,7 +29,6 @@ export function ArchitectureProject({
   description,
   imageUrl,
   images,
-  modelUrl,
   tags,
   year,
   location,

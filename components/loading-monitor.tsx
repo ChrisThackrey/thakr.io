@@ -1,7 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { usePathname } from "next/navigation"
+// Imports commented out as functionality is disabled
+// import { useEffect, useState } from "react"
+// import { usePathname } from "next/navigation"
 // Commented out - loading-debugger module not found
 // import { getStuckRoutes, logLoadingStart, logLoadingEnd } from "@/utils/loading-debugger"
 

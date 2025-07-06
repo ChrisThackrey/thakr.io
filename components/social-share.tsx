@@ -88,11 +88,11 @@ export function SocialShare({
   const buttonVariant = compact ? "ghost" : "outline"
 
   const platformIcons = {
-    twitter: <Icons.twitter size={iconSize} />,
-    linkedin: <Icons.linkedin size={iconSize} />,
-    facebook: <Icons.facebook size={iconSize} />,
-    email: <Icons.mail size={iconSize} />,
-    copy: copied ? <Icons.check size={iconSize} /> : <Icons.link size={iconSize} />,
+    twitter: <Icons.twitter width={iconSize} height={iconSize} />,
+    linkedin: <Icons.linkedin width={iconSize} height={iconSize} />,
+    facebook: <Icons.facebook width={iconSize} height={iconSize} />,
+    email: <Icons.mail width={iconSize} height={iconSize} />,
+    copy: copied ? <Icons.check width={iconSize} height={iconSize} /> : <Icons.link width={iconSize} height={iconSize} />,
   }
 
   const platformLabels = {
@@ -115,7 +115,7 @@ export function SocialShare({
           aria-label="Share"
         >
           <EnhancedIcon>
-            <Icons.share size={iconSize} />
+            <Icons.share width={iconSize} height={iconSize} />
           </EnhancedIcon>
           {showLabel && <span className="ml-2">Share</span>}
         </EnhancedButton>

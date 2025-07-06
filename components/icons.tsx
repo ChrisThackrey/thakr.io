@@ -86,6 +86,8 @@ import {
   MoveUp,
   MoveDown,
   Facebook,
+  Rocket,
+  Link,
 } from "lucide-react"
 
 /* ---------- 1.  Fallback / branding icon --------------------------------- */
@@ -144,7 +146,6 @@ const ICON_MAP = {
   plus: Plus,
   Plus: Plus,
   close: X,
-  x: X,
   share: Share,
   share2: Share2,
   moveUp: MoveUp,
@@ -173,6 +174,10 @@ const ICON_MAP = {
   twitter: Twitter,
   instagram: Instagram,
   facebook: Facebook,
+  
+  /* Additional icons */
+  rocket: Rocket,
+  link: Link,
 
   /* Tech / misc */
   laptop: Laptop,

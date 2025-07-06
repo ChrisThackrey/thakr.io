@@ -10,7 +10,6 @@ export function AnimatedArchitectureSkeleton({ delay = 0 }: AnimatedArchitecture
   return (
     <SkeletonBase
       section="architecture"
-      animate="fade"
       delay={delay}
       className="rounded-lg border bg-card overflow-hidden"
     >

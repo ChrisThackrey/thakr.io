@@ -8,7 +8,7 @@ interface SeriesBlogSkeletonProps {
 
 export function SeriesBlogSkeleton({ delay = 0 }: SeriesBlogSkeletonProps) {
   return (
-    <SkeletonBase section="blog" animate="slide" delay={delay} className="rounded-lg border bg-card overflow-hidden">
+    <SkeletonBase section="blog" delay={delay} className="rounded-lg border bg-card overflow-hidden">
       <div className="p-6 space-y-4">
         {/* Series badge */}
         <div className="flex items-center gap-2">

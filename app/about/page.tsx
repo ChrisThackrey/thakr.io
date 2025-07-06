@@ -23,36 +23,36 @@ export default function AboutPage() {
   }
   const avatarSocialVariants: Variants = {
     hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut", delay: 0 } },
-    exit: { opacity: 0, y: -10, transition: { duration: 0.3, ease: "easeIn" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94], delay: 0 } },
+    exit: { opacity: 0, y: -10, transition: { duration: 0.3, ease: [0.55, 0.055, 0.675, 0.19] } },
   }
   const textVariants: Variants = {
     hidden: { opacity: 0, y: 10 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.1 + 0.3, duration: 0.5, ease: "easeOut" },
+      transition: { delay: i * 0.1 + 0.3, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
     }),
-    exit: { opacity: 0, y: -10, transition: { duration: 0.3, ease: "easeIn" } },
+    exit: { opacity: 0, y: -10, transition: { duration: 0.3, ease: [0.55, 0.055, 0.675, 0.19] } },
   }
   const resumeButtonRightVariant: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { delay: 0.2, duration: 0.4, ease: "easeOut" } },
-    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3, ease: "easeIn" } },
+    visible: { opacity: 1, scale: 1, transition: { delay: 0.2, duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] } },
+    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3, ease: [0.55, 0.055, 0.675, 0.19] } },
   }
   const projectsButtonRightVariant: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { delay: 0.3, duration: 0.4, ease: "easeOut" } },
-    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3, ease: "easeIn" } },
+    visible: { opacity: 1, scale: 1, transition: { delay: 0.3, duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] } },
+    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3, ease: [0.55, 0.055, 0.675, 0.19] } },
   }
   const bottomSectionVariant: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.1 + 0.5, duration: 0.5, ease: "easeOut" },
+      transition: { delay: i * 0.1 + 0.5, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
     }),
-    exit: { opacity: 0, y: -10, transition: { duration: 0.3, ease: "easeIn" } },
+    exit: { opacity: 0, y: -10, transition: { duration: 0.3, ease: [0.55, 0.055, 0.675, 0.19] } },
   }
 
   const SkillsCard = () => (
