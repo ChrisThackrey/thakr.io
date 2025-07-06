@@ -1,5 +1,3 @@
-"use client"
-
 import type { MDXComponents } from "mdx/types"
 import { Callout } from "@/components/ui/callout"
 import { Steps } from "@/components/ui/steps"

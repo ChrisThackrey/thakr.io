@@ -148,7 +148,7 @@ export function FocusMode({
 
     try {
       console.log("Starting speed reading with extracted content")
-      startWithContent(contentText, initialPosition || 0)
+      startWithContent(contentText, initialPosition ?? 0)
     } catch (error) {
       console.error("Error starting speed reading with content:", error)
       setError("Error initializing speed reading. Please try again.")

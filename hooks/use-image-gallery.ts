@@ -141,7 +141,7 @@ export const useImageGallery = (initialImages: ImageWithAnnotations[]) => {
 
   const handleExport = async (options: ExportOptions) => {
     if (annotatedImageRef.current) {
-      return await exportAnnotatedImage(
+      await exportAnnotatedImage(
         annotatedImageRef.current,
         currentImage.url,
         currentImage.alt,
@@ -149,7 +149,6 @@ export const useImageGallery = (initialImages: ImageWithAnnotations[]) => {
         options,
       )
     }
-    return { success: false, error: "No image element found" }
   }
 
   const handleAnnotationUpdateInFullscreen = (index: number, annotations: Annotation[]) => {

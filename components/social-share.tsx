@@ -69,7 +69,7 @@ export function SocialShare({
           title: "Shared successfully",
           description: "The content has been shared.",
         })
-      } catch {
+      } catch (err) {
         if ((err as Error).name !== "AbortError") {
           toast({
             title: "Share failed",

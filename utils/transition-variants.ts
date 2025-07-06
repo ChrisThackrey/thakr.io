@@ -5,7 +5,7 @@ export const transitionVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-    transition: { duration: 0.4, ease: "easeInOut" },
+    transition: { duration: 0.4, ease: [0.42, 0, 0.58, 1] },
   },
 
   // Blog section - slide from right
@@ -13,7 +13,7 @@ export const transitionVariants = {
     initial: { opacity: 0, x: 20 },
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -20 },
-    transition: { duration: 0.4, ease: "easeInOut" },
+    transition: { duration: 0.4, ease: [0.42, 0, 0.58, 1] },
   },
 
   // Projects section - scale up
@@ -21,7 +21,7 @@ export const transitionVariants = {
     initial: { opacity: 0, scale: 0.96 },
     animate: { opacity: 1, scale: 1 },
     exit: { opacity: 0, scale: 0.96 },
-    transition: { duration: 0.4, ease: "easeInOut" },
+    transition: { duration: 0.4, ease: [0.42, 0, 0.58, 1] },
   },
 
   // Architecture section - fade up
@@ -29,7 +29,7 @@ export const transitionVariants = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: -20 },
-    transition: { duration: 0.4, ease: "easeInOut" },
+    transition: { duration: 0.4, ease: [0.42, 0, 0.58, 1] },
   },
 
   // About section - simple fade (removed rotation)
@@ -37,7 +37,7 @@ export const transitionVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-    transition: { duration: 0.4, ease: "easeInOut" },
+    transition: { duration: 0.4, ease: [0.42, 0, 0.58, 1] },
   },
 
   // Work section - fade up (removed perspective)
@@ -45,7 +45,7 @@ export const transitionVariants = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: -20 },
-    transition: { duration: 0.4, ease: "easeInOut" },
+    transition: { duration: 0.4, ease: [0.42, 0, 0.58, 1] },
   },
 }
 

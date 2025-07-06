@@ -20,6 +20,7 @@ export function CriticalImagesPreloader({ images }: CriticalImagesPreloaderProps
         // Preload the image
         const img = new Image()
         img.src = src
+        // @ts-ignore - fetchPriority is a valid HTML attribute but not in TypeScript types yet
         img.fetchPriority = "high"
         img.onload = () => {
           imagePriority.imageLoaded(id)

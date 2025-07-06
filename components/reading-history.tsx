@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { useReadingPosition, type ReadingHistoryEntry } from "@/hooks/use-reading-position"
+import { useReadingPosition, type ReadingPosition } from "@/hooks/use-reading-position"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollText, Clock, Trash2, X, BookOpen } from "lucide-react"
@@ -24,7 +24,7 @@ import { Badge } from "@/components/ui/badge"
 
 export function ReadingHistory() {
   const { getReadingHistory, clearHistory, clearArticleHistory } = useReadingPosition()
-  const [history, setHistory] = useState<ReadingHistoryEntry[]>([])
+  const [history, setHistory] = useState<ReadingPosition[]>([])
   const [isOpen, setIsOpen] = useState(false)
   const { theme } = useTheme()
 

@@ -9,7 +9,7 @@ export const contentAnimationVariants = {
       transition: {
         delay: i * 0.1,
         duration: 0.5,
-        ease: "easeOut",
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     }),
     exit: {
@@ -28,7 +28,7 @@ export const contentAnimationVariants = {
       transition: {
         delay: i * 0.08,
         duration: 0.4,
-        ease: "easeOut",
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     }),
     exit: {
@@ -47,7 +47,7 @@ export const contentAnimationVariants = {
       transition: {
         delay: i * 0.12,
         duration: 0.45,
-        ease: "easeOut",
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     }),
     exit: {
@@ -66,7 +66,7 @@ export const contentAnimationVariants = {
       transition: {
         delay: i * 0.15,
         duration: 0.5,
-        ease: "easeOut",
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     }),
     exit: {
@@ -85,7 +85,7 @@ export const contentAnimationVariants = {
       transition: {
         delay: i * 0.1,
         duration: 0.5,
-        ease: "easeOut",
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     }),
     exit: {
@@ -104,7 +104,7 @@ export const contentAnimationVariants = {
       transition: {
         delay: i * 0.13,
         duration: 0.55,
-        ease: "easeOut",
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     }),
     exit: {

@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react"
 
-interface ReadingPosition {
+export interface ReadingPosition {
   slug: string
   position: number
   timestamp: number

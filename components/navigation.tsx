@@ -30,6 +30,9 @@ export function Navigation() {
         <nav className="hidden md:flex md:items-center md:gap-6">
           {routes.map(({ href, label, icon, active }) => {
             const Icon = Icons[icon as keyof typeof Icons]
+            if (!Icon) {
+              return null
+            }
             const isActive = typeof active !== "undefined" ? active : pathname === href
             return (
               <Link
@@ -59,6 +62,10 @@ export function Navigation() {
               <nav className="grid gap-4">
                 {routes.map(({ href, label, icon, active }) => {
                   const Icon = Icons[icon as keyof typeof Icons]
+                  if (!Icon) {
+                    console.warn(`Icon "${icon}" not found in Icons object`)
+                    return null
+                  }
                   const isActive = typeof active !== "undefined" ? active : pathname === href
                   return (
                     <Link

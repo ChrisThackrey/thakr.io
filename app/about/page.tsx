@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { FileText, Briefcase } from "lucide-react"
-import { PageBackground } from "@/components/page-background"
 import { motion, Variants } from "framer-motion"
 import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { SectionTitle } from "@/components/section-title"
@@ -102,9 +101,7 @@ export default function AboutPage() {
 
   if (prefersReducedMotion) {
     return (
-      <>
-        <PageBackground />
-        <motion.div
+      <motion.div
           className="container py-12 md:py-16 flex-grow"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -148,14 +145,11 @@ export default function AboutPage() {
             </div>
           </div>
         </motion.div>
-      </>
     )
   }
 
   return (
-    <>
-      <PageBackground />
-      <div className="container py-12 md:py-16 flex-grow">
+    <div className="container py-12 md:py-16 flex-grow">
         <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
           <div className="md:w-2/3 order-2 md:order-1 space-y-6">
             <motion.div className="mb-12" variants={titleFadeIn} initial="hidden" animate="visible" exit="exit">
@@ -219,6 +213,5 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-    </>
   )
 }

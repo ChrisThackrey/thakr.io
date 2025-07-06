@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { Suspense } from "react"
 import dynamic from "next/dynamic"
 import { getAllBlogPosts, getFeaturedPosts } from "@/lib/blog"
-import { PageBackground } from "@/components/page-background"
 import { FeaturedPostsCarousel } from "@/components/featured-posts-carousel"
 import { PageHeader } from "@/components/page-header"
 import { AnimatedBlogSkeleton } from "@/components/skeletons/animated-blog-skeleton"
@@ -26,7 +25,6 @@ export default async function BlogPage() {
   return (
     <BlogErrorBoundary postTitle="Blog">
       <div className="flex flex-col flex-grow">
-        <PageBackground />
         <div className="container mx-auto px-4 py-8">
           <PageHeader title="Blog" description="Articles and thoughts on software development, AI, and design." />
 

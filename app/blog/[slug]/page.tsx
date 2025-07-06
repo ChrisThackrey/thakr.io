@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, Rocket } from "lucide-react"
 import { MDXContent } from "@/components/mdx-content"
+import { Suspense } from "react"
 
 import { getPost, getPosts, getSeries, getRelatedPosts, type Series } from "@/lib/blog"
 
@@ -83,12 +84,12 @@ export default async function BlogPostPage({ params }: PageProps) {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem asChild>
-                <SpeedReadingButton contentId={contentId} slug={params.slug} className="w-full justify-start" />
+                <SpeedReadingButton contentId={contentId} slug={slug} className="w-full justify-start" />
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <SpeedReadingButton
                   contentId={contentId}
-                  slug={params.slug}
+                  slug={slug}
                   className="w-full justify-start"
                   startInMiniPlayer={true}
                 />
@@ -113,7 +114,9 @@ export default async function BlogPostPage({ params }: PageProps) {
               data-blog-slug={slug}
               className="prose prose-lg dark:prose-invert mt-4 max-w-none"
             >
-              <MDXContent source={post.content} />
+              <Suspense fallback={<div>Loading content...</div>}>
+                <MDXContent source={post.content} />
+              </Suspense>
             </article>
             <BlogSelectionSpeedRead contentSelector={`#${contentId}`} slug={slug} />
           </main>

@@ -29,7 +29,7 @@ export function FloatingSpeedReadLauncher({
   const [isOpen, setIsOpen] = useState(false)
   const [isDismissed, setIsDismissed] = useState(false)
   const scrollPosition = useScrollPosition()
-  const isVisible = scrollPosition > threshold && !isDismissed
+  const isVisible = scrollPosition.y > threshold && !isDismissed
 
   // Position classes based on the position prop
   const positionClasses = {

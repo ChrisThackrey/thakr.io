@@ -83,7 +83,7 @@ export function ImageShareMenu({
           title: "Shared successfully",
           description: "The image has been shared.",
         })
-      } catch {
+      } catch (err) {
         if ((err as Error).name !== "AbortError") {
           toast({
             title: "Share failed",

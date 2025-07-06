@@ -3,7 +3,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { getAllTags, getTagCount } from "@/lib/blog"
+import { getAllTags, getTagCounts } from "@/lib/blog"
 import { getTagColors } from "@/lib/tag-colors"
 import { SectionTitle } from "./section-title"
 
@@ -18,7 +18,7 @@ export default function TagCloud({ limit, title = "Explore Tags" }: TagCloudProp
 
   useEffect(() => {
     setTags(getAllTags())
-    setCounts(getTagCount())
+    setCounts(getTagCounts())
   }, [])
 
   const displayed = limit ? tags.slice(0, limit) : tags

@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { RelatedPosts } from "@/components/related-posts";
 import { SeriesBanner } from "@/components/series-banner";
 import { FloatingTocButton } from "@/components/floating-toc-button";
-import { PageBackground } from "@/components/page-background";
 import { Button } from "@/components/ui/button";
 import { ReadingProgressBar } from "@/components/reading-progress-bar";
 import { MobileReadingIndicator } from "@/components/mobile-reading-indicator";
@@ -63,7 +62,6 @@ export default async function Layout({ children, params }: LayoutProps) {
   return (
     <>
       <BlogPostLayout post={post} content={post.content || ""}>
-        <PageBackground />
         {/* Enhanced reading progress indicators */}
         <ReadingProgressBar
           position="top"

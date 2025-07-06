@@ -5,7 +5,7 @@ interface MDXContentProps {
   source: string
 }
 
-export function MDXContent({ source }: MDXContentProps) {
+export async function MDXContent({ source }: MDXContentProps) {
   const mdxComponents = useMDXComponents({})
   return <MDXRemote source={source} components={mdxComponents} />
 }

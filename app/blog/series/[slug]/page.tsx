@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation"
 import { getAllSeries, getSeriesBySlug } from "@/lib/blog"
 import { BlogPostCard } from "@/components/blog-post-card"
-import { PageBackground } from "@/components/page-background"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
@@ -25,7 +24,6 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
 
   return (
     <BlogErrorBoundary postTitle={series.name}>
-      <PageBackground />
       <div className="container py-16 md:py-24">
         <div className="mb-8">
           <Button variant="ghost" asChild className="mb-4">

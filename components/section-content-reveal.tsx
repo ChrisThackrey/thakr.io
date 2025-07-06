@@ -42,7 +42,11 @@ export function SectionContentReveal({
     return <div className={className}>{children}</div>
   }
 
-  const Component = motion[as as keyof typeof motion] || motion.div
+  const Component = as === 'div' ? motion.div : 
+                   as === 'section' ? motion.section :
+                   as === 'article' ? motion.article :
+                   as === 'span' ? motion.span :
+                   motion.div
 
   return (
     <Component
@@ -50,7 +54,17 @@ export function SectionContentReveal({
       className={className}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      variants={variant}
+      variants={{
+        hidden: variant.hidden,
+        visible: (i: number) => ({
+          ...variant.visible(i),
+          transition: {
+            delay: variant.visible(i).transition.delay,
+            duration: variant.visible(i).transition.duration,
+            ease: variant.visible(i).transition.ease,
+          }
+        })
+      }}
       custom={customIndex}
     >
       {children}

@@ -3,17 +3,16 @@
 import type React from "react"
 
 import { useEffect, useRef } from "react"
-import BlogContentWrapper from "@/components/blog-content-wrapper"
+import BlogContentContainer from "@/components/blog-content-container"
 import { cn } from "@/lib/utils"
 
 interface BlogContentRendererProps {
   slug: string
   children: React.ReactNode
   className?: string
-  withDropCap?: boolean
 }
 
-export function BlogContentRenderer({ slug, children, className, withDropCap = true }: BlogContentRendererProps) {
+export function BlogContentRenderer({ slug, children, className }: BlogContentRendererProps) {
   const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -37,7 +36,7 @@ export function BlogContentRenderer({ slug, children, className, withDropCap = t
   }, [slug])
 
   return (
-    <BlogContentWrapper slug={slug} withDropCap={withDropCap}>
+    <BlogContentContainer slug={slug}>
       <div
         ref={contentRef}
         className={cn("prose prose-lg dark:prose-invert blog-content", className)}
@@ -46,6 +45,6 @@ export function BlogContentRenderer({ slug, children, className, withDropCap = t
       >
         {children}
       </div>
-    </BlogContentWrapper>
+    </BlogContentContainer>
   )
 }
