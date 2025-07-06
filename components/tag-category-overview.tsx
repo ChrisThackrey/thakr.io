@@ -1,65 +1,30 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { Cpu, Lightbulb, Briefcase, MapPin, Users, Shield } from "lucide-react"
-import { tagCategories } from "@/lib/tag-categories"
-import { getAllTags, getTagCount } from "@/lib/blog"
-import { cn } from "@/lib/utils"
+import { TAG_CATEGORIES } from "@/lib/tag-categories"
+import { getTagColors } from "@/lib/tag-colors"
 
 interface TagCategoryOverviewProps {
-  className?: string
+  tagCounts: Record<string, number>
 }
 
-const iconMap = {
-  cpu: Cpu,
-  lightbulb: Lightbulb,
-  briefcase: Briefcase,
-  "map-pin": MapPin,
-  users: Users,
-  shield: Shield,
-}
-
-export function TagCategoryOverview({ className }: TagCategoryOverviewProps) {
-  const allTags = getAllTags()
-  const tagCounts = getTagCount()
+export function TagCategoryOverview({ tagCounts }: TagCategoryOverviewProps) {
+  const categories = Object.keys(TAG_CATEGORIES)
 
   return (
-    <div className={cn("grid grid-cols-2 md:grid-cols-3 gap-4", className)}>
-      {tagCategories.map((category, index) => {
-        const Icon = category.icon ? iconMap[category.icon as keyof typeof iconMap] : null
-        const categoryTags = category.tags.filter((tag) => allTags.includes(tag))
-        const totalPosts = categoryTags.reduce((sum, tag) => sum + (tagCounts[tag] || 0), 0)
-
-        if (categoryTags.length === 0) return null
-
-        return (
-          <motion.div
-            key={category.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <div className="border rounded-lg p-4 h-full">
-              <div className="flex items-start gap-3">
-                {Icon && (
-                  <div className="p-2 rounded-md bg-primary/10 text-primary">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                )}
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-medium text-sm mb-1">{category.name}</h4>
-                  {category.description && <p className="text-xs text-muted-foreground mb-2">{category.description}</p>}
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span>{categoryTags.length} tags</span>
-                    <span>•</span>
-                    <span>{totalPosts} posts</span>
-                  </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {categories.map((category) => (
+        <div key={category} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
+          <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">{category}</h3>
+          <div className="flex flex-wrap gap-2">
+            {TAG_CATEGORIES[category].map((tag) =>
+              tagCounts[tag] ? (
+                <div key={tag} className="flex items-center">
+                  <span className={`inline-block rounded-full text-xs px-2 py-1 ${getTagColors(tag)}`}>{tag}</span>
+                  <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">({tagCounts[tag]})</span>
                 </div>
-              </div>
-            </div>
-          </motion.div>
-        )
-      })}
+              ) : null,
+            )}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
