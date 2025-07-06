@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { DeepSeekAIBlogContent } from "./DeepSeekAIBlogContent"
+import DeepSeekAIBlogContent from "./DeepSeekAIBlogContent"
 
 export const metadata: Metadata = {
   title: "DeepSeek AI: Innovation, Geopolitics, and the Future of Model-Agnostic Development",
