@@ -12,11 +12,11 @@ export function generateStaticParams() {
   return tags.map((tag) => ({ tag }))
 }
 
-export default function TagPage({ params }: { params: { tag: string } }) {
+export default async function TagPage({ params }: { params: { tag: string } }) {
   const tag = decodeURIComponent(params.tag)
-  const posts = getPostsByTag(tag)
+  const posts = await getPostsByTag(tag)
 
-  if (posts.length === 0) {
+  if (!posts || posts.length === 0) {
     notFound()
   }
 

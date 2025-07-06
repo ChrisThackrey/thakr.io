@@ -543,7 +543,7 @@ export function getBlogContent(slug: string): BlogContent | null {
 }
 
 // Helper function to get posts by tag
-export function getPostsByTag(tag: string): string[] {
+export function getPostSlugsByTag(tag: string): string[] {
   const posts: string[] = []
 
   // Get all blog posts from the blog.ts file
