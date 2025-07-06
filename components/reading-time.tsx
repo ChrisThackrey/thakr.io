@@ -3,11 +3,21 @@ import { cn } from "@/lib/utils"
 
 interface ReadingTimeProps {
   minutes: number
+  wordCount?: number
+  showWordCount?: boolean
+  actualMinutes?: number
   showSpeedIndicator?: boolean
   className?: string
 }
 
-export function ReadingTime({ minutes, showSpeedIndicator = true, className }: ReadingTimeProps) {
+export function ReadingTime({ 
+  minutes, 
+  wordCount,
+  showWordCount = false,
+  actualMinutes,
+  showSpeedIndicator = true, 
+  className 
+}: ReadingTimeProps) {
   // Determine reading length category
   let speedIndicator = ""
   if (showSpeedIndicator) {
@@ -22,6 +32,7 @@ export function ReadingTime({ minutes, showSpeedIndicator = true, className }: R
       <Clock className="h-3 w-3 mr-1" />
       <span>
         {minutes} min{minutes === 1 ? "" : "s"} read
+        {showWordCount && wordCount && ` • ${wordCount} words`}
       </span>
       {showSpeedIndicator && speedIndicator && <span className="ml-1 text-xs">({speedIndicator})</span>}
     </div>

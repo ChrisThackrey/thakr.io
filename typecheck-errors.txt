@@ -1,0 +1,552 @@
+
+> my-v0-project@0.1.0 typecheck
+> tsc --noEmit
+
+app/blog/[slug]/layout.tsx(119,38): error TS2741: Property 'series' is missing in type '{ post: BlogPost; }' but required in type 'Props'.
+app/blog/[slug]/layout.tsx(125,89): error TS2322: Type '{ contentSelector: string; slug: string; }' is not assignable to type 'IntrinsicAttributes & BlogSelectionSpeedReadProps'.
+  Property 'slug' does not exist on type 'IntrinsicAttributes & BlogSelectionSpeedReadProps'.
+app/blog/[slug]/layout.tsx(138,27): error TS2322: Type '{ currentSlug: string; tags: string[]; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'currentSlug' does not exist on type 'IntrinsicAttributes & Props'.
+app/blog/[slug]/layout.tsx(146,54): error TS2322: Type '{ slug: string; title: string; }' is not assignable to type 'IntrinsicAttributes & ReadingProgressIndicatorProps'.
+  Property 'title' does not exist on type 'IntrinsicAttributes & ReadingProgressIndicatorProps'.
+app/blog/[slug]/layout.tsx(153,11): error TS2322: Type 'string | number' is not assignable to type 'string | undefined'.
+  Type 'number' is not assignable to type 'string'.
+app/blog/[slug]/layout.tsx(161,11): error TS2322: Type 'string | number' is not assignable to type 'string | undefined'.
+  Type 'number' is not assignable to type 'string'.
+app/blog/[slug]/layout.tsx(180,34): error TS2322: Type '{ contentSelector: string; className: string; }' is not assignable to type 'IntrinsicAttributes & FloatingSpeedReadButtonProps'.
+  Property 'contentSelector' does not exist on type 'IntrinsicAttributes & FloatingSpeedReadButtonProps'.
+app/blog/[slug]/page.tsx(92,19): error TS2322: Type '{ contentId: string; slug: string; className: string; startInMiniPlayer: true; }' is not assignable to type 'IntrinsicAttributes & SpeedReadingButtonProps'.
+  Property 'startInMiniPlayer' does not exist on type 'IntrinsicAttributes & SpeedReadingButtonProps'.
+app/blog/[slug]/page.tsx(107,10): error TS2741: Property 'content' is missing in type '{ children: Element[]; post: BlogPost; }' but required in type 'BlogPostLayoutProps'.
+app/blog/[slug]/page.tsx(117,71): error TS2322: Type '{ contentSelector: string; slug: string; }' is not assignable to type 'IntrinsicAttributes & BlogSelectionSpeedReadProps'.
+  Property 'slug' does not exist on type 'IntrinsicAttributes & BlogSelectionSpeedReadProps'.
+app/blog/[slug]/page.tsx(129,54): error TS2322: Type '{ slug: string; title: string; }' is not assignable to type 'IntrinsicAttributes & ReadingProgressIndicatorProps'.
+  Property 'title' does not exist on type 'IntrinsicAttributes & ReadingProgressIndicatorProps'.
+app/blog/[slug]/page.tsx(153,34): error TS2322: Type '{ contentSelector: string; className: string; }' is not assignable to type 'IntrinsicAttributes & FloatingSpeedReadButtonProps'.
+  Property 'contentSelector' does not exist on type 'IntrinsicAttributes & FloatingSpeedReadButtonProps'.
+app/blog/ai-version-control-for-reasoning/AIVersionControlBlogContent.tsx(142,11): error TS2322: Type '{ minutes: number; wordCount: number; showWordCount: boolean; className: string; }' is not assignable to type 'IntrinsicAttributes & ReadingTimeProps'.
+  Property 'wordCount' does not exist on type 'IntrinsicAttributes & ReadingTimeProps'.
+app/blog/ai-version-control-for-reasoning/AIVersionControlBlogContent.tsx(296,13): error TS2322: Type '{ currentSlug: string; tags: string[]; maxPosts: number; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'currentSlug' does not exist on type 'IntrinsicAttributes & Props'.
+app/blog/BlogPageClient.tsx(79,22): error TS2339: Property 'length' does not exist on type 'Promise<BlogPost[]>'.
+app/blog/BlogPageClient.tsx(83,36): error TS2740: Type 'Promise<BlogPost[]>' is missing the following properties from type 'BlogPost[]': length, pop, push, concat, and 35 more.
+app/blog/BlogPageClient.tsx(142,31): error TS2322: Type 'string | null' is not assignable to type 'string | undefined'.
+  Type 'null' is not assignable to type 'string | undefined'.
+app/blog/BlogPageClient.tsx(147,15): error TS2322: Type '{ tags: string[]; selectedTags: string[]; filterMode: "OR" | "AND"; onSelectTag: (tag: string) => void; onRemoveTag: (tag: string) => void; onClearTags: () => void; onChangeFilterMode: (mode: "OR" | "AND") => void; }' is not assignable to type 'IntrinsicAttributes & TagFilterDropdownProps'.
+  Property 'tags' does not exist on type 'IntrinsicAttributes & TagFilterDropdownProps'.
+app/blog/BlogPageClient.tsx(159,34): error TS2322: Type '{ onSelectTag: (tag: string) => void; }' is not assignable to type 'IntrinsicAttributes & CategorizedTagCloudProps'.
+  Property 'onSelectTag' does not exist on type 'IntrinsicAttributes & CategorizedTagCloudProps'.
+app/blog/causal-ai-market-research/CausalAIBlogContent.tsx(159,11): error TS2322: Type '{ minutes: number; wordCount: number; showWordCount: boolean; className: string; }' is not assignable to type 'IntrinsicAttributes & ReadingTimeProps'.
+  Property 'wordCount' does not exist on type 'IntrinsicAttributes & ReadingTimeProps'.
+app/blog/causal-ai-market-research/CausalAIBlogContent.tsx(573,13): error TS2322: Type '{ currentSlug: string; tags: string[]; maxPosts: number; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'currentSlug' does not exist on type 'IntrinsicAttributes & Props'.
+app/blog/page.tsx(27,6): error TS2741: Property 'postTitle' is missing in type '{ children: Element; }' but required in type 'Readonly<BlogErrorBoundaryProps>'.
+app/blog/retrieval-augmented-generation/RAGBlogContent.tsx(141,11): error TS2322: Type '{ minutes: number; wordCount: number; showWordCount: boolean; className: string; }' is not assignable to type 'IntrinsicAttributes & ReadingTimeProps'.
+  Property 'wordCount' does not exist on type 'IntrinsicAttributes & ReadingTimeProps'.
+app/blog/retrieval-augmented-generation/RAGBlogContent.tsx(269,13): error TS2322: Type '{ currentSlug: string; tags: string[]; maxPosts: number; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'currentSlug' does not exist on type 'IntrinsicAttributes & Props'.
+app/blog/series/[slug]/page.tsx(26,6): error TS2741: Property 'postTitle' is missing in type '{ children: Element[]; }' but required in type 'Readonly<BlogErrorBoundaryProps>'.
+app/blog/the-rise-of-deep-sea-ai/DeepSeaAIBlogContent.tsx(142,11): error TS2322: Type '{ minutes: number; wordCount: number; showWordCount: boolean; className: string; }' is not assignable to type 'IntrinsicAttributes & ReadingTimeProps'.
+  Property 'wordCount' does not exist on type 'IntrinsicAttributes & ReadingTimeProps'.
+app/blog/the-rise-of-deep-sea-ai/DeepSeaAIBlogContent.tsx(348,13): error TS2322: Type '{ currentSlug: string; tags: string[]; maxPosts: number; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'currentSlug' does not exist on type 'IntrinsicAttributes & Props'.
+app/blog/the-rise-of-deepseek-ai/DeepSeekAIBlogContent.tsx(142,11): error TS2322: Type '{ minutes: number; wordCount: number; showWordCount: boolean; className: string; }' is not assignable to type 'IntrinsicAttributes & ReadingTimeProps'.
+  Property 'wordCount' does not exist on type 'IntrinsicAttributes & ReadingTimeProps'.
+app/blog/the-rise-of-deepseek-ai/DeepSeekAIBlogContent.tsx(369,13): error TS2322: Type '{ currentSlug: string; tags: string[]; maxPosts: number; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'currentSlug' does not exist on type 'IntrinsicAttributes & Props'.
+app/booking/actions.ts(26,25): error TS2339: Property 'get' does not exist on type 'Promise<ReadonlyRequestCookies>'.
+app/booking/actions.ts(36,13): error TS2339: Property 'set' does not exist on type 'Promise<ReadonlyRequestCookies>'.
+app/booking/booking-client.tsx(25,11): error TS2339: Property 'formData' does not exist on type 'readonly [{ name: string; email: string; topic: string; }, Dispatch<SetStateAction<{ name: string; email: string; topic: string; }>>, () => void, SaveStatus, () => void]'.
+app/booking/booking-client.tsx(25,21): error TS2339: Property 'setFormData' does not exist on type 'readonly [{ name: string; email: string; topic: string; }, Dispatch<SetStateAction<{ name: string; email: string; topic: string; }>>, () => void, SaveStatus, () => void]'.
+app/booking/booking-client.tsx(25,34): error TS2339: Property 'clearFormData' does not exist on type 'readonly [{ name: string; email: string; topic: string; }, Dispatch<SetStateAction<{ name: string; email: string; topic: string; }>>, () => void, SaveStatus, () => void]'.
+app/booking/booking-client.tsx(25,52): error TS2554: Expected 2-3 arguments, but got 1.
+app/booking/booking-client.tsx(66,20): error TS7006: Parameter 'prev' implicitly has an 'any' type.
+app/booking/page.tsx(16,8): error TS2741: Property 'pageName' is missing in type '{}' but required in type '{ pageName: string; }'.
+app/page.tsx(53,10): error TS2578: Unused '@ts-expect-error' directive.
+components/animate-in-view.tsx(67,6): error TS2322: Type '{ children: ReactNode; ref: RefObject<HTMLDivElement | null>; initial: string; animate: string; variants: { hidden: { opacity: number; } | { opacity: number; y: number; } | ... 4 more ... | {}; visible: { ...; } | ... 5 more ... | { ...; }; }; className: string | undefined; }' is not assignable to type 'IntrinsicAttributes & (((((((((string | ComponentType<unknown>) & Omit<HTMLMotionProps<"div">, "ref">) & RefAttributes<...> & Omit<...>) & ... 4 more ... & RefAttributes<...>) & ... 8 more ... & Omit<...>) & ... 17 more ... & RefAttributes<...>) & ... 36 more ... & Omit<...>) & ... 72 more ... & Omit<...>) & ... 146...'.
+  Type '{ children: ReactNode; ref: RefObject<HTMLDivElement | null>; initial: string; animate: string; variants: { hidden: { opacity: number; } | { opacity: number; y: number; } | ... 4 more ... | {}; visible: { ...; } | ... 5 more ... | { ...; }; }; className: string | undefined; }' is not assignable to type 'FunctionComponent<unknown>'.
+    Type '{ children: ReactNode; ref: RefObject<HTMLDivElement | null>; initial: string; animate: string; variants: { hidden: { opacity: number; } | { opacity: number; y: number; } | ... 4 more ... | {}; visible: { ...; } | ... 5 more ... | { ...; }; }; className: string | undefined; }' provides no match for the signature '(props: unknown): ReactNode | Promise<ReactNode>'.
+components/animate-in-view.tsx(68,7): error TS2590: Expression produces a union type that is too complex to represent.
+components/architecture-gallery.tsx(147,25): error TS2322: Type '{ modelUrl: string; scale: number; position: [number, number, number]; rotation: [number, number, number]; height: string; fallbackText: string; imageUrl: string; }' is not assignable to type 'IntrinsicAttributes & { environmentPreset?: string | undefined; className?: string | undefined; height?: string | undefined; fallbackText?: string | undefined; imageUrl: any; }'.
+  Property 'modelUrl' does not exist on type 'IntrinsicAttributes & { environmentPreset?: string | undefined; className?: string | undefined; height?: string | undefined; fallbackText?: string | undefined; imageUrl: any; }'.
+components/architecture-project-simple.tsx(44,13): error TS2322: Type '{ modelUrl: null; imageUrl: string; fallbackText: string; height: string; }' is not assignable to type 'IntrinsicAttributes & { environmentPreset?: string | undefined; className?: string | undefined; height?: string | undefined; fallbackText?: string | undefined; imageUrl: any; }'.
+  Property 'modelUrl' does not exist on type 'IntrinsicAttributes & { environmentPreset?: string | undefined; className?: string | undefined; height?: string | undefined; fallbackText?: string | undefined; imageUrl: any; }'.
+components/blog-content-renderer.tsx(40,37): error TS2322: Type '{ children: Element; slug: string; withDropCap: boolean; }' is not assignable to type 'IntrinsicAttributes & { slug: string; children: ReactNode; }'.
+  Property 'withDropCap' does not exist on type 'IntrinsicAttributes & { slug: string; children: ReactNode; }'.
+components/blog-post-layout.tsx(45,26): error TS2741: Property 'series' is missing in type '{ post: BlogPost; }' but required in type 'Props'.
+components/blog-post-layout.tsx(58,29): error TS2339: Property 'estimatedReadingTime' does not exist on type 'BlogPost'.
+components/blog-post-layout.tsx(75,51): error TS2322: Type '{ content: string; blogSlug: string; className: string; withDropCap: boolean; }' is not assignable to type 'IntrinsicAttributes & MarkdownRendererProps'.
+  Property 'blogSlug' does not exist on type 'IntrinsicAttributes & MarkdownRendererProps'.
+components/blog-post-layout.tsx(79,29): error TS2322: Type '{ currentSlug: string; tags: string[]; maxPosts: number; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'currentSlug' does not exist on type 'IntrinsicAttributes & Props'.
+components/blog-post-tracker.tsx(41,11): error TS2322: Type 'null' is not assignable to type 'Timeout'.
+components/blog-selection-speed-read.tsx(61,7): error TS2322: Type '{ content: string; onClose: () => void; darkMode: boolean; contentType: string; initialWpm: number; }' is not assignable to type 'IntrinsicAttributes & SpeedReadingModeProps'.
+  Property 'content' does not exist on type 'IntrinsicAttributes & SpeedReadingModeProps'. Did you mean 'contentId'?
+components/categorized-tag-cloud.tsx(20,18): error TS2554: Expected 1 arguments, but got 0.
+components/categorized-tag-cloud.tsx(65,40): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Number'.
+  No index signature with a parameter of type 'string' was found on type 'Number'.
+components/categorized-tag-cloud.tsx(65,59): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Number'.
+  No index signature with a parameter of type 'string' was found on type 'Number'.
+components/categorized-tag-cloud.tsx(71,35): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Number'.
+  No index signature with a parameter of type 'string' was found on type 'Number'.
+components/categorized-tag-cloud.tsx(93,32): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Number'.
+  No index signature with a parameter of type 'string' was found on type 'Number'.
+components/categorized-tag-cloud.tsx(93,51): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Number'.
+  No index signature with a parameter of type 'string' was found on type 'Number'.
+components/categorized-tag-cloud.tsx(99,27): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Number'.
+  No index signature with a parameter of type 'string' was found on type 'Number'.
+components/circular-reading-progress.tsx(27,56): error TS2554: Expected 0 arguments, but got 1.
+components/custom-actions/add-action-dialog.tsx(43,15): error TS2345: Argument of type 'ActionFormData' is not assignable to parameter of type 'Omit<CustomAction, "id">'.
+  Property 'enabled' is missing in type 'ActionFormData' but required in type 'Omit<CustomAction, "id">'.
+components/custom-actions/add-action-dialog.tsx(52,18): error TS2339: Property 'Plus' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/custom-actions/custom-action-card.tsx(72,20): error TS2339: Property 'moveUp' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/custom-actions/custom-action-card.tsx(76,20): error TS2339: Property 'moveDown' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/custom-actions/reset-actions-dialog.tsx(30,18): error TS2551: Property 'RefreshCw' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'. Did you mean 'refreshCw'?
+components/dynamic-reading-time.tsx(34,7): error TS2322: Type '{ minutes: number; wordCount: number; actualMinutes: number; className: string | undefined; showWordCount: boolean; showSpeedIndicator: boolean; }' is not assignable to type 'IntrinsicAttributes & ReadingTimeProps'.
+  Property 'wordCount' does not exist on type 'IntrinsicAttributes & ReadingTimeProps'.
+components/education-timeline.tsx(172,11): error TS2322: Type '{ children: Element[]; ref: RefObject<HTMLDivElement | null>; drag: "x"; dragConstraints: { left: number; right: number; }; dragElasticity: number; dragMomentum: false; onDragEnd: () => void; className: string; style: { ...; }; }' is not assignable to type 'IntrinsicAttributes & Omit<HTMLMotionProps<"div">, "ref"> & RefAttributes<HTMLDivElement>'.
+  Property 'dragElasticity' does not exist on type 'IntrinsicAttributes & Omit<HTMLMotionProps<"div">, "ref"> & RefAttributes<HTMLDivElement>'. Did you mean 'dragElastic'?
+components/featured-posts-carousel.tsx(63,25): error TS2339: Property 'id' does not exist on type 'BlogPost'.
+components/featured-posts-carousel.tsx(73,31): error TS2339: Property 'coverImage' does not exist on type 'BlogPost'.
+components/featured-posts-carousel.tsx(99,41): error TS2339: Property 'description' does not exist on type 'BlogPost'.
+components/featured-posts-carousel.tsx(104,61): error TS2339: Property 'estimatedReadingTime' does not exist on type 'BlogPost'.
+components/floating-auto-toc-button.tsx(45,22): error TS2339: Property 'close' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/floating-share-button.tsx(19,21): error TS2365: Operator '>' cannot be applied to types 'ScrollPosition' and 'number'.
+components/floating-share-button.tsx(34,22): error TS2339: Property 'close' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/floating-share-button.tsx(42,18): error TS2339: Property 'share' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/floating-speed-read-button.tsx(19,22): error TS2365: Operator '>' cannot be applied to types 'ScrollPosition' and 'number'.
+components/floating-speed-read-button.tsx(56,11): error TS2322: Type '{ content: string; onClose: () => void; blogSlug: string | undefined; contentSelector: string; }' is not assignable to type 'IntrinsicAttributes & SpeedReadingModeProps'.
+  Property 'content' does not exist on type 'IntrinsicAttributes & SpeedReadingModeProps'. Did you mean 'contentId'?
+components/floating-toc-button.tsx(55,26): error TS2339: Property 'close' does not exist on type 'Record<"tag" | "clock" | "layers" | "search" | "download" | "type" | "code" | "menu" | "image" | "x" | "send" | "list" | "copy" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | ... 58 more ... | "sparkles", FC<...>>'.
+components/floating-toc-button.tsx(55,64): error TS2339: Property 'listTree' does not exist on type 'Record<"tag" | "clock" | "layers" | "search" | "download" | "type" | "code" | "menu" | "image" | "x" | "send" | "list" | "copy" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | ... 58 more ... | "sparkles", FC<...>>'.
+components/grid-tag-cloud.tsx(12,21): error TS2554: Expected 1 arguments, but got 0.
+components/grid-tag-cloud.tsx(15,48): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Number'.
+  No index signature with a parameter of type 'string' was found on type 'Number'.
+components/grid-tag-cloud.tsx(15,70): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Number'.
+  No index signature with a parameter of type 'string' was found on type 'Number'.
+components/grid-tag-cloud.tsx(27,35): error TS2322: Type '{ tag: string; count: any; className: string; }' is not assignable to type 'IntrinsicAttributes & ColoredTagProps'.
+  Property 'count' does not exist on type 'IntrinsicAttributes & ColoredTagProps'.
+components/grid-tag-cloud.tsx(27,42): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Number'.
+  No index signature with a parameter of type 'string' was found on type 'Number'.
+components/image-gallery.tsx(122,13): error TS2322: Type '{ isAnnotating: boolean; toggleAnnotationMode: () => void; hasAnnotations: boolean | undefined; setShowExportDialog: Dispatch<SetStateAction<boolean>>; ... 4 more ...; toggleFullscreen: () => void; }' is not assignable to type 'IntrinsicAttributes & ImageGalleryControlsProps'.
+  Property 'isAnnotating' does not exist on type 'IntrinsicAttributes & ImageGalleryControlsProps'.
+components/image-gallery.tsx(147,13): error TS2322: Type 'Annotation[] | undefined' is not assignable to type 'Annotation[]'.
+  Type 'undefined' is not assignable to type 'Annotation[]'.
+components/image-gallery.tsx(165,22): error TS2339: Property 'ImageIcon' does not exist on type 'Record<"x" | "code" | "menu" | "search" | "image" | "list" | "home" | "architecture" | "copy" | "pause" | "play" | "type" | "clock" | "layers" | "download" | "user" | "briefcase" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/image-gallery.tsx(168,22): error TS2339: Property 'MessageSquare' does not exist on type 'Record<"x" | "code" | "menu" | "search" | "image" | "list" | "home" | "architecture" | "copy" | "pause" | "play" | "type" | "clock" | "layers" | "download" | "user" | "briefcase" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/image-gallery.tsx(171,22): error TS2339: Property 'Maximize2' does not exist on type 'Record<"x" | "code" | "menu" | "search" | "image" | "list" | "home" | "architecture" | "copy" | "pause" | "play" | "type" | "clock" | "layers" | "download" | "user" | "briefcase" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/image-gallery.tsx(179,22): error TS2339: Property 'MessageSquare' does not exist on type 'Record<"x" | "code" | "menu" | "search" | "image" | "list" | "home" | "architecture" | "copy" | "pause" | "play" | "type" | "clock" | "layers" | "download" | "user" | "briefcase" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/image-gallery.tsx(188,9): error TS2322: Type '(options: import("/Users/thakr/.local/dev/thakr.io/hooks/use-image-gallery").ExportOptions) => Promise<void>' is not assignable to type '(options: import("/Users/thakr/.local/dev/thakr.io/utils/export-annotations").ExportOptions) => Promise<void>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ExportOptions' is missing the following properties from type 'ExportOptions': includeImage, includeSummary
+components/image-gallery.tsx(189,9): error TS2322: Type 'boolean | undefined' is not assignable to type 'boolean'.
+  Type 'undefined' is not assignable to type 'boolean'.
+components/image-gallery.tsx(199,9): error TS2322: Type '{ images: ImageWithAnnotations[]; currentIndex: number; isOpen: boolean; onClose: () => void; onIndexChange: Dispatch<SetStateAction<number>>; projectTitle: string; onAnnotationUpdate: (index: number, annotations: Annotation[]) => void; }' is not assignable to type 'IntrinsicAttributes & FullscreenGalleryProps'.
+  Property 'onAnnotationUpdate' does not exist on type 'IntrinsicAttributes & FullscreenGalleryProps'.
+components/image-gallery/image-gallery-controls.tsx(28,16): error TS2339: Property 'share' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/image-gallery/image-gallery-controls.tsx(36,16): error TS2339: Property 'close' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/image-gallery/image-gallery-navigation.tsx(21,16): error TS2551: Property 'ChevronLeft' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'. Did you mean 'chevronLeft'?
+components/image-gallery/image-gallery-navigation.tsx(30,16): error TS2551: Property 'ChevronRight' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'. Did you mean 'chevronRight'?
+components/image-share-menu.tsx(130,18): error TS2339: Property 'share' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/image-share-menu.tsx(144,22): error TS2339: Property 'share' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/image-share-menu.tsx(166,24): error TS2339: Property 'facebook' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/loading-monitor.tsx(5,64): error TS2307: Cannot find module '@/utils/loading-debugger' or its corresponding type declarations.
+components/mdx-speed-reading.tsx(42,32): error TS2322: Type '{ selector: string; contentId: string | undefined; className: string; }' is not assignable to type 'IntrinsicAttributes & FloatingSpeedReadButtonProps'.
+  Property 'selector' does not exist on type 'IntrinsicAttributes & FloatingSpeedReadButtonProps'.
+components/micro-interactions/enhanced-card.tsx(7,15): error TS2305: Module '"@/components/ui/card"' has no exported member 'CardProps'.
+components/micro-interactions/enhanced-card.tsx(16,6): error TS2339: Property 'className' does not exist on type 'EnhancedCardProps'.
+components/micro-interactions/enhanced-icon.tsx(37,8): error TS2322: Type '{ children: ReactNode; defaultChecked?: boolean | undefined; defaultValue?: string | number | readonly string[] | undefined; suppressContentEditableWarning?: boolean | undefined; ... 279 more ...; transition: { ...; }; }' is not assignable to type 'Omit<HTMLMotionProps<"div">, "ref">'.
+  Types of property 'onDrag' are incompatible.
+    Type 'DragEventHandler<HTMLDivElement> | undefined' is not assignable to type '((event: MouseEvent | PointerEvent | TouchEvent, info: PanInfo) => void) | undefined'.
+      Type 'DragEventHandler<HTMLDivElement>' is not assignable to type '(event: MouseEvent | PointerEvent | TouchEvent, info: PanInfo) => void'.
+        Types of parameters 'event' and 'event' are incompatible.
+          Type 'MouseEvent | PointerEvent | TouchEvent' is not assignable to type 'DragEvent<HTMLDivElement>'.
+            Type 'MouseEvent' is missing the following properties from type 'DragEvent<HTMLDivElement>': dataTransfer, nativeEvent, isDefaultPrevented, isPropagationStopped, persist
+components/micro-interactions/enhanced-input.tsx(7,15): error TS2305: Module '"@/components/ui/input"' has no exported member 'InputProps'.
+components/micro-interactions/enhanced-input.tsx(15,6): error TS2339: Property 'className' does not exist on type 'EnhancedInputProps'.
+components/reading-history.tsx(34,18): error TS2345: Argument of type 'ReadingPosition[]' is not assignable to parameter of type 'SetStateAction<Record<string, unknown>[]>'.
+  Type 'ReadingPosition[]' is not assignable to type 'Record<string, unknown>[]'.
+    Type 'ReadingPosition' is not assignable to type 'Record<string, unknown>'.
+      Index signature for type 'string' is missing in type 'ReadingPosition'.
+components/reading-history.tsx(52,16): error TS2345: Argument of type 'ReadingPosition[]' is not assignable to parameter of type 'SetStateAction<Record<string, unknown>[]>'.
+  Type 'ReadingPosition[]' is not assignable to type 'Record<string, unknown>[]'.
+    Type 'ReadingPosition' is not assignable to type 'Record<string, unknown>'.
+      Index signature for type 'string' is missing in type 'ReadingPosition'.
+components/reading-history.tsx(84,23): error TS2322: Type 'unknown' is not assignable to type 'Key | null | undefined'.
+components/reading-history.tsx(93,71): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
+components/reading-history.tsx(98,62): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'string'.
+components/reading-history.tsx(109,45): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'number'.
+components/reading-history.tsx(111,25): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
+components/reading-history.tsx(114,35): error TS2322: Type '{}' is not assignable to type 'ReactNode'.
+components/reading-history.tsx(125,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'number'.
+components/reading-history.tsx(127,29): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
+components/reading-history.tsx(127,50): error TS18046: 'item.readPercentage' is of type 'unknown'.
+components/reading-history.tsx(130,45): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+components/reading-history.tsx(130,71): error TS18046: 'item.readPercentage' is of type 'unknown'.
+components/reading-progress-bar.tsx(124,13): error TS7030: Not all code paths return a value.
+components/reading-progress-indicator.tsx(26,24): error TS2345: Argument of type 'ReadingPosition' is not assignable to parameter of type 'SetStateAction<Record<string, unknown> | null>'.
+  Type 'ReadingPosition' is not assignable to type 'Record<string, unknown>'.
+    Index signature for type 'string' is missing in type 'ReadingPosition'.
+components/reading-progress-indicator.tsx(67,34): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'number'.
+components/reading-progress-indicator.tsx(69,11): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
+components/reading-progress-indicator.tsx(72,27): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+components/reading-progress-indicator.tsx(72,62): error TS18046: 'savedPosition.readPercentage' is of type 'unknown'.
+components/section-content-reveal.tsx(53,7): error TS2322: Type '{ hidden: { opacity: number; y: number; }; visible: (i: number) => { opacity: number; y: number; transition: { delay: number; duration: number; ease: number[]; }; }; exit: { opacity: number; y: number; transition: { ...; }; }; } | { ...; } | { ...; }' is not assignable to type 'Variants | undefined'.
+  Type '{ hidden: { opacity: number; y: number; }; visible: (i: number) => { opacity: number; y: number; transition: { delay: number; duration: number; ease: number[]; }; }; exit: { opacity: number; y: number; transition: { ...; }; }; }' is not assignable to type 'Variants'.
+    Property 'visible' is incompatible with index signature.
+      Type '(i: number) => { opacity: number; y: number; transition: { delay: number; duration: number; ease: number[]; }; }' is not assignable to type 'Variant'.
+        Type '(i: number) => { opacity: number; y: number; transition: { delay: number; duration: number; ease: number[]; }; }' is not assignable to type 'TargetResolver'.
+          Type '{ opacity: number; y: number; transition: { delay: number; duration: number; ease: number[]; }; }' is not assignable to type 'string | TargetAndTransition'.
+            Type '{ opacity: number; y: number; transition: { delay: number; duration: number; ease: number[]; }; }' is not assignable to type 'TargetAndTransition'.
+              Type '{ opacity: number; y: number; transition: { delay: number; duration: number; ease: number[]; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues | undefined; }'.
+                Types of property 'transition' are incompatible.
+                  Type '{ delay: number; duration: number; ease: number[]; }' is not assignable to type 'Transition<any> | undefined'.
+                    Type '{ delay: number; duration: number; ease: number[]; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                      Type '{ delay: number; duration: number; ease: number[]; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                        Types of property 'ease' are incompatible.
+                          Type 'number[]' is not assignable to type 'Easing | Easing[] | undefined'.
+                            Type 'number[]' is not assignable to type 'EasingFunction | Easing[]'.
+                              Type 'number[]' is not assignable to type 'Easing[]'.
+                                Type 'number' is not assignable to type 'Easing'.
+components/section-staggered-item.tsx(37,29): error TS2353: Object literal may only specify known properties, and 'x' does not exist in type '{ opacity: number; y: number; }'.
+components/section-staggered-item.tsx(40,9): error TS2353: Object literal may only specify known properties, and 'x' does not exist in type '{ opacity: number; y: number; transition: { duration: number; ease: number[]; }; }'.
+components/section-staggered-item.tsx(46,29): error TS2353: Object literal may only specify known properties, and 'scale' does not exist in type '{ opacity: number; y: number; }'.
+components/section-staggered-item.tsx(49,9): error TS2353: Object literal may only specify known properties, and 'scale' does not exist in type '{ opacity: number; y: number; transition: { duration: number; ease: number[]; }; }'.
+components/section-staggered-item.tsx(55,36): error TS2353: Object literal may only specify known properties, and 'rotateX' does not exist in type '{ opacity: number; y: number; }'.
+components/section-staggered-item.tsx(59,9): error TS2353: Object literal may only specify known properties, and 'rotateX' does not exist in type '{ opacity: number; y: number; transition: { duration: number; ease: number[]; }; }'.
+components/section-staggered-item.tsx(65,29): error TS2353: Object literal may only specify known properties, and 'filter' does not exist in type '{ opacity: number; y: number; }'.
+components/section-staggered-item.tsx(68,9): error TS2353: Object literal may only specify known properties, and 'filter' does not exist in type '{ opacity: number; y: number; transition: { duration: number; ease: number[]; }; }'.
+components/section-staggered-item.tsx(74,36): error TS2353: Object literal may only specify known properties, and 'rotateX' does not exist in type '{ opacity: number; y: number; }'.
+components/section-staggered-item.tsx(78,9): error TS2353: Object literal may only specify known properties, and 'rotateX' does not exist in type '{ opacity: number; y: number; transition: { duration: number; ease: number[]; }; }'.
+components/section-staggered-item.tsx(87,38): error TS2322: Type '{ hidden: { opacity: number; y: number; }; visible: { opacity: number; y: number; transition: { duration: number; ease: number[]; }; }; }' is not assignable to type 'Variants'.
+  Property 'visible' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ duration: number; ease: number[]; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ duration: number; ease: number[]; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ duration: number; ease: number[]; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'ease' are incompatible.
+                    Type 'number[]' is not assignable to type 'Easing | Easing[] | undefined'.
+                      Type 'number[]' is not assignable to type 'EasingFunction | Easing[]'.
+                        Type 'number[]' is not assignable to type 'Easing[]'.
+                          Type 'number' is not assignable to type 'Easing'.
+components/series-card.tsx(21,34): error TS2339: Property 'description' does not exist on type 'Series'.
+components/series-toc.tsx(32,21): error TS2339: Property 'part' does not exist on type '{ name: string; order: number; }'.
+components/series-toc.tsx(32,37): error TS2339: Property 'part' does not exist on type '{ name: string; order: number; }'.
+components/series-toc.tsx(126,41): error TS2339: Property 'part' does not exist on type '{ name: string; order: number; }'.
+components/skeletons/adaptive-skeleton.tsx(162,11): error TS2322: Type '{ section: "home" | "blog" | "projects" | "architecture" | "work" | "about" | "booking"; delay: number; className: string; style: { maxWidth: number; }; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'style' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/adaptive-skeleton.tsx(175,11): error TS2322: Type '{ section: "home" | "blog" | "projects" | "architecture" | "work" | "about" | "booking"; delay: number; className: string; style: { width: string; }; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'style' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-architecture-skeleton.tsx(11,6): error TS2322: Type '{ children: Element[]; section: "architecture"; animate: string; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-architecture-skeleton.tsx(18,44): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-architecture-skeleton.tsx(22,46): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-architecture-skeleton.tsx(26,48): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-architecture-skeleton.tsx(27,48): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-architecture-skeleton.tsx(28,48): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-architecture-skeleton.tsx(33,48): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-architecture-skeleton.tsx(34,48): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(14,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(16,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(18,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(21,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(22,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(27,36): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(33,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(34,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(35,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(36,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(40,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(44,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(45,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(46,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(50,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(54,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(55,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-content-skeleton.tsx(56,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-skeleton.tsx(11,6): error TS2322: Type '{ children: Element; section: "blog"; animate: string; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-skeleton.tsx(14,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-skeleton.tsx(18,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-skeleton.tsx(19,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-skeleton.tsx(24,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-skeleton.tsx(25,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-skeleton.tsx(26,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-skeleton.tsx(31,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-skeleton.tsx(32,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-skeleton.tsx(37,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-skeleton.tsx(38,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-blog-skeleton.tsx(39,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-project-skeleton.tsx(11,6): error TS2322: Type '{ children: Element[]; section: "projects"; animate: string; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-project-skeleton.tsx(18,40): error TS2322: Type '{ section: "projects"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-project-skeleton.tsx(22,42): error TS2322: Type '{ section: "projects"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-project-skeleton.tsx(26,44): error TS2322: Type '{ section: "projects"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-project-skeleton.tsx(27,44): error TS2322: Type '{ section: "projects"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-project-skeleton.tsx(32,44): error TS2322: Type '{ section: "projects"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-project-skeleton.tsx(33,44): error TS2322: Type '{ section: "projects"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-project-skeleton.tsx(34,44): error TS2322: Type '{ section: "projects"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-project-skeleton.tsx(39,44): error TS2322: Type '{ section: "projects"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/animated-project-skeleton.tsx(40,44): error TS2322: Type '{ section: "projects"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/architecture-3d-skeleton.tsx(11,6): error TS2322: Type '{ children: Element[]; section: "architecture"; animate: string; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/architecture-3d-skeleton.tsx(18,8): error TS2322: Type '{ children: Element; section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/architecture-3d-skeleton.tsx(28,46): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/architecture-3d-skeleton.tsx(32,48): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/architecture-3d-skeleton.tsx(33,48): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/architecture-3d-skeleton.tsx(34,48): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/architecture-3d-skeleton.tsx(39,48): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/architecture-3d-skeleton.tsx(40,48): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/architecture-3d-skeleton.tsx(41,48): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/architecture-3d-skeleton.tsx(43,48): error TS2322: Type '{ section: "architecture"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(14,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(16,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(18,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(21,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(22,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(30,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(31,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(32,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(37,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(40,13): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(48,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(49,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(50,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(55,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(58,13): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(66,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(67,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/code-blog-content-skeleton.tsx(68,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(11,6): error TS2322: Type '{ children: Element[]; section: "blog"; animate: string; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(20,9): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(27,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(31,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(32,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(37,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(38,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(39,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(44,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(45,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(50,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(51,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/featured-blog-skeleton.tsx(52,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(14,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(16,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(18,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(21,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(22,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(27,36): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(33,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(34,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(35,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(40,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(41,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(46,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(47,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(48,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(53,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(54,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(59,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(60,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/image-blog-content-skeleton.tsx(61,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/series-blog-skeleton.tsx(11,6): error TS2322: Type '{ children: Element; section: "blog"; animate: string; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/series-blog-skeleton.tsx(15,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/series-blog-skeleton.tsx(16,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/series-blog-skeleton.tsx(21,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/series-blog-skeleton.tsx(22,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/series-blog-skeleton.tsx(27,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/series-blog-skeleton.tsx(28,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/series-blog-skeleton.tsx(29,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/series-blog-skeleton.tsx(33,38): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/series-blog-skeleton.tsx(37,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/skeletons/series-blog-skeleton.tsx(38,40): error TS2322: Type '{ section: "blog"; stagger: number; delay: number; className: string; }' is not assignable to type 'IntrinsicAttributes & SkeletonBaseProps'.
+  Property 'stagger' does not exist on type 'IntrinsicAttributes & SkeletonBaseProps'.
+components/social-share.tsx(91,29): error TS2322: Type '{ size: number; }' is not assignable to type 'IntrinsicAttributes & SVGProps<SVGSVGElement>'.
+  Property 'size' does not exist on type 'IntrinsicAttributes & SVGProps<SVGSVGElement>'.
+components/social-share.tsx(92,31): error TS2322: Type '{ size: number; }' is not assignable to type 'IntrinsicAttributes & SVGProps<SVGSVGElement>'.
+  Property 'size' does not exist on type 'IntrinsicAttributes & SVGProps<SVGSVGElement>'.
+components/social-share.tsx(93,22): error TS2339: Property 'facebook' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/social-share.tsx(94,24): error TS2322: Type '{ size: number; }' is not assignable to type 'IntrinsicAttributes & SVGProps<SVGSVGElement>'.
+  Property 'size' does not exist on type 'IntrinsicAttributes & SVGProps<SVGSVGElement>'.
+components/social-share.tsx(95,33): error TS2322: Type '{ size: number; }' is not assignable to type 'IntrinsicAttributes & SVGProps<SVGSVGElement>'.
+  Property 'size' does not exist on type 'IntrinsicAttributes & SVGProps<SVGSVGElement>'.
+components/social-share.tsx(95,61): error TS2339: Property 'link' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/social-share.tsx(118,20): error TS2339: Property 'share' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/speed-reading/floating-mini-player-button.tsx(50,16): error TS2339: Property 'rocket' does not exist on type 'Record<"x" | "code" | "menu" | "search" | "image" | "list" | "home" | "architecture" | "copy" | "pause" | "play" | "type" | "clock" | "layers" | "download" | "user" | "briefcase" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/speed-reading/floating-speed-read-launcher.tsx(32,21): error TS2365: Operator '>' cannot be applied to types 'ScrollPosition' and 'number'.
+components/speed-reading/focus-mode.tsx(142,23): error TS2345: Argument of type 'null' is not assignable to parameter of type 'string | undefined'.
+components/speed-reading/focus-mode.tsx(305,42): error TS2304: Cannot find name 'jumpTo'.
+components/speed-reading/mini-player-mode.tsx(46,9): error TS6133: 'playerRef' is declared but its value is never read.
+components/speed-reading/mini-player-mode.tsx(50,38): error TS2339: Property 'elementRef' does not exist on type '{ isDragging: boolean; position: Position; dragHandleProps: { onMouseDown: (e: MouseEvent<HTMLElement, MouseEvent>) => void; style: { ...; }; }; setPosition: Dispatch<...>; }'.
+components/speed-reading/mini-player-mode.tsx(52,5): error TS2353: Object literal may only specify known properties, and 'boundarySelector' does not exist in type 'UseDraggableOptions'.
+components/speed-reading/mini-player-mode.tsx(59,5): error TS6133: 'content' is declared but its value is never read.
+components/speed-reading/mini-player-mode.tsx(60,5): error TS6133: 'currentIndex' is declared but its value is never read.
+components/speed-reading/mini-player-mode.tsx(72,5): error TS6133: 'startFromIndex' is declared but its value is never read.
+components/speed-reading/mini-player-mode.tsx(237,17): error TS2322: Type 'ContentType | undefined' is not assignable to type '"code" | "list" | "heading" | "paragraph" | undefined'.
+  Type '"table"' is not assignable to type '"code" | "list" | "heading" | "paragraph" | undefined'.
+components/speed-reading/simple-speed-read-button.tsx(19,16): error TS2339: Property 'rocket' does not exist on type 'Record<"search" | "code" | "type" | "clock" | "layers" | "menu" | "image" | "send" | "list" | "copy" | "x" | "play" | "pause" | "home" | "user" | "briefcase" | "architecture" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/speed-reading/simple-speed-reading-modal.tsx(46,13): error TS7030: Not all code paths return a value.
+components/speed-reading/speed-reading-button.tsx(34,16): error TS2339: Property 'rocket' does not exist on type 'Record<"x" | "code" | "menu" | "search" | "image" | "list" | "home" | "architecture" | "copy" | "pause" | "play" | "type" | "clock" | "layers" | "download" | "user" | "briefcase" | "fileText" | ... 59 more ... | "sparkles", FC<...>>'.
+components/speed-reading/speed-reading-mode.tsx(5,1): error TS6133: 'useTheme' is declared but its value is never read.
+components/tag-cloud.tsx(21,15): error TS2554: Expected 1 arguments, but got 0.
+components/tag-cloud.tsx(21,15): error TS2345: Argument of type 'number' is not assignable to parameter of type 'SetStateAction<Record<string, number>>'.
+components/tag-filter-dropdown.tsx(47,21): error TS2554: Expected 1 arguments, but got 0.
+components/tag-filter-dropdown.tsx(50,48): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Number'.
+  No index signature with a parameter of type 'string' was found on type 'Number'.
+components/tag-filter-dropdown.tsx(50,70): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Number'.
+  No index signature with a parameter of type 'string' was found on type 'Number'.
+components/tag-filter-dropdown.tsx(139,26): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Number'.
+  No index signature with a parameter of type 'string' was found on type 'Number'.
+components/tag-filter-dropdown.tsx(168,37): error TS2322: Type '{ tag: string; highlightTag: true; className: string; }' is not assignable to type 'IntrinsicAttributes & ColoredTagProps'.
+  Property 'highlightTag' does not exist on type 'IntrinsicAttributes & ColoredTagProps'.
+components/theme-transition.tsx(18,13): error TS7030: Not all code paths return a value.
+components/three-d-viewer.tsx(63,3): error TS7031: Binding element 'imageUrl' implicitly has an 'any' type.
+components/three-d-viewer.tsx(71,7): error TS18047: 'containerRef.current' is possibly 'null'.
+components/three-d-viewer.tsx(71,55): error TS7006: Parameter 'err' implicitly has an 'any' type.
+components/three-d-viewer.tsx(147,24): error TS2322: Type 'string' is not assignable to type '"city" | "apartment" | "dawn" | "forest" | "lobby" | "night" | "park" | "studio" | "sunset" | "warehouse" | undefined'.
+components/timeline.tsx(234,38): error TS2339: Property 'title' does not exist on type 'Project'.
+components/ui/calendar.tsx(57,9): error TS2353: Object literal may only specify known properties, and 'IconLeft' does not exist in type 'Partial<CustomComponents>'.
+components/ui/chart.tsx(119,7): error TS2339: Property 'payload' does not exist on type 'Omit<Omit<Props<ValueType, NameType>, PropertiesReadFromContext> & { active?: boolean | undefined; includeHidden?: boolean | undefined; ... 17 more ...; axisId?: AxisId | undefined; } & ClassAttributes<...> & HTMLAttributes<...> & { ...; }, "ref">'.
+components/ui/chart.tsx(124,7): error TS2339: Property 'label' does not exist on type 'Omit<Omit<Props<ValueType, NameType>, PropertiesReadFromContext> & { active?: boolean | undefined; includeHidden?: boolean | undefined; ... 17 more ...; axisId?: AxisId | undefined; } & ClassAttributes<...> & HTMLAttributes<...> & { ...; }, "ref">'.
+components/ui/chart.tsx(188,25): error TS7006: Parameter 'item' implicitly has an 'any' type.
+components/ui/chart.tsx(188,31): error TS7006: Parameter 'index' implicitly has an 'any' type.
+components/ui/chart.tsx(264,41): error TS2344: Type '"verticalAlign" | "payload"' does not satisfy the constraint '"string" | "media" | "spacing" | "order" | "height" | "width" | "rotate" | "scale" | "cursor" | "fill" | "stroke" | "strokeWidth" | "fontFamily" | "fontSize" | "fontWeight" | "letterSpacing" | ... 430 more ... | "onBBoxUpdate"'.
+  Type '"payload"' is not assignable to type '"string" | "media" | "spacing" | "order" | "height" | "width" | "rotate" | "scale" | "cursor" | "fill" | "stroke" | "strokeWidth" | "fontFamily" | "fontSize" | "fontWeight" | "letterSpacing" | ... 430 more ... | "onBBoxUpdate"'.
+components/ui/chart.tsx(275,19): error TS2339: Property 'length' does not exist on type '{}'.
+components/ui/chart.tsx(288,18): error TS2339: Property 'map' does not exist on type '{}'.
+components/ui/chart.tsx(288,23): error TS7006: Parameter 'item' implicitly has an 'any' type.
+components/zoomable-image.tsx(198,13): error TS7030: Not all code paths return a value.
+hooks/use-image-gallery.ts(154,9): error TS2345: Argument of type 'import("/Users/thakr/.local/dev/thakr.io/hooks/use-image-gallery").ExportOptions' is not assignable to parameter of type 'import("/Users/thakr/.local/dev/thakr.io/utils/export-annotations").ExportOptions'.
+  Property 'format' is missing in type 'import("/Users/thakr/.local/dev/thakr.io/hooks/use-image-gallery").ExportOptions' but required in type 'import("/Users/thakr/.local/dev/thakr.io/utils/export-annotations").ExportOptions'.
+hooks/use-interval.ts(11,25): error TS2554: Expected 1 arguments, but got 0.
+hooks/use-interval.ts(19,13): error TS7030: Not all code paths return a value.
+hooks/use-page-transition.ts(11,13): error TS7030: Not all code paths return a value.
+hooks/use-speed-reading.ts(47,9): error TS6133: 'lastPlayAttemptRef' is declared but its value is never read.
+lib/markdown-config.tsx(1,43): error TS2307: Cannot find module 'react-markdown/lib/react-markdown' or its corresponding type declarations.
+lib/markdown-config.tsx(227,9): error TS2322: Type 'string | Blob' is not assignable to type 'string | StaticImport'.
+  Type 'Blob' is not assignable to type 'string | StaticImport'.
+lib/markdown-config.tsx(229,9): error TS2322: Type 'string | number' is not assignable to type 'number | `${number}` | undefined'.
+  Type 'string' is not assignable to type 'number | `${number}` | undefined'.
+lib/markdown-config.tsx(230,9): error TS2322: Type 'string | number' is not assignable to type 'number | `${number}` | undefined'.
+  Type 'string' is not assignable to type 'number | `${number}` | undefined'.
+lib/supabase/server.ts(49,28): error TS2339: Property 'get' does not exist on type 'Promise<ReadonlyRequestCookies>'.
+lib/supabase/server.ts(53,23): error TS2339: Property 'set' does not exist on type 'Promise<ReadonlyRequestCookies>'.
+lib/supabase/server.ts(60,23): error TS2339: Property 'set' does not exist on type 'Promise<ReadonlyRequestCookies>'.
+mdx-components.tsx(3,36): error TS2307: Cannot find module 'mdx/types' or its corresponding type declarations.

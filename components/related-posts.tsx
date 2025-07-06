@@ -4,13 +4,16 @@ import type { BlogPost } from "@/lib/blog"
 
 interface Props {
   posts?: BlogPost[]
+  currentSlug?: string
+  tags?: string[]
+  maxPosts?: number
 }
 
 /**
  * Displays a simple grid of “Related Posts”.
  * Safely handles `undefined` or empty post lists.
  */
-export function RelatedPosts({ posts = [] }: Props) {
+export function RelatedPosts({ posts = [], currentSlug, tags, maxPosts }: Props) {
   if (!posts.length) return null
 
   return (
