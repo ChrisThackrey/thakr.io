@@ -22,7 +22,7 @@ export default function ResumePage() {
           <Button asChild variant="outline">
             <a href="/chris-thackrey-resume.pdf" download>
               <Download className="mr-2 h-4 w-4" />
-              Download PDF
+              Download CV
             </a>
           </Button>
           <PrintButton />
