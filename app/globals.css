@@ -10,6 +10,16 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, theme(colors.border) 1px, transparent 1px),
+      linear-gradient(to bottom, theme(colors.border) 1px, transparent 1px);
+    background-size: 2rem 2rem;
+  }
+  .dark .bg-grid-pattern {
+    background-image: linear-gradient(to right, theme(colors.border) 1px, transparent 1px),
+      linear-gradient(to bottom, theme(colors.border) 1px, transparent 1px);
+  }
 }
 
 @layer base {
@@ -90,5 +100,6 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }

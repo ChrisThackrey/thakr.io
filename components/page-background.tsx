@@ -51,6 +51,8 @@ export function PageBackground() {
           isDark ? "bg-black/60" : "bg-white/40",
         )}
       />
+      {/* Subtle grid pattern overlay */}
+      <div className="absolute inset-0 bg-grid-pattern" />
     </div>
   )
 }

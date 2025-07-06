@@ -1,25 +1,23 @@
 "use client"
 
+import type { SVGProps, FC } from "react"
 import {
   Activity,
   AlertTriangle,
   ArrowRight,
   BarChart,
   BookOpen,
-  Bot,
   BrainCircuit,
   Briefcase,
   Building2,
   Calendar,
   CalendarCheck2,
-  Camera,
   Check,
   CheckCircle2,
   ChevronDown,
   ChevronLeft,
-  LucideChevronRight,
+  ChevronRight,
   ChevronUp,
-  Clock,
   Code,
   Copy,
   Cpu,
@@ -32,15 +30,13 @@ import {
   File,
   FileText,
   Github,
-  GraduationCap,
   GripVertical,
-  HelpCircle,
   Home,
-  Image,
+  ImageIcon,
   Instagram,
-  Laptop,
   Layers,
-  LinkIcon,
+  Laptop,
+  LineChart,
   Linkedin,
   List,
   ListOrdered,
@@ -48,136 +44,134 @@ import {
   Mail,
   MapPin,
   Menu,
-  MessageSquare,
   Moon,
-  MoreVertical,
   Palette,
   Pause,
-  PenTool,
   Phone,
   PieChart,
   Pizza,
   Play,
-  Plus,
   Printer,
   RefreshCw,
   Rewind,
-  Search,
   Send,
+  Search,
+  SearchX,
   Server,
-  Settings,
-  Share2,
   Sparkles,
   SunMedium,
   Tag,
   Trash,
   Twitter,
-  User,
   Wand2,
-  X,
   Zap,
-  type LucideIcon,
+  ZoomIn,
+  ZoomOut,
+  RotateCw,
+  Expand,
+  Users,
+  Clock,
+  Construction,
 } from "lucide-react"
 
-// Define the base icons object with all the icons we use
-const baseIcons = {
-  logo: Sparkles,
-  close: X,
-  spinner: Loader2,
-  chevronLeft: ChevronLeft,
-  chevronRight: LucideChevronRight,
-  chevronDown: ChevronDown,
-  chevronUp: ChevronUp,
-  trash: Trash,
-  post: FileText,
-  page: File,
-  media: Image,
-  settings: Settings,
-  billing: CreditCard,
-  ellipsis: MoreVertical,
-  add: Plus,
-  warning: AlertTriangle,
-  user: User,
-  arrowRight: ArrowRight,
-  help: HelpCircle,
-  pizza: Pizza,
-  sun: SunMedium,
-  moon: Moon,
-  laptop: Laptop,
-  check: Check,
-  twitter: Twitter,
-  instagram: Instagram,
-  linkedin: Linkedin,
-  github: Github,
-  mail: Mail,
-  calendar: Calendar,
-  clock: Clock,
+/* -------------------------------------------------------------------------- */
+/*                                   Branding                                 */
+/* -------------------------------------------------------------------------- */
+const Logo: FC<SVGProps<SVGSVGElement>> = (props) => (
+  <Sparkles {...props} className={`h-6 w-6 ${props.className ?? ""}`} />
+)
+
+/* -------------------------------------------------------------------------- */
+/*                                  Icon Map                                  */
+/* -------------------------------------------------------------------------- */
+export const Icons = {
+  /* Navigation & Sections */
   home: Home,
   briefcase: Briefcase,
-  construction: Building2,
-  bookOpen: BookOpen,
   code: Code,
-  cpu: Cpu,
-  database: Database,
-  server: Server,
-  zap: Zap,
-  lineChart: LucideChevronRight, // Placeholder for LineChart, please update with correct import
-  barChart: BarChart,
-  pieChart: PieChart,
-  activity: Activity,
-  layers: Layers,
-  search: Search,
-  tag: Tag,
-  messageSquare: MessageSquare,
-  share: Share2,
-  externalLink: ExternalLink,
-  menu: Menu,
-  fileText: FileText,
-  mapPin: MapPin,
   architecture: Building2,
+  fileText: FileText,
+  bookOpen: BookOpen,
   palette: Palette,
-  sparkles: Sparkles,
-  phone: Phone,
-  send: Send,
-  refreshCw: RefreshCw,
-  generator: Wand2,
-  edit: Edit,
-  gripVertical: GripVertical,
-  printer: Printer,
-  download: Download,
+  contact: Mail,
+
+  /* UI Controls & Common */
+  menu: Menu,
+  arrowRight: ArrowRight,
+  chevronLeft: ChevronLeft,
+  chevronRight: ChevronRight,
+  chevronUp: ChevronUp,
+  chevronDown: ChevronDown,
+  sun: SunMedium,
+  moon: Moon,
+  search: Search,
+  searchX: SearchX,
   copy: Copy,
-  camera: Camera,
+  check: Check,
+  checkCircle: CheckCircle2,
+  spinner: Loader2,
+  warning: AlertTriangle,
+  externalLink: ExternalLink,
+  construction: Construction,
+  refreshCw: RefreshCw,
+  send: Send,
+  rotateCw: RotateCw,
+  zoomIn: ZoomIn,
+  zoomOut: ZoomOut,
+  expand: Expand,
+  download: Download,
+  printer: Printer,
+  edit: Edit,
+  trash: Trash,
+  list: List,
+  listOrdered: ListOrdered,
   play: Play,
   pause: Pause,
   rewind: Rewind,
   fastForward: FastForward,
-  list: List,
-  listOrdered: ListOrdered,
-  checkCircle: CheckCircle2,
-  link: LinkIcon,
-  graduationCap: GraduationCap,
-  brainCircuit: BrainCircuit,
-  bot: Bot,
-  penTool: PenTool,
+  gripVertical: GripVertical,
+
+  /* Forms & Data */
+  calendar: Calendar,
   calendarCheck: CalendarCheck2,
-  contact: Mail, // Alias for mail
-}
+  clock: Clock,
+  tag: Tag,
+  file: File,
+  creditCard: CreditCard,
 
-// This part of the code dynamically adds PascalCase versions of the icons
-// e.g., so that `Icons.Github` works in addition to `Icons.github`
-Object.entries(baseIcons).forEach(([key, icon]) => {
-  const pascal = key.charAt(0).toUpperCase() + key.slice(1)
-  // @ts-expect-error – dynamic augmentation is intentional
-  if (!baseIcons[pascal]) baseIcons[pascal] = icon
-})
+  /* Contact / Location */
+  mail: Mail,
+  phone: Phone,
+  mapPin: MapPin,
 
-// This is for legacy components that might still import a specific icon in all caps
-export const GENERATOR: LucideIcon = baseIcons.generator
+  /* Social */
+  github: Github,
+  linkedin: Linkedin,
+  twitter: Twitter,
+  instagram: Instagram,
+  x: Twitter, // alias for "x" social icon
 
-// This is the main export that the rest of the application uses
-export const Icons = baseIcons as {
-  [K in keyof typeof baseIcons]: LucideIcon
-}
+  /* Tech / Misc */
+  laptop: Laptop,
+  cpu: Cpu,
+  database: Database,
+  server: Server,
+  zap: Zap,
+  lineChart: LineChart,
+  barChart: BarChart,
+  pieChart: PieChart,
+  activity: Activity,
+  layers: Layers,
+  brain: BrainCircuit,
+  bot: BrainCircuit,
+  generator: Wand2,
+  image: ImageIcon,
+  users: Users,
+  pizza: Pizza,
 
-// Optional default export for ergonomic importing
-export default Icons
+  /* Branding */
+  logo: Logo,
+  sparkles: Sparkles,
+} as const
+
+export type IconName = keyof typeof Icons
