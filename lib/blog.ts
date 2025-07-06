@@ -54,18 +54,6 @@ export const blogPosts: BlogPost[] = [
     readingTime: 10,
     image: "/images/blog/causal-ai-hero.png",
   },
-  {
-    slug: "building-ai-powered-developer-tools",
-    title: "Building AI-Powered Developer Tools: A Version Control for Reasoning",
-    date: "2025-03-10",
-    excerpt: "Our journey in creating a tool that tracks not just what changed, but why.",
-    content: "Full content of the blog post...",
-    author: "Chris Thackrey",
-    tags: ["AI", "Development", "Vercel", "Next.js"],
-    readingTime: 9,
-    image: "/images/projects/rivendell.png",
-    featured: true,
-  },
 ]
 
 /* Utility: newest-first copy */
