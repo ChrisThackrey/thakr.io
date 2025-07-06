@@ -1,20 +1,20 @@
-import { getTagColors } from "../lib/tag-colors"
+/* previously imported ColoredTag – now plain spans */
+
+import { getTagColors } from "@/lib/tag-colors"
 
 interface RelatedTagsProps {
   tags: string[]
 }
 
 export function RelatedTags({ tags }: RelatedTagsProps) {
-  if (!tags || tags.length === 0) {
-    return null
-  }
+  if (!tags?.length) return null
 
   return (
-    <div>
-      <h3 className="text-lg font-semibold mb-3">Related Tags</h3>
+    <div className="mt-8">
+      <h3 className="mb-2 text-lg font-semibold">Related Topics</h3>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <span key={tag} className={`inline-block rounded-full text-xs px-2 py-1 ${getTagColors(tag)}`}>
+          <span key={tag} className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${getTagColors(tag)}`}>
             {tag}
           </span>
         ))}
