@@ -2,7 +2,7 @@
 
 import BlogImage from "@/components/blog-image"
 
-export function DeepSeekAIBlogContent() {
+export default function DeepSeekAIBlogContent() {
   return (
     <div className="blog-content with-drop-cap">
       <h1>DeepSeek AI: Innovation, Geopolitics, and the Future of Model-Agnostic Development</h1>
@@ -211,5 +211,3 @@ export function DeepSeekAIBlogContent() {
     </div>
   )
 }
-
-export default DeepSeekAIBlogContent
