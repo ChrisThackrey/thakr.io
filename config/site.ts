@@ -10,7 +10,7 @@ export const siteConfig = {
   links: {
     github: "https://github.com/ChrisThackrey",
     linkedin: "https://www.linkedin.com/in/chris-thackrey-015/",
-    instagram: "https://www.instagram.com/christhackrey/",
+    instagram: "https://www.instagram.com/chris_thackrey/",
     email: "mailto:c.r.thackrey@gmail.com",
   },
   navLinks: [
