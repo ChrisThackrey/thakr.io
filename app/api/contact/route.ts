@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
       <p><strong>Message:</strong></p>
       <p>${message.replace(/\n/g, "<br>")}</p>
       <hr>
-      <p><em>This email was sent from the contact form on your website.</em></p>
+      <p><em>This message was sent from the Contact form of Chris Thackrey's personal developer website: thakr.io</em></p>
     `
 
     const { data, error } = await resend.emails.send({
