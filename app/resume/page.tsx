@@ -23,7 +23,7 @@ export default function ResumePage() {
           </SectionTitle>
           <div className="flex gap-2">
             <Button asChild variant="outline">
-              <a href="/chris-thackrey-resume.pdf" download>
+              <a href="/Chris-Thackrey-resume-07-10-2025.pdf" download>
                 <Download className="mr-2 h-4 w-4" />
                 Download CV
               </a>
