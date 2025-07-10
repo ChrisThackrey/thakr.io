@@ -1,13 +1,13 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, type DependencyList } from "react"
 
 /**
  * Execute a function when the component is updated, but not when it is mounted
  * @param callback The function to execute on update
  * @param dependencies The dependencies array
  */
-export function useDidUpdate(callback: () => void, dependencies: any[]) {
+export function useDidUpdate(callback: () => void, dependencies: DependencyList) {
   const isFirstRender = useRef(true)
 
   useEffect(() => {

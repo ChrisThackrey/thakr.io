@@ -28,8 +28,8 @@ export interface ContentStructure {
 }
 
 // Helper function to create properly typed content structures
-function createContentStructure(structure: any): ContentStructure {
-  return structure as ContentStructure
+function createContentStructure(structure: ContentStructure): ContentStructure {
+  return structure
 }
 
 // Cache for content structures

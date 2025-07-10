@@ -1,5 +1,12 @@
 type ImagePriority = "critical" | "high" | "medium" | "low"
 
+// Network Information API types
+interface NetworkInformation {
+  effectiveType?: string
+  downlink?: number
+  addEventListener?: (type: string, listener: () => void) => void
+}
+
 interface QueuedImage {
   id: string
   src: string
@@ -27,7 +34,7 @@ class ImagePriorityManager {
     if (typeof window !== "undefined") {
       // Detect network conditions
       if ("connection" in navigator) {
-        const conn = (navigator as any).connection
+        const conn = (navigator as Navigator & { connection?: NetworkInformation }).connection
         if (conn) {
           this.networkInfo = {
             type: conn.effectiveType || "unknown",
@@ -57,7 +64,7 @@ class ImagePriorityManager {
 
   private updateNetworkInfo = () => {
     if (typeof window !== "undefined" && "connection" in navigator) {
-      const conn = (navigator as any).connection
+      const conn = (navigator as Navigator & { connection?: NetworkInformation }).connection
       if (conn) {
         this.networkInfo = {
           type: conn.effectiveType || "unknown",

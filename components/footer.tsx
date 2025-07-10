@@ -6,6 +6,7 @@ export function Footer() {
   const socialLinks = [
     { name: "GitHub", href: siteConfig.links.github, icon: "github" },
     { name: "LinkedIn", href: siteConfig.links.linkedin, icon: "linkedin" },
+    { name: "Instagram", href: siteConfig.links.instagram, icon: "instagram" },
     { name: "Contact", href: "/contact", icon: "mail" },
   ]
 
