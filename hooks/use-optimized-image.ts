@@ -19,9 +19,9 @@ export function useOptimizedImage({
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [isLowQualityLoaded, setIsLowQualityLoaded] = useState<boolean>(false)
   const [hasError, setHasError] = useState<boolean>(false)
-  let lowQualityImg: HTMLImageElement | null = null
 
   useEffect(() => {
+    let lowQualityImg: HTMLImageElement | null = null
     // Reset state when src changes
     setIsLoaded(false)
     setHasError(false)
@@ -77,8 +77,8 @@ export function useOptimizedImage({
     }
 
     if (eager) {
-      // @ts-ignore - fetchPriority is a valid HTML attribute but not in TypeScript types yet
-      img.fetchPriority = "high"
+      // fetchPriority is a valid HTML attribute for resource prioritization
+      ;(img as HTMLImageElement & { fetchPriority?: string }).fetchPriority = "high"
       img.loading = "eager"
     }
 

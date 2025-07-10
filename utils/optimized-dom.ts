@@ -84,8 +84,8 @@ export const createOptimizedResizeHandler = (handler: (event: Event) => void, wa
 export const applyStyles = (element: HTMLElement, styles: Partial<CSSStyleDeclaration>) => {
   domBatcher.write(() => {
     Object.entries(styles).forEach(([property, value]) => {
-      // @ts-ignore - We know this is a valid style property
-      element.style[property] = value
+      // Use type assertion for dynamic style property assignment
+      ;(element.style as any)[property] = value
     })
   })
 }

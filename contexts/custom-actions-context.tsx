@@ -68,7 +68,7 @@ const STORAGE_KEY = "custom-text-actions"
 
 // Helper to get icon component by name
 export function getIconByName(name: string) {
-  const icons: Record<string, React.ComponentType<any>> = {
+  const icons: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
     Search,
     Globe,
     BookOpen,

@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, type DependencyList } from "react"
 
-export function useSafeDataLoading<T>(fetchFunction: () => Promise<T>, initialData: T, dependencies: any[] = []) {
+export function useSafeDataLoading<T>(fetchFunction: () => Promise<T>, initialData: T, dependencies: DependencyList = []) {
   const [data, setData] = useState<T>(initialData)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
@@ -29,7 +29,7 @@ export function useSafeDataLoading<T>(fetchFunction: () => Promise<T>, initialDa
     return () => {
       isMounted = false
     }
-  }, dependencies)
+  }, dependencies) // eslint-disable-line react-hooks/exhaustive-deps
 
   return { data, isLoading, error }
 }
