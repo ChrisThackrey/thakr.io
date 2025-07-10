@@ -49,7 +49,9 @@ class ImagePriorityManager {
           }
 
           // Listen for changes
-          conn.addEventListener("change", this.updateNetworkInfo)
+          if (conn.addEventListener) {
+            conn.addEventListener("change", this.updateNetworkInfo)
+          }
         }
       }
 

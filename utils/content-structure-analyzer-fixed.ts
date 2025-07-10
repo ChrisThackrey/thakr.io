@@ -48,10 +48,10 @@ export const analyzeContentStructure = cache(
     // If no default structure is provided, return a basic structure
     if (!defaultStructure) {
       return {
-        type: "section",
+        type: "section" as const,
         children: [
-          { type: "heading", props: { textLength: 24, importance: "primary" } },
-          { type: "text", props: { textLength: 120 } },
+          { type: "heading" as const, props: { textLength: 24, importance: "primary" as const } },
+          { type: "text" as const, props: { textLength: 120 } },
         ],
       }
     }

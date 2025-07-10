@@ -1,4 +1,3 @@
-import { Hero } from "@/components/hero"
 import { PageBackground } from "@/components/page-background"
 import { SectionTitle } from "@/components/section-title"
 import { Timeline } from "@/components/timeline"
@@ -11,6 +10,7 @@ import { ProfileSection } from "@/components/profile-section"
 import { FeaturedProjectsSection } from "@/components/featured-projects-section"
 import { ArrowRight } from "lucide-react"
 import { BlogPreviewSection } from "@/components/blog-preview-section"
+import { LetsConnectSection } from "@/components/lets-connect-section"
 
 export default async function HomePage() {
   const featuredExperience = professionalExperience.slice(0, 3)
@@ -24,8 +24,7 @@ export default async function HomePage() {
         <div className="container mx-auto max-w-4xl pt-16 md:pt-24 pb-0 px-4">
           <ProfileSection />
         </div>
-        {/* End Profile Section */}
-        <Hero />
+        
         {/* Recent Work & Experience Section */}
         <div className="container mx-auto max-w-4xl py-16 md:py-24 px-4">
           <div className="flex justify-between items-center mb-12">
@@ -48,6 +47,9 @@ export default async function HomePage() {
           </div>
         </div>
 
+        {/* Let's Connect Section - Moved here */}
+        <LetsConnectSection />
+
         {/* Featured Projects Section */}
         {/* @ts-expect-error - FeaturedProjectsSection is an async component which is valid in Next.js 15 */}
         <FeaturedProjectsSection />
@@ -56,7 +58,7 @@ export default async function HomePage() {
         {/* @ts-expect-error - BlogPreviewSection is an async component which is valid in Next.js 15 */}
         <BlogPreviewSection />
 
-        {/* Let's Connect Section */}
+        {/* Contact Section */}
         <ContactSection />
         </div>
       </div>

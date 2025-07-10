@@ -42,6 +42,8 @@
     "@react-three/drei": "latest",
     "@react-three/fiber": "latest",
     "@remix-run/react": "latest",
+    "@stagewise-plugins/react": "^0.5.0",
+    "@stagewise/toolbar-next": "^0.5.0",
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
     "@sveltejs/kit": "latest",
