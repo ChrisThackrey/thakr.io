@@ -159,9 +159,14 @@ const ChartTooltipContent = React.forwardRef<
           : itemConfig?.label
 
       if (labelFormatter) {
+        // Ensure value is string or number for labelFormatter
+        const formattableValue = typeof value === 'string' || typeof value === 'number' 
+          ? value 
+          : String(value ?? '')
+        
         return (
           <div className={cn("font-medium", labelClassName)}>
-            {labelFormatter(value)}
+            {labelFormatter(formattableValue)}
           </div>
         )
       }
@@ -197,7 +202,7 @@ const ChartTooltipContent = React.forwardRef<
       >
         {!nestLabel ? tooltipLabel : null}
         <div className="grid gap-1.5">
-          {payload.map((item, index) => {
+          {payload.map((item) => {
             const key = `${nameKey || item.name || item.dataKey || "value"}`
             const itemConfig = getPayloadConfigFromPayload(config, item, key)
             const indicatorColor = color || (item.payload as any)?.fill || item.color
