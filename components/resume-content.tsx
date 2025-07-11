@@ -1,8 +1,38 @@
 "use client"
 
+import type React from "react"
 import { Mail, Phone, MapPin, Globe, Github, Linkedin } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
+import { useRouter } from "next/navigation"
 
 export function ResumeContent() {
+  const { toast } = useToast()
+  const router = useRouter()
+
+  const handleEmailClick = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    const email = "c.r.thackrey@gmail.com"
+    
+    try {
+      await navigator.clipboard.writeText(email)
+      toast({
+        title: `My Email: '${email}' Copied to Clipboard!`,
+        duration: 3000,
+      })
+      
+      // Redirect to contact page after a short delay
+      setTimeout(() => {
+        router.push("/contact")
+      }, 500)
+    } catch (err) {
+      console.error("Failed to copy email:", err)
+      toast({
+        title: "Failed to copy email",
+        description: "Please try again",
+        variant: "destructive",
+      })
+    }
+  }
   return (
     <div className="resume-content">
       {/* Header Section */}
@@ -14,15 +44,21 @@ export function ResumeContent() {
         
         {/* Contact Info */}
         <div className="flex flex-wrap justify-center gap-4 text-sm print:gap-2 print:text-xs">
-          <span className="flex items-center gap-1">
+          <a 
+            href="tel:+17073193306" 
+            className="flex items-center gap-1 text-foreground hover:text-primary transition-colors"
+          >
             <Phone className="h-4 w-4 print:hidden" />
             (707) 319-3306
-          </span>
+          </a>
           <span className="print:hidden">|</span>
-          <span className="flex items-center gap-1">
+          <button 
+            onClick={handleEmailClick}
+            className="flex items-center gap-1 text-foreground hover:text-primary transition-colors cursor-pointer"
+          >
             <Mail className="h-4 w-4 print:hidden" />
             c.r.thackrey@gmail.com
-          </span>
+          </button>
           <span className="print:hidden">|</span>
           <span className="flex items-center gap-1">
             <MapPin className="h-4 w-4 print:hidden" />

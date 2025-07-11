@@ -31,19 +31,23 @@ const TO_EMAIL = "c.r.thackrey@gmail.com"
 const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL && process.env.RESEND_FROM_EMAIL.trim() !== ""
     ? process.env.RESEND_FROM_EMAIL
-    : "onboarding@resend.dev"
+    : "hello@thakr.io"
 
 export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0] ?? "127.0.0.1"
 
   try {
-    // 1. Rate Limiting
-    const { success: rateLimitSuccess, limit, remaining, reset } = await ratelimit.limit(ip)
-    if (!rateLimitSuccess) {
-      return NextResponse.json(
-        { success: false, error: "Too many requests.", limit, remaining, reset },
-        { status: 429 },
-      )
+    // 1. Rate Limiting (skip if KV is not configured)
+    try {
+      const { success: rateLimitSuccess, limit, remaining, reset } = await ratelimit.limit(ip)
+      if (!rateLimitSuccess) {
+        return NextResponse.json(
+          { success: false, error: "Too many requests.", limit, remaining, reset },
+          { status: 429 },
+        )
+      }
+    } catch (rateLimitError) {
+      console.warn("Rate limiting skipped - KV store not configured:", rateLimitError)
     }
 
     // 2. Check for required environment variables
@@ -87,6 +91,8 @@ export async function POST(request: NextRequest) {
       <p><em>This message was sent from the Contact form of Chris Thackrey's personal developer website: thakr.io</em></p>
     `
 
+    console.log("Attempting to send email with FROM_EMAIL:", FROM_EMAIL)
+    
     const { data, error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: [TO_EMAIL],
@@ -97,7 +103,9 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       console.error("Resend API Error:", error)
-      return NextResponse.json({ success: false, error: "Failed to send email." }, { status: 500 })
+      console.error("Error details:", JSON.stringify(error, null, 2))
+      const errorMessage = error.message || "Failed to send email."
+      return NextResponse.json({ success: false, error: errorMessage }, { status: 500 })
     }
 
     console.log("Email sent successfully:", data)

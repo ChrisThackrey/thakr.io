@@ -31,7 +31,7 @@ export default function ResumePage() {
             <PrintButton />
           </div>
         </div>
-        <div className="bg-white/[0.05] dark:bg-black/[0.05] backdrop-blur-md border border-white/[0.08] p-6 sm:p-8 md:p-12 rounded-lg shadow-lg max-w-4xl mx-auto resume-container">
+        <div className="bg-white/[0.85] dark:bg-black/[0.85] backdrop-blur-md border border-white/[0.08] p-6 sm:p-8 md:p-12 rounded-lg shadow-lg max-w-4xl mx-auto resume-container">
           <ResumeContent />
         </div>
       </main>
