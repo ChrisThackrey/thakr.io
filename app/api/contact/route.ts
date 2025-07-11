@@ -31,7 +31,7 @@ const TO_EMAIL = "c.r.thackrey@gmail.com"
 const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL && process.env.RESEND_FROM_EMAIL.trim() !== ""
     ? process.env.RESEND_FROM_EMAIL
-    : "hello@thakr.io"
+    : "onboarding@resend.dev"
 
 export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0] ?? "127.0.0.1"
