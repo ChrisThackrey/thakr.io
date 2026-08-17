@@ -27,6 +27,9 @@ yarn-error.log*
 next-env.d.ts
 .vscode
 CLAUDE.md
+# WARP.md is a local symlink to CLAUDE.md (ignored above); committing it ships
+# a dangling symlink that breaks `next build` on Vercel.
+WARP.md
 .clinerules/byterover-rules.md
 .kilocode/rules/byterover-rules.md
 .roo/rules/byterover-rules.md
