@@ -18,6 +18,13 @@ const nextConfig = {
         destination: "/blog",
         permanent: false,
       },
+      // Architecture works are likewise behind a coming-soon screen; send all
+      // project sub-routes to /architecture.
+      {
+        source: "/architecture/:path+",
+        destination: "/architecture",
+        permanent: false,
+      },
     ]
   },
 }

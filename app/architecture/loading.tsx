@@ -1,6 +1,5 @@
-import { ArchitecturePageSkeleton } from "@/components/skeletons/architecture-page-skeleton"
-
 export default function ArchitectureLoading() {
-  // Add a key to ensure React treats this as a new component
-  return <ArchitecturePageSkeleton key="architecture-skeleton" />
+  // The architecture page currently shows a lightweight coming-soon screen,
+  // so a full project-grid skeleton would mismatch what actually renders.
+  return null
 }
