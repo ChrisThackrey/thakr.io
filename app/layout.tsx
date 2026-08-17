@@ -9,8 +9,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CustomActionsProvider } from "@/contexts/custom-actions-context";
 import { ChunkErrorHandler } from "@/components/chunk-error-handler";
-import { StagewiseToolbar } from "@stagewise/toolbar-next";
-import ReactPlugin from "@stagewise-plugins/react";
 import "@/styles/globals.css";
 import "@/styles/section-animations.css";
 import "@/styles/highlight-animations.css";
@@ -71,11 +69,6 @@ export default function RootLayout(
             <Toaster />
             <Analytics />
             <SpeedInsights />
-            <StagewiseToolbar
-              config={{
-                plugins: [ReactPlugin],
-              }}
-            />
           </Suspense>
         </ThemeProvider>
       </body>
