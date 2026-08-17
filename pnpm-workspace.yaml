@@ -1,2 +1,12 @@
+allowBuilds:
+  '@vercel/speed-insights': true
+  core-js: true
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
 onlyBuiltDependencies:
+  - '@vercel/speed-insights'
+  - core-js
+  - esbuild
+  - sharp
   - unrs-resolver

@@ -19,7 +19,15 @@ const contactSchema = z.object({
   website: z.string().max(0, { message: "This field must be empty." }).optional(), // Honeypot field
 })
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Instantiated lazily: constructing Resend without an API key throws, which
+// would break `next build` in environments where the secret isn't set.
+let resend: Resend | null = null
+function getResend(): Resend {
+  if (!resend) {
+    resend = new Resend(process.env.RESEND_API_KEY)
+  }
+  return resend
+}
 
 // Create a new ratelimiter, that allows 5 requests per minute
 const ratelimit = new Ratelimit({
@@ -93,7 +101,7 @@ export async function POST(request: NextRequest) {
 
     console.log("Attempting to send email with FROM_EMAIL:", FROM_EMAIL)
     
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await getResend().emails.send({
       from: FROM_EMAIL,
       to: [TO_EMAIL],
       subject: `New Contact Form: ${subject}`,
