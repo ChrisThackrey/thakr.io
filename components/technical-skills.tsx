@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import type { technicalSkills as SkillsType } from "@/lib/experience-data"
-import { Badge } from "@/components/ui/badge"
+import { SkillBadge } from "@/components/skill-badge"
 
 interface TechnicalSkillsProps {
   skills: typeof SkillsType
@@ -23,9 +23,7 @@ export function TechnicalSkills({ skills }: TechnicalSkillsProps) {
               <h3 className="text-lg font-semibold mb-3 text-foreground/90 tracking-wide">{category}</h3>
               <div className="flex flex-wrap gap-2">
                 {skillList.map((skill) => (
-                  <Badge variant="secondary" key={skill}>
-                    {skill}
-                  </Badge>
+                  <SkillBadge key={skill} skill={skill} category={category} />
                 ))}
               </div>
             </div>

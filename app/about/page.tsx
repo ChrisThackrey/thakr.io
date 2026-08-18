@@ -7,7 +7,7 @@ import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { SectionTitle } from "@/components/section-title"
 import { Card, CardContent } from "@/components/ui/card"
 import { BookingCTA } from "@/components/booking-cta"
-import { Badge } from "@/components/ui/badge"
+import { SkillBadge } from "@/components/skill-badge"
 import { technicalSkills, education } from "@/lib/experience-data"
 import { EducationTimeline } from "@/components/education-timeline"
 import { ProfileCard } from "@/components/profile-card"
@@ -65,9 +65,7 @@ export default function AboutPage() {
               <h3 className="font-semibold text-lg mb-3">{category}</h3>
               <div className="flex flex-wrap gap-2">
                 {skillList.map((skill) => (
-                  <Badge variant="secondary" key={`${category}-${skill}`}>
-                    {skill}
-                  </Badge>
+                  <SkillBadge key={`${category}-${skill}`} skill={skill} category={category} />
                 ))}
               </div>
             </div>
