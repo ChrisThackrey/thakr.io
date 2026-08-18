@@ -21,7 +21,7 @@ AI development tool that functions both internally for the company and externall
 * Engineered LLM-as-judge evaluation pipeline scoring every solution across six quality axes and classifying outputs recommended, viable, or problematic.  
 * Generated project roadmaps automatically by ranking highest-scoring reasoning steps into five-phase Gantt timelines with milestone markers.
 
-**AI Applications for National Not-for-Profit Education Research Organization**  January 2024 (Subject to NDA)  
+**AI Applications for National Education Research Organization**  January 2024 (Subject to NDA)  
 AI teaching application featuring a multiplayer AI chat and advanced deep research enabled.
 
 * Engineered a multiplayer AI chat system using a single-call classifier to route messages across six specialized bot variants over authenticated WebSocket connections, ensuring real-time interactivity while maintaining participant anonymization.  
@@ -36,7 +36,7 @@ Cloud-based SaaS offering on-demand wildfire spread prediction capabilities to s
 * Utilized secured Azure backends to make safe API calls to private data from public sources.  
 * Created AI-driven assessment tools and forecast features to improve event response times for 20,000+ incidents per year.
 
-**CRM Management App to Handle Insurance Clients and Leads** \- [lineagecrm.com](http://lineagecrm.com)  January 2024  
+**CRM Management App to Handle Insurance Clients and Leads** \- [lineagecrm.com](https://lineagecrm.com)  January 2024  
 Final expense CRM management app and tool for handling clients and leads, currently deployed with more than 200 active users.
 
 * Powered lead search with a materialized view denormalizing four joined tables, enabling high-performance multi-dimensional filtering across status, source, and location.  

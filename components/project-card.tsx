@@ -12,8 +12,31 @@ interface ProjectCardProps {
   project: Project
 }
 
+// Render bare domains/URLs in a description as external links that open in a new tab.
+const urlPattern = /((?:https?:\/\/)?(?:[\w-]+\.)+(?:com|org|net|io|dev|ai|app)(?:\/\S*)?)/g
+const urlTest = /^(?:https?:\/\/)?(?:[\w-]+\.)+(?:com|org|net|io|dev|ai|app)(?:\/\S*)?$/
+
+function linkifyDescription(text: string) {
+  return text.split(urlPattern).map((part, i) =>
+    urlTest.test(part) ? (
+      <a
+        key={i}
+        href={part.startsWith("http") ? part : `https://${part}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(e) => e.stopPropagation()}
+        className="text-primary hover:underline"
+      >
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  )
+}
+
 export function ProjectCard({ project }: ProjectCardProps) {
-  const { title, description, tags, liveUrl, repoUrl, image } = project
+  const { title, description, bullets, tags, liveUrl, repoUrl, image } = project
   return (
     <motion.div
       whileHover={{ y: -5, scale: 1.02 }}
@@ -34,7 +57,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
         )}
         <CardContent className="p-6 flex flex-col flex-grow">
           <h3 className="text-xl font-bold mb-2">{title}</h3>
-          <p className="text-muted-foreground text-sm mb-4 flex-grow">{description}</p>
+          <p className={`text-muted-foreground text-sm mb-4 ${bullets?.length ? "" : "flex-grow"}`}>
+            {linkifyDescription(description)}
+          </p>
+          {bullets && bullets.length > 0 && (
+            <ul className="list-disc pl-5 text-muted-foreground text-sm mb-4 flex-grow space-y-1">
+              {bullets.map((bullet) => (
+                <li key={bullet}>{linkifyDescription(bullet)}</li>
+              ))}
+            </ul>
+          )}
           <div className="flex flex-wrap gap-2 mb-4">
             {tags.map((tag) => (
               <Badge key={tag} variant="secondary" className="text-xs">

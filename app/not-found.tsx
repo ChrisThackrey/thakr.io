@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { SearchX, Home, BookOpen } from "lucide-react"
+import { SearchX, Home, FolderKanban } from "lucide-react"
 import { motion } from "framer-motion"
 
 export default function NotFound() {
@@ -77,9 +77,9 @@ export default function NotFound() {
           </Link>
         </Button>
         <Button asChild variant="outline">
-          <Link href="/blog">
-            <BookOpen className="mr-2 h-4 w-4" />
-            Explore the Blog
+          <Link href="/projects">
+            <FolderKanban className="mr-2 h-4 w-4" />
+            Explore Projects
           </Link>
         </Button>
       </motion.div>

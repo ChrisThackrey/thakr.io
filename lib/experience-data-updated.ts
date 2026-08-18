@@ -55,7 +55,7 @@ export const professionalExperience: TimelineItemData[] = [
         link: "/projects/rivendell",
       },
       {
-        name: "AI Applications for National Not-for-Profit Education Research Organization",
+        name: "AI Applications for National Education Research Organization",
         description: [
           "AI teaching application featuring a multiplayer AI chat and advanced deep research enabled.",
           "Implemented interactive AI communication tools.",

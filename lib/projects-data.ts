@@ -8,6 +8,7 @@ export interface Project {
   description: string
   image: string
   tags: string[]
+  bullets?: string[]
   liveUrl?: string
   repoUrl?: string
   featured?: boolean
@@ -26,7 +27,7 @@ const projectsData: Project[] = [
   },
   {
     slug: "ai-teaching-application",
-    title: "AI Applications for National Not-for-Profit Education Research Organization",
+    title: "AI Applications for National Education Research Organization",
     description:
       "AI teaching application featuring a multiplayer AI chat and advanced deep research enabled. (Subject to NDA)",
     image: "/images/projects/ai-teaching-project.png",
@@ -47,7 +48,7 @@ const projectsData: Project[] = [
     slug: "lineage-crm",
     title: "CRM Management App to Handle Insurance Clients and Leads",
     description:
-      "Final expense CRM management app and tool for handling clients and leads, currently deployed with more than 200 active users. (lineagecrm.com)",
+      "Final expense CRM management app and tool for handling clients and leads, currently deployed with more than 200 active users. lineagecrm.com",
     image: "/images/projects/lineage.svg",
     tags: [
       "TypeScript",
@@ -80,6 +81,17 @@ const projectsData: Project[] = [
       "D3",
       "Uber H3",
     ],
+  },
+  {
+    slug: "collegiate-pathways",
+    title: "Collegiate Pathways",
+    description:
+      "AI-driven college planning application with chatbot assistance to combine together course-catalogue offerings from multiple higher-level learning institutions, including major college curriculums, into a full degree plan that satisfies the requirements for any field of study.",
+    bullets: [
+      "Features fully dynamic components generated using custom API calls to AI in real-time. The fully-generated degree plan outline leveraged AI prompted to accommodate remote learning, schedule planning around any on-site learning at multiple locations, and account for pre-requisites that must be taken in sequential order.",
+    ],
+    image: "/images/projects/teaching-project.jpg",
+    tags: ["TypeScript", "Astro", "Svelte", "OpenAI API", "Anthropic SDK", "Shadcn-UI"],
   },
   {
     slug: "speed-reader",

@@ -16,7 +16,7 @@ export function Navigation() {
 
   const routes = siteConfig.navLinks.map((link) => ({
     ...link,
-    active: link.href === "/blog" ? pathname === "/blog" || pathname?.startsWith("/blog/") : undefined,
+    active: undefined as boolean | undefined,
   }))
 
   return (

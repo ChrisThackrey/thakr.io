@@ -3,6 +3,7 @@ export type Project = {
   title: string
   description: string
   tags: string[]
+  bullets?: string[]
   image?: string
   liveUrl?: string
   repoUrl?: string

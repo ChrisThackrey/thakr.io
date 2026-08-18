@@ -9,7 +9,6 @@ import { PageTransition } from "@/components/page-transition"
 import { ProfileSection } from "@/components/profile-section"
 import { FeaturedProjectsSection } from "@/components/featured-projects-section"
 import { ArrowRight } from "lucide-react"
-import { BlogPreviewSection } from "@/components/blog-preview-section"
 import { LetsConnectSection } from "@/components/lets-connect-section"
 
 export default async function HomePage() {
@@ -53,10 +52,6 @@ export default async function HomePage() {
         {/* Featured Projects Section */}
         {/* @ts-expect-error - FeaturedProjectsSection is an async component which is valid in Next.js 15 */}
         <FeaturedProjectsSection />
-
-        {/* Blog Preview Section */}
-        {/* @ts-expect-error - BlogPreviewSection is an async component which is valid in Next.js 15 */}
-        <BlogPreviewSection />
 
         {/* Contact Section */}
         <ContactSection />

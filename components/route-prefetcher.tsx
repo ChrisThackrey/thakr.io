@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 
 // List of routes to prefetch
-const routesToPrefetch = ["/", "/about", "/projects", "/architecture", "/blog", "/work", "/booking"]
+const routesToPrefetch = ["/", "/about", "/projects", "/architecture", "/work", "/booking"]
 
 export function RoutePrefetcher() {
   const router = useRouter()

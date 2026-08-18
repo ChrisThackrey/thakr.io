@@ -152,7 +152,7 @@ export function ResumeContent() {
           {/* AI Applications */}
           <div>
             <h3 className="text-lg font-semibold mb-2 print:text-base print:mb-1">
-              AI Applications for National Not-for-Profit Education Research Organization*
+              AI Applications for National Education Research Organization*
               <span className="text-sm font-normal text-muted-foreground ml-2 print:text-xs print:text-black">January 2024</span>
             </h3>
             <p className="text-sm text-muted-foreground mb-2 print:text-xs print:text-black">
@@ -186,7 +186,7 @@ export function ResumeContent() {
           <div>
             <h3 className="text-lg font-semibold mb-2 print:text-base print:mb-1">
               CRM Management App to Handle Insurance Clients and Leads -
-              <a href="http://lineagecrm.com" className="text-primary hover:underline ml-1 print:text-black">lineagecrm.com</a>
+              <a href="https://lineagecrm.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline ml-1 print:text-black">lineagecrm.com</a>
               <span className="text-sm font-normal text-muted-foreground ml-2 print:text-xs print:text-black">January 2024</span>
             </h3>
             <p className="text-sm text-muted-foreground mb-2 print:text-xs print:text-black">
