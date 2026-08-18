@@ -88,7 +88,8 @@ const projectsData: Project[] = [
     description:
       "AI-driven college planning application with chatbot assistance to combine together course-catalogue offerings from multiple higher-level learning institutions, including major college curriculums, into a full degree plan that satisfies the requirements for any field of study.",
     bullets: [
-      "Features fully dynamic components generated using custom API calls to AI in real-time. The fully-generated degree plan outline leveraged AI prompted to accommodate remote learning, schedule planning around any on-site learning at multiple locations, and account for pre-requisites that must be taken in sequential order.",
+      "Features fully dynamic components generated using custom API calls to AI in real-time.",
+      "The fully-generated degree plan outline leveraged AI prompted to accommodate remote learning, schedule planning around any on-site learning at multiple locations, and account for pre-requisites that must be taken in sequential order.",
     ],
     image: "/images/projects/teaching-project.jpg",
     tags: ["TypeScript", "Astro", "Svelte", "OpenAI API", "Anthropic SDK", "Shadcn-UI"],
