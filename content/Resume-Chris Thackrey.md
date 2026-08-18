@@ -9,7 +9,7 @@ Accomplished Full-Stack Software Engineer and CTO with a unique multidisciplinar
 Technical Skills  
 ---
 
-**Front End** | TypeScript, NextJS, Astro, Svelte, React Hooks \+ Context API, Redux, JavaScript, D3, Shadcn/ui, TailwindCSS, ChakraUI, v0, HeyGen, Google Maps Platform, React Native, Swift **Back End** | Vercel Serverless Functions, Edge Functions, GraphQL, MongoDB, MySQL, Prisma, Supabase, Firebase, Redis, Python, FastAPI, DynamoDB, Amazon RDS **Deployment** | Vercel Platform, Github Actions, Github Apps, Vercel CLI, Deploy Hooks, Vercel REST API, Docker, Heroku, DigitalOcean, Electron, AWS: EC2, AWS Lambda Functions, Google Cloud Functions, Amazon Bedrock, Amazon Sagemaker, Clerk Auth **DevOps** | Turbopack, Turborepo, Azure DevOps Integration, Observability Tools, Trigger.dev, Datadog, Artillery.io, TDD prompt engineering, Critical-CSS, React-Suspense, NGINX 
+**Front End** | TypeScript, NextJS, Astro, Svelte, React Hooks \+ Context API, Redux, JavaScript, D3, Shadcn/ui, TailwindCSS, ChakraUI, v0, HeyGen, Google Maps Platform, React Native, Swift **Back End** | Vercel Serverless Functions, Edge Functions, GraphQL, MongoDB, MySQL, Prisma, Supabase, Firebase, Redis, Python, FastAPI, DynamoDB, Amazon RDS **Deploy** | Vercel Platform, Github Actions, Github Apps, Vercel CLI, Deploy Hooks, Vercel REST API, Docker, Heroku, DigitalOcean, Electron, AWS: EC2, AWS Lambda Functions, Google Cloud Functions, Amazon Bedrock, Amazon Sagemaker, Clerk Auth **DevOps** | Turbopack, Turborepo, Azure DevOps Integration, Observability Tools, Trigger.dev, Datadog, Artillery.io, TDD prompt engineering, Critical-CSS, React-Suspense, NGINX 
 
 Software Engineering Work  
 ---
@@ -24,10 +24,10 @@ AI development tool that functions both internally for the company and externall
 **AI Applications for National Education Research Organization**  January 2024 (Subject to NDA)  
 AI teaching application featuring a multiplayer AI chat and advanced deep research enabled.
 
-* Engineered a multiplayer AI chat system using a single-call classifier to route messages across six specialized bot variants over authenticated WebSocket connections, ensuring real-time interactivity while maintaining participant anonymization.  
+* Engineered a multiplayer AI chat system to route messages across multiple specialized bot variants over authenticated connections, ensuring real-time interactivity while maintaining participant anonymization.  
 * Created a multi-tenant architecture solution for project deployments by automating tenant provisioning across 27 idempotent stages with persisted state, ensuring safe, resumable infrastructure deployments of dedicated EC2, Supabase, and S3 resources per district.  
 * Designed and implemented interactive interface templates to facilitate AI context and responses.  
-* Scored AI outputs across six automated LangSmith evaluators spanning correctness, groundedness, document relevance, schema validity, and processing time.
+* Scored AI outputs across multiple LangSmith evaluators spanning correctness, groundedness, document relevance, schema validity, and processing time.
 
 **AI Analysis Tools For International Wildfire Science and Technology Company**  October 2024 (Subject to NDA)  
 Cloud-based SaaS offering on-demand wildfire spread prediction capabilities to support operational response.

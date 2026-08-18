@@ -116,7 +116,7 @@ export function ResumeContent() {
             <span className="text-sm print:text-xs">Vercel Serverless Functions, Edge Functions, GraphQL, MongoDB, MySQL, Prisma, Supabase, Firebase, Redis, Python, FastAPI, DynamoDB, Amazon RDS</span>
           </div>
           <div className="flex flex-col sm:flex-row print:flex-row">
-            <span className="font-semibold min-w-[100px] print:min-w-[80px]">Deployment:</span>
+            <span className="font-semibold min-w-[100px] print:min-w-[80px]">Deploy:</span>
             <span className="text-sm print:text-xs">Vercel Platform, Github Actions, Github Apps, Vercel CLI, Deploy Hooks, Vercel REST API, Docker, Heroku, DigitalOcean, Electron, AWS: EC2, AWS Lambda Functions, Google Cloud Functions, Amazon Bedrock, Amazon Sagemaker, Clerk Auth</span>
           </div>
           <div className="flex flex-col sm:flex-row print:flex-row">
@@ -159,10 +159,10 @@ export function ResumeContent() {
               AI teaching application featuring a multiplayer AI chat and advanced deep research enabled.
             </p>
             <ul className="list-disc pl-5 space-y-1 text-sm print:text-xs">
-              <li>Engineered a multiplayer AI chat system using a single-call classifier to route messages across six specialized bot variants over authenticated WebSocket connections, ensuring real-time interactivity while maintaining participant anonymization.</li>
+              <li>Engineered a multiplayer AI chat system to route messages across multiple specialized bot variants over authenticated connections, ensuring real-time interactivity while maintaining participant anonymization.</li>
               <li>Created a multi-tenant architecture solution for project deployments by automating tenant provisioning across 27 idempotent stages with persisted state, ensuring safe, resumable infrastructure deployments of dedicated EC2, Supabase, and S3 resources per district.</li>
               <li>Designed and implemented interactive interface templates to facilitate AI context and responses.</li>
-              <li>Scored AI outputs across six automated LangSmith evaluators spanning correctness, groundedness, document relevance, schema validity, and processing time.</li>
+              <li>Scored AI outputs across multiple LangSmith evaluators spanning correctness, groundedness, document relevance, schema validity, and processing time.</li>
             </ul>
           </div>
 

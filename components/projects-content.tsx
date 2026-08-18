@@ -23,7 +23,7 @@ const ghostProjects = [
 
 function GhostCard({ children }: { children: React.ReactNode }) {
   return (
-    <div className="h-full min-h-[16rem] flex flex-col items-center justify-center text-center gap-2 p-6 rounded-lg border-2 border-dashed border-border/70 bg-background/40 backdrop-blur-sm transition-colors hover:border-primary/50">
+    <div className="h-full min-h-[16rem] flex flex-col items-center justify-center text-center gap-2 p-6 rounded-lg border-2 border-dashed border-foreground/40 bg-background/40 backdrop-blur-sm transition-colors hover:border-primary/70">
       {children}
     </div>
   )
@@ -64,14 +64,14 @@ export default async function ProjectsContent() {
           <GhostCard key={ghost.title}>
             <span className="text-3xl font-bold tracking-tight">{ghost.title}</span>
             {"description" in ghost && ghost.description && (
-              <p className="text-muted-foreground text-sm max-w-[24ch]">{ghost.description}</p>
+              <p className="text-muted-foreground text-base leading-snug max-w-[26ch]">{ghost.description}</p>
             )}
             {"website" in ghost && ghost.website && (
               <a
                 href={ghost.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-primary hover:underline"
+                className="mt-1 inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-sm font-semibold text-primary transition-colors hover:bg-primary/20 hover:underline"
               >
                 {ghost.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
               </a>
