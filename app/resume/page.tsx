@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
 import { PrintButton } from "@/components/print-button"
 import { SectionTitle } from "@/components/section-title"
-import { Button } from "@/components/ui/button"
-import { Download } from "lucide-react"
+import { DownloadCvMenu } from "@/components/download-cv-menu"
 import { ResumeContent } from "@/components/resume-content"
 import { PageBackground } from "@/components/page-background"
 import "@/styles/resume-print.css"
@@ -22,12 +21,7 @@ export default function ResumePage() {
             Chris Thackrey – Resume
           </SectionTitle>
           <div className="flex gap-2">
-            <Button asChild variant="outline">
-              <a href="/Chris-Thackrey-resume-07-10-2025.pdf" download>
-                <Download className="mr-2 h-4 w-4" />
-                Download CV
-              </a>
-            </Button>
+            <DownloadCvMenu />
             <PrintButton />
           </div>
         </div>

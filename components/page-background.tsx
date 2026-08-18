@@ -21,14 +21,14 @@ export function PageBackground() {
   }, [])
 
   if (!mounted) {
-    return <div className="fixed inset-0 -z-50 bg-background" />
+    return <div className="page-background fixed inset-0 -z-50 bg-background" />
   }
 
   const isDark = resolvedTheme === "dark"
   const imageSrc = "/images/light-background.png" // served from /public
 
   return (
-    <div className="fixed inset-0 -z-50 overflow-hidden">
+    <div className="page-background fixed inset-0 -z-50 overflow-hidden">
       <Image
         src={imageSrc || "/placeholder.svg"}
         alt={"Soft abstract gradient background with pastel blues, yellows and pinks"}
