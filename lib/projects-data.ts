@@ -71,6 +71,7 @@ const projectsData: Project[] = [
     image: "/images/projects/wildfire.png",
     tags: [
       "TypeScript",
+      "Vite",
       "Vue",
       "Vuetify",
       "Mapbox",
