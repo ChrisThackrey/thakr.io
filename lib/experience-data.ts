@@ -24,6 +24,16 @@ export interface TimelineItemData {
 /* ---------- Professional Experience ---------- */
 export const professionalExperience: TimelineItemData[] = [
   {
+    title: "Chief Technology Officer",
+    company: "CelaHealthcare Inc.",
+    date: "May 2025 - Present",
+    description: [
+      "Senior Software Engineer and primary inventor of patented healthcare application technology.",
+      "Administrative leader for technical team including 3 developers, data scientist, and project manager.",
+    ],
+    skills: ["Technical Leadership", "Healthcare Technology", "Software Engineering", "Team Management"],
+  },
+  {
     title: "Principal Software Architect",
     company: "Silver Bow Technology Group",
     location: "San Antonio, TX",
