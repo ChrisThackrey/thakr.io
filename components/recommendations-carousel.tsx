@@ -14,7 +14,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { SectionTitle } from "@/components/section-title"
-import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { cn } from "@/lib/utils"
 import {
   references,
@@ -93,7 +92,6 @@ const MARQUEE_SPEED = 30 // px per second, matches the pace of the old 70s CSS m
 const RESUME_DELAY = 1500 // ms of idle after a touch/drag before auto-scroll resumes
 
 export function RecommendationsCarousel({ className }: { className?: string }) {
-  const prefersReducedMotion = useReducedMotion()
   const [selected, setSelected] = useState<Reference | null>(null)
 
   const dialogOpen = selected !== null
@@ -110,7 +108,7 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
 
   useEffect(() => {
     const scroller = scrollerRef.current
-    if (prefersReducedMotion || !scroller) return
+    if (!scroller) return
 
     let raf = 0
     let pos = scroller.scrollLeft
@@ -291,7 +289,7 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
       scroller.removeEventListener("touchend", onTouchEnd)
       scroller.removeEventListener("touchcancel", onTouchEnd)
     }
-  }, [prefersReducedMotion])
+  }, [])
 
   return (
     <section className={cn("w-full", className)} aria-label="Recommendations">
@@ -302,9 +300,7 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
         ref={scrollerRef}
         className={cn(
           "group relative w-full",
-          prefersReducedMotion
-            ? "overflow-x-auto pb-4"
-            : "no-scrollbar cursor-grab select-none overflow-x-auto active:cursor-grabbing [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]",
+          "no-scrollbar cursor-grab select-none overflow-x-auto active:cursor-grabbing [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]",
         )}
       >
         <div className="flex w-max gap-5 py-1">
@@ -312,16 +308,15 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
             <ReferenceCard key={reference.name} reference={reference} onReadMore={setSelected} />
           ))}
           {/* Second copy makes the marquee loop seamless; hidden from assistive tech */}
-          {!prefersReducedMotion &&
-            references.map((reference, index) => (
-              <ReferenceCard
-                key={`${reference.name}-clone`}
-                reference={reference}
-                onReadMore={setSelected}
-                ariaHidden
-                cloneStart={index === 0}
-              />
-            ))}
+          {references.map((reference, index) => (
+            <ReferenceCard
+              key={`${reference.name}-clone`}
+              reference={reference}
+              onReadMore={setSelected}
+              ariaHidden
+              cloneStart={index === 0}
+            />
+          ))}
         </div>
       </div>
 
