@@ -48,7 +48,7 @@ export default async function HomePage() {
         </div>
 
         {/* Recommendations Carousel */}
-        <div className="container mx-auto max-w-4xl pb-16 md:pb-24 px-4">
+        <div className="container pb-16 md:pb-24">
           <RecommendationsCarousel />
         </div>
 

@@ -1,0 +1,1087 @@
+- generic [ref=e1]:
+  - link [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+    - text: Skip to main content
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - link [ref=e5] [cursor=pointer]:
+        - /url: /?trk=public_profile_nav-header-logo
+        - generic [ref=e6]: LinkedIn
+      - list [ref=e8]:
+        - listitem [ref=e9]:
+          - link [ref=e10] [cursor=pointer]:
+            - /url: https://www.linkedin.com/top-content?trk=public_profile_guest_nav_menu_topContent
+            - generic [ref=e12]: Top Content
+        - listitem [ref=e13]:
+          - link [ref=e14] [cursor=pointer]:
+            - /url: https://www.linkedin.com/pub/dir/+/+?trk=public_profile_guest_nav_menu_people
+            - generic [ref=e16]: People
+        - listitem [ref=e17]:
+          - link [ref=e18] [cursor=pointer]:
+            - /url: https://www.linkedin.com/learning/search?trk=public_profile_guest_nav_menu_learning
+            - generic [ref=e20]: Learning
+        - listitem [ref=e21]:
+          - link [ref=e22] [cursor=pointer]:
+            - /url: https://www.linkedin.com/jobs/jobs-in-boerne-tx?trk=public_profile_guest_nav_menu_jobs
+            - generic [ref=e24]: Jobs
+        - listitem [ref=e25]:
+          - link [ref=e26] [cursor=pointer]:
+            - /url: https://www.linkedin.com/games?trk=public_profile_guest_nav_menu_games
+            - generic [ref=e28]: Games
+      - generic [ref=e29]:
+        - link [ref=e30] [cursor=pointer]:
+          - /url: https://www.linkedin.com/login?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft&fromSignIn=true&trk=public_profile_nav-header-signin
+          - text: Sign in
+        - link [ref=e31] [cursor=pointer]:
+          - /url: https://www.linkedin.com/signup/public-profile-join?vieweeVanityName=sorhanft&session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fsorhanft&trk=public_profile_nav-header-join
+          - text: Join now
+  - main [ref=e32]:
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - figure [ref=e37]
+        - generic [ref=e40]:
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - button [ref=e45] [cursor=pointer]:
+                - heading [level=1] [ref=e46]: Amir Sorhan Karimloo
+              - heading [level=3] [ref=e47]:
+                - generic [ref=e48]:
+                  - text: San Francisco Bay Area
+                  - generic [ref=e49]: ·
+                  - button [ref=e50] [cursor=pointer]: Contact Info
+                  - generic [ref=e51]: 2K followers · 500+ connections
+              - heading [level=4] [ref=e52]:
+                - button [ref=e56] [cursor=pointer]: See your mutual connections
+              - generic [ref=e57]:
+                - link [ref=e58] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/signup/public-profile-join?vieweeVanityName=sorhanft&trk=public_profile_top-card-primary-button-join-to-view-profile
+                  - text: Join to view profile
+                - button [ref=e60] [cursor=pointer]: Message
+            - generic [ref=e62]:
+              - link [ref=e64] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/eludev?trk=public_profile_topcard-current-company
+                - generic [ref=e65]: ELU
+              - link [ref=e67] [cursor=pointer]:
+                - /url: https://www.linkedin.com/school/texas-a&m-university/?trk=public_profile_topcard-school
+                - generic [ref=e68]: Texas A&M University
+          - button [ref=e71] [cursor=pointer]
+      - generic [ref=e72]:
+        - heading [level=2] [ref=e73]: Activity
+        - heading [level=3] [ref=e74]: 2K followers
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - tablist [ref=e77]:
+              - tab [selected] [ref=e78] [cursor=pointer]: Posts
+              - tab [ref=e79] [cursor=pointer]: Reactions
+            - tabpanel [ref=e80]:
+              - generic [ref=e81]:
+                - list [ref=e83]:
+                  - listitem [ref=e84]:
+                    - generic [ref=e85]:
+                      - generic [ref=e87]:
+                        - link [ref=e88] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/in/sorhanft?trk=public_profile__posts_face-pile-cta
+                          - generic [ref=e90]: Amir Sorhan Karimloo reposted this
+                        - button [ref=e93] [cursor=pointer]
+                      - generic [ref=e94]:
+                        - link [ref=e95] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/jonathanbessette_in-the-past-year-i-left-the-massachusetts-activity-7493713004925136896-78J5
+                          - generic [ref=e96]: Amir Sorhan Karimloo reposted this
+                        - generic [ref=e97]:
+                          - generic [ref=e99]:
+                            - link [ref=e100] [cursor=pointer]:
+                              - /url: https://www.linkedin.com/in/jonathanbessette
+                              - generic [ref=e101]: Jon Bessette
+                            - generic [ref=e103]:
+                              - heading [level=3] [ref=e104]: Jon Bessette
+                              - generic [ref=e105]: 1w
+                          - generic [ref=e106]:
+                            - link [ref=e107] [cursor=pointer]:
+                              - /url: https://www.linkedin.com/posts/jonathanbessette_in-the-past-year-i-left-the-massachusetts-activity-7493713004925136896-78J5
+                              - generic [ref=e108]: Amir Sorhan Karimloo reposted this
+                            - generic [ref=e109]:
+                              - text: In the past year, I left the
+                              - link [ref=e110] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/school/mit/?trk=public_profile__posts-text
+                                - text: Massachusetts Institute of Technology
+                              - text: with
+                              - link [ref=e111] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/srpratt?trk=public_profile__posts-text
+                                - text: Shane Pratt
+                              - text: "to start a company:"
+                              - link [ref=e112] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/kiraeco?trk=public_profile__posts-text
+                                - text: kira
+                              - text: . We're super excited to announce we're now backed by
+                              - link [ref=e113] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/school/a16zspeedrun/?trk=public_profile__posts-text
+                                - text: a16z speedrun
+                              - text: . ‼️ This is the early-stage fund of
+                              - link [ref=e114] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/a16z?trk=public_profile__posts-text
+                                - text: Andreessen Horowitz
+                              - text: ": the firm that's backed revolutionary, generational companies (e.g.,"
+                              - link [ref=e115] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/spacex?trk=public_profile__posts-text
+                                - text: SpaceX
+                              - text: ","
+                              - link [ref=e116] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/openai?trk=public_profile__posts-text
+                                - text: OpenAI
+                              - text: ","
+                              - link [ref=e117] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/databricks?trk=public_profile__posts-text
+                                - text: Databricks
+                              - text: ","
+                              - link [ref=e118] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/stripe?trk=public_profile__posts-text
+                                - text: Stripe
+                              - text: ","
+                              - link [ref=e119] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/airbnb?trk=public_profile__posts-text
+                                - text: Airbnb
+                              - text: ","
+                              - link [ref=e120] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/meta?trk=public_profile__posts-text
+                                - text: Meta
+                              - text: (Facebook),
+                              - link [ref=e121] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/lyft?trk=public_profile__posts-text
+                                - text: Lyft
+                              - text: ","
+                              - link [ref=e122] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/github?trk=public_profile__posts-text
+                                - text: GitHub
+                              - text: ","
+                              - link [ref=e123] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/anduril?trk=public_profile__posts-text
+                                - text: Anduril Industries
+                              - text: ","
+                              - link [ref=e124] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/figma?trk=public_profile__posts-text
+                                - text: Figma
+                              - text: ", and countless more). 🏛️ We spent our time at MIT deploying automated hardware around the world, from 🇮🇳 India to the Middle East and 🌍 Africa; much of this surrounded water treatment and efficiency - from drinking water to agriculture. We realized however, many critical industries are bottlenecked by both the production of wastewater and a lack of clean water: from ⚙️ manufacturing & ⛏️ mining to 📊 data center infrastructure. We are leveraging our experiences to build technology that transforms wastewater into clean water and solids. We reduce wastewater costs and environmental damage, provide clean water, and solids for resource recovery (like critical minerals). 💧 If you're in any of these critical fields in need of wastewater mitigation and freshwater provision, shoot me a LinkedIn message or email at"
+                              - link [ref=e125] [cursor=pointer]:
+                                - /url: mailto:jon@kira.eco?trk=public_profile__posts-text
+                                - text: jon@kira.eco
+                              - text: "! 💧 Huge thanks to"
+                              - link [ref=e126] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/fareed?trk=public_profile__posts-text
+                                - text: Fareed Mosavat
+                              - text: ","
+                              - link [ref=e127] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/emilybennett1?trk=public_profile__posts-text
+                                - text: Emily Bennett
+                              - text: ","
+                              - link [ref=e128] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/kenansaleh?trk=public_profile__posts-text
+                                - text: Kenan Saleh
+                              - text: ","
+                              - link [ref=e129] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/troykirwin?trk=public_profile__posts-text
+                                - text: Troy Kirwin
+                              - text: ","
+                              - link [ref=e130] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/marcussegal?trk=public_profile__posts-text
+                                - text: Marcus Segal
+                              - text: ","
+                              - link [ref=e131] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/joshualu?trk=public_profile__posts-text
+                                - text: Joshua Lu
+                              - text: ","
+                              - link [ref=e132] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/seeamshahidnoor?trk=public_profile__posts-text
+                                - text: Seeam Shahid Noor
+                              - text: ","
+                              - link [ref=e133] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/andrewchen?trk=public_profile__posts-text
+                                - text: Andrew Chen
+                              - text: ","
+                              - link [ref=e134] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/jlai84?trk=public_profile__posts-text
+                                - text: Jonathan Lai
+                              - text: for believing in us,
+                              - link [ref=e135] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/samirabehrouzan?trk=public_profile__posts-text
+                                - text: Samira Behrouzan
+                              - text: ","
+                              - link [ref=e136] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/marigoldvu?trk=public_profile__posts-text
+                                - text: Marigold Vu
+                              - text: ","
+                              - link [ref=e137] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/joandegennaro?trk=public_profile__posts-text
+                                - text: Joan DeGennaro
+                              - text: for keeping things running and beyond,
+                              - link [ref=e138] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/millsmacy?trk=public_profile__posts-text
+                                - text: Macy Mills
+                              - text: ","
+                              - link [ref=e139] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/tabishgilani?trk=public_profile__posts-text
+                                - text: Tabish Gilani
+                              - text: ","
+                              - link [ref=e140] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/lejla-custo?trk=public_profile__posts-text
+                                - text: Lejla Johnsen
+                              - text: for helping us accelerate our growth,
+                              - link [ref=e141] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/jordanmazer?trk=public_profile__posts-text
+                                - text: Jordan Mazer
+                              - text: ","
+                              - link [ref=e142] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/jordancarver?trk=public_profile__posts-text
+                                - text: Jordan Carver
+                              - text: (with your wild travel stories),
+                              - link [ref=e143] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/bellanazzari?trk=public_profile__posts-text
+                                - text: Bella Nazzari
+                              - text: ","
+                              - link [ref=e144] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/joe-garcia?trk=public_profile__posts-text
+                                - text: Joe Garcia
+                              - text: ","
+                              - link [ref=e145] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/lester-chen?trk=public_profile__posts-text
+                                - text: Lester Chen
+                              - text: (incredible storytelling),
+                              - link [ref=e146] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/tom-hammer?trk=public_profile__posts-text
+                                - text: Tom Hammer
+                              - text: and the rest of the a16z team for the support. Let's build something incredible!
+                              - link [ref=e147] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/posts/jonathanbessette_in-the-past-year-i-left-the-massachusetts-activity-7493713004925136896-78J5
+                                - text: ...more
+                              - link [ref=e148] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/posts/jonathanbessette_in-the-past-year-i-left-the-massachusetts-activity-7493713004925136896-78J5
+                                - text: ...more
+                            - link [ref=e150] [cursor=pointer]:
+                              - /url: https://www.linkedin.com/posts/jonathanbessette_in-the-past-year-i-left-the-massachusetts-activity-7493713004925136896-78J5
+                              - generic [ref=e151]: public_profile__posts
+                      - generic [ref=e156]:
+                        - generic [ref=e157]:
+                          - link [ref=e158] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-reactions
+                            - generic [ref=e159]: "505"
+                          - link [ref=e160] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-comments
+                            - text: · 126 Comments
+                        - generic [ref=e161]:
+                          - link [ref=e163] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_like-cta
+                          - link [ref=e166] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_comment-cta
+                          - button [ref=e169] [cursor=pointer]
+                  - listitem [ref=e170]:
+                    - generic [ref=e171]:
+                      - generic [ref=e173]:
+                        - link [ref=e174] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/in/sorhanft?trk=public_profile__posts_face-pile-cta
+                          - generic [ref=e176]: Amir Sorhan Karimloo reposted this
+                        - button [ref=e179] [cursor=pointer]
+                      - generic [ref=e180]:
+                        - link [ref=e181] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/dimakhanarin_excited-to-announce-that-gleb-sidora-and-activity-7490783726470361088-lL0D
+                          - generic [ref=e182]: Amir Sorhan Karimloo reposted this
+                        - generic [ref=e183]:
+                          - generic [ref=e185]:
+                            - link [ref=e186] [cursor=pointer]:
+                              - /url: https://www.linkedin.com/in/dimakhanarin
+                              - generic [ref=e187]: Dima Khanarin
+                            - generic [ref=e189]:
+                              - heading [level=3] [ref=e190]: Dima Khanarin
+                              - generic [ref=e191]: 2w
+                          - generic [ref=e192]:
+                            - link [ref=e193] [cursor=pointer]:
+                              - /url: https://www.linkedin.com/posts/dimakhanarin_excited-to-announce-that-gleb-sidora-and-activity-7490783726470361088-lL0D
+                              - generic [ref=e194]: Amir Sorhan Karimloo reposted this
+                            - generic [ref=e195]:
+                              - text: Excited to announce that
+                              - link [ref=e196] [cursor=pointer]:
+                                - /url: https://uk.linkedin.com/in/arodiss?trk=public_profile__posts-text
+                                - text: Gleb Sidora
+                              - text: and I are starting
+                              - link [ref=e197] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/company/codosai?trk=public_profile__posts-text
+                                - text: Codos
+                              - text: ", AI-transformation-as-software, backed by"
+                              - link [ref=e198] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/school/a16zspeedrun/?trk=public_profile__posts-text
+                                - text: a16z speedrun
+                              - text: . Our vision is to enable self-evolving organizations. Personally, I believe that decades of experience shared by Gleb and me have led us to this point, where we can help shape the future of the economy. I couldn’t feel more fulfilled. The average organization is struggling to see impact from AI. They lack infrastructure to run self-improving agents and can't get employees to become AI-native. Our customers are not satisfied with this. They treat AI transformation as existential, and want to hit their AI bottom-line impact goals months ahead of schedule. That's why our team from McKinsey, Meta and Tesla is building Codos. Our secret sauce is that we run the transformation end-to-end as software - from AI agents interviewing employees, to an on-prem company brain that gives the C-suite full transparency into the organization, to AI FDEs running automation cycles across every function. If you need help - email
+                              - link [ref=e199] [cursor=pointer]:
+                                - /url: mailto:founders@codos.ai?trk=public_profile__posts-text
+                                - text: founders@codos.ai
+                              - text: ", we'd love to chat. Huge thanks to"
+                              - link [ref=e200] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/fareed?trk=public_profile__posts-text
+                                - text: Fareed Mosavat
+                              - text: ","
+                              - link [ref=e201] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/jlai84?trk=public_profile__posts-text
+                                - text: Jonathan Lai
+                              - text: ","
+                              - link [ref=e202] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/millsmacy?trk=public_profile__posts-text
+                                - text: Macy Mills
+                              - text: ","
+                              - link [ref=e203] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/andrewchen?trk=public_profile__posts-text
+                                - text: Andrew Chen
+                              - text: ","
+                              - link [ref=e204] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/marcussegal?trk=public_profile__posts-text
+                                - text: Marcus Segal
+                              - text: ","
+                              - link [ref=e205] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/lester-chen?trk=public_profile__posts-text
+                                - text: Lester Chen
+                              - text: ","
+                              - link [ref=e206] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/emilybennett1?trk=public_profile__posts-text
+                                - text: Emily Bennett
+                              - text: ","
+                              - link [ref=e207] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/tom-hammer?trk=public_profile__posts-text
+                                - text: Tom Hammer
+                              - text: ","
+                              - link [ref=e208] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/eevanwang?trk=public_profile__posts-text
+                                - text: Evan Wang
+                              - text: ","
+                              - link [ref=e209] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/jordancarver?trk=public_profile__posts-text
+                                - text: Jordan Carver
+                              - text: ","
+                              - link [ref=e210] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/in/bellanazzari?trk=public_profile__posts-text
+                                - text: Bella Nazzari
+                              - text: ", the entire a16z speedrun crew, our fantastic batch mates and founding team!"
+                              - link [ref=e211] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/posts/dimakhanarin_excited-to-announce-that-gleb-sidora-and-activity-7490783726470361088-lL0D
+                                - text: ...more
+                              - link [ref=e212] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/posts/dimakhanarin_excited-to-announce-that-gleb-sidora-and-activity-7490783726470361088-lL0D
+                                - text: ...more
+                            - link [ref=e214] [cursor=pointer]:
+                              - /url: https://www.linkedin.com/posts/dimakhanarin_excited-to-announce-that-gleb-sidora-and-activity-7490783726470361088-lL0D
+                              - generic [ref=e215]: public_profile__posts
+                      - generic [ref=e220]:
+                        - generic [ref=e221]:
+                          - link [ref=e222] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-reactions
+                            - generic [ref=e223]: "302"
+                          - link [ref=e224] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-comments
+                            - text: · 185 Comments
+                        - generic [ref=e225]:
+                          - link [ref=e227] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_like-cta
+                          - link [ref=e230] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_comment-cta
+                          - button [ref=e233] [cursor=pointer]
+                  - listitem [ref=e234]:
+                    - generic [ref=e235]:
+                      - generic [ref=e237]:
+                        - link [ref=e238] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/in/sorhanft?trk=public_profile__posts_face-pile-cta
+                          - generic [ref=e240]: Amir Sorhan Karimloo reposted this
+                        - button [ref=e243] [cursor=pointer]
+                      - generic [ref=e244]:
+                        - link [ref=e245] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/felipesalinas1_60-hours-a-week-that-is-what-building-the-activity-7488179047529689088-3o66
+                          - generic [ref=e246]: Amir Sorhan Karimloo reposted this
+                        - generic [ref=e247]:
+                          - generic [ref=e249]:
+                            - link [ref=e250] [cursor=pointer]:
+                              - /url: https://www.linkedin.com/in/felipesalinas1/en
+                              - generic [ref=e251]: Felipe Salinas Rangel
+                            - generic [ref=e253]:
+                              - heading [level=3] [ref=e254]: Felipe Salinas Rangel
+                              - generic [ref=e255]: 3w
+                          - generic [ref=e256]:
+                            - link [ref=e257] [cursor=pointer]:
+                              - /url: https://www.linkedin.com/posts/felipesalinas1_60-hours-a-week-that-is-what-building-the-activity-7488179047529689088-3o66
+                              - generic [ref=e258]: Amir Sorhan Karimloo reposted this
+                            - generic [ref=e259]:
+                              - text: "60 hours a week. That is what building the fundraising list, reading every fund, and drafting every intro used to cost you. Every week of the raise. Not counting the follow-ups you forgot. I just rebuilt all of it as one Claude agent. Seven skills, one setup, running the whole machinery of the raise. You still send every message. The agent does everything before the send button. Here is the collapse: Old raise: 1 analyst (list), 1 associate (research), 1 SDR (outreach), 1 chief of staff (follow-ups and updates), and you (deck, pitch, decisions). New raise: 1 Claude agent (skills 1 to 7), and you (calls, sends, decisions). The seven skills, in the order you build them: 1. ICP → your stage, sector, and traction turned into a precise investor profile, plus the 3 reasons a fund would pass 2. LIST → 50 funds and angels writing your cheque size, ranked by fit, off a investor database, top 10 flagged for the week 3. RESEARCH → every fund read before you write. Thesis, last 12 months of investments, portfolio adjacencies, the angle that will make them lean in, the objection they will raise 4. OUTREACH → 4-line intros that reference the exact bet a partner just made. Three variations per fund, warm to direct. You pick the one that sounds like you 5. FOLLOW-UP → scans your inbox for warm replies you have not answered. Drafts the next message with the thread context loaded. Sorted by warmth 6. DECK → stress-tests your deck like a Monday partner meeting. Five hardest questions, the slide where the story drops, the metric they will not believe, the single change that most improves your odds 7. UPDATE → drafts the monthly investor update from your numbers. TL;DR, wins, lowlights, specific asks. Turns a one-time raise into compounding momentum The rule that never breaks: The agent drafts. You send. Every intro reviewed before it goes. Every follow-up gated on your yes. Every send is still your relationship, your voice, your judgment. What actually changes: → The week you used to spend building a pipeline becomes a sentence → Every intro grounded in a specific bet the partner just made → Every warm reply followed up before it goes cold → Every deck reviewed like a Monday partner meeting before you walk in The full walkthrough just went live. Every skill, every prompt, every build step. Comment \"AGENT\" and I will send it to you. 1️⃣ Like this post 2️⃣ Comment \"AGENT\" 3️⃣ Connect so I can send it P.S. Save this for your next raise 🔖"
+                              - link [ref=e260] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/posts/felipesalinas1_60-hours-a-week-that-is-what-building-the-activity-7488179047529689088-3o66
+                                - text: ...more
+                              - link [ref=e261] [cursor=pointer]:
+                                - /url: https://www.linkedin.com/posts/felipesalinas1_60-hours-a-week-that-is-what-building-the-activity-7488179047529689088-3o66
+                                - text: ...more
+                            - link [ref=e263] [cursor=pointer]:
+                              - /url: https://www.linkedin.com/posts/felipesalinas1_60-hours-a-week-that-is-what-building-the-activity-7488179047529689088-3o66
+                              - generic [ref=e264]: public_profile__posts
+                      - generic [ref=e269]:
+                        - generic [ref=e270]:
+                          - link [ref=e271] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-reactions
+                            - generic [ref=e272]: "47"
+                          - link [ref=e273] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-comments
+                            - text: · 139 Comments
+                        - generic [ref=e274]:
+                          - link [ref=e276] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_like-cta
+                          - link [ref=e279] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_comment-cta
+                          - button [ref=e282] [cursor=pointer]
+                  - listitem [ref=e283]:
+                    - generic [ref=e284]:
+                      - generic [ref=e286]:
+                        - generic [ref=e287]:
+                          - link [ref=e288] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/in/sorhanft
+                            - generic [ref=e289]: Amir Sorhan Karimloo
+                          - generic [ref=e291]:
+                            - heading [level=3] [ref=e292]: Amir Sorhan Karimloo
+                            - generic [ref=e293]: 3w
+                        - button [ref=e296] [cursor=pointer]
+                      - generic [ref=e297]:
+                        - link [ref=e298] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/sorhanft_at-harvard-business-school-no-internet-activity-7487473869914779648-rNLY
+                          - generic [ref=e299]: Amir Sorhan Karimloo shared this
+                        - generic [ref=e300]: At Harvard Business School, no internet, no Al, and no electronics are allowed in class.
+                        - link [ref=e302] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/sorhanft_at-harvard-business-school-no-internet-activity-7487473869914779648-rNLY
+                          - generic [ref=e303]: public_profile__posts
+                      - generic [ref=e308]:
+                        - link [ref=e310] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-reactions
+                          - generic [ref=e311]: "4"
+                        - generic [ref=e312]:
+                          - link [ref=e314] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_like-cta
+                          - link [ref=e317] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_comment-cta
+                          - button [ref=e320] [cursor=pointer]
+                  - listitem [ref=e321]:
+                    - generic [ref=e322]:
+                      - generic [ref=e324]:
+                        - generic [ref=e325]:
+                          - link [ref=e326] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/in/sorhanft
+                            - generic [ref=e327]: Amir Sorhan Karimloo
+                          - generic [ref=e329]:
+                            - heading [level=3] [ref=e330]: Amir Sorhan Karimloo
+                            - generic [ref=e331]: 3w
+                        - button [ref=e334] [cursor=pointer]
+                      - generic [ref=e335]:
+                        - link [ref=e336] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/sorhanft_forget-cold-emails-cosimo-turned-silicon-activity-7486530042005532672-Pbfp
+                          - generic [ref=e337]: Amir Sorhan Karimloo shared this
+                        - generic [ref=e338]:
+                          - text: "Forget cold emails Cosimo turned Silicon Valley founders into trading cards and got everyone talking. This is guerrilla marketing done right: creative, personal, and impossible to ignore. Building in SF."
+                          - link [ref=e339] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/posts/sorhanft_forget-cold-emails-cosimo-turned-silicon-activity-7486530042005532672-Pbfp
+                            - text: ...more
+                        - link [ref=e341] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/sorhanft_forget-cold-emails-cosimo-turned-silicon-activity-7486530042005532672-Pbfp
+                          - generic [ref=e342]: public_profile__posts
+                      - generic [ref=e347]:
+                        - generic [ref=e348]:
+                          - link [ref=e349] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-reactions
+                            - generic [ref=e350]: "3"
+                          - link [ref=e351] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-comments
+                            - text: · 1 Comment
+                        - generic [ref=e352]:
+                          - link [ref=e354] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_like-cta
+                          - link [ref=e357] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_comment-cta
+                          - button [ref=e360] [cursor=pointer]
+                  - listitem [ref=e361]:
+                    - generic [ref=e362]:
+                      - generic [ref=e364]:
+                        - generic [ref=e365]:
+                          - link [ref=e366] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/in/sorhanft
+                            - generic [ref=e367]: Amir Sorhan Karimloo
+                          - generic [ref=e369]:
+                            - heading [level=3] [ref=e370]: Amir Sorhan Karimloo
+                            - generic [ref=e371]: 4w
+                        - button [ref=e374] [cursor=pointer]
+                      - generic [ref=e375]:
+                        - link [ref=e376] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/sorhanft_would-you-employ-your-pet-your-pets-daily-activity-7485804526780858368-CZY_
+                          - generic [ref=e377]: Amir Sorhan Karimloo shared this
+                        - generic [ref=e378]:
+                          - text: Would you employ your pet? Your pet's daily adventures could help improve the products millions of animals use.
+                          - link [ref=e379] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/in/arkadiybaltser?trk=public_profile__posts-text
+                            - text: Arkadiy Baltser
+                          - text: the founder behind
+                          - link [ref=e380] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/company/petpinai?trk=public_profile__posts-text
+                            - text: Petpin AI
+                          - text: ", is building one of the most exciting AI products in the pet space"
+                          - link [ref=e381] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/company/petpinai?trk=public_profile__posts-text
+                            - text: Petpin AI
+                          - text: captures your pet's experiences, lets you relive memorable moments, and turns anonymous real-world data into insights that help companies build better products for pets.
+                          - link [ref=e382] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/posts/sorhanft_would-you-employ-your-pet-your-pets-daily-activity-7485804526780858368-CZY_
+                            - text: ...more
+                        - link [ref=e384] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/sorhanft_would-you-employ-your-pet-your-pets-daily-activity-7485804526780858368-CZY_
+                          - generic [ref=e385]: public_profile__posts
+                      - generic [ref=e390]:
+                        - generic [ref=e391]:
+                          - link [ref=e392] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-reactions
+                            - generic [ref=e393]: "9"
+                          - link [ref=e394] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-comments
+                            - text: · 2 Comments
+                        - generic [ref=e395]:
+                          - link [ref=e397] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_like-cta
+                          - link [ref=e400] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_comment-cta
+                          - button [ref=e403] [cursor=pointer]
+                  - listitem [ref=e404]:
+                    - generic [ref=e405]:
+                      - generic [ref=e407]:
+                        - generic [ref=e408]:
+                          - link [ref=e409] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/in/sorhanft
+                            - generic [ref=e410]: Amir Sorhan Karimloo
+                          - generic [ref=e412]:
+                            - heading [level=3] [ref=e413]: Amir Sorhan Karimloo
+                            - generic [ref=e414]: 1mo
+                        - button [ref=e417] [cursor=pointer]
+                      - generic [ref=e418]:
+                        - link [ref=e419] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/sorhanft_comment-fly-navi-below-every-activity-7484703280720297984-zaLw
+                          - generic [ref=e420]: Amir Sorhan Karimloo shared this
+                        - generic [ref=e421]:
+                          - text: Comment “Fly Navi” below ⬇️ 🇺🇸 Every flight generates thousands of data points. Most of them are ignored until something goes wrong. This week on the Signal Valley Podcast, I sat down with nik, CEO of Navi, to talk about how they’re using AI to analyze every flight, helping pilots and instructors learn before an accident ever happens. Instead of investigating crashes, what if we could prevent them? Watch the full episode through the link in my bio.
+                          - link [ref=e422] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/posts/sorhanft_comment-fly-navi-below-every-activity-7484703280720297984-zaLw
+                            - text: ...more
+                        - link [ref=e424] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/sorhanft_comment-fly-navi-below-every-activity-7484703280720297984-zaLw
+                          - generic [ref=e425]: public_profile__posts
+                      - generic [ref=e430]:
+                        - link [ref=e432] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-reactions
+                          - generic [ref=e433]: "3"
+                        - generic [ref=e434]:
+                          - link [ref=e436] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_like-cta
+                          - link [ref=e439] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_comment-cta
+                          - button [ref=e442] [cursor=pointer]
+                  - listitem [ref=e443]:
+                    - generic [ref=e444]:
+                      - generic [ref=e446]:
+                        - generic [ref=e447]:
+                          - link [ref=e448] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/in/sorhanft
+                            - generic [ref=e449]: Amir Sorhan Karimloo
+                          - generic [ref=e451]:
+                            - heading [level=3] [ref=e452]: Amir Sorhan Karimloo
+                            - generic [ref=e453]: 1mo
+                        - button [ref=e456] [cursor=pointer]
+                      - generic [ref=e457]:
+                        - link [ref=e458] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/sorhanft_the-opioid-crisis-exposed-one-major-problem-activity-7483328052345749504-bAU8
+                          - generic [ref=e459]: Amir Sorhan Karimloo shared this
+                        - generic [ref=e460]:
+                          - text: "The opioid crisis exposed one major problem: doctors often have to rely on subjective pain scores. These researchers is trying to replace guesswork with biology helping clinicians make more informed pain treatment decisions."
+                          - link [ref=e461] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/posts/sorhanft_the-opioid-crisis-exposed-one-major-problem-activity-7483328052345749504-bAU8
+                            - text: ...more
+                        - link [ref=e463] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/sorhanft_the-opioid-crisis-exposed-one-major-problem-activity-7483328052345749504-bAU8
+                          - generic [ref=e464]: public_profile__posts
+                      - generic [ref=e470]:
+                        - link [ref=e472] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_like-cta
+                        - link [ref=e475] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_comment-cta
+                        - button [ref=e478] [cursor=pointer]
+                  - listitem [ref=e479]:
+                    - generic [ref=e480]:
+                      - generic [ref=e482]:
+                        - generic [ref=e483]:
+                          - link [ref=e484] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/in/sorhanft
+                            - generic [ref=e485]: Amir Sorhan Karimloo
+                          - generic [ref=e487]:
+                            - heading [level=3] [ref=e488]: Amir Sorhan Karimloo
+                            - generic [ref=e489]: 1mo
+                        - button [ref=e492] [cursor=pointer]
+                      - generic [ref=e493]:
+                        - link [ref=e494] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/sorhanft_the-next-battlefield-isnt-just-land-sea-activity-7482881382000697344-ytdy
+                          - generic [ref=e495]: Amir Sorhan Karimloo shared this
+                        - generic [ref=e496]: The next battlefield isn’t just land, sea, or air. It’s the electromagnetic spectrum and this startup is turning it into a video game for military training.
+                        - link [ref=e498] [cursor=pointer]:
+                          - /url: https://www.linkedin.com/posts/sorhanft_the-next-battlefield-isnt-just-land-sea-activity-7482881382000697344-ytdy
+                          - generic [ref=e499]: public_profile__posts
+                      - generic [ref=e504]:
+                        - generic [ref=e505]:
+                          - link [ref=e506] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-reactions
+                            - generic [ref=e507]: "20"
+                          - link [ref=e508] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_social-actions-comments
+                            - text: · 4 Comments
+                        - generic [ref=e509]:
+                          - link [ref=e511] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_like-cta
+                          - link [ref=e514] [cursor=pointer]:
+                            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile__posts_comment-cta
+                          - button [ref=e517] [cursor=pointer]
+                - button [ref=e519] [cursor=pointer]
+            - text: · · · · ·
+          - link [ref=e520] [cursor=pointer]:
+            - /url: https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fin%2Fsorhanft%2Frecent-activity%2F&trk=public_profile
+            - text: See all activities
+      - generic [ref=e521]:
+        - heading [level=2] [ref=e522]: Experience & Education
+        - generic [ref=e524]:
+          - list [ref=e525]:
+            - listitem [ref=e526]:
+              - generic [ref=e527]:
+                - heading [level=3] [ref=e528]: ELU
+                - heading [level=4] [ref=e529]:
+                  - paragraph [ref=e530]: "*********** ***"
+          - list [ref=e532]:
+            - listitem [ref=e533]:
+              - generic [ref=e534]:
+                - heading [level=3] [ref=e535]: "***** *** **********"
+                - heading [level=4] [ref=e536]:
+                  - paragraph [ref=e537]: "******** ** ******* * ** ** ******** ******** ***** ** ************* undefined"
+                - paragraph [ref=e539]:
+                  - generic [ref=e540]:
+                    - time [ref=e541]: "2016"
+                    - text: "-"
+                    - time [ref=e542]: "2019"
+            - listitem [ref=e543]:
+              - generic [ref=e544]:
+                - heading [level=3] [ref=e545]: "***** *** **********"
+                - heading [level=4] [ref=e546]:
+                  - paragraph [ref=e547]: "******** ** ******* * ** ************ *** **********"
+          - generic [ref=e548]:
+            - heading [level=2] [ref=e549]: View Amir Sorhan’s full experience
+            - paragraph [ref=e550]:
+              - text: By clicking Continue to join or sign in, you agree to LinkedIn’s
+              - link [ref=e551] [cursor=pointer]:
+                - /url: /legal/user-agreement?trk=public_profile_auth-button_user-agreement
+                - text: User Agreement
+              - text: ","
+              - link [ref=e552] [cursor=pointer]:
+                - /url: /legal/privacy-policy?trk=public_profile_auth-button_privacy-policy
+                - text: Privacy Policy
+              - text: ", and"
+              - link [ref=e553] [cursor=pointer]:
+                - /url: /legal/cookie-policy?trk=public_profile_auth-button_cookie-policy
+                - text: Cookie Policy
+              - text: .
+            - button [ref=e556] [cursor=pointer]:
+              - generic [ref=e557]: Sign in
+      - generic [ref=e558]:
+        - heading [level=2] [ref=e559]: Licenses & Certifications
+        - list [ref=e561]:
+          - listitem [ref=e562]:
+            - link [ref=e563] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/amazon?trk=public_profile_profile-section-card_image-click
+            - generic [ref=e565]:
+              - heading [level=3] [ref=e566]: AWS Certified Developer Associate
+              - heading [level=4] [ref=e567]:
+                - link [ref=e568] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/amazon?trk=public_profile_profile-section-card_subtitle-click
+                  - text: Amazon
+              - generic [ref=e571]:
+                - text: Issued
+                - time [ref=e572]: Jun 2023
+          - listitem [ref=e573]:
+            - link [ref=e574] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/amazon?trk=public_profile_profile-section-card_image-click
+            - generic [ref=e576]:
+              - heading [level=3] [ref=e577]: AWS Certified Solutions Architect
+              - heading [level=4] [ref=e578]:
+                - link [ref=e579] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/amazon?trk=public_profile_profile-section-card_subtitle-click
+                  - text: Amazon
+              - generic [ref=e582]:
+                - text: Issued
+                - time [ref=e583]: Jun 2023
+          - listitem [ref=e584]:
+            - link [ref=e585] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/salesforce?trk=public_profile_profile-section-card_image-click
+            - generic [ref=e587]:
+              - heading [level=3] [ref=e588]: Salesforce Certified Administrator (SCA)
+              - heading [level=4] [ref=e589]:
+                - link [ref=e590] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/salesforce?trk=public_profile_profile-section-card_subtitle-click
+                  - text: Salesforce
+              - generic [ref=e593]:
+                - text: Issued
+                - time [ref=e594]: Apr 2021
+          - listitem [ref=e595]:
+            - link [ref=e596] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/american-medical-technologists?trk=public_profile_profile-section-card_image-click
+            - generic [ref=e598]:
+              - heading [level=3] [ref=e599]: Medical Technologist (MT)
+              - heading [level=4] [ref=e600]:
+                - link [ref=e601] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/american-medical-technologists?trk=public_profile_profile-section-card_subtitle-click
+                  - text: American Medical Technologists
+              - generic [ref=e604]:
+                - text: Issued
+                - time [ref=e605]: Dec 2013
+          - listitem [ref=e606]:
+            - link [ref=e607] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/ascp-boc?trk=public_profile_profile-section-card_image-click
+            - generic [ref=e609]:
+              - heading [level=3] [ref=e610]: Medical Scientist (MS) – ASCP-MS
+              - heading [level=4] [ref=e611]:
+                - link [ref=e612] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/ascp-boc?trk=public_profile_profile-section-card_subtitle-click
+                  - text: ASCP BOC
+              - generic [ref=e615]:
+                - text: Issued
+                - time [ref=e616]: Aug 2013
+          - listitem [ref=e617]:
+            - link [ref=e618] [cursor=pointer]:
+              - /url: https://www.linkedin.com/school/tamu-medicine/?trk=public_profile_profile-section-card_image-click
+            - generic [ref=e620]:
+              - heading [level=3] [ref=e621]: "Mouse: Basic Handling & IP Injection"
+              - heading [level=4] [ref=e622]:
+                - link [ref=e623] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/school/tamu-medicine/?trk=public_profile_profile-section-card_subtitle-click
+                  - text: Texas A&M University School of Medicine
+              - generic [ref=e626]:
+                - text: Issued
+                - time [ref=e627]: Jan 2012
+      - generic [ref=e628]:
+        - heading [level=2] [ref=e629]: Languages
+        - list [ref=e631]:
+          - listitem [ref=e632]:
+            - generic [ref=e633]:
+              - heading [level=3] [ref=e634]: Persian
+              - heading [level=4] [ref=e635]: Native or bilingual proficiency
+      - generic [ref=e638]:
+        - heading [level=2] [ref=e639]: View Amir Sorhan’s full profile
+        - list [ref=e640]:
+          - listitem [ref=e641]:
+            - generic [ref=e644]: See who you know in common
+          - listitem [ref=e645]:
+            - generic [ref=e648]: Get introduced
+          - listitem [ref=e649]:
+            - generic [ref=e652]: Contact Amir Sorhan directly
+        - link [ref=e653] [cursor=pointer]:
+          - /url: https://www.linkedin.com/signup/public-profile-join?vieweeVanityName=sorhanft&trk=public_profile_bottom-cta-banner
+          - text: Join to view full profile
+    - generic [ref=e654]:
+      - generic [ref=e655]:
+        - heading [level=2] [ref=e656]: Other similar profiles
+        - list [ref=e658]:
+          - listitem [ref=e659]:
+            - generic [ref=e660]:
+              - link [ref=e661] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/parkdhp
+                - generic [ref=e662]: Peter Park
+              - generic [ref=e663]:
+                - heading [level=3] [ref=e664]: Peter Park
+                - paragraph [ref=e665]: Capital One
+                - generic [ref=e666]:
+                  - generic [ref=e667]: 5K followers
+                  - generic [ref=e668]: San Francisco Bay Area
+                - link [ref=e670] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/parkdhp?trk=public_profile_browsemap_browse-map_connect-button
+                  - text: View Profile
+          - listitem [ref=e671]:
+            - generic [ref=e672]:
+              - link [ref=e673] [cursor=pointer]:
+                - /url: https://in.linkedin.com/in/vivek651
+                - generic [ref=e674]: Vivek Singh
+              - generic [ref=e675]:
+                - heading [level=3] [ref=e676]: Vivek Singh
+                - paragraph [ref=e677]: BlackRock
+                - generic [ref=e678]:
+                  - generic [ref=e679]: 4K followers
+                  - generic [ref=e680]: Gurugram
+                - link [ref=e682] [cursor=pointer]:
+                  - /url: https://in.linkedin.com/in/vivek651?trk=public_profile_browsemap_browse-map_connect-button
+                  - text: View Profile
+          - listitem [ref=e683]:
+            - generic [ref=e684]:
+              - link [ref=e685] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/machinelearner2334
+                - generic [ref=e686]: George Lugo
+              - generic [ref=e687]:
+                - heading [level=3] [ref=e688]: George Lugo
+                - paragraph [ref=e689]: Yield Delta
+                - generic [ref=e690]:
+                  - generic [ref=e691]: 9K followers
+                  - generic [ref=e692]: Los Angeles, CA
+                - link [ref=e694] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/machinelearner2334?trk=public_profile_browsemap_browse-map_connect-button
+                  - text: View Profile
+          - listitem [ref=e695]:
+            - generic [ref=e696]:
+              - link [ref=e697] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/yasminyabdi
+                - generic [ref=e698]: Yasmin Abdi
+              - generic [ref=e699]:
+                - heading [level=3] [ref=e700]: Yasmin Abdi
+                - paragraph [ref=e701]: noHack
+                - generic [ref=e702]:
+                  - generic [ref=e703]: 24K followers
+                  - generic [ref=e704]: San Francisco Bay Area
+                - link [ref=e706] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/yasminyabdi?trk=public_profile_browsemap_browse-map_connect-button
+                  - text: View Profile
+          - listitem [ref=e707]:
+            - generic [ref=e708]:
+              - link [ref=e709] [cursor=pointer]:
+                - /url: https://de.linkedin.com/in/krishna-sharma19
+                - generic [ref=e710]: Krishna Sharma
+              - generic [ref=e711]:
+                - heading [level=3] [ref=e712]: Krishna Sharma
+                - paragraph [ref=e713]: Google
+                - generic [ref=e714]:
+                  - generic [ref=e715]: 2K followers
+                  - generic [ref=e716]: Munich
+                - link [ref=e718] [cursor=pointer]:
+                  - /url: https://de.linkedin.com/in/krishna-sharma19?trk=public_profile_browsemap_browse-map_connect-button
+                  - text: View Profile
+          - listitem [ref=e719]:
+            - generic [ref=e720]:
+              - link [ref=e721] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/samuellyon
+                - generic [ref=e722]: Samuel Lyon
+              - generic [ref=e723]:
+                - heading [level=3] [ref=e724]: Samuel Lyon
+                - paragraph [ref=e725]: Wing
+                - generic [ref=e726]:
+                  - generic [ref=e727]: 5K followers
+                  - generic [ref=e728]: United States
+                - link [ref=e730] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/samuellyon?trk=public_profile_browsemap_browse-map_connect-button
+                  - text: View Profile
+          - listitem [ref=e731]:
+            - generic [ref=e732]:
+              - link [ref=e733] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/sarahcalande
+                - generic [ref=e734]: Sarah Calande
+              - generic [ref=e735]:
+                - heading [level=3] [ref=e736]: Sarah Calande
+                - paragraph [ref=e737]: Forbes
+                - generic [ref=e738]:
+                  - generic [ref=e739]: 5K followers
+                  - generic [ref=e740]: United States
+                - link [ref=e742] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/sarahcalande?trk=public_profile_browsemap_browse-map_connect-button
+                  - text: View Profile
+          - listitem [ref=e743]:
+            - generic [ref=e744]:
+              - link [ref=e745] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/abhimohta
+                - generic [ref=e746]: Abhishek Mohta
+              - generic [ref=e747]:
+                - heading [level=3] [ref=e748]: Abhishek Mohta
+                - paragraph [ref=e749]: Aurora
+                - generic [ref=e750]:
+                  - generic [ref=e751]: 5K followers
+                  - generic [ref=e752]: San Francisco, CA
+                - link [ref=e754] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/abhimohta?trk=public_profile_browsemap_browse-map_connect-button
+                  - text: View Profile
+          - listitem [ref=e755]:
+            - generic [ref=e756]:
+              - link [ref=e757] [cursor=pointer]:
+                - /url: https://ch.linkedin.com/in/zhenxiang-liang
+                - generic [ref=e758]: Zhenxiang Liang
+              - generic [ref=e759]:
+                - heading [level=3] [ref=e760]: Zhenxiang Liang
+                - paragraph [ref=e761]: Google
+                - generic [ref=e762]:
+                  - generic [ref=e763]: 4K followers
+                  - generic [ref=e764]: Zurich
+                - link [ref=e766] [cursor=pointer]:
+                  - /url: https://ch.linkedin.com/in/zhenxiang-liang?trk=public_profile_browsemap_browse-map_connect-button
+                  - text: View Profile
+          - listitem [ref=e767]:
+            - generic [ref=e768]:
+              - link [ref=e769] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/arjunsurendran24
+                - generic [ref=e770]: Arjun Surendran
+              - generic [ref=e771]:
+                - heading [level=3] [ref=e772]: Arjun Surendran
+                - paragraph [ref=e773]: Microsoft
+                - generic [ref=e774]:
+                  - generic [ref=e775]: 5K followers
+                  - generic [ref=e776]: United States
+                - link [ref=e778] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/arjunsurendran24?trk=public_profile_browsemap_browse-map_connect-button
+                  - text: View Profile
+      - generic [ref=e779]:
+        - heading [level=2] [ref=e780]: Explore more posts
+        - list [ref=e782]:
+          - listitem [ref=e783]:
+            - generic [ref=e784]:
+              - link [ref=e785] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/inside-precision-medicine?trk=public_profile_relatedPosts_face-pile-cta
+                - generic [ref=e787]:
+                  - paragraph [ref=e788]: Inside Precision Medicine
+                  - paragraph [ref=e789]: 13K followers
+              - link [ref=e790] [cursor=pointer]:
+                - /url: https://www.linkedin.com/posts/inside-precision-medicine_behindthebreakthroughs-precisionmedicine-activity-7395559240154636289-Xrnk?trk=public_profile_relatedPosts
+                - generic [ref=e791]:
+                  - paragraph [ref=e792]: "In case you missed it: Michael Langer, co-founder of T.Rx Capital, expands on how disciplined, data-driven diligence separates real signal from hype in tech enabled biotech. 3 takeaways from this clip: • The metrics he tracks before writing a check • How AI changes the pace and quality of diligence • What proves product–market fit in precision medicine Watch the clip, then catch the full episode: Apple: https://hubs.li/Q03TpD6P0 Spotify: https://hubs.li/Q03TpDMs0 Acast: https://hubs.li/Q03TpD_c0 #BehindTheBreakthroughs #PrecisionMedicine #Biotech #VentureCapital #AI"
+                  - generic [ref=e793]: "8"
+          - listitem [ref=e799]:
+            - generic [ref=e800]:
+              - link [ref=e801] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/gabrieljarrosson?trk=public_profile_relatedPosts_face-pile-cta
+                - generic [ref=e803]:
+                  - paragraph [ref=e804]: Gabriel Jarrosson
+                  - paragraph [ref=e805]: Lobster Capital • 50K followers
+              - link [ref=e806] [cursor=pointer]:
+                - /url: https://www.linkedin.com/posts/gabrieljarrosson_starclouds-founder-told-me-they-could-become-activity-7412825392647974912-kNKv?trk=public_profile_relatedPosts
+                - generic [ref=e807]:
+                  - paragraph [ref=e808]: Starcloud's founder told me they could become the most valuable company in the world. Astroforge's founder said the same thing. - Data centers in space. - Every GPU could be orbiting Earth. - If Starcloud owns that market, they own the infrastructure layer for AI. Elsewhere, I was pitched asteroid mining - (football field size made of platinum). These founders aren't joking. They believe it. YC trains them to think this big. You don't build SpaceX by aiming for a nice exit. You build it by trying to make humanity interplanetary. The ambition is the point! Most people hear these claims and think the founders are delusional…. And they might be but the only ones who succeed are the ones crazy enough to try. Elon Musk tried to buy rockets from Russia. They laughed at him. So he built SpaceX. Now SpaceX is worth over $200B and reusable rockets are normal. At Lobster Capital, we hear these pitches all the time. Some will fail spectacularly. But one or two might actually pull it off. And when they do, they'll own industries worth trillions. Can the technology and timing align to make it possible…? Space is opening up. Launch costs dropped 90%. Foundation models make automation feasible. The pieces are coming together. Maybe these founders really will own the world. Or at least a very valuable piece of it.
+                  - generic [ref=e810]:
+                    - generic [ref=e811]: "47"
+                    - generic [ref=e813]: · 9 Comments
+          - listitem [ref=e816]:
+            - generic [ref=e817]:
+              - link [ref=e818] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/ryan-solomon-9472a8156?trk=public_profile_relatedPosts_face-pile-cta
+                - generic [ref=e820]:
+                  - paragraph [ref=e821]: Ryan Solomon
+                  - paragraph [ref=e822]: 5K followers
+              - link [ref=e823] [cursor=pointer]:
+                - /url: https://www.linkedin.com/posts/ryan-solomon-9472a8156_founders-always-ask-me-%F0%9D%98%9E%F0%9D%98%A9%F0%9D%98%AA%F0%9D%98%A4%F0%9D%98%A9-%F0%9D%98%B1%F0%9D%98%AD%F0%9D%98%A2-activity-7435002370897367040--zKT?trk=public_profile_relatedPosts
+                - generic [ref=e824]:
+                  - paragraph [ref=e825]: "Founders always ask me \"𝘞𝘩𝘪𝘤𝘩 𝘱𝘭𝘢𝘵𝘧𝘰𝘳𝘮𝘴 𝘴𝘩𝘰𝘶𝘭𝘥 𝘐 𝘣𝘦 𝘱𝘰𝘴𝘵𝘪𝘯𝘨 𝘰𝘯?\" Here's my rough breakdown of the audiences on each: 𝗫: Politicians, Billionaires, every important person in AI, every important VC, $100m+ founders, agency bros, and course bros (mixed bag) 𝗟𝗜: B2B Founders, Middle managers at Fortune 500 companies (great for B2B) 𝗜𝗚/𝗧𝗶𝗸𝗧𝗼𝗸: Consumers and maybe your future wife Did I miss?"
+                  - generic [ref=e827]:
+                    - generic [ref=e828]: "3"
+                    - generic [ref=e830]: · 1 Comment
+          - listitem [ref=e831]:
+            - generic [ref=e832]:
+              - link [ref=e833] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/traded-venture-capital?trk=public_profile_relatedPosts_face-pile-cta
+                - generic [ref=e835]:
+                  - paragraph [ref=e836]: "Traded: Venture Capital"
+                  - paragraph [ref=e837]: 44K followers
+              - link [ref=e838] [cursor=pointer]:
+                - /url: https://www.linkedin.com/posts/traded-venture-capital_venturecapital-assorthealth-lightspeedventurepartners-activity-7366562288918552576-brmw?trk=public_profile_relatedPosts
+                - generic [ref=e839]:
+                  - paragraph [ref=e840]: "Assort Health, founded by Jon Wang and Jeffery L., has raised $50 million in a Series B round led by Lightspeed Venture Partners at a $750 million valuation, just four months after its $22 million Series A. The startup, which uses AI voice agents to automate patient communication tasks like scheduling and cancellations for specialty healthcare practices, is growing quickly despite generating only about $3 million in ARR, and has expanded from orthopedics and physical care into OB-GYN, dermatology, and dentistry. INVESTOR: Lightspeed Venture Partners ROUND: Series B AMOUNT: $50,000,000 VALUATION: $750,000,000 #VentureCapital #AssortHealth #LightspeedVenturePartners #JonWang #JeffLiu #TradedVC"
+                  - generic [ref=e842]:
+                    - generic [ref=e843]: "4"
+                    - generic [ref=e845]: · 1 Comment
+      - generic [ref=e850]:
+        - heading [level=2] [ref=e852]: Explore top content on LinkedIn
+        - paragraph [ref=e853]: Find curated posts and insights for relevant topics all in one place.
+        - link [ref=e854] [cursor=pointer]:
+          - /url: https://www.linkedin.com/top-content/
+          - text: View top content
+      - generic [ref=e855]:
+        - heading [level=2] [ref=e856]: Add new skills with these courses
+        - generic [ref=e857]:
+          - list [ref=e858]:
+            - listitem [ref=e859]:
+              - link [ref=e860] [cursor=pointer]:
+                - /url: https://www.linkedin.com/learning/blockchain-security-by-infosec?trk=public_profile_recommended-course
+                - generic [ref=e861]: 6h 46m
+                - heading [level=3] [ref=e865]: Blockchain Security by Infosec
+            - listitem [ref=e866]:
+              - link [ref=e867] [cursor=pointer]:
+                - /url: https://www.linkedin.com/learning/learning-bitcoin-and-other-cryptocurrencies-17179887?trk=public_profile_recommended-course
+                - generic [ref=e868]: 1h 11m
+                - heading [level=3] [ref=e872]: Learning Bitcoin and Other Cryptocurrencies
+            - listitem [ref=e873]:
+              - link [ref=e874] [cursor=pointer]:
+                - /url: https://www.linkedin.com/learning/practical-blockchain-and-cryptocurrency?trk=public_profile_recommended-course
+                - generic [ref=e875]: 6h 48m
+                - heading [level=3] [ref=e879]: Practical Blockchain and Cryptocurrency
+          - link [ref=e880] [cursor=pointer]:
+            - /url: https://www.linkedin.com/learning/?trk=seo_pp_d_cymbii_more_m015_learning
+            - text: See all courses
+  - contentinfo [ref=e881]:
+    - list [ref=e882]:
+      - generic [ref=e883]: LinkedIn
+      - generic [ref=e885]: © 2026
+      - listitem [ref=e886]:
+        - link [ref=e887] [cursor=pointer]:
+          - /url: https://about.linkedin.com?trk=public_profile_v3_desktop_footer-about
+          - text: About
+      - listitem [ref=e888]:
+        - link [ref=e889] [cursor=pointer]:
+          - /url: https://www.linkedin.com/accessibility?trk=public_profile_v3_desktop_footer-accessibility
+          - text: Accessibility
+      - listitem [ref=e890]:
+        - link [ref=e891] [cursor=pointer]:
+          - /url: https://www.linkedin.com/legal/user-agreement?trk=public_profile_v3_desktop_footer-user-agreement
+          - text: User Agreement
+      - listitem [ref=e892]:
+        - link [ref=e893] [cursor=pointer]:
+          - /url: https://www.linkedin.com/legal/privacy-policy?trk=public_profile_v3_desktop_footer-privacy-policy
+          - text: Privacy Policy
+      - listitem [ref=e894]:
+        - link [ref=e895] [cursor=pointer]:
+          - /url: https://www.linkedin.com/legal/california-privacy-disclosure?trk=public_profile_v3_desktop_footer-california-privacy-rights-act
+          - text: Your California Privacy Choices
+      - listitem [ref=e896]:
+        - link [ref=e897] [cursor=pointer]:
+          - /url: https://www.linkedin.com/legal/cookie-policy?trk=public_profile_v3_desktop_footer-cookie-policy
+          - text: Cookie Policy
+      - listitem [ref=e898]:
+        - link [ref=e899] [cursor=pointer]:
+          - /url: https://www.linkedin.com/legal/copyright-policy?trk=public_profile_v3_desktop_footer-copyright-policy
+          - text: Copyright Policy
+      - listitem [ref=e900]:
+        - link [ref=e901] [cursor=pointer]:
+          - /url: https://brand.linkedin.com/policies?trk=public_profile_v3_desktop_footer-brand-policy
+          - text: Brand Policy
+      - listitem [ref=e902]:
+        - link [ref=e903] [cursor=pointer]:
+          - /url: https://www.linkedin.com/psettings/guest-controls?trk=public_profile_v3_desktop_footer-guest-controls
+          - text: Guest Controls
+      - listitem [ref=e904]:
+        - link [ref=e905] [cursor=pointer]:
+          - /url: https://www.linkedin.com/legal/professional-community-policies?trk=public_profile_v3_desktop_footer-community-guide
+          - text: Community Guidelines
+      - listitem [ref=e906]:
+        - button [ref=e908]: Language
+  - dialog [active] [ref=e911]:
+    - button "Dismiss" [ref=e912] [cursor=pointer]
+    - generic [ref=e914]:
+      - generic [ref=e915]:
+        - heading "View Amir Sorhan’s full profile" [level=2] [ref=e916]
+        - paragraph [ref=e918]: Amir Sorhan can introduce you to 2 people at ELU
+      - generic [ref=e920]:
+        - generic:
+          - generic:
+            - button "Continue with google"
+        - button "Sign in with Email" [ref=e921] [cursor=pointer]
+        - paragraph [ref=e925]: or
+        - generic:
+          - generic:
+            - button "Continue with google"
+        - paragraph [ref=e926]:
+          - text: New to LinkedIn?
+          - link "Join now" [ref=e927] [cursor=pointer]:
+            - /url: https://www.linkedin.com/signup/public-profile-join?vieweeVanityName=sorhanft&trk=public_profile_contextual-sign-in-modal_join-link
+        - paragraph [ref=e928]:
+          - text: By clicking Continue to join or sign in, you agree to LinkedIn’s
+          - link "User Agreement" [ref=e929] [cursor=pointer]:
+            - /url: /legal/user-agreement?trk=linkedin-tc_auth-button_user-agreement
+          - text: ","
+          - link "Privacy Policy" [ref=e930] [cursor=pointer]:
+            - /url: /legal/privacy-policy?trk=linkedin-tc_auth-button_privacy-policy
+          - text: ", and"
+          - link "Cookie Policy" [ref=e931] [cursor=pointer]:
+            - /url: /legal/cookie-policy?trk=linkedin-tc_auth-button_cookie-policy
+          - text: .
