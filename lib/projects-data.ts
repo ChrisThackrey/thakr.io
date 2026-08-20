@@ -62,6 +62,7 @@ const projectsData: Project[] = [
       "Twilio",
       "Nivo Charts",
     ],
+    featured: true,
   },
   {
     slug: "wildfire-analysis-tools",
@@ -82,6 +83,7 @@ const projectsData: Project[] = [
       "D3",
       "Uber H3",
     ],
+    featured: true,
   },
   {
     slug: "collegiate-pathways",
@@ -94,6 +96,7 @@ const projectsData: Project[] = [
     ],
     image: "/images/projects/teaching-project.jpg",
     tags: ["TypeScript", "Astro", "Svelte", "OpenAI API", "Anthropic SDK", "Shadcn-UI"],
+    featured: true,
   },
   {
     slug: "speed-reader",
@@ -104,7 +107,6 @@ const projectsData: Project[] = [
     tags: ["React", "TypeScript", "Vite", "Tailwind CSS"],
     liveUrl: "https://speed-reader-tool.vercel.app/",
     repoUrl: "https://github.com/ChrisThackrey/speed-reader",
-    featured: true,
   },
   {
     slug: "killer-sudoku-solver",

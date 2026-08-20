@@ -4,9 +4,21 @@ import { FeaturedProjectsGrid } from "@/components/featured-projects-grid"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
+// Display order for the featured projects on the home page
+const FEATURED_ORDER = [
+  "rivendell",
+  "wildfire-analysis-tools",
+  "collegiate-pathways",
+  "lineage-crm",
+  "killer-sudoku-solver",
+]
+
 export async function FeaturedProjectsSection() {
   const allProjects = await getProjects()
-  const featuredProjects = allProjects.filter((p) => p.featured).slice(0, 3)
+  const featuredProjects = allProjects
+    .filter((p) => p.featured)
+    .sort((a, b) => FEATURED_ORDER.indexOf(a.slug) - FEATURED_ORDER.indexOf(b.slug))
+    .slice(0, FEATURED_ORDER.length)
 
   // Fallback to show the first 3 projects if none are explicitly featured
   if (featuredProjects.length === 0 && allProjects.length > 0) {
