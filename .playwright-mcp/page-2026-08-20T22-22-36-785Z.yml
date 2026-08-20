@@ -1,0 +1,299 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Chris Thackrey" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - navigation [ref=e9]:
+          - link "Home" [ref=e10] [cursor=pointer]:
+            - /url: /
+          - link "About" [ref=e14] [cursor=pointer]:
+            - /url: /about
+          - link "Work" [ref=e20] [cursor=pointer]:
+            - /url: /work
+          - link "Projects" [ref=e24] [cursor=pointer]:
+            - /url: /projects
+          - link "Architecture" [ref=e28] [cursor=pointer]:
+            - /url: /architecture
+          - link "Contact" [ref=e33] [cursor=pointer]:
+            - /url: /contact
+        - button "Toggle theme" [ref=e38] [cursor=pointer]
+    - main [ref=e40]:
+      - generic [ref=e43]:
+        - img "Soft abstract gradient background with pastel blues, yellows and pinks" [ref=e45]
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - heading "Chris Thackrey" [level=1] [ref=e52]
+            - heading "Full-Stack Software Engineer" [level=2] [ref=e53]
+            - paragraph [ref=e54]: Personal website and portfolio of Chris Thackrey, a full-stack software engineer specializing in AI-driven applications and modern web technologies.
+            - generic [ref=e55]:
+              - link "View Resume" [ref=e56] [cursor=pointer]:
+                - /url: /resume
+              - link "Contact Me" [ref=e57] [cursor=pointer]:
+                - /url: /contact
+            - generic [ref=e58]:
+              - link "GitHub" [ref=e59] [cursor=pointer]:
+                - /url: https://github.com/ChrisThackrey
+              - link "LinkedIn" [ref=e63] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/chris-thackrey-015/
+              - link "Instagram" [ref=e68] [cursor=pointer]:
+                - /url: https://www.instagram.com/chris_thackrey/
+          - img "Chris Thackrey" [ref=e74]
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - heading "Recent Work & Experience" [level=2] [ref=e77]
+            - link "Full Work Experience" [ref=e78] [cursor=pointer]:
+              - /url: /work
+          - generic [ref=e79]:
+            - generic [ref=e87]:
+              - generic [ref=e90]:
+                - generic [ref=e91]: Chief Technology Officer
+                - time [ref=e92]: May 2025 - Present
+                - generic [ref=e93]: CelaHealthcare Inc.
+              - generic [ref=e94]:
+                - list [ref=e95]:
+                  - listitem [ref=e96]: Senior Software Engineer and primary inventor of patented healthcare application technology.
+                  - listitem [ref=e97]: Administrative leader for technical team including 3 developers, data engineer, and project manager.
+                - generic [ref=e98]:
+                  - generic [ref=e99]: Technical Leadership
+                  - generic [ref=e100]: Healthcare Technology
+                  - generic [ref=e101]: Software Engineering
+                  - generic [ref=e102]: Team Management
+            - generic [ref=e109]:
+              - generic [ref=e111]:
+                - generic [ref=e112]:
+                  - generic [ref=e113]: Principal Software Architect
+                  - time [ref=e114]: "2025"
+                  - generic [ref=e115]: Silver Bow Technology Group
+                  - paragraph [ref=e116]: San Antonio, TX
+                - button "Hide Projects" [expanded] [ref=e117] [cursor=pointer]
+              - generic [ref=e118]:
+                - list [ref=e119]:
+                  - listitem [ref=e120]: Lead software engineering team and built the core AI functionality for a "version control for reasoning" dev tool providing AI-driven code-generation, prompt enhancement, architecture strategy, as well as project planning and security features.
+                - generic [ref=e121]:
+                  - generic [ref=e122]: TypeScript
+                  - generic [ref=e123]: Next.js
+                  - generic [ref=e124]: React
+                  - generic [ref=e125]: AI
+                  - generic [ref=e126]: LLMs
+                  - generic [ref=e127]: Prompt Engineering
+                  - generic [ref=e128]: Security
+                  - generic [ref=e129]: Architecture
+            - generic [ref=e135]:
+              - link "Rivendell - AI Development and Research Tool" [ref=e138] [cursor=pointer]:
+                - /url: /projects/rivendell
+              - generic [ref=e139]:
+                - list [ref=e140]:
+                  - listitem [ref=e141]: AI development tool that functions both internally for the company and externally for clients as "version control for reasoning".
+                  - listitem [ref=e142]: Implemented a monte-carlo algorithm to run large batches of prompt calls in parallel to various large-language AI models (llms), providing more deterministic outcomes by improving reliable code metrics such as compute and readability.
+                  - listitem [ref=e143]: Configured OpenAI API and Anthropic API models to match relevant files and open a branch with a deployment in Vercel.
+                  - listitem [ref=e144]: Built a monte carlo visualizer with ThreeJS to visualise similar response clusters in 3d space.
+                - generic [ref=e145]:
+                  - generic [ref=e146]: TypeScript
+                  - generic [ref=e147]: Next.js
+                  - generic [ref=e148]: OpenAI API
+                  - generic [ref=e149]: Anthropic API
+                  - generic [ref=e150]: ThreeJS
+                  - generic [ref=e151]: Monte Carlo Algorithm
+                  - generic [ref=e152]: Vercel
+            - generic [ref=e159]:
+              - generic [ref=e161]:
+                - generic [ref=e162]:
+                  - generic [ref=e163]: Freelance / Contract Software Engineering
+                  - time [ref=e164]: 2024-2025
+                  - generic [ref=e165]: Self-Employed / Various Clients
+                  - paragraph [ref=e166]: Various Engagements
+                - button "Show Projects" [ref=e167] [cursor=pointer]
+              - generic [ref=e168]:
+                - list [ref=e169]:
+                  - listitem [ref=e170]: Provided full-stack development services for various clients, focusing on AI integration, web application development, and data solutions.
+                - generic [ref=e171]:
+                  - generic [ref=e172]: Full-Stack Development
+                  - generic [ref=e173]: AI Integration
+                  - generic [ref=e174]: Project Management
+                  - generic [ref=e175]: Client Communication
+          - link "View Full Resume" [ref=e177] [cursor=pointer]:
+            - /url: /work
+        - region "Recommendations" [ref=e179]:
+          - heading "Recommendations" [level=2] [ref=e180]
+          - generic [ref=e182]:
+            - generic [ref=e184]:
+              - generic [ref=e185]:
+                - img "Chris Ivester profile photo" [ref=e187]
+                - generic [ref=e188]:
+                  - paragraph [ref=e189]: Chris Ivester
+                  - paragraph [ref=e190]: Founder at Dialog
+              - paragraph [ref=e194]: Chris is fast, focused, and gets things done—no hand-holding required. He sees the path forward and executes with clarity, precision, and zero drama.…
+              - button "Read full recommendation" [ref=e196] [cursor=pointer]
+            - generic [ref=e198]:
+              - generic [ref=e199]:
+                - img "Amir Sorhan Karimloo profile photo" [ref=e201]
+                - generic [ref=e202]:
+                  - paragraph [ref=e203]: Amir Sorhan Karimloo
+                  - paragraph [ref=e204]: Co-Founder & CEO at ELU
+              - paragraph [ref=e208]: Having known Chris since our days at Texas A&M, I've had the privilege of watching him evolve from a talented architect into one of the most formidable full-stack engineers I've encountered.…
+              - button "Read full recommendation" [ref=e210] [cursor=pointer]
+            - generic [ref=e212]:
+              - generic [ref=e213]:
+                - img "Ryan St. Pierre profile photo" [ref=e215]
+                - generic [ref=e216]:
+                  - paragraph [ref=e217]: Ryan St. Pierre
+                  - paragraph [ref=e218]: Mapping Social Networks with Threshold
+              - paragraph [ref=e222]: Chris and I worked together coming implementing RAG systems and learning the fast changing ecosystem of AI tools. He was a pleasure to work with the whole way through.…
+              - button "Read full recommendation" [ref=e224] [cursor=pointer]
+            - generic [ref=e226]:
+              - generic [ref=e227]:
+                - img "Joe Williamson profile photo" [ref=e229]
+                - generic [ref=e230]:
+                  - paragraph [ref=e231]: Joe Williamson
+                  - paragraph [ref=e232]: Founder at Silver Bow Technology Group
+              - paragraph [ref=e236]: Chris came to our team as part of an outsourced development effort, quickly revealing himself as the kind of coder you can rely on.…
+              - button "Read full recommendation" [ref=e238] [cursor=pointer]
+            - generic [ref=e240]:
+              - generic [ref=e241]:
+                - img "Eli Wood profile photo" [ref=e243]
+                - generic [ref=e244]:
+                  - paragraph [ref=e245]: Eli Wood
+                  - paragraph [ref=e246]: Team Captain at BFD
+              - paragraph [ref=e250]: What stands out about Chris is his ability to adapt seamlessly—contributing valuable features in record time, often within mere hours or days across 4 of our projects at Black Flag Design over the past year.…
+              - button "Read full recommendation" [ref=e252] [cursor=pointer]
+            - generic [ref=e254]:
+              - generic [ref=e258]:
+                - paragraph [ref=e259]: Chris Ivester
+                - paragraph [ref=e260]: Founder at Dialog
+              - paragraph [ref=e264]: Chris is fast, focused, and gets things done—no hand-holding required. He sees the path forward and executes with clarity, precision, and zero drama.…
+              - button [ref=e266] [cursor=pointer]: Read full recommendation
+            - generic [ref=e268]:
+              - generic [ref=e272]:
+                - paragraph [ref=e273]: Amir Sorhan Karimloo
+                - paragraph [ref=e274]: Co-Founder & CEO at ELU
+              - paragraph [ref=e278]: Having known Chris since our days at Texas A&M, I've had the privilege of watching him evolve from a talented architect into one of the most formidable full-stack engineers I've encountered.…
+              - button [ref=e280] [cursor=pointer]: Read full recommendation
+            - generic [ref=e282]:
+              - generic [ref=e286]:
+                - paragraph [ref=e287]: Ryan St. Pierre
+                - paragraph [ref=e288]: Mapping Social Networks with Threshold
+              - paragraph [ref=e292]: Chris and I worked together coming implementing RAG systems and learning the fast changing ecosystem of AI tools. He was a pleasure to work with the whole way through.…
+              - button [ref=e294] [cursor=pointer]: Read full recommendation
+            - generic [ref=e296]:
+              - generic [ref=e300]:
+                - paragraph [ref=e301]: Joe Williamson
+                - paragraph [ref=e302]: Founder at Silver Bow Technology Group
+              - paragraph [ref=e306]: Chris came to our team as part of an outsourced development effort, quickly revealing himself as the kind of coder you can rely on.…
+              - button [ref=e308] [cursor=pointer]: Read full recommendation
+            - generic [ref=e310]:
+              - generic [ref=e314]:
+                - paragraph [ref=e315]: Eli Wood
+                - paragraph [ref=e316]: Team Captain at BFD
+              - paragraph [ref=e320]: What stands out about Chris is his ability to adapt seamlessly—contributing valuable features in record time, often within mere hours or days across 4 of our projects at Black Flag Design over the past year.…
+              - button [ref=e322] [cursor=pointer]: Read full recommendation
+        - generic [ref=e324]:
+          - heading "Let's Connect" [level=2] [ref=e325]
+          - paragraph [ref=e327]: I'm currently available for freelance work and full-time opportunities. If you're interested in working together, please get in touch.
+          - generic [ref=e328]:
+            - link "Contact Me" [ref=e329] [cursor=pointer]:
+              - /url: /contact
+            - link "View Resume" [ref=e330] [cursor=pointer]:
+              - /url: /resume
+        - generic [ref=e332]:
+          - heading "Featured Projects" [level=2] [ref=e333]
+          - paragraph [ref=e334]: A selection of my recent work. See all my projects on the dedicated projects page.
+          - generic [ref=e335]:
+            - generic [ref=e338]:
+              - img "Preview image for Rivendell" [ref=e340]
+              - generic [ref=e341]:
+                - heading "Rivendell" [level=3] [ref=e342]
+                - paragraph [ref=e343]: An AI development and research tool that functions as 'version control for reasoning', enabling parallel prompt testing and 3-D visualisation of response clusters.
+                - generic [ref=e344]:
+                  - generic [ref=e345]: Next.js
+                  - generic [ref=e346]: TypeScript
+                  - generic [ref=e347]: Vercel
+                  - generic [ref=e348]: OpenAI API
+                  - generic [ref=e349]: Three.js
+                  - generic [ref=e350]: AI
+            - generic [ref=e354]:
+              - img "Preview image for AI Analysis Tools For International Wildfire Science and Technology Company" [ref=e356]
+              - generic [ref=e357]:
+                - heading "AI Analysis Tools For International Wildfire Science and Technology Company" [level=3] [ref=e358]
+                - paragraph [ref=e359]: Cloud-based SaaS offering on-demand wildfire spread prediction capabilities to support operational response. (Subject to NDA)
+                - generic [ref=e360]:
+                  - generic [ref=e361]: TypeScript
+                  - generic [ref=e362]: Vite
+                  - generic [ref=e363]: Vue
+                  - generic [ref=e364]: Vuetify
+                  - generic [ref=e365]: Mapbox
+                  - generic [ref=e366]: Google Maps Platform
+                  - generic [ref=e367]: Github Actions
+                  - generic [ref=e368]: Deploy Hooks
+                  - generic [ref=e369]: Azure DevOps Integration
+                  - generic [ref=e370]: D3
+                  - generic [ref=e371]: Uber H3
+            - generic [ref=e375]:
+              - img "Preview image for Collegiate Pathways" [ref=e377]
+              - generic [ref=e378]:
+                - heading "Collegiate Pathways" [level=3] [ref=e379]
+                - paragraph [ref=e380]: AI-driven college planning application with chatbot assistance to combine together course-catalogue offerings from multiple higher-level learning institutions, including major college curriculums, into a full degree plan that satisfies the requirements for any field of study.
+                - list [ref=e381]:
+                  - listitem [ref=e382]: Features fully dynamic components generated using custom API calls to AI in real-time.
+                  - listitem [ref=e383]: The fully-generated degree plan outline leveraged AI prompted to accommodate remote learning, schedule planning around any on-site learning at multiple locations, and account for pre-requisites that must be taken in sequential order.
+                - generic [ref=e384]:
+                  - generic [ref=e385]: TypeScript
+                  - generic [ref=e386]: Astro
+                  - generic [ref=e387]: Svelte
+                  - generic [ref=e388]: OpenAI API
+                  - generic [ref=e389]: Anthropic SDK
+                  - generic [ref=e390]: Shadcn-UI
+            - generic [ref=e394]:
+              - img "Preview image for CRM Management App to Handle Insurance Clients and Leads" [ref=e396]
+              - generic [ref=e397]:
+                - heading "CRM Management App to Handle Insurance Clients and Leads" [level=3] [ref=e398]
+                - paragraph [ref=e399]:
+                  - text: Final expense CRM management app and tool for handling clients and leads, currently deployed with more than 200 active users.
+                  - link "lineagecrm.com" [ref=e400] [cursor=pointer]:
+                    - /url: https://lineagecrm.com
+                - generic [ref=e401]:
+                  - generic [ref=e402]: TypeScript
+                  - generic [ref=e403]: React Hooks + Context API
+                  - generic [ref=e404]: TailwindCSS
+                  - generic [ref=e405]: Google Maps Platform
+                  - generic [ref=e406]: Next.js
+                  - generic [ref=e407]: Supabase
+                  - generic [ref=e408]: Vercel
+                  - generic [ref=e409]: TDD
+                  - generic [ref=e410]: Twilio
+                  - generic [ref=e411]: Nivo Charts
+            - generic [ref=e415]:
+              - img "Preview image for Killer Sudoku Solver" [ref=e417]
+              - generic [ref=e418]:
+                - heading "Killer Sudoku Solver" [level=3] [ref=e419]
+                - paragraph [ref=e420]: A web-based solver that can crack any valid Killer Sudoku puzzle with a backtracking algorithm.
+                - generic [ref=e421]:
+                  - generic [ref=e422]: JavaScript
+                  - generic [ref=e423]: Algorithm
+                - generic [ref=e424]:
+                  - link "Demo" [ref=e425] [cursor=pointer]:
+                    - /url: https://killer-sudoku-solver.vercel.app/
+                  - link "Code" [ref=e430] [cursor=pointer]:
+                    - /url: https://github.com/ChrisThackrey/killer-sudoku-solver
+          - link "View All Projects" [ref=e435] [cursor=pointer]:
+            - /url: /projects
+        - generic [ref=e437]:
+          - generic [ref=e438]:
+            - heading "Get in Touch" [level=2] [ref=e439]
+            - paragraph [ref=e440]: Have a project in mind or want to discuss potential collaborations? Feel free to reach out.
+            - generic [ref=e441]:
+              - link "c.r.thackrey@gmail.com" [ref=e446] [cursor=pointer]:
+                - /url: mailto:c.r.thackrey@gmail.com
+              - generic [ref=e447]: San Antonio, TX
+          - generic [ref=e452]:
+            - paragraph [ref=e453]: I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            - generic [ref=e454]:
+              - link "Contact Me" [ref=e455] [cursor=pointer]:
+                - /url: /contact
+              - link "Schedule a Call" [ref=e456] [cursor=pointer]:
+                - /url: /booking
+    - contentinfo [ref=e457]:
+      - paragraph [ref=e461]: © 2026 Chris Thackrey. All Rights Reserved.
+  - region "Notifications (F8)":
+    - list
+  - alert [ref=e462]

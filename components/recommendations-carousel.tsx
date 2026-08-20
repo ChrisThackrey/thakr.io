@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { Quote } from "lucide-react"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -47,14 +47,17 @@ function ReferenceCard({
   reference,
   onReadMore,
   ariaHidden = false,
+  cloneStart = false,
 }: {
   reference: Reference
   onReadMore: (reference: Reference) => void
   ariaHidden?: boolean
+  cloneStart?: boolean
 }) {
   return (
     <Card
       aria-hidden={ariaHidden}
+      data-clone-start={cloneStart ? "" : undefined}
       className="w-[300px] sm:w-[360px] shrink-0 bg-background/80 backdrop-blur-sm border border-border/30 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300"
     >
       <CardContent className="flex h-full flex-col pt-6">
@@ -85,11 +88,129 @@ function ReferenceCard({
   )
 }
 
+const MARQUEE_SPEED = 30 // px per second, matches the pace of the old 70s CSS marquee
+const RESUME_DELAY = 1500 // ms of idle after a touch/drag before auto-scroll resumes
+
 export function RecommendationsCarousel({ className }: { className?: string }) {
   const prefersReducedMotion = useReducedMotion()
   const [selected, setSelected] = useState<Reference | null>(null)
 
   const dialogOpen = selected !== null
+
+  const scrollerRef = useRef<HTMLDivElement>(null)
+  const pausedRef = useRef(false)
+  const dialogOpenRef = useRef(dialogOpen)
+  dialogOpenRef.current = dialogOpen
+
+  useEffect(() => {
+    const scroller = scrollerRef.current
+    if (prefersReducedMotion || !scroller) return
+
+    let raf = 0
+    let pos = scroller.scrollLeft
+    let last: number | null = null
+    let resumeAt = 0
+
+    const pauseInteraction = () => {
+      pausedRef.current = true
+    }
+    const scheduleResume = () => {
+      resumeAt = performance.now() + RESUME_DELAY
+      pausedRef.current = false
+    }
+
+    // Desktop mouse drag-to-scroll (touch drag is handled natively by the scroll
+    // container). The drag only engages after a small movement threshold so that
+    // plain clicks — e.g. the "Read full recommendation" button — are untouched:
+    // capturing the pointer on pointerdown would retarget the click away from the button.
+    const DRAG_THRESHOLD = 5
+    let mouseDown = false
+    let dragging = false
+    let dragStartX = 0
+    let dragStartScroll = 0
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType === "mouse") {
+        mouseDown = true
+        dragStartX = e.clientX
+        dragStartScroll = scroller.scrollLeft
+      }
+      pauseInteraction()
+    }
+    const onPointerMove = (e: PointerEvent) => {
+      if (!mouseDown) return
+      if (!dragging) {
+        if (Math.abs(e.clientX - dragStartX) < DRAG_THRESHOLD) return
+        dragging = true
+        scroller.setPointerCapture(e.pointerId)
+      }
+      scroller.scrollLeft = dragStartScroll - (e.clientX - dragStartX)
+    }
+    const onPointerEnd = (e: PointerEvent) => {
+      mouseDown = false
+      if (dragging) {
+        dragging = false
+        if (scroller.hasPointerCapture(e.pointerId)) scroller.releasePointerCapture(e.pointerId)
+      }
+      scheduleResume()
+    }
+
+    const onMouseEnter = pauseInteraction
+    const onMouseLeave = scheduleResume
+    const onTouchStart = pauseInteraction
+    const onTouchEnd = scheduleResume
+
+    scroller.addEventListener("pointerdown", onPointerDown)
+    scroller.addEventListener("pointermove", onPointerMove)
+    scroller.addEventListener("pointerup", onPointerEnd)
+    scroller.addEventListener("pointercancel", onPointerEnd)
+    scroller.addEventListener("mouseenter", onMouseEnter)
+    scroller.addEventListener("mouseleave", onMouseLeave)
+    scroller.addEventListener("touchstart", onTouchStart, { passive: true })
+    scroller.addEventListener("touchend", onTouchEnd)
+    scroller.addEventListener("touchcancel", onTouchEnd)
+
+    const step = (now: number) => {
+      raf = requestAnimationFrame(step)
+      const dt = last === null ? 0 : now - last
+      last = now
+
+      // Adopt any position change made by native touch scrolling / momentum
+      if (Math.abs(scroller.scrollLeft - pos) > 1) pos = scroller.scrollLeft
+
+      const autoScrolling =
+        !pausedRef.current && !dialogOpenRef.current && now >= resumeAt
+      if (autoScrolling) pos += (MARQUEE_SPEED * dt) / 1000
+
+      // Seamless infinite loop: wrap within the first copy of the list
+      const cloneStart = scroller.querySelector<HTMLElement>("[data-clone-start]")
+      const wrapWidth = cloneStart?.offsetLeft ?? 0
+      if (wrapWidth > 0) {
+        if (pos >= wrapWidth) {
+          pos -= wrapWidth
+          dragStartScroll -= wrapWidth
+        } else if (pos < 0) {
+          pos += wrapWidth
+          dragStartScroll += wrapWidth
+        }
+      }
+
+      scroller.scrollLeft = pos
+    }
+    raf = requestAnimationFrame(step)
+
+    return () => {
+      cancelAnimationFrame(raf)
+      scroller.removeEventListener("pointerdown", onPointerDown)
+      scroller.removeEventListener("pointermove", onPointerMove)
+      scroller.removeEventListener("pointerup", onPointerEnd)
+      scroller.removeEventListener("pointercancel", onPointerEnd)
+      scroller.removeEventListener("mouseenter", onMouseEnter)
+      scroller.removeEventListener("mouseleave", onMouseLeave)
+      scroller.removeEventListener("touchstart", onTouchStart)
+      scroller.removeEventListener("touchend", onTouchEnd)
+      scroller.removeEventListener("touchcancel", onTouchEnd)
+    }
+  }, [prefersReducedMotion])
 
   return (
     <section className={cn("w-full", className)} aria-label="Recommendations">
@@ -97,28 +218,27 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
         Recommendations
       </SectionTitle>
       <div
+        ref={scrollerRef}
         className={cn(
           "group relative w-full",
           prefersReducedMotion
             ? "overflow-x-auto pb-4"
-            : "overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]",
+            : "no-scrollbar cursor-grab select-none overflow-x-auto active:cursor-grabbing [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]",
         )}
       >
-        <div
-          className={cn("flex w-max gap-5 py-1", !prefersReducedMotion && "animate-marquee")}
-          style={dialogOpen ? { animationPlayState: "paused" } : undefined}
-        >
+        <div className="flex w-max gap-5 py-1">
           {references.map((reference) => (
             <ReferenceCard key={reference.name} reference={reference} onReadMore={setSelected} />
           ))}
           {/* Second copy makes the marquee loop seamless; hidden from assistive tech */}
           {!prefersReducedMotion &&
-            references.map((reference) => (
+            references.map((reference, index) => (
               <ReferenceCard
                 key={`${reference.name}-clone`}
                 reference={reference}
                 onReadMore={setSelected}
                 ariaHidden
+                cloneStart={index === 0}
               />
             ))}
         </div>
