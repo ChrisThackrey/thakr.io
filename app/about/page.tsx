@@ -12,6 +12,7 @@ import { technicalSkills, education } from "@/lib/experience-data"
 import { EducationTimeline } from "@/components/education-timeline"
 import { ProfileCard } from "@/components/profile-card"
 import { PageBackground } from "@/components/page-background"
+import { RecommendationsCarousel } from "@/components/recommendations-carousel"
 
 export default function AboutPage() {
   const prefersReducedMotion = useReducedMotion()
@@ -138,6 +139,9 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+          <div className="mt-12 md:mt-16">
+            <RecommendationsCarousel />
+          </div>
           <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 order-3">
             <SkillsCard />
             <div className="flex flex-col space-y-8 md:space-y-2">
@@ -203,15 +207,25 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
+        <motion.div
+          className="mt-12 md:mt-16"
+          custom={0}
+          variants={bottomSectionVariant}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          <RecommendationsCarousel />
+        </motion.div>
         <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 order-3">
-          <motion.div custom={0} variants={bottomSectionVariant} initial="hidden" animate="visible" exit="exit">
+          <motion.div custom={1} variants={bottomSectionVariant} initial="hidden" animate="visible" exit="exit">
             <SkillsCard />
           </motion.div>
           <div className="flex flex-col space-y-8 md:space-y-2">
-            <motion.div custom={1} variants={bottomSectionVariant} initial="hidden" animate="visible" exit="exit">
+            <motion.div custom={2} variants={bottomSectionVariant} initial="hidden" animate="visible" exit="exit">
               <EducationTimeline items={education} />
             </motion.div>
-            <motion.div custom={2} variants={bottomSectionVariant} initial="hidden" animate="visible" exit="exit">
+            <motion.div custom={3} variants={bottomSectionVariant} initial="hidden" animate="visible" exit="exit">
               <BookingCTA />
             </motion.div>
           </div>

@@ -10,6 +10,7 @@ import { ProfileSection } from "@/components/profile-section"
 import { FeaturedProjectsSection } from "@/components/featured-projects-section"
 import { ArrowRight } from "lucide-react"
 import { LetsConnectSection } from "@/components/lets-connect-section"
+import { RecommendationsCarousel } from "@/components/recommendations-carousel"
 
 export default async function HomePage() {
   const featuredExperience = professionalExperience.slice(0, 3)
@@ -44,6 +45,11 @@ export default async function HomePage() {
               <Link href="/work">View Full Resume</Link>
             </Button>
           </div>
+        </div>
+
+        {/* Recommendations Carousel */}
+        <div className="container mx-auto max-w-4xl pb-16 md:pb-24 px-4">
+          <RecommendationsCarousel />
         </div>
 
         {/* Let's Connect Section - Moved here */}
