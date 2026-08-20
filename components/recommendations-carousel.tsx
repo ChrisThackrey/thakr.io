@@ -98,7 +98,12 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
   const dialogOpen = selected !== null
 
   const scrollerRef = useRef<HTMLDivElement>(null)
-  const pausedRef = useRef(false)
+  // Two independent pause reasons: the mouse resting over the carousel, and an
+  // active press/drag/touch. Kept separate so a click release while still
+  // hovering stays paused, and so touch (whose emulated mouse events never
+  // "leave") can't wedge the hover pause on permanently.
+  const hoveredRef = useRef(false)
+  const interactingRef = useRef(false)
   const dialogOpenRef = useRef(dialogOpen)
   dialogOpenRef.current = dialogOpen
 
@@ -111,12 +116,21 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
     let last: number | null = null
     let resumeAt = 0
 
-    const pauseInteraction = () => {
-      pausedRef.current = true
+    const beginInteraction = () => {
+      interactingRef.current = true
     }
-    const scheduleResume = () => {
+    const endInteraction = () => {
       resumeAt = performance.now() + RESUME_DELAY
-      pausedRef.current = false
+      interactingRef.current = false
+    }
+    // Hover tracking is mouse-only: touch fires pointerenter with
+    // pointerType "touch" (and emulated mouse events carry no pointerType),
+    // so a tap can never set — or fail to clear — the hover pause.
+    const onPointerEnter = (e: PointerEvent) => {
+      if (e.pointerType === "mouse") hoveredRef.current = true
+    }
+    const onPointerLeave = (e: PointerEvent) => {
+      if (e.pointerType === "mouse") hoveredRef.current = false
     }
 
     // Desktop mouse drag-to-scroll (touch drag is handled natively by the scroll
@@ -134,7 +148,7 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
         dragStartX = e.clientX
         dragStartScroll = scroller.scrollLeft
       }
-      pauseInteraction()
+      beginInteraction()
     }
     const onPointerMove = (e: PointerEvent) => {
       if (!mouseDown) return
@@ -143,28 +157,38 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
         dragging = true
         scroller.setPointerCapture(e.pointerId)
       }
-      scroller.scrollLeft = dragStartScroll - (e.clientX - dragStartX)
+      // Wrap within the first copy of the list so dragging right (backwards)
+      // works even from scrollLeft 0, where the native position would clamp.
+      let next = dragStartScroll - (e.clientX - dragStartX)
+      const cloneStart = scroller.querySelector<HTMLElement>("[data-clone-start]")
+      const wrapWidth = cloneStart?.offsetLeft ?? 0
+      if (wrapWidth > 0) next = ((next % wrapWidth) + wrapWidth) % wrapWidth
+      scroller.scrollLeft = next
     }
+    // Images are natively draggable; an HTML5 drag starting on an avatar would
+    // cancel the pointer events and hijack the scroll drag.
+    const onDragStart = (e: DragEvent) => e.preventDefault()
     const onPointerEnd = (e: PointerEvent) => {
       mouseDown = false
       if (dragging) {
         dragging = false
         if (scroller.hasPointerCapture(e.pointerId)) scroller.releasePointerCapture(e.pointerId)
       }
-      scheduleResume()
+      endInteraction()
     }
 
-    const onMouseEnter = pauseInteraction
-    const onMouseLeave = scheduleResume
-    const onTouchStart = pauseInteraction
-    const onTouchEnd = scheduleResume
+    // touchstart/touchend cover the full native touch scroll: pointer events
+    // are cancelled as soon as the browser takes over the scroll gesture.
+    const onTouchStart = beginInteraction
+    const onTouchEnd = endInteraction
 
+    scroller.addEventListener("dragstart", onDragStart)
     scroller.addEventListener("pointerdown", onPointerDown)
     scroller.addEventListener("pointermove", onPointerMove)
     scroller.addEventListener("pointerup", onPointerEnd)
     scroller.addEventListener("pointercancel", onPointerEnd)
-    scroller.addEventListener("mouseenter", onMouseEnter)
-    scroller.addEventListener("mouseleave", onMouseLeave)
+    scroller.addEventListener("pointerenter", onPointerEnter)
+    scroller.addEventListener("pointerleave", onPointerLeave)
     scroller.addEventListener("touchstart", onTouchStart, { passive: true })
     scroller.addEventListener("touchend", onTouchEnd)
     scroller.addEventListener("touchcancel", onTouchEnd)
@@ -178,7 +202,10 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
       if (Math.abs(scroller.scrollLeft - pos) > 1) pos = scroller.scrollLeft
 
       const autoScrolling =
-        !pausedRef.current && !dialogOpenRef.current && now >= resumeAt
+        !hoveredRef.current &&
+        !interactingRef.current &&
+        !dialogOpenRef.current &&
+        now >= resumeAt
       if (autoScrolling) pos += (MARQUEE_SPEED * dt) / 1000
 
       // Seamless infinite loop: wrap within the first copy of the list
@@ -200,12 +227,13 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
 
     return () => {
       cancelAnimationFrame(raf)
+      scroller.removeEventListener("dragstart", onDragStart)
       scroller.removeEventListener("pointerdown", onPointerDown)
       scroller.removeEventListener("pointermove", onPointerMove)
       scroller.removeEventListener("pointerup", onPointerEnd)
       scroller.removeEventListener("pointercancel", onPointerEnd)
-      scroller.removeEventListener("mouseenter", onMouseEnter)
-      scroller.removeEventListener("mouseleave", onMouseLeave)
+      scroller.removeEventListener("pointerenter", onPointerEnter)
+      scroller.removeEventListener("pointerleave", onPointerLeave)
       scroller.removeEventListener("touchstart", onTouchStart)
       scroller.removeEventListener("touchend", onTouchEnd)
       scroller.removeEventListener("touchcancel", onTouchEnd)
