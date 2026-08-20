@@ -57,6 +57,7 @@ function ReferenceCard({
   return (
     <Card
       aria-hidden={ariaHidden}
+      data-rec-card=""
       data-clone-start={cloneStart ? "" : undefined}
       className="w-[300px] sm:w-[360px] shrink-0 bg-background/80 backdrop-blur-sm border border-border/30 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300"
     >
@@ -115,6 +116,9 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
     let pos = scroller.scrollLeft
     let last: number | null = null
     let resumeAt = 0
+    // When set, the rAF loop eases the scroll position toward this offset —
+    // used to center a card after a touch tap.
+    let centerTarget: number | null = null
 
     const beginInteraction = () => {
       interactingRef.current = true
@@ -142,13 +146,41 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
     let dragging = false
     let dragStartX = 0
     let dragStartScroll = 0
+    let tapStartX = 0
+    let tapStartY = 0
     const onPointerDown = (e: PointerEvent) => {
+      centerTarget = null
       if (e.pointerType === "mouse") {
         mouseDown = true
         dragStartX = e.clientX
         dragStartScroll = scroller.scrollLeft
+      } else {
+        tapStartX = e.clientX
+        tapStartY = e.clientY
       }
       beginInteraction()
+    }
+
+    // Touch tap on a card (not on its button, which opens the dialog) centers
+    // that card in the carousel so it is fully in view on small screens. A
+    // scroll gesture never reaches pointerup — the browser cancels the pointer
+    // sequence when native scrolling takes over — so only true taps qualify.
+    const TAP_SLOP = 10
+    const centerCardFromTap = (e: PointerEvent) => {
+      const target = e.target as HTMLElement | null
+      if (!target || target.closest("button")) return
+      const card = target.closest<HTMLElement>("[data-rec-card]")
+      if (!card) return
+      let t = card.offsetLeft + card.offsetWidth / 2 - scroller.clientWidth / 2
+      const cloneStart = scroller.querySelector<HTMLElement>("[data-clone-start]")
+      const wrapWidth = cloneStart?.offsetLeft ?? 0
+      if (wrapWidth > 0) {
+        // The list exists twice; head for whichever copy is closer
+        for (const cand of [t - wrapWidth, t + wrapWidth]) {
+          if (Math.abs(cand - pos) < Math.abs(t - pos)) t = cand
+        }
+      }
+      centerTarget = Math.max(0, Math.min(t, scroller.scrollWidth - scroller.clientWidth))
     }
     const onPointerMove = (e: PointerEvent) => {
       if (!mouseDown) return
@@ -169,6 +201,14 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
     // cancel the pointer events and hijack the scroll drag.
     const onDragStart = (e: DragEvent) => e.preventDefault()
     const onPointerEnd = (e: PointerEvent) => {
+      if (
+        e.type === "pointerup" &&
+        e.pointerType !== "mouse" &&
+        Math.abs(e.clientX - tapStartX) < TAP_SLOP &&
+        Math.abs(e.clientY - tapStartY) < TAP_SLOP
+      ) {
+        centerCardFromTap(e)
+      }
       mouseDown = false
       if (dragging) {
         dragging = false
@@ -201,6 +241,17 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
       // Adopt any position change made by native touch scrolling / momentum
       if (Math.abs(scroller.scrollLeft - pos) > 1) pos = scroller.scrollLeft
 
+      // Ease toward a tapped card's centered position
+      if (centerTarget !== null) {
+        const diff = centerTarget - pos
+        if (Math.abs(diff) < 1) {
+          pos = centerTarget
+          centerTarget = null
+        } else {
+          pos += diff * Math.min(1, dt / 120)
+        }
+      }
+
       const autoScrolling =
         !hoveredRef.current &&
         !interactingRef.current &&
@@ -215,9 +266,11 @@ export function RecommendationsCarousel({ className }: { className?: string }) {
         if (pos >= wrapWidth) {
           pos -= wrapWidth
           dragStartScroll -= wrapWidth
+          if (centerTarget !== null) centerTarget -= wrapWidth
         } else if (pos < 0) {
           pos += wrapWidth
           dragStartScroll += wrapWidth
+          if (centerTarget !== null) centerTarget += wrapWidth
         }
       }
 
