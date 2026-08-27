@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { DraftingCompass, Sparkles, ArrowRight } from "lucide-react"
-import { PageBackground } from "@/components/page-background"
+import { VideoBackground } from "@/components/video-background"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
@@ -16,9 +16,9 @@ const upcomingWorks = ["Modern Urban Housing", "Riverside Cultural Complex", "Te
 export default function ArchitecturePage() {
   return (
     <div className="flex flex-col flex-grow">
-      <PageBackground />
+      <VideoBackground src="/videos/arch-bg.mp4" poster="/videos/arch-bg-poster.jpg" />
       <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl rounded-3xl border border-border/50 bg-background/60 p-8 text-center shadow-xl backdrop-blur-lg sm:p-12">
           <div className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-2xl border border-border bg-background/60 shadow-sm backdrop-blur-sm">
             <DraftingCompass className="h-8 w-8 text-primary" />
           </div>

@@ -1,0 +1,41 @@
+- generic [active] [ref=f4e1]:
+  - generic [ref=f4e2]:
+    - banner [ref=f4e3]:
+      - generic [ref=f4e4]:
+        - link "Chris Thackrey" [ref=f4e5] [cursor=pointer]:
+          - /url: /
+        - navigation [ref=f4e9]:
+          - link "Home" [ref=f4e10] [cursor=pointer]:
+            - /url: /
+          - link "About" [ref=f4e14] [cursor=pointer]:
+            - /url: /about
+          - link "Work" [ref=f4e20] [cursor=pointer]:
+            - /url: /work
+          - link "Projects" [ref=f4e24] [cursor=pointer]:
+            - /url: /projects
+          - link "Architecture" [ref=f4e28] [cursor=pointer]:
+            - /url: /architecture
+          - link "Contact" [ref=f4e33] [cursor=pointer]:
+            - /url: /contact
+    - main [ref=f4e37]:
+      - generic [ref=f4e43]:
+        - generic [ref=f4e51]: Coming Soon
+        - heading "Architecture, In the Works" [level=1] [ref=f4e54]
+        - paragraph [ref=f4e55]: My architectural works span a career in design and architecture — from concept sketches to built spaces, shaped by a lasting belief that thoughtful design changes how people live, work, and gather. With a background in design at the foundation of everything I build, this page will soon preview that body of work.
+        - generic [ref=f4e56]:
+          - paragraph [ref=f4e57]: Selected works in preparation
+          - generic [ref=f4e58]:
+            - generic [ref=f4e59]: Modern Urban Housing
+            - generic [ref=f4e60]: Riverside Cultural Complex
+            - generic [ref=f4e61]: Tech Innovation Center
+        - generic [ref=f4e62]:
+          - link "Explore My Projects" [ref=f4e63] [cursor=pointer]:
+            - /url: /projects
+          - link "Get in Touch" [ref=f4e64] [cursor=pointer]:
+            - /url: /contact
+    - contentinfo [ref=f4e65]:
+      - paragraph [ref=f4e69]: © 2026 Chris Thackrey. All Rights Reserved.
+  - region "Notifications (F8)":
+    - list
+  - button "Open Next.js Dev Tools" [ref=f4e75] [cursor=pointer]
+  - alert [ref=f4e79]

@@ -1,0 +1,40 @@
+- generic [active] [ref=f7e1]:
+  - generic [ref=f7e2]:
+    - banner [ref=f7e3]:
+      - generic [ref=f7e4]:
+        - link "Chris Thackrey" [ref=f7e5] [cursor=pointer]:
+          - /url: /
+        - navigation [ref=f7e9]:
+          - link "Home" [ref=f7e10] [cursor=pointer]:
+            - /url: /
+          - link "About" [ref=f7e14] [cursor=pointer]:
+            - /url: /about
+          - link "Work" [ref=f7e20] [cursor=pointer]:
+            - /url: /work
+          - link "Projects" [ref=f7e24] [cursor=pointer]:
+            - /url: /projects
+          - link "Architecture" [ref=f7e28] [cursor=pointer]:
+            - /url: /architecture
+          - link "Contact" [ref=f7e33] [cursor=pointer]:
+            - /url: /contact
+    - main [ref=f7e37]:
+      - generic [ref=f7e43]:
+        - generic [ref=f7e51]: Coming Soon
+        - heading "Architecture, In the Works" [level=1] [ref=f7e54]
+        - paragraph [ref=f7e55]: My architectural works span a career in design and architecture — from concept sketches to built spaces, shaped by a lasting belief that thoughtful design changes how people live, work, and gather. With a background in design at the foundation of everything I build, this page will soon preview that body of work.
+        - generic [ref=f7e56]:
+          - paragraph [ref=f7e57]: Selected works in preparation
+          - generic [ref=f7e58]:
+            - generic [ref=f7e59]: Modern Urban Housing
+            - generic [ref=f7e60]: Riverside Cultural Complex
+            - generic [ref=f7e61]: Tech Innovation Center
+        - generic [ref=f7e62]:
+          - link "Explore My Projects" [ref=f7e63] [cursor=pointer]:
+            - /url: /projects
+          - link "Get in Touch" [ref=f7e64] [cursor=pointer]:
+            - /url: /contact
+    - contentinfo [ref=f7e65]:
+      - paragraph [ref=f7e69]: © 2026 Chris Thackrey. All Rights Reserved.
+  - region "Notifications (F8)":
+    - list
+  - alert [ref=f7e70]
