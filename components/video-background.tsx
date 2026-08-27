@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import { useTheme } from "next-themes"
-import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { cn } from "@/lib/utils"
 
 interface VideoBackgroundProps {
@@ -12,14 +11,12 @@ interface VideoBackgroundProps {
 
 /**
  * Renders a full-viewport, continuously looping video background behind the
- * page content, with a theme-aware tint overlay for readability. Visitors who
- * prefer reduced motion see the static poster frame instead.
+ * page content, with a subtle theme-aware tint overlay for readability.
  */
 export function VideoBackground({ src, poster }: VideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
-  const prefersReducedMotion = useReducedMotion()
 
   // Avoid hydration mismatch: only branch on theme after mount
   useEffect(() => {
@@ -30,18 +27,26 @@ export function VideoBackground({ src, poster }: VideoBackgroundProps) {
     const video = videoRef.current
     if (!video) return
 
-    if (prefersReducedMotion) {
-      video.pause()
-      return
+    // Browsers only autoplay muted video, and React can omit the `muted`
+    // attribute from server-rendered HTML, so set it imperatively. Retry
+    // playback once data arrives and when the tab becomes visible again.
+    video.muted = true
+    video.defaultMuted = true
+
+    const tryPlay = () => {
+      if (video.paused) {
+        video.play().catch(() => {})
+      }
     }
 
-    // React may omit the `muted` attribute from server-rendered HTML, which
-    // blocks autoplay; set it imperatively before playing.
-    video.muted = true
-    video.play().catch(() => {
-      // Autoplay can be rejected by browser policy; the poster remains visible.
-    })
-  }, [prefersReducedMotion])
+    tryPlay()
+    video.addEventListener("loadeddata", tryPlay)
+    document.addEventListener("visibilitychange", tryPlay)
+    return () => {
+      video.removeEventListener("loadeddata", tryPlay)
+      document.removeEventListener("visibilitychange", tryPlay)
+    }
+  }, [])
 
   const isDark = mounted && resolvedTheme === "dark"
 
@@ -56,9 +61,9 @@ export function VideoBackground({ src, poster }: VideoBackgroundProps) {
         muted
         playsInline
         disablePictureInPicture
-        preload="metadata"
+        preload="auto"
         aria-hidden="true"
-        className="h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover"
       />
       {/* tint overlay for text readability */}
       <div

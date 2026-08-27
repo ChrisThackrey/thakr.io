@@ -1,0 +1,41 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - banner [ref=f1e3]:
+      - generic [ref=f1e4]:
+        - link "Chris Thackrey" [ref=f1e5] [cursor=pointer]:
+          - /url: /
+        - navigation [ref=f1e9]:
+          - link "Home" [ref=f1e10] [cursor=pointer]:
+            - /url: /
+          - link "About" [ref=f1e14] [cursor=pointer]:
+            - /url: /about
+          - link "Work" [ref=f1e20] [cursor=pointer]:
+            - /url: /work
+          - link "Projects" [ref=f1e24] [cursor=pointer]:
+            - /url: /projects
+          - link "Architecture" [ref=f1e28] [cursor=pointer]:
+            - /url: /architecture
+          - link "Contact" [ref=f1e33] [cursor=pointer]:
+            - /url: /contact
+        - button "Toggle theme" [ref=f1e38] [cursor=pointer]
+    - main [ref=f1e40]:
+      - generic [ref=f1e46]:
+        - generic [ref=f1e54]: Coming Soon
+        - heading "Architecture, In the Works" [level=1] [ref=f1e57]
+        - paragraph [ref=f1e58]: My architectural works span a career in design and architecture — from concept sketches to built spaces, shaped by a lasting belief that thoughtful design changes how people live, work, and gather. With a background in design at the foundation of everything I build, this page will soon preview that body of work.
+        - generic [ref=f1e59]:
+          - paragraph [ref=f1e60]: Selected works in preparation
+          - generic [ref=f1e61]:
+            - generic [ref=f1e62]: Modern Urban Housing
+            - generic [ref=f1e63]: Riverside Cultural Complex
+            - generic [ref=f1e64]: Tech Innovation Center
+        - generic [ref=f1e65]:
+          - link "Explore My Projects" [ref=f1e66] [cursor=pointer]:
+            - /url: /projects
+          - link "Get in Touch" [ref=f1e67] [cursor=pointer]:
+            - /url: /contact
+    - contentinfo [ref=f1e68]:
+      - paragraph [ref=f1e72]: © 2026 Chris Thackrey. All Rights Reserved.
+  - region "Notifications (F8)":
+    - list
+  - alert [ref=f1e73]

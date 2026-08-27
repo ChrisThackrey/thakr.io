@@ -15,10 +15,10 @@ const upcomingWorks = ["Modern Urban Housing", "Riverside Cultural Complex", "Te
 
 export default function ArchitecturePage() {
   return (
-    <div className="flex flex-col flex-grow">
+    <div className="flex min-h-dvh flex-grow flex-col justify-center">
       <VideoBackground src="/videos/arch-bg.mp4" poster="/videos/arch-bg-poster.jpg" />
       <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-2xl rounded-3xl border border-border/50 bg-background/60 p-8 text-center shadow-xl backdrop-blur-lg sm:p-12">
+        <div className="mx-auto max-w-2xl text-center">
           <div className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-2xl border border-border bg-background/60 shadow-sm backdrop-blur-sm">
             <DraftingCompass className="h-8 w-8 text-primary" />
           </div>
@@ -28,11 +28,11 @@ export default function ArchitecturePage() {
             Coming Soon
           </Badge>
 
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl [text-shadow:0_1px_3px_hsl(var(--background)/0.9),0_0_24px_hsl(var(--background)/0.6)]">
             Architecture, In the Works
           </h1>
 
-          <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground sm:text-xl">
+          <p className="mx-auto mt-6 max-w-xl text-lg text-foreground/80 sm:text-xl [text-shadow:0_1px_3px_hsl(var(--background)/0.9),0_0_24px_hsl(var(--background)/0.6)]">
             My architectural works span a career in design and architecture &mdash; from concept sketches to
             built spaces, shaped by a lasting belief that thoughtful design changes how people live, work, and
             gather. With a background in design at the foundation of everything I build, this page will soon
@@ -40,7 +40,7 @@ export default function ArchitecturePage() {
           </p>
 
           <div className="mt-10">
-            <p className="mb-4 text-sm font-medium uppercase tracking-wider text-muted-foreground">
+            <p className="mb-4 text-sm font-medium uppercase tracking-wider text-muted-foreground [text-shadow:0_1px_3px_hsl(var(--background)/0.9),0_0_24px_hsl(var(--background)/0.6)]">
               Selected works in preparation
             </p>
             <div className="flex flex-wrap justify-center gap-2">
