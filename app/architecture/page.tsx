@@ -11,7 +11,18 @@ export const metadata: Metadata = {
     "A career spanning design and architecture. Previews of Chris Thackrey's architectural work are coming soon.",
 }
 
-const upcomingWorks = ["Modern Urban Housing", "Riverside Cultural Complex", "Tech Innovation Center"]
+const upcomingWorks = [
+  "Tallinn Architecture Biennale Featured Work (Estonia)",
+  "Royal Museum of Yangzhou (China)",
+  "Student Workshops (Asia and Europe)",
+  "Master Architecture Thesis (Sci-Arc)",
+  "GRD Masterplan (Dubai)",
+  "Undergraduate Integrated Thesis (Texas A&M)",
+  "Synapse Dress Design for Anouk Wipprecht (Netherlands)",
+  "Xuberance Essence Lighting Series (Shanghai, China)",
+  "Evolo Competition Plexus Tower (Published Winner)",
+  "LOT22 - International Design Competition Winning Entry",
+]
 
 export default function ArchitecturePage() {
   return (
@@ -40,7 +51,7 @@ export default function ArchitecturePage() {
           </p>
 
           <div className="mt-10">
-            <p className="mb-4 inline-block rounded-full bg-background/40 px-3 py-1 text-sm font-medium uppercase tracking-wider text-muted-foreground backdrop-blur-sm">
+            <p className="mb-4 inline-block rounded-full bg-background/40 px-3 py-1 text-sm font-medium uppercase tracking-wider text-foreground/80 backdrop-blur-sm">
               Selected works in preparation
             </p>
             <div className="flex flex-wrap justify-center gap-2">

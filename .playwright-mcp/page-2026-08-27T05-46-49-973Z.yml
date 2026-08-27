@@ -1,0 +1,48 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Chris Thackrey" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - navigation [ref=e9]:
+          - link "Home" [ref=e10] [cursor=pointer]:
+            - /url: /
+          - link "About" [ref=e14] [cursor=pointer]:
+            - /url: /about
+          - link "Work" [ref=e20] [cursor=pointer]:
+            - /url: /work
+          - link "Projects" [ref=e24] [cursor=pointer]:
+            - /url: /projects
+          - link "Architecture" [ref=e28] [cursor=pointer]:
+            - /url: /architecture
+          - link "Contact" [ref=e33] [cursor=pointer]:
+            - /url: /contact
+    - main [ref=e37]:
+      - generic [ref=e43]:
+        - generic [ref=e51]: Coming Soon
+        - heading "Architecture, In the Works" [level=1] [ref=e54]
+        - paragraph [ref=e55]: My architectural works span a career in design and architecture — from concept sketches to built spaces, shaped by a lasting belief that thoughtful design changes how people live, work, and gather. With a background in design at the foundation of everything I build, this page will soon preview that body of work.
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: Selected works in preparation
+          - generic [ref=e58]:
+            - generic [ref=e59]: Tallinn Architecture Biennale Featured Work (Estonia)
+            - generic [ref=e60]: Royal Museum of Yangzhou (China)
+            - generic [ref=e61]: Student Workshops (Asia and Europe)
+            - generic [ref=e62]: Master Architecture Thesis (Sci-Arc)
+            - generic [ref=e63]: GRD Masterplan (Dubai)
+            - generic [ref=e64]: Undergraduate Integrated Thesis (Texas A&M)
+            - generic [ref=e65]: Synapse Dress Design for Anouk Wipprecht (Netherlands)
+            - generic [ref=e66]: Xuberance Essence Lighting Series (Shanghai, China)
+            - generic [ref=e67]: Evolo Competition Plexus Tower (Published Winner)
+            - generic [ref=e68]: LOT22 - International Design Competition Winning Entry
+        - generic [ref=e69]:
+          - link "Explore My Projects" [ref=e70] [cursor=pointer]:
+            - /url: /projects
+          - link "Get in Touch" [ref=e71] [cursor=pointer]:
+            - /url: /contact
+    - contentinfo [ref=e72]:
+      - paragraph [ref=e76]: © 2026 Chris Thackrey. All Rights Reserved.
+  - region "Notifications (F8)":
+    - list
+  - button "Open Next.js Dev Tools" [ref=e82] [cursor=pointer]
+  - alert [ref=e86]
