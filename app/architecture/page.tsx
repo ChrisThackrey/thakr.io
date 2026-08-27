@@ -23,16 +23,16 @@ export default function ArchitecturePage() {
             <DraftingCompass className="h-8 w-8 text-primary" />
           </div>
 
-          <Badge variant="outline" className="mb-6 gap-1.5 px-3 py-1 text-sm font-medium">
+          <Badge variant="outline" className="mb-6 gap-1.5 bg-background/40 px-3 py-1 text-sm font-medium">
             <Sparkles className="h-3.5 w-3.5" />
             Coming Soon
           </Badge>
 
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl [text-shadow:0_1px_3px_hsl(var(--background)/0.9),0_0_24px_hsl(var(--background)/0.6)]">
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
             Architecture, In the Works
           </h1>
 
-          <p className="mx-auto mt-6 max-w-xl text-lg text-foreground/80 sm:text-xl [text-shadow:0_1px_3px_hsl(var(--background)/0.9),0_0_24px_hsl(var(--background)/0.6)]">
+          <p className="mx-auto mt-6 max-w-xl rounded-2xl bg-background/40 p-4 text-lg text-foreground/80 backdrop-blur-sm sm:text-xl">
             My architectural works span a career in design and architecture &mdash; from concept sketches to
             built spaces, shaped by a lasting belief that thoughtful design changes how people live, work, and
             gather. With a background in design at the foundation of everything I build, this page will soon
@@ -40,7 +40,7 @@ export default function ArchitecturePage() {
           </p>
 
           <div className="mt-10">
-            <p className="mb-4 text-sm font-medium uppercase tracking-wider text-muted-foreground [text-shadow:0_1px_3px_hsl(var(--background)/0.9),0_0_24px_hsl(var(--background)/0.6)]">
+            <p className="mb-4 inline-block rounded-full bg-background/40 px-3 py-1 text-sm font-medium uppercase tracking-wider text-muted-foreground backdrop-blur-sm">
               Selected works in preparation
             </p>
             <div className="flex flex-wrap justify-center gap-2">
