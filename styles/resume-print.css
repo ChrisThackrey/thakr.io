@@ -1,17 +1,15 @@
 /* Resume-specific print styles.
  *
- * Printing (and the headless-Chrome PDF in scripts/generate-resume-downloads.mjs
- * when run against print media) should look exactly like the on-screen resume
- * preview: same fonts, sizes, and colors. So these rules only strip the site
- * chrome around the resume card — they deliberately do NOT restyle typography.
+ * The on-screen resume is already laid out as two US-Letter sheets that
+ * mirror public/Chris-Thackrey-Resume.pdf, so printing only has to strip the
+ * site chrome, undo the screen-fit scaling, and emit one sheet per page.
  */
 @media print {
   @page {
     size: letter;
-    margin: 0.35in 0.3in;
+    margin: 0;
   }
 
-  /* Keep the preview's exact colors */
   * {
     -webkit-print-color-adjust: exact !important;
     color-adjust: exact !important;
@@ -23,9 +21,8 @@
     background: #ffffff !important;
   }
 
-  /* Hide everything that isn't the resume itself */
   .no-print,
-  header,
+  header:not(.rd-running-header),
   footer,
   nav,
   .navigation,
@@ -34,36 +31,35 @@
     display: none !important;
   }
 
-  main {
-    padding: 0 !important;
-    max-width: 100% !important;
-  }
-
+  main,
   .container {
-    max-width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
+    max-width: none !important;
   }
 
-  /* The preview card fills the page; drop decoration that breaks across pages */
-  .resume-container {
-    background: #ffffff !important;
+  .rd-scaler {
+    height: auto !important;
+    max-width: none !important;
+  }
+
+  .rd-scaler-inner {
+    transform: none !important;
+  }
+
+  .rd-document {
+    gap: 0;
+  }
+
+  .rd-sheet {
     box-shadow: none !important;
-    border: none !important;
-    border-radius: 0 !important;
-    max-width: 100% !important;
-    margin: 0 !important;
+    height: 11in;
+    min-height: 11in;
+    overflow: hidden;
+    break-inside: avoid;
   }
 
-  /* Sensible page-break behavior without changing appearance */
-  .resume-content h1,
-  .resume-content h2,
-  .resume-content h3 {
-    break-after: avoid !important;
-  }
-
-  .resume-content li,
-  .resume-content p {
-    break-inside: avoid !important;
+  .rd-sheet--first {
+    break-after: page;
   }
 }

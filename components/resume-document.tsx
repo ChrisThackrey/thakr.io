@@ -1,0 +1,181 @@
+import type React from "react"
+import {
+  resume,
+  type EducationEntry,
+  type ExperienceEntry,
+  type Para,
+  type ProjectEntry,
+  type SkillGroup,
+} from "@/content/resume"
+
+/**
+ * Renders the resume as two US-Letter pages that reproduce
+ * public/Chris-Thackrey-Resume.pdf: same typography, colors, spacing,
+ * page breaks, "Continued…" footer, and page-2 running header.
+ *
+ * Layout rules live in styles/resume-document.css.
+ */
+
+const paraText = (para: Para) => (typeof para === "string" ? para : para.text)
+
+const paraStyle = (para: Para): React.CSSProperties | undefined =>
+  typeof para === "string" ? undefined : { letterSpacing: `${para.letterSpacing}pt` }
+
+function SectionHeading({ children, plain }: { children: React.ReactNode; plain?: boolean }) {
+  return <h2 className={plain ? "rd-section-heading rd-section-heading--plain" : "rd-section-heading"}>{children}</h2>
+}
+
+function Bullet({ glyph, para, children }: { glyph: "check" | "square"; para?: Para; children?: React.ReactNode }) {
+  return (
+    <div className={`rd-bullet rd-bullet--${glyph}`} style={para ? paraStyle(para) : undefined}>
+      <span className="rd-bullet-glyph" aria-hidden="true">
+        {glyph === "check" ? "✓" : "▪"}
+      </span>
+      <span className="rd-bullet-text">{para ? paraText(para) : children}</span>
+    </div>
+  )
+}
+
+function SkillRow({ group }: { group: SkillGroup }) {
+  return (
+    <Bullet glyph="square">
+      <strong>{group.label}:</strong> {group.items}
+    </Bullet>
+  )
+}
+
+function TitleRow({ title, dates }: { title: string; dates: string }) {
+  return (
+    <div className="rd-entry-title-row">
+      <span className="rd-entry-title">{title}</span>
+      <span className="rd-entry-dates">{dates}</span>
+    </div>
+  )
+}
+
+function Description({ para }: { para: Para }) {
+  return (
+    <p className="rd-entry-description" style={paraStyle(para)}>
+      {paraText(para)}
+    </p>
+  )
+}
+
+function Experience({ entry }: { entry: ExperienceEntry }) {
+  return (
+    <div className="rd-entry">
+      <div className="rd-shaded">
+        <TitleRow title={entry.title} dates={entry.dates} />
+        <div className="rd-entry-company">{entry.company}</div>
+        {entry.description && <Description para={entry.description} />}
+      </div>
+      {entry.bullets.map((para) => (
+        <Bullet key={paraText(para).slice(0, 40)} glyph="square" para={para} />
+      ))}
+    </div>
+  )
+}
+
+function Project({ entry }: { entry: ProjectEntry }) {
+  return (
+    <div className="rd-entry rd-entry--project">
+      <div className="rd-shaded">
+        <TitleRow title={entry.title} dates={entry.dates} />
+        <Description para={entry.description} />
+      </div>
+      {entry.bullets.map((para) => (
+        <Bullet key={paraText(para).slice(0, 40)} glyph="square" para={para} />
+      ))}
+    </div>
+  )
+}
+
+function Education({ entry }: { entry: EducationEntry }) {
+  return (
+    <p
+      className="rd-education"
+      style={entry.letterSpacing !== undefined ? { letterSpacing: `${entry.letterSpacing}pt` } : undefined}
+    >
+      <strong>{entry.institution}</strong>
+      {entry.detail}
+    </p>
+  )
+}
+
+const c = resume.contact
+
+export function ResumeDocument() {
+  const [cto, architect, engineer] = resume.experience
+
+  return (
+    <div className="rd-document">
+      {/* ------------------------------ Page 1 ------------------------------ */}
+      <section className="rd-sheet rd-sheet--first" aria-label="Resume, page 1">
+        <div className="rd-sheet-body">
+          <h1 className="rd-name">{resume.name}</h1>
+          <p className="rd-contact">
+            <a href={c.email.href}>{c.email.label}</a>
+            {" | "}
+            {c.location}
+            {" | "}
+            {c.phone}
+            {" | "}
+            <a href={c.linkedin.href} target="_blank" rel="noopener noreferrer">
+              {c.linkedin.label}
+            </a>
+            <span className="rd-contact-sep"> | </span>
+            <a href={c.github.href} target="_blank" rel="noopener noreferrer">
+              {c.github.label}
+            </a>
+            <span className="rd-contact-sep"> | </span>
+            <a href={c.website.href}>{c.website.label}</a>
+          </p>
+          <p className="rd-tagline">{resume.tagline}</p>
+          <p className="rd-summary">{resume.summary}</p>
+
+          <SectionHeading>Leadership Highlights</SectionHeading>
+          {resume.leadershipHighlights.map((para) => (
+            <Bullet key={paraText(para).slice(0, 40)} glyph="check" para={para} />
+          ))}
+
+          <SectionHeading>Technical Skills</SectionHeading>
+          {resume.technicalSkills.map((group) => (
+            <SkillRow key={group.label} group={group} />
+          ))}
+
+          <SectionHeading>Professional Experience</SectionHeading>
+          <Experience entry={cto} />
+          <Experience entry={architect} />
+        </div>
+        <p className="rd-footer">Continued…</p>
+      </section>
+
+      {/* ------------------------------ Page 2 ------------------------------ */}
+      <section className="rd-sheet rd-sheet--second" aria-label="Resume, page 2">
+        <header className="rd-running-header">
+          <span>
+            Chris Thackrey | <a href={c.email.href}>{c.email.label}</a> | {c.phone} |{" "}
+            <a href={c.linkedin.href} target="_blank" rel="noopener noreferrer">
+              {c.linkedin.label}
+            </a>{" "}
+            | <a href={c.website.href}>{c.website.label}</a>
+          </span>
+          <span>Page 2</span>
+        </header>
+        <div className="rd-sheet-body">
+          <Experience entry={engineer} />
+
+          <SectionHeading plain>Software Engineering Projects</SectionHeading>
+          {resume.projects.map((project) => (
+            <Project key={project.title} entry={project} />
+          ))}
+
+          <SectionHeading>Education | Professional Development</SectionHeading>
+          {resume.education.map((entry) => (
+            <Education key={entry.institution} entry={entry} />
+          ))}
+        </div>
+      </section>
+    </div>
+  )
+}

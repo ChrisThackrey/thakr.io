@@ -1,75 +1,204 @@
-export const resumeContent = `
-Chris Thackrey			 (707) 319-3306  |  c.r.thackrey@gmail.com  |  San Antonio, TX  
-**Senior Software Engineer**		                                                  [thakr.io](http://thakr.io) | [Github](http://github.com/ChrisThackrey) | [LinkedIn](http://linkedin.com/in/chris-thackrey-015)
+/**
+ * Resume content, transcribed verbatim from public/Chris-Thackrey-Resume.pdf
+ * (the authoritative document, also offered as a .docx download).
+ *
+ * Keep this file in sync with those two files whenever the resume changes.
+ */
 
-Summary  
----
+/**
+ * A paragraph of text. Word applies condensed character spacing to a few
+ * paragraphs so they fit their lines; those are expressed as objects with the
+ * letter-spacing Word uses (in pt).
+ */
+export type Para = string | { text: string; letterSpacing: number }
 
-Accomplished Full-Stack Software Engineer and CTO with a unique multidisciplinary background that bridges high-level design sensibilities with robust technical architecture. Expert in building scalable, AI-driven applications by leveraging deep systems thinking to translate complex business requirements into performant, elegant code. Proven leader with a track record of directing engineering teams through challenging implementations, applying innovative technical strategies to deliver reliable, user-centric solutions. Adept at navigating intricate infrastructure, from automated multi-tenant systems to sophisticated spatial data visualizations, with a relentless focus on quality, security, and strategic project execution.
+/** Word's "Condensed by 0.2pt" character spacing. */
+const condensed = (text: string, letterSpacing = -0.2): Para => ({ text, letterSpacing })
 
-Technical Skills  
----
+export interface ContactLink {
+  label: string
+  href: string
+}
 
-**Front End** | TypeScript, NextJS, Astro, Svelte, React Hooks \+ Context API, Redux, JavaScript, D3, Shadcn/ui, TailwindCSS, ChakraUI, v0, HeyGen, Google Maps Platform, React Native, Swift **Back End** | Vercel Serverless Functions, Edge Functions, GraphQL, MongoDB, MySQL, Prisma, Supabase, Firebase, Redis, Python, FastAPI, DynamoDB, Amazon RDS **Deploy** | Vercel Platform, Github Actions, Github Apps, Vercel CLI, Deploy Hooks, Vercel REST API, Docker, Heroku, DigitalOcean, Electron, AWS: EC2, AWS Lambda Functions, Google Cloud Functions, Amazon Bedrock, Amazon Sagemaker, Clerk Auth **DevOps** | Turbopack, Turborepo, Azure DevOps Integration, Observability Tools, Trigger.dev, Datadog, Artillery.io, TDD prompt engineering, Critical-CSS, React-Suspense, NGINX 
+export interface SkillGroup {
+  label: string
+  items: string
+}
 
-Software Engineering Work  
----
+export interface ExperienceEntry {
+  title: string
+  dates: string
+  company: string
+  /** Italic summary shown inside the shaded block under the company line. */
+  description?: string
+  bullets: Para[]
+}
 
-**Rivendell \- AI Development and Research Tool**  March 2025  
-AI development tool that functions both internally for the company and externally for clients as "version control for reasoning".
+export interface ProjectEntry {
+  title: string
+  dates: string
+  /** Italic summary shown inside the shaded block under the title. */
+  description: Para
+  bullets: Para[]
+}
 
-* Implemented a monte-carlo algorithm to run large batches of prompt calls in parallel to various large-language AI models (llms), providing more deterministic outcomes by improving reliable code metrics such as compute and readability.  
-* Engineered LLM-as-judge evaluation pipeline scoring every solution across six quality axes and classifying outputs recommended, viable, or problematic.  
-* Generated project roadmaps automatically by ranking highest-scoring reasoning steps into five-phase Gantt timelines with milestone markers.
+export interface EducationEntry {
+  institution: string
+  detail: string
+  /** Word's condensed character spacing for this line, in pt. */
+  letterSpacing?: number
+}
 
-**AI Applications for National Education Research Organization**  January 2024 (Subject to NDA)  
-AI teaching application featuring a multiplayer AI chat and advanced deep research enabled.
+export const resume = {
+  name: "CHRIS THACKREY",
 
-* Engineered a multiplayer AI chat system to route messages across multiple specialized bot variants over authenticated connections, ensuring real-time interactivity while maintaining participant anonymization.  
-* Created a multi-tenant architecture solution for project deployments by automating tenant provisioning across 27 idempotent stages with persisted state, ensuring safe, resumable infrastructure deployments of dedicated EC2, Supabase, and S3 resources per district.  
-* Designed and implemented interactive interface templates to facilitate AI context and responses.  
-* Scored AI outputs across multiple LangSmith evaluators spanning correctness, groundedness, document relevance, schema validity, and processing time.
+  contact: {
+    email: { label: "c.r.thackrey@gmail.com", href: "mailto:c.r.thackrey@gmail.com" },
+    location: "San Antonio, TX",
+    phone: "(707) 319-3306",
+    linkedin: { label: "LinkedIn", href: "https://www.linkedin.com/in/chris-thackrey-015/" },
+    github: { label: "GitHub", href: "https://github.com/ChrisThackrey" },
+    website: { label: "www.thakr.io", href: "/" },
+  },
 
-**AI Analysis Tools For International Wildfire Science and Technology Company**  October 2024 (Subject to NDA)  
-Cloud-based SaaS offering on-demand wildfire spread prediction capabilities to support operational response.
+  tagline: "Software Engineer | Full Stack Developer | AI Engineering",
 
-* Scaled Uber’s H3 hex resolution across seven zoom tiers, over-generating twenty-five percent beyond the viewport to effectively erase edge-of-screen rendering gaps.  
-* Utilized secured Azure backends to make safe API calls to private data from public sources.  
-* Created AI-driven assessment tools and forecast features to improve event response times for 20,000+ incidents per year.
+  summary:
+    "Software Engineer and technology leader specializing in full-stack development, AI engineering, AI-powered applications, and scalable software architecture. Experienced designing and building production AI applications, intelligent chat systems, developer tools, and data-intensive platforms using TypeScript, React, Next.js, Python, PostgreSQL, cloud infrastructure, and large language model APIs. International professional experience spanning the United States, China, Dubai, and Finland, bringing cross-cultural perspective to technical collaboration and problem-solving.",
 
-**CRM Management App to Handle Insurance Clients and Leads** \- [lineagecrm.com](https://lineagecrm.com)  January 2024  
-Final expense CRM management app and tool for handling clients and leads, currently deployed with more than 200 active users.
+  leadershipHighlights: [
+    condensed("AI application development, technical problem-solving, and rapid adoption of emerging technologies; combines an architectural design background with full-stack engineering to create technically sophisticated applications with intuitive, visually polished user experiences."),
+    "Translates complex technical requirements into practical software solutions, balancing system architecture, application performance, security, and user needs.",
+    "Demonstrated ability to rapidly learn emerging technologies, evaluate new approaches, and apply them to solve complex engineering challenges and accelerate product development.",
+    "Experienced leading cross functional teams to design, develop, and deploy innovative software solutions, interacting directly with executives, investors, and clients, translating complex technical challenges into logical concepts for diverse audiences.",
+  ] satisfies Para[],
 
-* Powered lead search with a materialized view denormalizing four joined tables, enabling high-performance multi-dimensional filtering across status, source, and location.  
-* Handled Twilio call lifecycle events with matching teardown, driving mute, timers, and reconnection state in a draggable dialer.  
-* Completed Extract, Transform, Load (ETL) process from legacy backend into new database connections.
+  technicalSkills: [
+    { label: "Languages", items: "TypeScript, JavaScript, Python, PHP, Swift, Rust, SQL" },
+    {
+      label: "Front-End Development",
+      items:
+        "React, Next.js, React Native, Astro, Svelte, Redux, React Hooks, Context API, D3.js, React Three Fiber, React Flow, Tailwind CSS, Shadcn/ui, Chakra UI, Vuetify",
+    },
+    {
+      label: "Back-End Development",
+      items: "Node.js, FastAPI, Express, GraphQL, Vercel Serverless Functions, Edge Functions, REST APIs",
+    },
+    {
+      label: "AI / Machine Learning",
+      items:
+        "OpenAI API, Anthropic API, GPT-4o, Claude, Amazon Bedrock, Amazon SageMaker, LLM-as-Judge Evaluation, Retrieval-Augmented Generation (RAG), Prompt Engineering, LangSmith, Vector Embeddings, AI Agent Systems",
+    },
+    {
+      label: "Databases / Data Engineering",
+      items: "PostgreSQL, Supabase, MySQL, MongoDB, DynamoDB, Amazon RDS, Redis, Prisma, pgvector, PL/pgSQL, JSONB",
+    },
+    {
+      label: "Cloud / DevOps",
+      items:
+        "AWS EC2, AWS Lambda, Amazon S3, Route53, Vercel, Azure Static Web Apps, Google Cloud Functions, Docker, Heroku, DigitalOcean, GitHub Actions, NGINX, Turborepo, Turbopack",
+    },
+    {
+      label: "Testing / Quality / Observability",
+      items:
+        "Vitest, Jest, Test-Driven Development (TDD), Zod, Sentry, Datadog, Artillery.io, Vercel Analytics, Harness Engineering",
+    },
+    {
+      label: "Integrations / Tools",
+      items:
+        "Twilio Voice SDK, Google Calendar API, Google Drive API, Mapbox, Uber H3, WebSockets, Stream.io, Clerk Auth, GitHub Apps",
+    },
+  ] satisfies SkillGroup[],
 
-Professional Experience  
----
+  experience: [
+    {
+      title: "CHIEF TECHNOLOGY OFFICER & SENIOR SOFTWARE ENGINEER",
+      dates: "MAY 2025 to PRESENT",
+      company: "CelaHealthcare, Inc., College Station, TX",
+      description:
+        "Serve as a hands-on Senior Software Engineer and CTO, directing software architecture, AI engineering, application development, and technical execution while serving as the primary inventor of patented healthcare application technology. Lead technology strategy and hands-on engineering for a healthcare technology startup, overseeing product architecture, application development, technical execution, and multidisciplinary engineering initiatives.",
+      bullets: [
+        "Manage a multidisciplinary technical team comprising developers, a data engineer, and a project manager, establishing development priorities and guiding complex technical implementations. Translate business objectives into scalable, secure, and user-focused software solutions, balancing product innovation with engineering quality.",
+        "Establish and refine software engineering practices encompassing specification-driven development, testing, security, and technical documentation to support reliable product delivery. Drive research and development of proprietary healthcare application capabilities, applying emerging technologies and systems-level thinking to address complex technical challenges.",
+      ],
+    },
+    {
+      title: "PRINCIPAL SOFTWARE ARCHITECT",
+      dates: "MAR 2025 to JULY 2025",
+      company: "Silver Bow Technology Group, Dallas, TX",
+      bullets: [
+        "Led a software engineering team and developed core AI functionality for an AI-powered “version control for reasoning” development tool; architected AI-driven code generation, prompt enhancement, project planning, and security features; translated client requirements into technical architecture and software solutions.",
+      ],
+    },
+    {
+      title: "SOFTWARE ENGINEER",
+      dates: "JAN 2024 to MAR 2025",
+      company: "Black Flag Design",
+      description:
+        "Contributed software engineering across five concurrently developed projects involving diverse technology stacks and programming languages. Served as Lead Developer for an AI code-generation application and internal development tools, subject to NDA.",
+      bullets: [
+        "Collaborated across project teams to deliver features, solve technical challenges, and support software development workflows; organized, scripted, and hosted the “AI DIY” podcast series covering AI coding trends and technology events.",
+      ],
+    },
+  ] satisfies ExperienceEntry[],
 
-**Chief Technology Officer**, **CelaHealthcare Inc.**  May 2025 \- Present
+  projects: [
+    {
+      title: "RIVENDELL - AI DEVELOPMENT AND RESEARCH TOOL",
+      dates: "MAR 2025",
+      description:
+        "AI development and research platform functioning as “version control for reasoning,” supporting internal development and external client use. Engineered a Monte Carlo processing system that runs large batches of prompts against multiple large language models, improving the consistency of code evaluation metrics.",
+      bullets: [
+        "Built an LLM-as-Judge evaluation pipeline scoring solutions across six quality axes, classifying outputs as recommended, viable, or problematic. Developed semantic code search using PostgreSQL pgvector, 1,536-dimensional embeddings, IVFFlat cosine similarity, and language-filtered retrieval. Architected interactive 3D solution-space visualization using React Three Fiber, six-dimensional quality vectors, centroid clustering, and GPT-4o-assisted cluster labeling.",
+        condensed("Designed PostgreSQL schemas with 20+ PL/pgSQL functions and 21 indexes, including GIN, B-tree, and IVFFlat indexes. Implemented multi-stage JSON repair, provider-agnostic LLM abstractions, resumable batch processing, and automated code-file persistence. Established end-to-end type safety with 20+ Zod schemas and generated automated five-phase project roadmaps from ranked reasoning steps. Wrote 69 Vitest test cases covering services, components, and integration flows across embedding, storage, and retrieval."),
+      ],
+    },
+    {
+      title: "AI APPLICATION - NATIONAL CENTER ON EDUCATION AND THE ECONOMY (NCEE) | Subject to NDA",
+      dates: "JAN 2024",
+      description:
+        condensed("AI teaching application featuring multiplayer AI chat, deep research, and role-specific user experiences. Engineered an AI chat system routing messages through a classifier to six specialized AI bots, supporting real-time interaction through authenticated WebSocket connections. Built authenticated WebSocket infrastructure, voice transcription workflows, chat-history token budgeting, and PDF transcript exports.", -0.15),
+      bullets: [
+        "Designed and implemented multi-tenant infrastructure provisioning across 27 idempotent stages, automating dedicated EC2, Supabase, S3, and Route53 resources for each district. Built retrieval-augmented AI workflows using Supabase pgvector, document embeddings, conversational query rephrasing, and source-aware citation handling. Developed AI evaluation workflows using six automated LangSmith evaluators measuring correctness, groundedness, document relevance, schema validity, and processing time.",
+        "Implemented role-differentiated chat interfaces for teachers, leaders, and students, with responsive layouts and AI context-aware rendering. Developed deployment safeguards including persisted provisioning state, DNS verification, secret cleanup, failure classification, and resumable deployments.",
+      ],
+    },
+    {
+      title: "AI ANALYSIS TOOLS - INTERNATIONAL WILDFIRE SCIENCE & TECHNOLOGY CO. | Subject to NDA",
+      dates: "OCT 2024",
+      description:
+        condensed("Cloud-based SaaS platform providing on-demand wildfire spread prediction and operational response analysis. Engineered specialized spatial visualization using trigonometric regular polygons to maintain uniform hexagon sizing across latitudes despite Mercator projection distortion."),
+      bullets: [
+        condensed("Implemented Uber H3 spatial indexing across seven zoom tiers, viewport overscan, off-screen culling, and optimized SVG rendering for large geographic datasets. Developed AI-driven assessment and forecast tools supporting response analysis for 20,000+ incidents annually."),
+        "Built secured backend integrations for private data access and contributed to a TypeScript fire-weather API unifying federal weather and coordination-center outlooks. Optimized geographic data processing through caching, chunked GeoJSON ingestion, deferred serialization, and responsive interaction handling.",
+      ],
+    },
+    {
+      title: "LINEAGE CRM - INSURANCE CLIENT AND LEAD MANAGEMENT PLATFORM",
+      dates: "JAN 2024",
+      description:
+        "Full-stack CRM application for insurance clients and leads, deployed with more than 2,000 active users. Completed ETL migration from legacy backend systems into relational database structures, preserving referential integrity and supporting production data migration. Developed a four-stage CSV import wizard, duplicate detection, conflict tracking, and legacy data migration workflows.",
+      bullets: [
+        condensed("Built high-performance lead search using PostgreSQL materialized views, GIN-indexed full-text search, and multi-dimensional filtering across status, source, and location. Engineered an in-browser softphone using Twilio Voice SDK, including scoped access tokens, call lifecycle management, mute, timers, and reconnection state."),
+        condensed("Implemented multi-tenant database security across 36 PostgreSQL tables and 65 row-level security policies. Built virtualized lead tables, WebGL map visualization, bulk editing, responsive analytics dashboards, and Google Calendar synchronization. Implemented production observability with Sentry tracing, session replay, and heatmap analytics."),
+      ],
+    },
+  ] satisfies ProjectEntry[],
 
-* Senior Software Engineer and primary inventor of patented healthcare application technology  
-* Administrative leader for technical team including 3 developers, data engineer, and project manager
-
-**Principal Software Architect**, **Silver Bow Technology Group**  March 2025 \- July 2025
-
-* Lead software engineering team and built the core AI functionality for a "version control for reasoning" dev tool providing AI-driven code-generation, prompt enhancement, architecture strategy, as well as project planning and security features.
-
-**Software Engineer**, **Black Flag Design**  January 2024 \- March 2025
-
-* Contributed code across five projects in simultaneous development, including Lead Developer of an AI codegen application and internal dev tool, subject to a signed NDA.  
-* Organized, scripted, and hosted the ‘AI DIY’ podcast series on AI coding trends and events in the tech industry.
-
-**Lead Designer**, **Gianni Ranaulo Design**, Dubai, UAE  April 2015 \- February 2016  
-**Lead Designer**, **Xuberance Design**, Shanghai, China  August 2013 \- April 2015
-
-Education  
----
-
-**Rust Developer Bootcamp** \- Learned Rust independently with Certificate of Completion  November 2022  
-**AlgoExpert.io** \- Certificate of Completion for solving 100 technical interview questions  May 2025  
-**Hack Reactor**, Austin, Texas  Graduated March 2021  
-**Gnomon School of Visual Effects**, Los Angeles, California \- Studied computer programming  April 2017 \- February 2018  
-**Southern California Institute of Architecture**, Los Angeles, California \- Completed 35 hours towards Masters degree in Architecture, 3.5/4.0 GPA \- January 2015 \- April 2017  
-**Texas A\&M University, Bachelor of Science \- Environmental Design** \- Graduated Cum Laude 3.5/4.0 GPA \- May 2015`
+  education: [
+    {
+      institution: "Texas A&M University",
+      detail: ", Bachelor of Science, Environmental Design | Cum Laude, GPA 3.5/4.0",
+    },
+    {
+      institution: "Southern CA Institute of Architecture",
+      detail: ", Los Angeles, CA | 35 hours toward Master’s Degree in Architecture, GPA 3.5/4.0",
+    },
+    { institution: "Gnomon School of Visual Effects", detail: " | Computer Programming Studies", letterSpacing: -0.2 },
+    {
+      institution: "Certificates of Completion:",
+      detail: " Hack Reactor Coding Bootcamp | Rust Developer Bootcamp | AlgoExpert.io",
+      letterSpacing: -0.2,
+    },
+  ] satisfies EducationEntry[],
+}

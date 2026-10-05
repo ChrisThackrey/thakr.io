@@ -1,0 +1,229 @@
+/*
+ * Resume document styles.
+ *
+ * Reproduces public/Chris-Thackrey-Resume.pdf: Times New Roman, US-Letter
+ * pages, Word's margins (0.375in top / 0.5in left / 0.46in right), navy
+ * #002060 accents, #E8E8E8 shaded role blocks, 1.15 single-line spacing, and
+ * Word's "larger of before/after" paragraph spacing (CSS margin collapsing).
+ *
+ * All measurements are in pt/in so the sheet is physically accurate; the
+ * ResumeScaler component scales the whole sheet down on narrow screens.
+ */
+
+.rd-document {
+  --rd-navy: #002060;
+  --rd-shade: #e8e8e8;
+  --rd-rule: 1.5pt;
+  /*
+   * Word compresses inter-word spaces on justified lines (down to ~1.8pt from
+   * the natural 2.5pt); browsers only ever expand them. Measuring the space
+   * at 1.9pt reproduces Word's line breaks; justification then re-expands.
+   */
+  --rd-justify-word-spacing: -0.6pt;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-family: "Times New Roman", "Liberation Serif", Tinos, Times, serif;
+  font-size: 10pt;
+  line-height: 1.15;
+  color: #000;
+  color-scheme: light;
+}
+
+.rd-document a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.rd-document :where(p, h1, h2) {
+  margin: 0;
+}
+
+/* ------------------------------ Pages ------------------------------ */
+
+.rd-sheet {
+  box-sizing: border-box;
+  width: 8.5in;
+  min-height: 11in;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 0.375in 0.46in 0 0.5in;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.18),
+    0 10px 30px rgba(0, 0, 0, 0.14);
+}
+
+.rd-sheet--second {
+  padding-top: 0.3in;
+}
+
+/* Word drops space-before on the first paragraph of a page. */
+.rd-sheet--second .rd-sheet-body > :first-child {
+  margin-top: 0;
+}
+
+.rd-sheet-body {
+  flex: 1 0 auto;
+}
+
+.rd-footer {
+  margin-top: auto;
+  padding-top: 4pt;
+  padding-bottom: 0.3in;
+  text-align: right;
+  font-style: italic;
+  font-size: 9pt;
+}
+
+.rd-running-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12pt;
+  font-weight: 700;
+  border-bottom: var(--rd-rule) solid var(--rd-navy);
+  padding-bottom: 1pt;
+  margin-bottom: 3pt;
+}
+
+/* ------------------------------ Header ------------------------------ */
+
+.rd-name {
+  font-size: 36pt;
+  font-weight: 700;
+  text-align: center;
+  padding-right: 0.04in;
+}
+
+.rd-contact {
+  font-size: 12pt;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 6pt;
+}
+
+.rd-contact-sep {
+  font-weight: 400;
+}
+
+.rd-tagline {
+  background: var(--rd-navy);
+  color: #fff;
+  font-size: 18pt;
+  font-weight: 700;
+  font-variant: small-caps;
+  text-align: center;
+}
+
+.rd-summary {
+  margin-top: 3pt;
+  text-align: justify;
+  word-spacing: var(--rd-justify-word-spacing);
+}
+
+/* -------------------------- Section headings -------------------------- */
+
+.rd-section-heading {
+  font-size: 12pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--rd-navy);
+  border-top: var(--rd-rule) solid var(--rd-navy);
+  border-bottom: var(--rd-rule) solid var(--rd-navy);
+  padding: 1pt 0;
+  margin: 6pt 0;
+}
+
+.rd-section-heading--plain {
+  color: #000;
+  margin: 3pt 0;
+}
+
+/* ------------------------------ Bullets ------------------------------ */
+
+.rd-bullet {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 3pt;
+  text-align: justify;
+  word-spacing: var(--rd-justify-word-spacing);
+}
+
+.rd-bullet-glyph {
+  flex: 0 0 18pt;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+}
+
+.rd-bullet--check .rd-bullet-glyph {
+  font-size: 10pt;
+}
+
+.rd-bullet--square .rd-bullet-glyph {
+  font-size: 9pt;
+  line-height: calc(10pt * 1.15);
+}
+
+.rd-bullet-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.rd-entry--project .rd-bullet {
+  margin-top: 6pt;
+}
+
+/* -------------------------- Experience / projects -------------------------- */
+
+.rd-entry {
+  margin-top: 6pt;
+}
+
+.rd-shaded {
+  background: var(--rd-shade);
+  padding-right: 0.024in;
+}
+
+.rd-entry-title-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12pt;
+  font-weight: 700;
+}
+
+.rd-entry-dates {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.rd-entry-company {
+  font-weight: 700;
+}
+
+.rd-entry-description {
+  font-style: italic;
+  text-align: justify;
+  word-spacing: var(--rd-justify-word-spacing);
+}
+
+/* ------------------------------ Education ------------------------------ */
+
+.rd-education {
+  margin-top: 3pt;
+  text-align: justify;
+}
+
+.rd-education:first-of-type {
+  margin-top: 6pt;
+}
+
+/* ------------------------------ Scaler ------------------------------ */
+
+.rd-scaler {
+  width: 100%;
+  max-width: 8.5in;
+  margin: 0 auto;
+}
