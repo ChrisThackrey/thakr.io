@@ -145,7 +145,7 @@ export const resume = {
     },
     {
       title: "SOFTWARE ENGINEER",
-      dates: "NOV 2023 to MAR\u00A0 2025", // the source document has two spaces before "2025"; \u00A0 keeps the browser from collapsing them
+      dates: "DEC 2023 to MAR\u00A0 2025", // the source document has two spaces before "2025"; \u00A0 keeps the browser from collapsing them
       company: "Black Flag Design",
       website: { label: "bfd.studio", href: "https://bfd.studio/" },
       description:
