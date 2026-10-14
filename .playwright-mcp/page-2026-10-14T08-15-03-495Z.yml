@@ -1,0 +1,231 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Chris Thackrey" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - navigation [ref=e9]:
+          - link "Home" [ref=e10] [cursor=pointer]:
+            - /url: /
+          - link "About" [ref=e14] [cursor=pointer]:
+            - /url: /about
+          - link "Work" [ref=e20] [cursor=pointer]:
+            - /url: /work
+          - link "Projects" [ref=e24] [cursor=pointer]:
+            - /url: /projects
+          - link "Architecture" [ref=e28] [cursor=pointer]:
+            - /url: /architecture
+          - link "Contact" [ref=e33] [cursor=pointer]:
+            - /url: /contact
+    - main [ref=e37]:
+      - main [ref=e39]:
+        - generic [ref=e40]:
+          - heading "Chris Thackrey – Resume" [level=1] [ref=e41]
+          - generic [ref=e42]:
+            - button "Download CV" [ref=e43] [cursor=pointer]
+            - button "Print" [ref=e44] [cursor=pointer]
+        - generic [ref=e47]:
+          - region "Resume, page 1" [ref=e48]:
+            - generic [ref=e49]:
+              - heading "CHRIS THACKREY" [level=1] [ref=e50]
+              - paragraph [ref=e51]:
+                - link "c.r.thackrey@gmail.com" [ref=e52] [cursor=pointer]:
+                  - /url: mailto:c.r.thackrey@gmail.com
+                - text: "| San Antonio, TX | (707) 319-3306 |"
+                - link "LinkedIn" [ref=e53] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/chris-thackrey-015/
+                - text: "|"
+                - link "GitHub" [ref=e54] [cursor=pointer]:
+                  - /url: https://github.com/ChrisThackrey
+                - text: "|"
+                - link "www.thakr.io" [ref=e55] [cursor=pointer]:
+                  - /url: /
+              - paragraph [ref=e56]: Software Engineer | Full Stack Developer | AI Engineering
+              - paragraph [ref=e57]: Software Engineer and technology leader specializing in full-stack development, AI engineering, AI-powered applications, and scalable software architecture. Experienced designing and building production AI applications, intelligent chat systems, developer tools, and data-intensive platforms using TypeScript, React, Next.js, Python, PostgreSQL, cloud infrastructure, and large language model APIs. International professional experience spanning the United States, China, Dubai, and Finland, bringing cross-cultural perspective to technical collaboration and problem-solving.
+              - heading "Leadership Highlights" [level=2] [ref=e58]
+              - generic [ref=e59]:
+                - generic [aria-hidden] [ref=e60]: ✓
+                - generic [ref=e61]: AI application development, technical problem-solving, and rapid adoption of emerging technologies; combines an architectural design background with full-stack engineering to create technically sophisticated applications with intuitive, visually polished user experiences.
+              - generic [ref=e62]:
+                - generic [aria-hidden] [ref=e63]: ✓
+                - generic [ref=e64]: Translates complex technical requirements into practical software solutions, balancing system architecture, application performance, security, and user needs.
+              - generic [ref=e65]:
+                - generic [aria-hidden] [ref=e66]: ✓
+                - generic [ref=e67]: Demonstrated ability to rapidly learn emerging technologies, evaluate new approaches, and apply them to solve complex engineering challenges and accelerate product development.
+              - generic [ref=e68]:
+                - generic [aria-hidden] [ref=e69]: ✓
+                - generic [ref=e70]: Experienced leading cross functional teams to design, develop, and deploy innovative software solutions, interacting directly with executives, investors, and clients, translating complex technical challenges into logical concepts for diverse audiences.
+              - heading "Technical Skills" [level=2] [ref=e71]
+              - generic [ref=e72]:
+                - generic [aria-hidden] [ref=e73]: ▪
+                - generic [ref=e74]:
+                  - strong [ref=e75]: "Languages:"
+                  - text: TypeScript, JavaScript, Python, PHP, Swift, Rust, SQL
+              - generic [ref=e76]:
+                - generic [aria-hidden] [ref=e77]: ▪
+                - generic [ref=e78]:
+                  - strong [ref=e79]: "Front-End Development:"
+                  - text: React, Next.js, React Native, Astro, Svelte, Redux, React Hooks, Context API, D3.js, React Three Fiber, React Flow, Tailwind CSS, Shadcn/ui, Chakra UI, Vuetify
+              - generic [ref=e80]:
+                - generic [aria-hidden] [ref=e81]: ▪
+                - generic [ref=e82]:
+                  - strong [ref=e83]: "Back-End Development:"
+                  - text: Node.js, FastAPI, Express, GraphQL, Vercel Serverless Functions, Edge Functions, REST APIs
+              - generic [ref=e84]:
+                - generic [aria-hidden] [ref=e85]: ▪
+                - generic [ref=e86]:
+                  - strong [ref=e87]: "AI / Machine Learning:"
+                  - text: OpenAI API, Anthropic API, GPT-4o, Claude, Amazon Bedrock, Amazon SageMaker, LLM-as-Judge Evaluation, Retrieval-Augmented Generation (RAG), Prompt Engineering, LangSmith, Vector Embeddings, AI Agent Systems
+              - generic [ref=e88]:
+                - generic [aria-hidden] [ref=e89]: ▪
+                - generic [ref=e90]:
+                  - strong [ref=e91]: "Databases / Data Engineering:"
+                  - text: PostgreSQL, Supabase, MySQL, MongoDB, DynamoDB, Amazon RDS, Redis, Prisma, pgvector, PL/pgSQL, JSONB
+              - generic [ref=e92]:
+                - generic [aria-hidden] [ref=e93]: ▪
+                - generic [ref=e94]:
+                  - strong [ref=e95]: "Cloud / DevOps:"
+                  - text: AWS EC2, AWS Lambda, Amazon S3, Route53, Vercel, Azure Static Web Apps, Google Cloud Functions, Docker, Heroku, DigitalOcean, GitHub Actions, NGINX, Turborepo, Turbopack
+              - generic [ref=e96]:
+                - generic [aria-hidden] [ref=e97]: ▪
+                - generic [ref=e98]:
+                  - strong [ref=e99]: "Testing / Quality / Observability:"
+                  - text: Vitest, Jest, Test-Driven Development (TDD), Zod, Sentry, Datadog, Artillery.io, Vercel Analytics, Harness Engineering
+              - generic [ref=e100]:
+                - generic [aria-hidden] [ref=e101]: ▪
+                - generic [ref=e102]:
+                  - strong [ref=e103]: "Integrations / Tools:"
+                  - text: Twilio Voice SDK, Google Calendar API, Google Drive API, Mapbox, Uber H3, WebSockets, Stream.io, Clerk Auth, GitHub Apps
+              - heading "Professional Experience" [level=2] [ref=e104]
+              - generic [ref=e105]:
+                - generic [ref=e106]:
+                  - generic [ref=e107]:
+                    - generic [ref=e108]: SENIOR SOFTWARE ENGINEER
+                    - generic [ref=e109]: MAY 2025 to PRESENT
+                  - generic [ref=e110]:
+                    - generic [ref=e111]: CelaHealthcare, Inc., College Station, TX
+                    - generic [ref=e112]:
+                      - text: "Website:"
+                      - link "celahealthcare.com" [ref=e113] [cursor=pointer]:
+                        - /url: https://www.celahealthcare.com/
+                  - paragraph [ref=e114]: Serving as a hands-on Senior Software Engineer and CTO, directing software architecture, AI engineering, application development, and technical execution while serving as the primary inventor of patented healthcare application technology. Lead technology strategy and hands-on engineering for a healthcare technology startup, overseeing product architecture, application development, technical execution, and multidisciplinary engineering initiatives.
+                - generic [ref=e115]:
+                  - generic [aria-hidden] [ref=e116]: ▪
+                  - generic [ref=e117]: Manage a multidisciplinary technical team comprising developers, a data engineer, and a project manager, establishing development priorities and guiding complex technical implementations. Translate business objectives into scalable, secure, and user-focused software solutions, balancing product innovation with engineering quality.
+                - generic [ref=e118]:
+                  - generic [aria-hidden] [ref=e119]: ▪
+                  - generic [ref=e120]: Establish and refine software engineering practices encompassing specification-driven development, testing, security, and technical documentation to support reliable product delivery. Drive research and development of proprietary healthcare application capabilities, applying emerging technologies and systems-level thinking to address complex technical challenges.
+              - generic [ref=e121]:
+                - generic [ref=e122]:
+                  - generic [ref=e123]:
+                    - generic [ref=e124]: AI SOFTWARE ENGINEER
+                    - generic [ref=e125]: MAR 2025 to JULY 2025
+                  - generic [ref=e126]:
+                    - generic [ref=e127]: Silver Bow Technology Group, Dallas, TX
+                    - generic [ref=e128]:
+                      - text: "Website:"
+                      - link "silverbow.io" [ref=e129] [cursor=pointer]:
+                        - /url: https://silverbow.io/
+                - generic [ref=e130]:
+                  - generic [aria-hidden] [ref=e131]: ▪
+                  - generic [ref=e132]: Led a software engineering team and developed core AI functionality for an AI-powered “version control for reasoning” development tool; architected AI-driven code generation, prompt enhancement, project planning, and security features; translated client requirements into technical architecture and software solutions.
+            - paragraph [ref=e133]: Continued…
+          - region "Resume, page 2" [ref=e134]:
+            - generic [ref=e135]:
+              - generic [ref=e136]:
+                - text: Chris Thackrey |
+                - link "c.r.thackrey@gmail.com" [ref=e137] [cursor=pointer]:
+                  - /url: mailto:c.r.thackrey@gmail.com
+                - text: "| (707) 319-3306 |"
+                - link "LinkedIn" [ref=e138] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/chris-thackrey-015/
+                - text: "|"
+                - link "www.thakr.io" [ref=e139] [cursor=pointer]:
+                  - /url: /
+              - generic [ref=e140]: Page 2
+            - generic [ref=e141]:
+              - generic [ref=e142]:
+                - generic [ref=e143]:
+                  - generic [ref=e144]:
+                    - generic [ref=e145]: SOFTWARE ENGINEER
+                    - generic [ref=e146]: DEC 2023 to MAR 2025
+                  - generic [ref=e147]:
+                    - generic [ref=e148]: Black Flag Design
+                    - generic [ref=e149]:
+                      - text: "Website:"
+                      - link "bfd.studio" [ref=e150] [cursor=pointer]:
+                        - /url: https://bfd.studio/
+                  - paragraph [ref=e151]: Contributed software engineering across five concurrently developed projects involving diverse technology stacks and programming languages. Served as Lead Developer for an AI code-generation application and internal development tools, subject to NDA.
+                - generic [ref=e152]:
+                  - generic [aria-hidden] [ref=e153]: ▪
+                  - generic [ref=e154]: Collaborated across project teams to deliver features, solve technical challenges, and support software development workflows; organized, scripted, and hosted the “AI DIY” podcast series covering AI coding trends and technology events.
+              - heading "Software Engineering Projects" [level=2] [ref=e155]
+              - generic [ref=e156]:
+                - generic [ref=e157]:
+                  - generic [ref=e158]:
+                    - generic [ref=e159]: RIVENDELL - AI DEVELOPMENT AND RESEARCH TOOL
+                    - generic [ref=e160]: MAR 2025
+                  - paragraph [ref=e161]: AI development and research platform functioning as “version control for reasoning,” supporting internal development and external client use. Engineered a Monte Carlo processing system that runs large batches of prompts against multiple large language models, improving the consistency of code evaluation metrics.
+                - generic [ref=e162]:
+                  - generic [aria-hidden] [ref=e163]: ▪
+                  - generic [ref=e164]: Built an LLM-as-Judge evaluation pipeline scoring solutions across six quality axes, classifying outputs as recommended, viable, or problematic. Developed semantic code search using PostgreSQL pgvector, 1,536-dimensional embeddings, IVFFlat cosine similarity, and language-filtered retrieval. Architected interactive 3D solution-space visualization using React Three Fiber, six-dimensional quality vectors, centroid clustering, and GPT-4o-assisted cluster labeling.
+                - generic [ref=e165]:
+                  - generic [aria-hidden] [ref=e166]: ▪
+                  - generic [ref=e167]: Designed PostgreSQL schemas with 20+ PL/pgSQL functions and 21 indexes, including GIN, B-tree, and IVFFlat indexes. Implemented multi-stage JSON repair, provider-agnostic LLM abstractions, resumable batch processing, and automated code-file persistence. Established end-to-end type safety with 20+ Zod schemas and generated automated five-phase project roadmaps from ranked reasoning steps. Wrote 69 Vitest test cases covering services, components, and integration flows across embedding, storage, and retrieval.
+              - generic [ref=e168]:
+                - generic [ref=e169]:
+                  - generic [ref=e170]:
+                    - generic [ref=e171]: AI APPLICATION - NATIONAL CENTER ON EDUCATION AND THE ECONOMY (NCEE) | Subject to NDA
+                    - generic [ref=e172]: JAN 2024
+                  - paragraph [ref=e173]: AI teaching application featuring multiplayer AI chat, deep research, and role-specific user experiences. Engineered an AI chat system routing messages through a classifier to six specialized AI bots, supporting real-time interaction through authenticated WebSocket connections. Built authenticated WebSocket infrastructure, voice transcription workflows, chat-history token budgeting, and PDF transcript exports.
+                - generic [ref=e174]:
+                  - generic [aria-hidden] [ref=e175]: ▪
+                  - generic [ref=e176]: Designed and implemented multi-tenant infrastructure provisioning across 27 idempotent stages, automating dedicated EC2, Supabase, S3, and Route53 resources for each district. Built retrieval-augmented AI workflows using Supabase pgvector, document embeddings, conversational query rephrasing, and source-aware citation handling. Developed AI evaluation workflows using six automated LangSmith evaluators measuring correctness, groundedness, document relevance, schema validity, and processing time.
+                - generic [ref=e177]:
+                  - generic [aria-hidden] [ref=e178]: ▪
+                  - generic [ref=e179]: Implemented role-differentiated chat interfaces for teachers, leaders, and students, with responsive layouts and AI context-aware rendering. Developed deployment safeguards including persisted provisioning state, DNS verification, secret cleanup, failure classification, and resumable deployments.
+              - generic [ref=e180]:
+                - generic [ref=e181]:
+                  - generic [ref=e182]:
+                    - generic [ref=e183]: AI ANALYSIS TOOLS - INTERNATIONAL WILDFIRE SCIENCE & TECHNOLOGY CO. | Subject to NDA
+                    - generic [ref=e184]: OCT 2024
+                  - paragraph [ref=e185]: Cloud-based SaaS platform providing on-demand wildfire spread prediction and operational response analysis. Engineered specialized spatial visualization using trigonometric regular polygons to maintain uniform hexagon sizing across latitudes despite Mercator projection distortion.
+                - generic [ref=e186]:
+                  - generic [aria-hidden] [ref=e187]: ▪
+                  - generic [ref=e188]: Implemented Uber H3 spatial indexing across seven zoom tiers, viewport overscan, off-screen culling, and optimized SVG rendering for large geographic datasets. Developed AI-driven assessment and forecast tools supporting response analysis for 20,000+ incidents annually.
+                - generic [ref=e189]:
+                  - generic [aria-hidden] [ref=e190]: ▪
+                  - generic [ref=e191]: Built secured backend integrations for private data access and contributed to a TypeScript fire-weather API unifying federal weather and coordination-center outlooks. Optimized geographic data processing through caching, chunked GeoJSON ingestion, deferred serialization, and responsive interaction handling.
+              - generic [ref=e192]:
+                - generic [ref=e193]:
+                  - generic [ref=e194]:
+                    - generic [ref=e195]:
+                      - text: LINEAGE CRM - INSURANCE CLIENT AND LEAD MANAGEMENT PLATFORM |
+                      - link "lineagecrm.com" [ref=e196] [cursor=pointer]:
+                        - /url: https://www.lineagecrm.com/
+                    - generic [ref=e197]: JAN 2024
+                  - paragraph [ref=e198]: Full-stack CRM application for insurance clients and leads, deployed with more than 2,000 active users. Completed ETL migration from legacy backend systems into relational database structures, preserving referential integrity and supporting production data migration. Developed a four-stage CSV import wizard, duplicate detection, conflict tracking, and legacy data migration workflows.
+                - generic [ref=e199]:
+                  - generic [aria-hidden] [ref=e200]: ▪
+                  - generic [ref=e201]: Built high-performance lead search using PostgreSQL materialized views, GIN-indexed full-text search, and multi-dimensional filtering across status, source, and location. Engineered an in-browser softphone using Twilio Voice SDK, including scoped access tokens, call lifecycle management, mute, timers, and reconnection state.
+                - generic [ref=e202]:
+                  - generic [aria-hidden] [ref=e203]: ▪
+                  - generic [ref=e204]: Implemented multi-tenant database security across 36 PostgreSQL tables and 65 row-level security policies. Built virtualized lead tables, WebGL map visualization, bulk editing, responsive analytics dashboards, and Google Calendar synchronization. Implemented production observability with Sentry tracing, session replay, and heatmap analytics.
+              - heading "Education | Professional Development" [level=2] [ref=e205]
+              - paragraph [ref=e206]:
+                - strong [ref=e207]: Texas A&M University
+                - text: ", Bachelor of Science, Environmental Design | Cum Laude, GPA 3.5/4.0"
+              - paragraph [ref=e208]:
+                - strong [ref=e209]: Southern CA Institute of Architecture
+                - text: ", Los Angeles, CA | 35 hours toward Master’s Degree in Architecture, GPA 3.5/4.0"
+              - paragraph [ref=e210]:
+                - strong [ref=e211]: Gnomon School of Visual Effects
+                - text: "| Computer Programming Studies"
+              - paragraph [ref=e212]:
+                - strong [ref=e213]: "Certificates of Completion:"
+                - text: Hack Reactor Coding Bootcamp | Rust Developer Bootcamp | AlgoExpert.io
+    - contentinfo [ref=e214]:
+      - paragraph [ref=e218]: © 2026 Chris Thackrey. All Rights Reserved.
+  - region "Notifications (F8)":
+    - list
+  - alert [ref=e219]

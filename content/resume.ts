@@ -145,7 +145,7 @@ export const resume = {
     },
     {
       title: "SOFTWARE ENGINEER",
-      dates: "DEC 2023 to MAR\u00A0 2025", // the source document has two spaces before "2025"; \u00A0 keeps the browser from collapsing them
+      dates: "DEC 2023 to MAR 2025",
       company: "Black Flag Design",
       website: { label: "bfd.studio", href: "https://bfd.studio/" },
       description:
@@ -158,7 +158,7 @@ export const resume = {
 
   projects: [
     {
-      title: "RIVENDELL - AI DEVELOPMENT AND RESEARCH TOOL",
+      title: "RIVENDELL -\u00A0 AI DEVELOPMENT AND RESEARCH TOOL", // the source document has two spaces after the hyphen; \u00A0 keeps the browser from collapsing them
       dates: "MAR 2025",
       description:
         "AI development and research platform functioning as “version control for reasoning,” supporting internal development and external client use. Engineered a Monte Carlo processing system that runs large batches of prompts against multiple large language models, improving the consistency of code evaluation metrics.",
