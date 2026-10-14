@@ -1,5 +1,6 @@
-import type React from "react"
+import React from "react"
 import {
+  BREAK,
   resume,
   type EducationEntry,
   type ExperienceEntry,
@@ -18,6 +19,18 @@ import {
 
 const paraText = (para: Para) => (typeof para === "string" ? para : para.text)
 
+/** Text with each BREAK marker replaced by a <wbr> line-break opportunity. */
+const paraNodes = (para: Para): React.ReactNode => {
+  const parts = paraText(para).split(BREAK)
+  if (parts.length === 1) return parts[0]
+  return parts.map((part, i) => (
+    <React.Fragment key={i}>
+      {i > 0 && <wbr />}
+      {part}
+    </React.Fragment>
+  ))
+}
+
 const paraStyle = (para: Para): React.CSSProperties | undefined =>
   typeof para === "string" ? undefined : { letterSpacing: `${para.letterSpacing}pt` }
 
@@ -31,7 +44,7 @@ function Bullet({ glyph, para, children }: { glyph: "check" | "square"; para?: P
       <span className="rd-bullet-glyph" aria-hidden="true">
         {glyph === "check" ? "✓" : "▪"}
       </span>
-      <span className="rd-bullet-text">{para ? paraText(para) : children}</span>
+      <span className="rd-bullet-text">{para ? paraNodes(para) : children}</span>
     </div>
   )
 }
@@ -56,7 +69,7 @@ function TitleRow({ title, dates }: { title: string; dates: string }) {
 function Description({ para }: { para: Para }) {
   return (
     <p className="rd-entry-description" style={paraStyle(para)}>
-      {paraText(para)}
+      {paraNodes(para)}
     </p>
   )
 }
@@ -131,7 +144,7 @@ export function ResumeDocument() {
             <a href={c.website.href}>{c.website.label}</a>
           </p>
           <p className="rd-tagline">{resume.tagline}</p>
-          <p className="rd-summary">{resume.summary}</p>
+          <p className="rd-summary">{paraNodes(resume.summary)}</p>
 
           <SectionHeading>Leadership Highlights</SectionHeading>
           {resume.leadershipHighlights.map((para) => (

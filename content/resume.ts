@@ -9,8 +9,15 @@
  * A paragraph of text. Word applies condensed character spacing to a few
  * paragraphs so they fit their lines; those are expressed as objects with the
  * letter-spacing Word uses (in pt).
+ *
+ * A zero-width space (BREAK) marks a line-break opportunity the PDF uses but
+ * browsers don't take on their own (Word breaks after a hyphen inside a word;
+ * Chrome keeps the word whole). The renderer turns it into a <wbr>.
  */
 export type Para = string | { text: string; letterSpacing: number }
+
+/** Line-break opportunity marker inside a word; rendered as <wbr>. */
+export const BREAK = "\u200B"
 
 /** Word's "Condensed by 0.2pt" character spacing. */
 const condensed = (text: string, letterSpacing = -0.2): Para => ({ text, letterSpacing })
@@ -64,7 +71,7 @@ export const resume = {
   tagline: "Software Engineer | Full Stack Developer | AI Engineering",
 
   summary:
-    "Software Engineer and technology leader specializing in full-stack development, AI engineering, AI-powered applications, and scalable software architecture. Experienced designing and building production AI applications, intelligent chat systems, developer tools, and data-intensive platforms using TypeScript, React, Next.js, Python, PostgreSQL, cloud infrastructure, and large language model APIs. International professional experience spanning the United States, China, Dubai, and Finland, bringing cross-cultural perspective to technical collaboration and problem-solving.",
+    `Software Engineer and technology leader specializing in full-stack development, AI engineering, AI-powered applications, and scalable software architecture. Experienced designing and building production AI applications, intelligent chat systems, developer tools, and data-${BREAK}intensive platforms using TypeScript, React, Next.js, Python, PostgreSQL, cloud infrastructure, and large language model APIs. International professional experience spanning the United States, China, Dubai, and Finland, bringing cross-cultural perspective to technical collaboration and problem-solving.`,
 
   leadershipHighlights: [
     condensed("AI application development, technical problem-solving, and rapid adoption of emerging technologies; combines an architectural design background with full-stack engineering to create technically sophisticated applications with intuitive, visually polished user experiences."),
@@ -112,7 +119,7 @@ export const resume = {
 
   experience: [
     {
-      title: "CHIEF TECHNOLOGY OFFICER & SENIOR SOFTWARE ENGINEER",
+      title: "SENIOR SOFTWARE ENGINEER",
       dates: "MAY 2025 to PRESENT",
       company: "CelaHealthcare, Inc., College Station, TX",
       description:
@@ -123,7 +130,7 @@ export const resume = {
       ],
     },
     {
-      title: "PRINCIPAL SOFTWARE ARCHITECT",
+      title: "SOFTWARE ENGINEER",
       dates: "MAR 2025 to JULY 2025",
       company: "Silver Bow Technology Group, Dallas, TX",
       bullets: [
@@ -149,7 +156,7 @@ export const resume = {
       description:
         "AI development and research platform functioning as “version control for reasoning,” supporting internal development and external client use. Engineered a Monte Carlo processing system that runs large batches of prompts against multiple large language models, improving the consistency of code evaluation metrics.",
       bullets: [
-        "Built an LLM-as-Judge evaluation pipeline scoring solutions across six quality axes, classifying outputs as recommended, viable, or problematic. Developed semantic code search using PostgreSQL pgvector, 1,536-dimensional embeddings, IVFFlat cosine similarity, and language-filtered retrieval. Architected interactive 3D solution-space visualization using React Three Fiber, six-dimensional quality vectors, centroid clustering, and GPT-4o-assisted cluster labeling.",
+        `Built an LLM-as-Judge evaluation pipeline scoring solutions across six quality axes, classifying outputs as recommended, viable, or problematic. Developed semantic code search using PostgreSQL pgvector, 1,536-dimensional embeddings, IVFFlat cosine similarity, and language-filtered retrieval. Architected interactive 3D solution-space visualization using React Three Fiber, six-${BREAK}dimensional quality vectors, centroid clustering, and GPT-4o-assisted cluster labeling.`,
         condensed("Designed PostgreSQL schemas with 20+ PL/pgSQL functions and 21 indexes, including GIN, B-tree, and IVFFlat indexes. Implemented multi-stage JSON repair, provider-agnostic LLM abstractions, resumable batch processing, and automated code-file persistence. Established end-to-end type safety with 20+ Zod schemas and generated automated five-phase project roadmaps from ranked reasoning steps. Wrote 69 Vitest test cases covering services, components, and integration flows across embedding, storage, and retrieval."),
       ],
     },
