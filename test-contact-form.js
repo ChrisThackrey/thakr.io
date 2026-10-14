@@ -36,3 +36,5 @@ const testContactForm = async () => {
 console.log('Make sure the development server is running on http://localhost:3000');
 console.log('Run: pnpm run dev');
 console.log('Then run this test with: node test-contact-form.js');
+
+testContactForm();

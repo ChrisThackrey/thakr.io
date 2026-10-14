@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { LinkBadge } from "@/components/link-badge"
 import { Github, ExternalLink } from "lucide-react"
 import { motion } from "framer-motion"
 import type { Project } from "@/types/project"
@@ -36,7 +37,7 @@ function linkifyDescription(text: string) {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const { title, description, bullets, tags, liveUrl, repoUrl, image } = project
+  const { title, description, bullets, tags, liveUrl, repoUrl, image, website } = project
   return (
     <motion.div
       whileHover={{ y: -5, scale: 1.02 }}
@@ -59,6 +60,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <h3 className="text-xl font-bold mb-2">{title}</h3>
           <p className={`text-muted-foreground text-sm mb-4 ${bullets?.length ? "" : "flex-grow"}`}>
             {linkifyDescription(description)}
+            {website && <LinkBadge href={website.href} label={website.label} className="ml-2 align-middle" />}
           </p>
           {bullets && bullets.length > 0 && (
             <ul className="list-disc pl-5 text-muted-foreground text-sm mb-4 flex-grow space-y-1">

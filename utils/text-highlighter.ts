@@ -183,7 +183,7 @@ function scrollHighlightIntoView(element: HTMLElement): void {
     try {
       // Try the standard scrollIntoView first
       element.scrollIntoView(scrollOptions)
-    } catch (e) {
+    } catch {
       // Fallback for older browsers
       const elementTop = rect.top + window.pageYOffset
       const middle = elementTop - window.innerHeight / 2

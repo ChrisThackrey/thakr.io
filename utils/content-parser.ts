@@ -9,7 +9,7 @@ export interface ContentChunk {
   content: string
   type?: ContentType
   level?: number
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 }
 
 /**

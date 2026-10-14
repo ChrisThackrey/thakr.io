@@ -15,15 +15,14 @@ export function useKeypress(
   handler: KeyHandler,
   { event = "keydown", target = typeof window !== "undefined" ? window : undefined, enabled = true } = {},
 ) {
-  const keys = Array.isArray(key) ? key : [key]
-
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
+      const keys = Array.isArray(key) ? key : [key]
       if (keys.includes(event.key)) {
         handler(event)
       }
     },
-    [keys, handler],
+    [key, handler],
   )
 
   useEffect(() => {

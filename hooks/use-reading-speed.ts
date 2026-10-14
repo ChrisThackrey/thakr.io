@@ -61,7 +61,7 @@ export function useReadingSpeed(): UseReadingSpeedReturn {
       setWordsPerMinuteState(validWpm)
 
       // Check if the new WPM matches any preset
-      const matchingPreset = Object.entries(READING_SPEED_PRESETS).find(([_, value]) => value === validWpm) as
+      const matchingPreset = Object.entries(READING_SPEED_PRESETS).find(([, value]) => value === validWpm) as
         | [ReadingSpeedPreset, number]
         | undefined
 

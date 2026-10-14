@@ -34,7 +34,6 @@ export function ChunkErrorHandler() {
       window.removeEventListener("error", handleError)
       window.removeEventListener("unhandledrejection", handleError)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return null

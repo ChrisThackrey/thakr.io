@@ -11,6 +11,8 @@ export interface Project {
   bullets?: string[]
   liveUrl?: string
   repoUrl?: string
+  /** Project homepage, shown as a hyperlink badge after the description. */
+  website?: { label: string; href: string }
   featured?: boolean
   content?: string
 }
@@ -48,7 +50,8 @@ const projectsData: Project[] = [
     slug: "lineage-crm",
     title: "CRM Management App to Handle Insurance Clients and Leads",
     description:
-      "Final expense CRM management app and tool for handling clients and leads, currently deployed with more than 200 active users. lineagecrm.com",
+      "Final expense CRM management app and tool for handling clients and leads, currently deployed with more than 200 active users.",
+    website: { label: "lineagecrm.com", href: "https://www.lineagecrm.com/" },
     image: "/images/projects/lineage.svg",
     tags: [
       "TypeScript",

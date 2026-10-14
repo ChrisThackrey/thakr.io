@@ -96,6 +96,7 @@
     "zod": "3"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@types/lodash": "latest",
     "@types/node": "^22",
     "@types/react": "^19",

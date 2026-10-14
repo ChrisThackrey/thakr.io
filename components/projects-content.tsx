@@ -18,8 +18,23 @@ const ghostProjects = [
   {
     title: "CelaHealthcare",
     description: "Patented Healthcare Application backed by investors",
+    website: "https://www.celahealthcare.com/",
   },
 ] as const
+
+/** Pill-shaped link to a project's website, labelled with its bare domain. */
+function WebsiteBadge({ href }: { href: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-1 inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-sm font-semibold text-primary transition-colors hover:bg-primary/20 hover:underline"
+    >
+      {href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
+    </a>
+  )
+}
 
 function GhostCard({ children }: { children: React.ReactNode }) {
   return (
@@ -66,16 +81,7 @@ export default async function ProjectsContent() {
             {"description" in ghost && ghost.description && (
               <p className="text-muted-foreground text-base leading-snug max-w-[26ch]">{ghost.description}</p>
             )}
-            {"website" in ghost && ghost.website && (
-              <a
-                href={ghost.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-1 inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-sm font-semibold text-primary transition-colors hover:bg-primary/20 hover:underline"
-              >
-                {ghost.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
-              </a>
-            )}
+            {"website" in ghost && ghost.website && <WebsiteBadge href={ghost.website} />}
           </GhostCard>
         ))}
       </div>

@@ -2,7 +2,7 @@ const { execSync } = require('child_process');
 
 try {
   console.log('Running typecheck...');
-  const output = execSync('npx tsc --noEmit', { 
+  execSync('npx tsc --noEmit', { 
     encoding: 'utf8',
     stdio: 'pipe' 
   });

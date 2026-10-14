@@ -1,5 +1,4 @@
 const { exec } = require('child_process');
-const path = require('path');
 
 const projectDir = '/Users/thakr/.local/dev/thakr.io';
 process.chdir(projectDir);

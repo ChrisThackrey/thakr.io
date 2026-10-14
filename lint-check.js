@@ -7,7 +7,7 @@ try {
     stdio: 'inherit'
   });
   console.log('✅ Linting completed successfully!');
-} catch (error) {
+} catch {
   console.error('❌ Linting failed');
   process.exit(1);
 }

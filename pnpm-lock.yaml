@@ -261,6 +261,9 @@ importers:
         specifier: '3'
         version: 3.25.76
     devDependencies:
+      '@eslint/eslintrc':
+        specifier: ^3.3.1
+        version: 3.3.1(supports-color@8.1.1)
       '@types/lodash':
         specifier: latest
         version: 4.17.25

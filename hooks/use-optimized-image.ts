@@ -17,7 +17,6 @@ export function useOptimizedImage({
 }: UseOptimizedImageOptions) {
   const [currentSrc, setCurrentSrc] = useState<string>(placeholder)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
-  const [isLowQualityLoaded, setIsLowQualityLoaded] = useState<boolean>(false)
   const [hasError, setHasError] = useState<boolean>(false)
 
   useEffect(() => {
@@ -40,7 +39,7 @@ export function useOptimizedImage({
     }
 
     // Load low quality version first if available
-    if (lowQualitySrc && !isLowQualityLoaded) {
+    if (lowQualitySrc) {
       lowQualityImg = new Image()
 
       // Set crossOrigin to avoid CORS issues
@@ -48,7 +47,6 @@ export function useOptimizedImage({
 
       lowQualityImg.onload = () => {
         setCurrentSrc(lowQualitySrc)
-        setIsLowQualityLoaded(true)
       }
 
       lowQualityImg.onerror = () => {

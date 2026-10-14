@@ -4,7 +4,7 @@ import { debounce, throttle } from "lodash"
  * Batch DOM reads and writes to prevent layout thrashing
  */
 class DOMBatcher {
-  private readQueue: Array<() => any> = []
+  private readQueue: Array<() => unknown> = []
   private writeQueue: Array<() => void> = []
   private scheduled = false
 
@@ -85,7 +85,7 @@ export const applyStyles = (element: HTMLElement, styles: Partial<CSSStyleDeclar
   domBatcher.write(() => {
     Object.entries(styles).forEach(([property, value]) => {
       // Use type assertion for dynamic style property assignment
-      ;(element.style as any)[property] = value
+      ;(element.style as unknown as Record<string, unknown>)[property] = value
     })
   })
 }

@@ -4,7 +4,7 @@ import { execSync } from 'child_process'
 
 try {
   console.log('Running ESLint...')
-  const result = execSync('npx eslint . --ext .ts,.tsx,.js,.jsx --format=compact', { encoding: 'utf8' })
+  const result = execSync('npx eslint . --format=compact', { encoding: 'utf8' })
   console.log('Linting completed successfully!')
   console.log(result)
 } catch (error) {
