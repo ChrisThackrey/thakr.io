@@ -3,17 +3,28 @@
  * (About, Resume, Timelines, etc.).
  */
 
+export interface CompanyWebsite {
+  /** Bare domain shown in the badge, e.g. "example.com". */
+  label: string
+  /** Full URL the badge opens in a new tab. */
+  href: string
+}
+
 export interface Project {
   name: string
   description: string[] // bullet-point list
   skills: string[]
   link?: string
+  /** Project homepage, rendered as a link badge beside the project title. */
+  website?: CompanyWebsite
   ndaNotice?: string // Optional NDA notice
 }
 
 export interface TimelineItemData {
   title: string
   company: string
+  /** Company homepage, rendered as a link badge beside the company name. */
+  website?: CompanyWebsite
   location?: string
   date: string // e.g. "2025" or "2013-2015"
   description: string[] // bullet-point list
@@ -26,6 +37,7 @@ export const professionalExperience: TimelineItemData[] = [
   {
     title: "Senior Software Engineer",
     company: "CelaHealthcare Inc.",
+    website: { label: "celahealthcare.com", href: "https://www.celahealthcare.com/" },
     date: "May 2025 - Present",
     description: [
       "Senior Software Engineer and primary inventor of patented healthcare application technology.",
@@ -36,7 +48,8 @@ export const professionalExperience: TimelineItemData[] = [
   {
     title: "AI Software Engineer",
     company: "Silver Bow Technology Group",
-    location: "San Antonio, TX",
+    website: { label: "silverbow.io", href: "https://silverbow.io/" },
+    location: "Dallas, TX",
     date: "2025",
     description: [
       "Lead software engineering team and built the core AI functionality for a \"version control for reasoning\" dev tool providing AI-driven code-generation, prompt enhancement, architecture strategy, as well as project planning and security features.",
@@ -91,8 +104,9 @@ export const professionalExperience: TimelineItemData[] = [
   },
   {
     title: "Software Engineer",
-    company: "Black Flag Design",
-    location: "San Antonio, TX",
+    company: "BFD",
+    website: { label: "bfd.studio", href: "https://bfd.studio/" },
+    location: "Denver, CO",
     date: "2024-2025",
     description: [
       "Contributed code across five projects in simultaneous development, including Lead Developer of an AI codegen application and internal dev tool, subject to a signed NDA.",
@@ -129,6 +143,7 @@ export const professionalExperience: TimelineItemData[] = [
         ],
         skills: ["TypeScript", "Next.js", "Database", "ETL", "CRM"],
         link: "https://lineagecrm.com",
+        website: { label: "lineagecrm.com", href: "https://www.lineagecrm.com/" },
       },
     ],
   },

@@ -4,6 +4,7 @@ import { useState, useMemo } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { LinkBadge } from "@/components/link-badge"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDownIcon, BriefcaseIcon, FolderKanbanIcon } from "lucide-react"
 import type { TimelineItemData, Project } from "@/lib/experience-data"
@@ -184,7 +185,7 @@ export function Timeline({ items, defaultExpandedOverrides }: TimelineProps) {
               >
                 {isWorkItem ? (
                   <>
-                    <CardHeader className="pb-3">
+                    <CardHeader className="pb-3 space-y-0">
                       <div className="flex justify-between items-start gap-2">
                         <div>
                           <CardTitle className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
@@ -193,14 +194,6 @@ export function Timeline({ items, defaultExpandedOverrides }: TimelineProps) {
                           <time className="block text-xs font-normal leading-none text-muted-foreground mt-1">
                             {itemData.date}
                           </time>
-                          <CardDescription className="text-sm md:text-base font-medium text-muted-foreground mt-0.5">
-                            {itemData.company}
-                          </CardDescription>
-                          {itemData.location && (
-                            <p className="text-xs text-muted-foreground mt-1">
-                              {itemData.location}
-                            </p>
-                          )}
                         </div>
                         {itemData.projects && itemData.projects.length > 0 && dispItem.originalIndex !== undefined && (
                           <Button
@@ -218,6 +211,28 @@ export function Timeline({ items, defaultExpandedOverrides }: TimelineProps) {
                           </Button>
                         )}
                       </div>
+                      {/*
+                        Company row. On phones the website badge stacks left-aligned
+                        under the company name; from `sm` up it sits on the same line,
+                        pushed to the card's right edge.
+                      */}
+                      <div className="flex flex-col items-start gap-y-1.5 mt-0.5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-3">
+                        <CardDescription className="text-sm md:text-base font-medium text-muted-foreground">
+                          {itemData.company}
+                        </CardDescription>
+                        {itemData.website && (
+                          <LinkBadge
+                            href={itemData.website.href}
+                            label={itemData.website.label}
+                            className="sm:ml-auto"
+                          />
+                        )}
+                      </div>
+                      {itemData.location && (
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {itemData.location}
+                        </p>
+                      )}
                     </CardHeader>
                     <CardContent className="pt-0">
                       <ul className="list-disc pl-5 space-y-1.5 mt-1">
@@ -241,20 +256,33 @@ export function Timeline({ items, defaultExpandedOverrides }: TimelineProps) {
                 ) : (
                   <>
                     <CardHeader className="pb-2 pt-4">
-                      <CardTitle className="text-md md:text-lg font-semibold text-foreground/90">
-                        {projectData.link ? (
-                          <a 
-                            href={projectData.link} 
-                            target={projectData.link.startsWith('http') ? '_blank' : undefined}
-                            rel={projectData.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                            className="hover:text-primary transition-colors duration-200"
-                          >
-                            {projectData.name}
-                          </a>
-                        ) : (
-                          projectData.name
+                      {/*
+                        Title row. On phones the website badge stacks left-aligned under
+                        the title; from `sm` up it shares the line, pushed to the right edge.
+                      */}
+                      <div className="flex flex-col items-start gap-y-1.5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-3">
+                        <CardTitle className="text-md md:text-lg font-semibold text-foreground/90">
+                          {projectData.link ? (
+                            <a 
+                              href={projectData.link} 
+                              target={projectData.link.startsWith('http') ? '_blank' : undefined}
+                              rel={projectData.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                              className="hover:text-primary transition-colors duration-200"
+                            >
+                              {projectData.name}
+                            </a>
+                          ) : (
+                            projectData.name
+                          )}
+                        </CardTitle>
+                        {projectData.website && (
+                          <LinkBadge
+                            href={projectData.website.href}
+                            label={projectData.website.label}
+                            className="sm:ml-auto"
+                          />
                         )}
-                      </CardTitle>
+                      </div>
                     </CardHeader>
                     <CardContent className="pt-0">
                       <ul className="list-disc pl-5 space-y-1 mb-3">
