@@ -104,7 +104,7 @@ export const professionalExperience: TimelineItemData[] = [
   },
   {
     title: "Software Engineer",
-    company: "BFD",
+    company: "BFD (formerly Black Flag Design)",
     website: { label: "bfd.studio", href: "https://bfd.studio/" },
     location: "Denver, CO",
     date: "2023-2025",
