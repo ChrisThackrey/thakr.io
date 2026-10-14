@@ -234,4 +234,26 @@
   width: 100%;
   max-width: 8.5in;
   margin: 0 auto;
+  container-type: inline-size;
+}
+
+.rd-scaler-inner {
+  transform-origin: top left;
+}
+
+/*
+ * Before the ResumeScaler component has measured the available width (first
+ * paint, or JavaScript disabled) the page is still laid out at its full
+ * 8.5in width. Clip it so it can never push the viewport sideways, and where
+ * the browser can divide lengths in calc(), pre-scale it to fit so the first
+ * paint already looks right.
+ */
+.rd-scaler:not([data-ready]) {
+  overflow: hidden;
+}
+
+@supports (scale: calc(1px / 1px)) {
+  .rd-scaler:not([data-ready]) .rd-scaler-inner {
+    transform: scale(min(1, calc(100cqw / 816px)));
+  }
 }
