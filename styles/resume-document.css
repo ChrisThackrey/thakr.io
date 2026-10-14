@@ -199,8 +199,16 @@
   white-space: nowrap;
 }
 
-.rd-entry-company {
+.rd-entry-company-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12pt;
   font-weight: 700;
+}
+
+.rd-entry-website {
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .rd-entry-description {

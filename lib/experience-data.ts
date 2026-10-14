@@ -34,7 +34,7 @@ export const professionalExperience: TimelineItemData[] = [
     skills: ["Technical Leadership", "Healthcare Technology", "Software Engineering", "Team Management"],
   },
   {
-    title: "Software Engineer",
+    title: "AI Software Engineer",
     company: "Silver Bow Technology Group",
     location: "San Antonio, TX",
     date: "2025",

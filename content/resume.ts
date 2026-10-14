@@ -36,6 +36,8 @@ export interface ExperienceEntry {
   title: string
   dates: string
   company: string
+  /** Company site, shown right-aligned on the company line as "Website: <label>". */
+  website?: ContactLink
   /** Italic summary shown inside the shaded block under the company line. */
   description?: string
   bullets: Para[]
@@ -44,6 +46,8 @@ export interface ExperienceEntry {
 export interface ProjectEntry {
   title: string
   dates: string
+  /** Project site, appended to the title as " | <label>". */
+  website?: ContactLink
   /** Italic summary shown inside the shaded block under the title. */
   description: Para
   bullets: Para[]
@@ -122,17 +126,19 @@ export const resume = {
       title: "SENIOR SOFTWARE ENGINEER",
       dates: "MAY 2025 to PRESENT",
       company: "CelaHealthcare, Inc., College Station, TX",
+      website: { label: "celahealthcare.com", href: "https://www.celahealthcare.com/" },
       description:
-        "Serve as a hands-on Senior Software Engineer and CTO, directing software architecture, AI engineering, application development, and technical execution while serving as the primary inventor of patented healthcare application technology. Lead technology strategy and hands-on engineering for a healthcare technology startup, overseeing product architecture, application development, technical execution, and multidisciplinary engineering initiatives.",
+        "Serving as a hands-on Senior Software Engineer and CTO, directing software architecture, AI engineering, application development, and technical execution while serving as the primary inventor of patented healthcare application technology. Lead technology strategy and hands-on engineering for a healthcare technology startup, overseeing product architecture, application development, technical execution, and multidisciplinary engineering initiatives.",
       bullets: [
         "Manage a multidisciplinary technical team comprising developers, a data engineer, and a project manager, establishing development priorities and guiding complex technical implementations. Translate business objectives into scalable, secure, and user-focused software solutions, balancing product innovation with engineering quality.",
         "Establish and refine software engineering practices encompassing specification-driven development, testing, security, and technical documentation to support reliable product delivery. Drive research and development of proprietary healthcare application capabilities, applying emerging technologies and systems-level thinking to address complex technical challenges.",
       ],
     },
     {
-      title: "SOFTWARE ENGINEER",
+      title: "AI SOFTWARE ENGINEER",
       dates: "MAR 2025 to JULY 2025",
       company: "Silver Bow Technology Group, Dallas, TX",
+      website: { label: "silverbow.io", href: "https://silverbow.io/" },
       bullets: [
         "Led a software engineering team and developed core AI functionality for an AI-powered “version control for reasoning” development tool; architected AI-driven code generation, prompt enhancement, project planning, and security features; translated client requirements into technical architecture and software solutions.",
       ],
@@ -141,6 +147,7 @@ export const resume = {
       title: "SOFTWARE ENGINEER",
       dates: "JAN 2024 to MAR 2025",
       company: "Black Flag Design",
+      website: { label: "bfd.studio", href: "https://bfd.studio/" },
       description:
         "Contributed software engineering across five concurrently developed projects involving diverse technology stacks and programming languages. Served as Lead Developer for an AI code-generation application and internal development tools, subject to NDA.",
       bullets: [
@@ -182,6 +189,7 @@ export const resume = {
     },
     {
       title: "LINEAGE CRM - INSURANCE CLIENT AND LEAD MANAGEMENT PLATFORM",
+      website: { label: "lineagecrm.com", href: "https://www.lineagecrm.com/" },
       dates: "JAN 2024",
       description:
         "Full-stack CRM application for insurance clients and leads, deployed with more than 2,000 active users. Completed ETL migration from legacy backend systems into relational database structures, preserving referential integrity and supporting production data migration. Developed a four-stage CSV import wizard, duplicate detection, conflict tracking, and legacy data migration workflows.",

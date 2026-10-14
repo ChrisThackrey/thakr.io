@@ -2,6 +2,7 @@ import React from "react"
 import {
   BREAK,
   resume,
+  type ContactLink,
   type EducationEntry,
   type ExperienceEntry,
   type Para,
@@ -57,10 +58,26 @@ function SkillRow({ group }: { group: SkillGroup }) {
   )
 }
 
-function TitleRow({ title, dates }: { title: string; dates: string }) {
+function ExternalLink({ link }: { link: ContactLink }) {
+  return (
+    <a href={link.href} target="_blank" rel="noopener noreferrer">
+      {link.label}
+    </a>
+  )
+}
+
+function TitleRow({ title, dates, website }: { title: string; dates: string; website?: ContactLink }) {
   return (
     <div className="rd-entry-title-row">
-      <span className="rd-entry-title">{title}</span>
+      <span className="rd-entry-title">
+        {title}
+        {website && (
+          <>
+            {" | "}
+            <ExternalLink link={website} />
+          </>
+        )}
+      </span>
       <span className="rd-entry-dates">{dates}</span>
     </div>
   )
@@ -79,7 +96,14 @@ function Experience({ entry }: { entry: ExperienceEntry }) {
     <div className="rd-entry">
       <div className="rd-shaded">
         <TitleRow title={entry.title} dates={entry.dates} />
-        <div className="rd-entry-company">{entry.company}</div>
+        <div className="rd-entry-company-row">
+          <span className="rd-entry-company">{entry.company}</span>
+          {entry.website && (
+            <span className="rd-entry-website">
+              Website: <ExternalLink link={entry.website} />
+            </span>
+          )}
+        </div>
         {entry.description && <Description para={entry.description} />}
       </div>
       {entry.bullets.map((para) => (
@@ -93,7 +117,7 @@ function Project({ entry }: { entry: ProjectEntry }) {
   return (
     <div className="rd-entry rd-entry--project">
       <div className="rd-shaded">
-        <TitleRow title={entry.title} dates={entry.dates} />
+        <TitleRow title={entry.title} dates={entry.dates} website={entry.website} />
         <Description para={entry.description} />
       </div>
       {entry.bullets.map((para) => (
@@ -118,7 +142,7 @@ function Education({ entry }: { entry: EducationEntry }) {
 const c = resume.contact
 
 export function ResumeDocument() {
-  const [cto, architect, engineer] = resume.experience
+  const [senior, aiEngineer, engineer] = resume.experience
 
   return (
     <div className="rd-document">
@@ -157,8 +181,8 @@ export function ResumeDocument() {
           ))}
 
           <SectionHeading>Professional Experience</SectionHeading>
-          <Experience entry={cto} />
-          <Experience entry={architect} />
+          <Experience entry={senior} />
+          <Experience entry={aiEngineer} />
         </div>
         <p className="rd-footer">Continued…</p>
       </section>
