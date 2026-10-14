@@ -107,7 +107,7 @@ export const professionalExperience: TimelineItemData[] = [
     company: "BFD",
     website: { label: "bfd.studio", href: "https://bfd.studio/" },
     location: "Denver, CO",
-    date: "2024-2025",
+    date: "2023-2025",
     description: [
       "Contributed code across five projects in simultaneous development, including Lead Developer of an AI codegen application and internal dev tool, subject to a signed NDA.",
       "Led, scripted, and hosted the 'AI DIY' podcast series on AI coding trends, Vercel's ecosystem and events in the tech industry.",
