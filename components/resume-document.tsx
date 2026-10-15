@@ -35,8 +35,19 @@ const paraNodes = (para: Para): React.ReactNode => {
 const paraStyle = (para: Para): React.CSSProperties | undefined =>
   typeof para === "string" ? undefined : { letterSpacing: `${para.letterSpacing}pt` }
 
-function SectionHeading({ children, plain }: { children: React.ReactNode; plain?: boolean }) {
-  return <h2 className={plain ? "rd-section-heading rd-section-heading--plain" : "rd-section-heading"}>{children}</h2>
+function SectionHeading({
+  children,
+  variant,
+}: {
+  children: React.ReactNode
+  /**
+   * "plain": black text, 3pt margins. "heading1": Word's Heading 1 style, no
+   * space-after. "heading1-leaded": the same with the style's 1.08x line height.
+   */
+  variant?: "plain" | "heading1" | "heading1-leaded"
+}) {
+  const className = variant ? `rd-section-heading rd-section-heading--${variant}` : "rd-section-heading"
+  return <h2 className={className}>{children}</h2>
 }
 
 function Bullet({ glyph, para, children }: { glyph: "check" | "square"; para?: Para; children?: React.ReactNode }) {
@@ -91,11 +102,24 @@ function Description({ para }: { para: Para }) {
   )
 }
 
-function Experience({ entry }: { entry: ExperienceEntry }) {
+/**
+ * An experience entry. `part` renders only the title row ("title") or
+ * everything after it ("rest"), for an entry Word splits across a page break.
+ */
+function Experience({ entry, part = "all" }: { entry: ExperienceEntry; part?: "all" | "title" | "rest" }) {
+  if (part === "title") {
+    return (
+      <div className="rd-entry">
+        <div className="rd-shaded">
+          <TitleRow title={entry.title} dates={entry.dates} />
+        </div>
+      </div>
+    )
+  }
   return (
-    <div className="rd-entry">
+    <div className={part === "rest" ? "rd-entry rd-entry--continued" : "rd-entry"}>
       <div className="rd-shaded">
-        <TitleRow title={entry.title} dates={entry.dates} />
+        {part === "all" && <TitleRow title={entry.title} dates={entry.dates} />}
         <div className="rd-entry-company-row">
           <span className="rd-entry-company">{entry.company}</span>
           {entry.website && (
@@ -175,7 +199,7 @@ export function ResumeDocument() {
             <Bullet key={paraText(para).slice(0, 40)} glyph="check" para={para} />
           ))}
 
-          <SectionHeading>Technical Skills</SectionHeading>
+          <SectionHeading variant="heading1-leaded">Technical Skills</SectionHeading>
           {resume.technicalSkills.map((group) => (
             <SkillRow key={group.label} group={group} />
           ))}
@@ -183,6 +207,8 @@ export function ResumeDocument() {
           <SectionHeading>Professional Experience</SectionHeading>
           <Experience entry={senior} />
           <Experience entry={aiEngineer} />
+          {/* Word keeps this entry's title row on page 1 and breaks before the company line. */}
+          <Experience entry={engineer} part="title" />
         </div>
         <p className="rd-footer">Continued…</p>
       </section>
@@ -194,20 +220,24 @@ export function ResumeDocument() {
             Chris Thackrey | <a href={c.email.href}>{c.email.label}</a> | {c.phone} |{" "}
             <a href={c.linkedin.href} target="_blank" rel="noopener noreferrer">
               {c.linkedin.label}
+            </a>
+            <span className="rd-contact-sep"> | </span>
+            <a href={c.github.href} target="_blank" rel="noopener noreferrer">
+              {c.github.label}
             </a>{" "}
             | <a href={c.website.href}>{c.website.label}</a>
           </span>
-          <span>Page 2</span>
+          <span className="rd-running-header-page">Page 2</span>
         </header>
         <div className="rd-sheet-body">
-          <Experience entry={engineer} />
+          <Experience entry={engineer} part="rest" />
 
-          <SectionHeading plain>Software Engineering Projects</SectionHeading>
+          <SectionHeading variant="plain">Software Engineering Projects</SectionHeading>
           {resume.projects.map((project) => (
             <Project key={project.title} entry={project} />
           ))}
 
-          <SectionHeading>Education | Professional Development</SectionHeading>
+          <SectionHeading variant="heading1">Education | Professional Development</SectionHeading>
           {resume.education.map((entry) => (
             <Education key={entry.institution} entry={entry} />
           ))}

@@ -68,9 +68,9 @@
   flex: 1 0 auto;
 }
 
+/* Word's footer: 0.3in from the page bottom, below the body's last line. */
 .rd-footer {
   margin-top: auto;
-  padding-top: 4pt;
   padding-bottom: 0.3in;
   text-align: right;
   font-style: italic;
@@ -78,9 +78,6 @@
 }
 
 .rd-running-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
   font-size: 12pt;
   font-weight: 700;
   border-bottom: var(--rd-rule) solid var(--rd-navy);
@@ -88,10 +85,21 @@
   margin-bottom: 3pt;
 }
 
+/*
+ * In Word the header's contact line overflows the right-aligned tab stop, so
+ * the tab wraps "Page 2" onto a second line at the first default 0.5in stop.
+ */
+.rd-running-header-page {
+  display: block;
+  padding-left: 0.5in;
+}
+
 /* ------------------------------ Header ------------------------------ */
 
 .rd-name {
   font-size: 36pt;
+  /* Word sets this 36pt line to the font's ascent + descent, with no line gap. */
+  line-height: 1.107;
   font-weight: 700;
   text-align: center;
   padding-right: 0.04in;
@@ -142,6 +150,21 @@
   margin: 3pt 0;
 }
 
+/*
+ * Headings in Word's Heading 1 style have no space-after, so only the next
+ * paragraph's own space-before (if any) separates them from what follows.
+ * "Technical Skills" also keeps the style's 1.08x line multiplier; the other
+ * Heading 1 headings override it back to single spacing.
+ */
+.rd-section-heading--heading1,
+.rd-section-heading--heading1-leaded {
+  margin-bottom: 0;
+}
+
+.rd-section-heading--heading1-leaded {
+  line-height: calc(1.15 * 1.08);
+}
+
 /* ------------------------------ Bullets ------------------------------ */
 
 .rd-bullet {
@@ -172,7 +195,9 @@
   min-width: 0;
 }
 
-.rd-entry--project .rd-bullet {
+/* Word gives project bullets, and the bullet of the entry continued onto page 2, 6pt space-before. */
+.rd-entry--project .rd-bullet,
+.rd-entry--continued .rd-bullet {
   margin-top: 6pt;
 }
 
@@ -180,6 +205,11 @@
 
 .rd-entry {
   margin-top: 6pt;
+}
+
+/* The first project title has no space-before; only the heading's 3pt space-after separates them. */
+.rd-section-heading--plain + .rd-entry {
+  margin-top: 3pt;
 }
 
 .rd-shaded {
@@ -220,12 +250,8 @@
 /* ------------------------------ Education ------------------------------ */
 
 .rd-education {
-  margin-top: 3pt;
+  margin-top: 0;
   text-align: justify;
-}
-
-.rd-education:first-of-type {
-  margin-top: 6pt;
 }
 
 /* ------------------------------ Scaler ------------------------------ */

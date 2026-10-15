@@ -1,5 +1,5 @@
 Chris Thackrey			 (707) 319-3306  |  c.r.thackrey@gmail.com  |  San Antonio, TX  
-**Senior Software Engineer**		                                                  [thakr.io](http://thakr.io) | [Github](http://github.com/ChrisThackrey) | [LinkedIn](http://linkedin.com/in/chris-thackrey-015)
+**Senior Software Engineer**		                                                  [thakr.io](http://thakr.io) | [Github](http://github.com/ChrisThackrey) | [LinkedIn](https://www.linkedin.com/in/chris-thackrey/)
 
 Summary  
 ---

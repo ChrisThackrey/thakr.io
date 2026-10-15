@@ -67,7 +67,7 @@ export const resume = {
     email: { label: "c.r.thackrey@gmail.com", href: "mailto:c.r.thackrey@gmail.com" },
     location: "San Antonio, TX",
     phone: "(707) 319-3306",
-    linkedin: { label: "LinkedIn", href: "https://www.linkedin.com/in/chris-thackrey-015/" },
+    linkedin: { label: "LinkedIn", href: "https://www.linkedin.com/in/chris-thackrey/" },
     github: { label: "GitHub", href: "https://github.com/ChrisThackrey" },
     website: { label: "www.thakr.io", href: "/" },
   },

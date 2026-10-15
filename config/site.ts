@@ -9,7 +9,7 @@ export const siteConfig = {
   },
   links: {
     github: "https://github.com/ChrisThackrey",
-    linkedin: "https://www.linkedin.com/in/chris-thackrey-015/",
+    linkedin: "https://www.linkedin.com/in/chris-thackrey/",
     instagram: "https://www.instagram.com/chris_thackrey/",
     email: "mailto:c.r.thackrey@gmail.com",
   },
