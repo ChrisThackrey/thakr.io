@@ -128,7 +128,7 @@ export const resume = {
       company: "CelaHealthcare, Inc., College Station, TX",
       website: { label: "celahealthcare.com", href: "https://www.celahealthcare.com/" },
       description:
-        "Serving as a hands-on Senior Software Engineer and CTO, directing software architecture, AI engineering, application development, and technical execution while serving as the primary inventor of patented healthcare application technology. Lead technology strategy and hands-on engineering for a healthcare technology startup, overseeing product architecture, application development, technical execution, and multidisciplinary engineering initiatives.",
+        "Hands-on Senior Software Engineer and CTO for healthcare technology startup, directing software strategy and architecture, AI engineering, application development, and technical execution to successfully deploy the HeroID interactive mobile app coordinating efforts of a multi-disciplinary team and the primary contributor to the patented healthcare application technology.",
       bullets: [
         "Manage a multidisciplinary technical team comprising developers, a data engineer, and a project manager, establishing development priorities and guiding complex technical implementations. Translate business objectives into scalable, secure, and user-focused software solutions, balancing product innovation with engineering quality.",
         "Establish and refine software engineering practices encompassing specification-driven development, testing, security, and technical documentation to support reliable product delivery. Drive research and development of proprietary healthcare application capabilities, applying emerging technologies and systems-level thinking to address complex technical challenges.",
@@ -158,7 +158,7 @@ export const resume = {
 
   projects: [
     {
-      title: "RIVENDELL -\u00A0 AI DEVELOPMENT AND RESEARCH TOOL", // the source document has two spaces after the hyphen; \u00A0 keeps the browser from collapsing them
+      title: "RIVENDELL - AI DEVELOPMENT AND RESEARCH TOOL",
       dates: "MAR 2025",
       description:
         "AI development and research platform functioning as “version control for reasoning,” supporting internal development and external client use. Engineered a Monte Carlo processing system that runs large batches of prompts against multiple large language models, improving the consistency of code evaluation metrics.",
