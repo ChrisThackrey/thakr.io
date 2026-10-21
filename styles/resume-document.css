@@ -85,15 +85,6 @@
   margin-bottom: 3pt;
 }
 
-/*
- * In Word the header's contact line overflows the right-aligned tab stop, so
- * the tab wraps "Page 2" onto a second line at the first default 0.5in stop.
- */
-.rd-running-header-page {
-  display: block;
-  padding-left: 0.5in;
-}
-
 /* ------------------------------ Header ------------------------------ */
 
 .rd-name {
@@ -121,8 +112,12 @@
   color: #fff;
   font-size: 18pt;
   font-weight: 700;
-  font-variant: small-caps;
   text-align: center;
+}
+
+.rd-small-caps {
+  font-size: 0.8em;
+  text-transform: uppercase;
 }
 
 .rd-summary {
@@ -159,6 +154,8 @@
 .rd-section-heading--heading1,
 .rd-section-heading--heading1-leaded {
   margin-bottom: 0;
+  /* The Heading 1 style's 0.038in right indent shortens the rules and shifts the centered text. */
+  margin-right: 0.038in;
 }
 
 .rd-section-heading--heading1-leaded {
@@ -195,9 +192,9 @@
   min-width: 0;
 }
 
-/* Word gives project bullets, and the bullet of the entry continued onto page 2, 6pt space-before. */
+/* Word gives project bullets, and the Black Flag Design bullet, 6pt space-before. */
 .rd-entry--project .rd-bullet,
-.rd-entry--continued .rd-bullet {
+.rd-entry--wide-bullets .rd-bullet {
   margin-top: 6pt;
 }
 
@@ -249,8 +246,10 @@
 
 /* ------------------------------ Education ------------------------------ */
 
+/* Word sets these lines to "Exactly 14pt" line spacing. */
 .rd-education {
   margin-top: 0;
+  line-height: 14pt;
   text-align: justify;
 }
 

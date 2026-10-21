@@ -89,7 +89,7 @@ export const resume = {
     {
       label: "Front-End Development",
       items:
-        "React, Next.js, React Native, Astro, Svelte, Redux, React Hooks, Context API, D3.js, React Three Fiber, React Flow, Tailwind CSS, Shadcn/ui, Chakra UI, Vuetify",
+        "React, Next.js, React Native, Astro, Svelte, Redux, React Hooks, Context API, D3.js, React Three Fiber, React Flow, TailwindCSS, Vite, Shadcn/ui, Chakra UI, Vue, Vuetify",
     },
     {
       label: "Back-End Development",
@@ -98,7 +98,7 @@ export const resume = {
     {
       label: "AI / Machine Learning",
       items:
-        "OpenAI API, Anthropic API, GPT-4o, Claude, Amazon Bedrock, Amazon SageMaker, LLM-as-Judge Evaluation, Retrieval-Augmented Generation (RAG), Prompt Engineering, LangSmith, Vector Embeddings, AI Agent Systems",
+        "OpenAI API, Anthropic API, Claude, Jev, Amazon Bedrock, Amazon SageMaker, LLM-as-Judge Evaluation, Retrieval-Augmented Generation (RAG), Prompt Engineering, LangSmith, Vector Embeddings, AI Agent Systems",
     },
     {
       label: "Databases / Data Engineering",
@@ -107,7 +107,7 @@ export const resume = {
     {
       label: "Cloud / DevOps",
       items:
-        "AWS EC2, AWS Lambda, Amazon S3, Route53, Vercel, Azure Static Web Apps, Google Cloud Functions, Docker, Heroku, DigitalOcean, GitHub Actions, NGINX, Turborepo, Turbopack",
+        "AWS EC2, AWS Lambda, Amazon S3, Vercel, Azure Static Web Apps, Google Cloud Functions, Docker, Heroku, DigitalOcean, GitHub Actions, NGINX, Turborepo, Turbopack",
     },
     {
       label: "Testing / Quality / Observability",
@@ -163,7 +163,7 @@ export const resume = {
       description:
         "AI development and research platform functioning as “version control for reasoning,” supporting internal development and external client use. Engineered a Monte Carlo processing system that runs large batches of prompts against multiple large language models, improving the consistency of code evaluation metrics.",
       bullets: [
-        `Built an LLM-as-Judge evaluation pipeline scoring solutions across six quality axes, classifying outputs as recommended, viable, or problematic. Developed semantic code search using PostgreSQL pgvector, 1,536-dimensional embeddings, IVFFlat cosine similarity, and language-filtered retrieval. Architected interactive 3D solution-space visualization using React Three Fiber, six-${BREAK}dimensional quality vectors, centroid clustering, and GPT-4o-assisted cluster labeling.`,
+        `Built an LLM-as-Judge evaluation pipeline scoring solutions across six quality axes, classifying outputs as recommended, viable, or problematic. Developed semantic code search using PostgreSQL pgvector, 1,536-dimensional embeddings, IVFFlat cosine similarity, and language-filtered retrieval. Architected interactive 3D solution-space visualization using React Three Fiber, six-${BREAK}dimensional quality vectors, centroid clustering, and GPT-assisted cluster labeling.`,
         condensed("Designed PostgreSQL schemas with 20+ PL/pgSQL functions and 21 indexes, including GIN, B-tree, and IVFFlat indexes. Implemented multi-stage JSON repair, provider-agnostic LLM abstractions, resumable batch processing, and automated code-file persistence. Established end-to-end type safety with 20+ Zod schemas and generated automated five-phase project roadmaps from ranked reasoning steps. Wrote 69 Vitest test cases covering services, components, and integration flows across embedding, storage, and retrieval."),
       ],
     },
@@ -173,7 +173,7 @@ export const resume = {
       description:
         condensed("AI teaching application featuring multiplayer AI chat, deep research, and role-specific user experiences. Engineered an AI chat system routing messages through a classifier to six specialized AI bots, supporting real-time interaction through authenticated WebSocket connections. Built authenticated WebSocket infrastructure, voice transcription workflows, chat-history token budgeting, and PDF transcript exports.", -0.15),
       bullets: [
-        "Designed and implemented multi-tenant infrastructure provisioning across 27 idempotent stages, automating dedicated EC2, Supabase, S3, and Route53 resources for each district. Built retrieval-augmented AI workflows using Supabase pgvector, document embeddings, conversational query rephrasing, and source-aware citation handling. Developed AI evaluation workflows using six automated LangSmith evaluators measuring correctness, groundedness, document relevance, schema validity, and processing time.",
+        "Designed and implemented multi-tenant infrastructure provisioning across 27 idempotent stages, automating dedicated EC2, Supabase, and S3 resources for each district. Built retrieval-augmented AI workflows using Supabase, pgvector, document embeddings, conversational query rephrasing, and source-aware citation handling. Developed AI evaluation workflows using six automated LangSmith evaluators measuring correctness, groundedness, document relevance, schema validity, and processing time.",
         "Implemented role-differentiated chat interfaces for teachers, leaders, and students, with responsive layouts and AI context-aware rendering. Developed deployment safeguards including persisted provisioning state, DNS verification, secret cleanup, failure classification, and resumable deployments.",
       ],
     },

@@ -35,6 +35,21 @@ const paraNodes = (para: Para): React.ReactNode => {
 const paraStyle = (para: Para): React.CSSProperties | undefined =>
   typeof para === "string" ? undefined : { letterSpacing: `${para.letterSpacing}pt` }
 
+/**
+ * Word's small caps: lowercase letters (and spaces) are set as capitals at 80% size.
+ * Chrome's synthesized `font-variant: small-caps` is narrower, so do it by hand.
+ */
+const smallCaps = (text: string): React.ReactNode =>
+  text.split(/([a-z]+|\s+)/).map((part, i) =>
+    /^(?:[a-z]+|\s+)$/.test(part) ? (
+      <span key={i} className="rd-small-caps">
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  )
+
 function SectionHeading({
   children,
   variant,
@@ -102,24 +117,12 @@ function Description({ para }: { para: Para }) {
   )
 }
 
-/**
- * An experience entry. `part` renders only the title row ("title") or
- * everything after it ("rest"), for an entry Word splits across a page break.
- */
-function Experience({ entry, part = "all" }: { entry: ExperienceEntry; part?: "all" | "title" | "rest" }) {
-  if (part === "title") {
-    return (
-      <div className="rd-entry">
-        <div className="rd-shaded">
-          <TitleRow title={entry.title} dates={entry.dates} />
-        </div>
-      </div>
-    )
-  }
+/** An experience entry. `wideBullets` gives its bullets Word's 6pt space-before instead of 3pt. */
+function Experience({ entry, wideBullets = false }: { entry: ExperienceEntry; wideBullets?: boolean }) {
   return (
-    <div className={part === "rest" ? "rd-entry rd-entry--continued" : "rd-entry"}>
+    <div className={wideBullets ? "rd-entry rd-entry--wide-bullets" : "rd-entry"}>
       <div className="rd-shaded">
-        {part === "all" && <TitleRow title={entry.title} dates={entry.dates} />}
+        <TitleRow title={entry.title} dates={entry.dates} />
         <div className="rd-entry-company-row">
           <span className="rd-entry-company">{entry.company}</span>
           {entry.website && (
@@ -191,7 +194,7 @@ export function ResumeDocument() {
             <span className="rd-contact-sep"> | </span>
             <a href={c.website.href}>{c.website.label}</a>
           </p>
-          <p className="rd-tagline">{resume.tagline}</p>
+          <p className="rd-tagline">{smallCaps(resume.tagline)}</p>
           <p className="rd-summary">{paraNodes(resume.summary)}</p>
 
           <SectionHeading>Leadership Highlights</SectionHeading>
@@ -204,11 +207,9 @@ export function ResumeDocument() {
             <SkillRow key={group.label} group={group} />
           ))}
 
-          <SectionHeading>Professional Experience</SectionHeading>
+          <SectionHeading variant="heading1">Professional Experience</SectionHeading>
           <Experience entry={senior} />
           <Experience entry={aiEngineer} />
-          {/* Word keeps this entry's title row on page 1 and breaks before the company line. */}
-          <Experience entry={engineer} part="title" />
         </div>
         <p className="rd-footer">Continued…</p>
       </section>
@@ -227,10 +228,9 @@ export function ResumeDocument() {
             </a>{" "}
             | <a href={c.website.href}>{c.website.label}</a>
           </span>
-          <span className="rd-running-header-page">Page 2</span>
         </header>
         <div className="rd-sheet-body">
-          <Experience entry={engineer} part="rest" />
+          <Experience entry={engineer} wideBullets />
 
           <SectionHeading variant="plain">Software Engineering Projects</SectionHeading>
           {resume.projects.map((project) => (
