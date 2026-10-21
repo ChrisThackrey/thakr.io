@@ -365,7 +365,7 @@ export const skillDescriptions: Record<string, string> = {
   React: "The library for web and native user interfaces — compose whole screens from components that are plain JavaScript functions.",
   "React Three Fiber": "React renderer for three.js — declarative, reusable 3D scene components that respond to state like any other React tree.",
   "React Flow": "Open-source React library for node-based UIs — zoomable canvases, draggable nodes, custom edges, and visual flow editors.",
-  Vite: "Next-generation frontend tooling — instant dev server over native ES modules, fast HMR, and optimized production bundles.",
+  Vite: "The unified toolchain for the web — one Rust-powered tool combining Vite, Rolldown, Vitest, Oxlint, and Oxfmt for dev server, bundling, testing, linting, and formatting. https://viteplus.dev/",
   Vue: "The progressive JavaScript framework — incrementally adoptable, from a sprinkle of interactivity to a full single-page app.",
   Vuetify: "Material Design component framework for Vue — 90+ hand-crafted, accessible components that scale from mobile to desktop.",
   Mapbox: "WebGL-rendered interactive vector maps — custom styles, vector tiles, and geospatial visualization for the web.",
